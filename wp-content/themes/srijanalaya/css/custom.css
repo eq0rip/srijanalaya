@@ -1,0 +1,92 @@
+.navbar-nav{
+	background-color: #ffffff;
+	padding-right: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+.navbar-nav > li{
+	text-transform: uppercase;
+ 	font-size: 19px;
+ 	
+ 	background-color: #4c4b4c;
+ 	margin-left: 1px;
+}
+.navbar-nav .caret {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ffffff;
+   }
+.navbar {
+	background-color: #4c4b4c;
+	margin: 0px;
+}
+
+#myNavbar {
+	margin-left: 70px;
+}
+.sri_logo {
+	float: left;
+}
+.user_option {
+	float:right;
+	background-color: #4c4b4c  !important;
+
+}
+.user_option .btn {
+	border-radius: 0px;
+	background-color: #4c4b4c;
+	border-style: none;
+
+}
+.sri_logo {
+	margin: 20px 70px;
+}
+.nav > li.dropdown.open {
+    position: static;
+    top:auto;
+}
+.nav > li.dropdown.open .dropdown-menu {
+    display:table; width: 100%; text-align: center; left:0; right:0;top: auto;
+    background: #8BCB32;
+    height: 300px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #E6ECDE;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    background-color: #8BCB32 !important;
+    color: #E6ECDE !important;
+
+}
+.dropdown-menu>li {
+    display: table-cell;
+
+
+}
+.dropdown-menu {
+	padding:200px;
+}
+
+.dropdown-menu  a {
+    display: block;
+    padding: 15px 0px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857;
+    color: #ffffff;
+    font-size: 20px;
+    white-space: nowrap;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+.dropdown-menu>ul {
+    list-style-type: none;
+ 	border-right:1px solid #ffffff;
+    
+    
+}
+
