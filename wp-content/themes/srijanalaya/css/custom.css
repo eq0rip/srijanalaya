@@ -19,23 +19,10 @@ html {
     overflow-x: hidden;
 }
 body {
-    color: #676767;
-    font-size: 15px;//14
-    -webkit-font-smoothing: antialiased;//for google font in safari
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
     line-height: 22px;//18
     letter-spacing: 1.5px;
-    &.home {
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-position: center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        //background-image: url(../images/banner1.jpg);
     }
     @media (max-width: 991px) {
         font-size: 13px;
@@ -53,27 +40,6 @@ h1 {
     line-height: 36px;
     letter-spacing: 2px;
     margin-bottom: 20px;
-    //margin-top: 0;
-    //text-transform: uppercase;
-    &.bordered {
-        //font-size: 18px;
-        position: relative;
-        letter-spacing: 1px;
-        //font-weight: 500;
-        //line-height: 29px;
-        //font-family: Helvetica;
-        margin-bottom: 40px;
-        &:after {
-            background: #adadad;
-            position: absolute;
-            margin: auto;
-            z-index: 1;
-            content: "";
-            height: 2px;
-            bottom: -20px;
-            left: 0;
-            width: 50px;
-        }
     }
     @media (max-width: 991px) {
         font-size: 22px;
@@ -88,16 +54,11 @@ h2 {
     font-weight: bold;
 }
 
-//paragraph
 p {
     
     font-size: 17px;
 }
 
-.centered {
-    text-align: center;
-
-}
 
 
 
