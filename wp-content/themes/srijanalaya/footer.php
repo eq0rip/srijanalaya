@@ -16,7 +16,10 @@
 <?php wp_footer(); ?>
 
 </body>
-<script src="<?php echo get_template_directory_uri();?>/js/owl.carousel.js"></script>
+
+<script src="<?php echo get_template_directory_uri();?>/js/owl.carousel.min.js"></script>
+
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
 
 </html>
