@@ -44,6 +44,7 @@ h1, h2 {
 h1 {
     font-size: 36px;
     font-weight: bold;
+   font-family: 'bree serif';
     letter-spacing: 2px;
     line-height: 36px;
     letter-spacing: 2px;
@@ -55,6 +56,7 @@ h1 {
 }
 h2 {
     font-size: 35px;
+    font-family:'bree serif';
     margin-bottom: 10px;
     letter-spacing: 1px;
     line-height: 35px;
@@ -63,7 +65,8 @@ h2 {
 
 p {
 
-    font-size: 17px;
+    font-size: 19px;
+    font-family:'bree serif';
 }
 @backgroundGrey: #4c4b4c;
 @fontColor: #cecece;
@@ -98,12 +101,14 @@ p {
             height: 30px;
         }
     }
-}
+}  
+
 .navbar {
     background-color: @backgroundGrey;
     font-family: 'allerregular';
     border-radius: 0;
     min-height: 40px;
+    margin-bottom:0px;
     .navbar-nav {
         position: absolute;
         left: 50px;
@@ -131,6 +136,7 @@ p {
         right: 10px;
         top: 35%;
     }
+
 }
 }
 #slider-2 .item {
@@ -176,16 +182,90 @@ p {
  margin-left: 100px;
 }
 
+.fullheight {
+    height:100%;
+}
+
+.no-padding {
+    padding:0px;
+}
+
+.overlay {
+    position:absolute;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
+    background-color:black;
+    opacity:0.3;
+
+}
 
 
+#section2  p,h1,h2 {
+ color:#898B8E;
+ margin:2px;
+ padding:2px;
+}
+#section2  p,h1,h2 {
+ color:#898B8E;
+ margin:2px;
+ padding:2px;
+}
 
+.section .btn {
+    background: transparent;
+    color:#898B8E;
+    border-radius:24px;
+    width:200px;
+    font-family:'helvetica';
+    margin-top:50px;
+    font-weight:bold;
+    font-size:20px;
+    letter-spacing:1px;
+    &:hover {
+        background:#E9204A;
+        color:#ffffff;
+    }
+}
 
 
 #left-col-first {
     height:100%;
-    background-image:url(../images/bgs1.svg);
     background-size: 225px 270px;
 
+}
+
+
+#threesecond , #onesecond , #onethird, #threethird {
+background-color:#F5F5F5;
+     padding-left:100px;
+ padding-top:100px;
+
+}
+ #twothird,#fourthird {
+ background-color:#E5E5E5;
+     padding-left:100px;
+ padding-top:100px;
+ }
+.post-navigate {
+    margin:0 -130px;
+    position:absolute;
+
+
+       bottom:0;
+     .btn {
+        padding-top:25px;
+        font-size:24px;
+        line-height:200%;
+        background-color:#D1D2D1;
+        height:100px;
+        width:200px;
+        border-radius: 150px 150px 0 0;
+        -moz-border-radius: 150px 150px 0 0;
+        -webkit-border-radius: 150px 150px 0 0;
+
+          }
 }
 
 
