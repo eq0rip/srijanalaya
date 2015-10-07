@@ -1,6 +1,9 @@
+
+
 (function($) {
 
 $(document).ready(function($){
+
 	 $('#fullpage').fullpage();
 	 //$('#section1').function({paddingTop:0px;});
    $("#slider-2").owlCarousel({
@@ -12,6 +15,7 @@ $(document).ready(function($){
     autoplayTimeout:3000,
     autoplayHoverPause:true,
      animateOut:'fadeOut',
+  
     
    
   							 });
@@ -28,6 +32,11 @@ $(document).ready(function($){
    
   							 });
    
+//owl sync
+
+
+//====owl sync end
+
 
  	$(".dropdown").hover(            
             function() {
@@ -51,7 +60,15 @@ $(document).ready(function($){
 
 
 		});
+  $("#left-col-first").hover(
+        function() {
+          $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1_flip.svg)'});  
+               },
+        function() {
+          $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1.svg)'});       
 
+
+    });
 });
 })(jQuery);
 
