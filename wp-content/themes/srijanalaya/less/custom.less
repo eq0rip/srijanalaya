@@ -1,5 +1,6 @@
 // bootstrap
 @import "bootstrap.less";
+@import "yamm.less";
 
 //font
 @font-face {
@@ -16,10 +17,10 @@
     font-family: 'allerregular';
     src: url('aller_std_rg-webfont.eot');
     src: url('aller_std_rg-webfont.eot?#iefix') format('embedded-opentype'),
-         url('aller_std_rg-webfont.woff2') format('woff2'),
-         url('aller_std_rg-webfont.woff') format('woff'),
-         url('aller_std_rg-webfont.ttf') format('truetype'),
-         url('aller_std_rg-webfont.svg#allerregular') format('svg');
+    url('aller_std_rg-webfont.woff2') format('woff2'),
+    url('aller_std_rg-webfont.woff') format('woff'),
+    url('aller_std_rg-webfont.ttf') format('truetype'),
+    url('aller_std_rg-webfont.svg#allerregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -44,7 +45,7 @@ h1, h2 {
 h1 {
     font-size: 36px;
     font-weight: bold;
-   font-family: 'bree serif';
+    font-family: 'bree serif';
     letter-spacing: 2px;
     line-height: 36px;
     letter-spacing: 2px;
@@ -99,50 +100,33 @@ p {
             color: @fontColor;
             border: 1px Solid #6d6d6d;
             height: 30px;
+            margin: 0;
         }
     }
 }  
-
-.navbar {
+//Yamm Fix
+.yamm .yamm-content a,
+.yamm .yamm-content a:hover,
+.yamm .yamm-content a:focus {
+  background: transparent;
+  font-weight: normal;      
+}
+.yamm .yamm-content a {
+  color: #0088CC;
+}
+.yamm .yamm-content a:hover,
+.yamm .yamm-content a:focus {
+  color: #005580;
+}
+.icon-bar {
     background-color: @backgroundGrey;
-    font-family: 'allerregular';
-    border-radius: 0;
-    min-height: 40px;
-    margin-bottom:0px;
-    .navbar-nav {
-        position: absolute;
-        left: 50px;
-        max-height: 39px;
-        font-size: 12px;
-        li { 
-            border-right: 1px Solid #6d6d6d;
-            max-height: 39px;
-            width: 125px;
-            a {
-              margin: 0;
-              color: @fontColor;  
-              padding-top: 9px;
-              &:hover {
-                background-color: #8cc344;
-                color: #FFF;  
-            }
-          }
-      }
-      .first {
-        border-left: 1px Solid #6d6d6d;
-    }
-    .caret {
-        position: absolute;
-        right: 10px;
-        top: 35%;
-    }
+    margin: 0 auto;
+}
+.menubutton {
+    border: 1px Solid @fontColor;
+}
 
-}
-}
-.dropdown-menu {
-    background-color: #8cc344;
-    color: #FFF;
-}
+
 #slider-2 .item {
     margin: 0px;
 
@@ -159,9 +143,9 @@ p {
 }
 
 #slider-1 .item h1 {
-   color:#E9204A;
-   font-size: 36px;
-   font-family: 'bree serif';
+ color:#E9204A;
+ font-size: 36px;
+ font-family: 'bree serif';
 
 }
 
@@ -180,10 +164,10 @@ p {
 
 }
 #slider-1 {
- position: relative;
- top: 100px;
- width: 50%;
- margin-left: 100px;
+   position: relative;
+   top: 100px;
+   width: 50%;
+   margin-left: 100px;
 }
 
 .fullheight {
@@ -207,14 +191,14 @@ p {
 
 
 #section2  p,h1,h2 {
- color:#898B8E;
- margin:2px;
- padding:2px;
+   color:#898B8E;
+   margin:2px;
+   padding:2px;
 }
 #section2  p,h1,h2 {
- color:#898B8E;
- margin:2px;
- padding:2px;
+   color:#898B8E;
+   margin:2px;
+   padding:2px;
 }
 
 .section .btn {
@@ -242,23 +226,23 @@ p {
 
 
 #threesecond , #onesecond , #onethird, #threethird {
-background-color:#F5F5F5;
-     padding-left:100px;
- padding-top:100px;
+    background-color:#F5F5F5;
+    padding-left:100px;
+    padding-top:100px;
 
 }
- #twothird,#fourthird {
- background-color:#E5E5E5;
-     padding-left:100px;
- padding-top:100px;
- }
+#twothird,#fourthird {
+   background-color:#E5E5E5;
+   padding-left:100px;
+   padding-top:100px;
+}
 .post-navigate {
     margin:0 -130px;
     position:absolute;
 
 
-       bottom:0;
-     .btn {
+    bottom:0;
+    .btn {
         padding-top:25px;
         font-size:24px;
         line-height:200%;
@@ -269,7 +253,7 @@ background-color:#F5F5F5;
         -moz-border-radius: 150px 150px 0 0;
         -webkit-border-radius: 150px 150px 0 0;
 
-          }
+    }
 }
 
 

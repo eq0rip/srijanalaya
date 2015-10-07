@@ -33,306 +33,196 @@
         </div><!-- Top buttons-->
       </div>
 
-      <nav class="navbar"><!--navbar-->
-        <div class="cointainer">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <nav class="navbar yamm"><!--navbar-->
+        <div class="navbar-inner">
+          <div class="cointainer">
+
+            <button type="button" class="navbar-toggle menubutton" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
+              <a class="brand" href="#"> Menu </a>
             </button>
-
-          </div>
-
-          <div class="collapse navbar-collapse" id="myNavbar" >
-            <ul class="nav navbar-nav">
-              <li class="dropdown first"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HOME<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
+            <div class="access">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" >
+              <ul class="nav navbar-nav">
+                <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HOME<span class="caret" ></span></a>
+                 <ul class="dropdown-menu">
+                  <div class="yamm-content">
+                    <ul class="col-sm-4 list-unstyled">
+                     <li><a href="#"> Link Item </a></li>
+                     <li><a href="#"> Link Item </a></li>
+                     <li><a href="#"> Link Item </a></li>
+                   </ul>
+                   <ul class="col-sm-4 list-unstyled">
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
                   </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
+                  <ul class="col-sm-4 list-unstyled">
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
                   </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>  
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PROJECTS<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RESOURCES<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li> 
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li> 
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">SHOP<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>  
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACT<span class="caret" ></span></a>
-                <ul class="dropdown-menu">
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-                  <ul>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>
-                  <li></li>
-
-                  <ul style="border-right:0px;">
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Social Studies</a></li>
-                  </ul>                                                                                        
-
-                </ul>
-              </li>                                                                                                                                                                                  
+                </div>
+              </ul>
+            </li>
+            <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT<span class="caret" ></span></a>
+             <ul class="dropdown-menu">
+              <div class="yamm-content">
+                <ul class="col-sm-4 list-unstyled">
+                 <li><a href="#"> Link Item </a></li>
+                 <li><a href="#"> Link Item </a></li>
+                 <li><a href="#"> Link Item </a></li>
+               </ul>
+               <ul class="col-sm-4 list-unstyled">
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+              </ul>
+              <ul class="col-sm-4 list-unstyled">
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+              </ul>
+            </div>
+          </ul>
+        </li>  
+        <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PROJECTS<span class="caret" ></span></a>
+          <ul class="dropdown-menu">
+            <div class="yamm-content">
+              <ul class="col-sm-4 list-unstyled">
+               <li><a href="#"> Link Item </a></li>
+               <li><a href="#"> Link Item </a></li>
+               <li><a href="#"> Link Item </a></li>
+             </ul>
+             <ul class="col-sm-4 list-unstyled">
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+            </ul>
+            <ul class="col-sm-4 list-unstyled">
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
             </ul>
           </div>
+        </ul>
+      </li>
+      <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
+        <ul class="dropdown-menu">
+          <div class="yamm-content">
+            <ul class="col-sm-4 list-unstyled">
+             <li><a href="#"> Link Item </a></li>
+             <li><a href="#"> Link Item </a></li>
+             <li><a href="#"> Link Item </a></li>
+           </ul>
+           <ul class="col-sm-4 list-unstyled">
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+          </ul>
+          <ul class="col-sm-4 list-unstyled">
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+          </ul>
         </div>
-      </nav>
-    </div><!--head div end -->    
+      </ul>
+    </li>
+    <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RESOURCES<span class="caret" ></span></a>
+     <ul class="dropdown-menu">
+      <div class="yamm-content">
+        <ul class="col-sm-4 list-unstyled">
+         <li><a href="#"> Link Item </a></li>
+         <li><a href="#"> Link Item </a></li>
+         <li><a href="#"> Link Item </a></li>
+       </ul>
+       <ul class="col-sm-4 list-unstyled">
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+      </ul>
+      <ul class="col-sm-4 list-unstyled">
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+      </ul>
+    </div>
+  </ul>
+</li> 
+<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
+  <ul class="dropdown-menu">
+    <div class="yamm-content">
+      <ul class="col-sm-4 list-unstyled">
+       <li><a href="#"> Link Item </a></li>
+       <li><a href="#"> Link Item </a></li>
+       <li><a href="#"> Link Item </a></li>
+     </ul>
+     <ul class="col-sm-4 list-unstyled">
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+    </ul>
+    <ul class="col-sm-4 list-unstyled">
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+    </ul>
+  </div>
+</ul>
+</li> 
+<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">SHOP<span class="caret" ></span></a>
+ <ul class="dropdown-menu">
+  <div class="yamm-content">
+    <ul class="col-sm-4 list-unstyled">
+     <li><a href="#"> Link Item </a></li>
+     <li><a href="#"> Link Item </a></li>
+     <li><a href="#"> Link Item </a></li>
+   </ul>
+   <ul class="col-sm-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+</div>
+</ul>
+</li>  
+<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACT<span class="caret" ></span></a>
+ <ul class="dropdown-menu">
+  <div class="yamm-content">
+    <ul class="col-sm-4 list-unstyled">
+     <li><a href="#"> Link Item </a></li>
+     <li><a href="#"> Link Item </a></li>
+     <li><a href="#"> Link Item </a></li>
+   </ul>
+   <ul class="col-sm-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+</div>
+</ul>
+</li>                                                                                                                                                                                  
+</ul>
+</div>
+</div>
+</div>
+</nav>
+</div><!--head div end -->    
 
 
-    <?php wp_head();?>
+<?php wp_head();?>
 
 

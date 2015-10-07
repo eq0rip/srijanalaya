@@ -4,6 +4,11 @@
 
 $(document).ready(function($){
 
+
+  $(document).on('click', '.yamm .dropdown-menu', function(e) {
+  e.stopPropagation()
+})
+
 	 $('#fullpage').fullpage();
 	 //$('#section1').function({paddingTop:0px;});
    $("#slider-2").owlCarousel({
