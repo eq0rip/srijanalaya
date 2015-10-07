@@ -52,23 +52,23 @@ get_header(); ?>
 
 										<div class="col-sm-6" style="height:100%;padding:0px;" id="right-col-first">
 												<div id="slider-2" class="owl-carousel">
-												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="">
+												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="1">
 													      	  <div class="overlay11">
 													      			
 													      	  </div>
 
 												      </div>
-												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="">
+												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="2">
 														      <div class="overlay11">
 														      		
 														      </div>
 												      </div>						      
-												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="">
+												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="3">
 														      <div class="overlay11">
 														      		
 														      </div>
 												      </div>
-												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="">
+												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="4">
 														      <div class="overlay11">
 														      	    
 														      </div>

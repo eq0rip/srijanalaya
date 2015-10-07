@@ -11,35 +11,43 @@ $(document).ready(function($){
 
 	 $('#fullpage').fullpage();
 	 //$('#section1').function({paddingTop:0px;});
-   $("#slider-2").owlCarousel({
- 
-      items:1,
-    loop:true,
-    margin:0,
-    autoplay:true,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true,
-     animateOut:'fadeOut',
-  
-    
-   
-  							 });
-   $("#slider-1").owlCarousel({
- 
-      items:1,
-    loop:true,
-    margin:0,
-    autoplay:true,
-    autoplayTimeout:3000,
-    autoplayHoverPause:true,
-
-    
-   
-  							 });
    
 //owl sync
+var $owl1 = $("#slider-1"),
+        $owl2 = $("#slider-2"),
+        flag = false,
+        duration = 300;
 
+      $owl1
+        .owlCarousel({
+          items: 1,
+          margin: 0,
+              autoplay:true,
+    autoplayTimeout:3000,
+    loop:true
+        })
+        .on('changed.owl.carousel', function (e) {
+          if (!flag) {
+            flag = true;
+            $owl2.trigger('to.owl.carousel', [e.page.index, duration, true]);
+            flag = false;
+          }
+        });
 
+      $owl2
+        .owlCarousel({
+          margin: 0,
+          items: 1,
+          loop:true,
+          animateOut: 'fadeOut',
+        })
+        .on('changed.owl.carousel', function (e) {
+          if (!flag) {
+            flag = true;    
+            $owl1.trigger('to.owl.carousel', [e.page.index, duration, true]);
+            flag = false;
+          }
+        });
 //====owl sync end
 
 
