@@ -50,7 +50,7 @@ get_header(); ?>
 									   			</div>
 									   </div>
 
-										<div class="col-sm-6" style="height:100%;padding:0px;" id="right-col-first">
+										<div class="col-sm-6" style="height:auto;padding:0px;" id="right-col-first">
 												<div id="slider-2" class="owl-carousel">
 												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="1">
 													      	  <div class="overlay11">
@@ -82,7 +82,7 @@ get_header(); ?>
 						</div>
 					</div>
 
-					<div class="section" id="section2">
+					<div class="section fullheight" id="section2">
 						<div class="container-fluid fullheight" >
 									<div class="row fullheight">
 										<div class="col-sm-3 fullheight no-padding" id="onesecond">

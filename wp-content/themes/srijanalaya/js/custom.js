@@ -9,7 +9,10 @@ $(document).ready(function($){
   e.stopPropagation()
 })
 
-	 $('#fullpage').fullpage();
+	 $('#fullpage').fullpage({
+    scrollBar:true,
+    fitToSection:false
+   });
 	 //$('#section1').function({paddingTop:0px;});
    
 //owl sync
