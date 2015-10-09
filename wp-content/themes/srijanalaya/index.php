@@ -53,25 +53,25 @@ get_header(); ?>
 										<div class="col-sm-6" style="height:auto;padding:0px;" id="right-col-first">
 												<div id="slider-2" class="owl-carousel">
 												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="1">
-													      	  <div class="overlay11">
+													      	  <span class="overlay11">
 													      			
-													      	  </div>
+													      	  </span>
 
 												      </div>
 												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="2">
-														      <div class="overlay11">
+														      <span class="overlay11">
 														      		
-														      </div>
+														      </span>
 												      </div>						      
 												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="3">
-														      <div class="overlay11">
+														      <span class="overlay11">
 														      		
-														      </div>
+														      </span>
 												      </div>
 												      <div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="4">
-														      <div class="overlay11">
+														      <span class="overlay11">
 														      	    
-														      </div>
+														      </span>
 												      </div>   
 											   </div>
 									   </div>
@@ -158,6 +158,28 @@ get_header(); ?>
 									</div>
 						</div>			
 
+					</div>
+					<div class="section" id="section4">
+						<div class="container-fluid fullheight">
+							<div class="row fullheight">
+								<div class="col-sm-6" id="fifthone">
+									<div class="embed-responsive embed-responsive-16by9">
+    										<iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+									</div>
+								</div>
+								<div class="col-sm-6" id="fifthtwo">
+									<h1>Title of <span class="pink">Featured</span> Video Showcased.</h1>
+								</div>
+								<div class="col-sm-12" id="fifththree">
+									<div class="col-sm-4 col-sm-offset-4">
+										<h1> Quotation <span class="pink">space</span> of featured recent project in Nepal... “</h1>
+									</div>
+								</div>
+								<div class="col-sm-6" id="fifthfour">
+									
+								</div>
+							</div>
+						</div>
 					</div>
 
 				</div> <!--full page end-->
