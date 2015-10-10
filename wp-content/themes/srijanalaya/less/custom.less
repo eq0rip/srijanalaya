@@ -51,10 +51,10 @@ h1 {
     line-height: 36px;
     letter-spacing: 2px;
     margin-bottom: 20px;
-              @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
 
-                            font-size:29px;
-               }
+        font-size:29px;
+    }
 
     
 }
@@ -65,20 +65,20 @@ h2 {
     letter-spacing: 1px;
     line-height: 35px;
     font-weight: bold;
-                  @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
 
-                            font-size:28px;
-               }
+        font-size:28px;
+    }
 }
 
 p {
 
     font-size: 20px;
     font-family:'bree serif';
-                      @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
 
-                            font-size:15px;
-               }
+        font-size:15px;
+    }
 }
 @backgroundGrey: #4c4b4c;
 @fontColor: #cecece;
@@ -99,6 +99,10 @@ p {
     .logo {
         margin: 20px 50px;
         float: left;
+        @media (max-width: 850px) {
+            margin-left: 28px;
+            height: 50%;
+        }
     }
     .top-btn {
         float: right;
@@ -136,7 +140,44 @@ p {
 .menubutton {
     border: 1px Solid @fontColor;
 }
+#myNavbar {
+    background-color: @backgroundGrey;
+    max-height: 35px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    .nav {
+        margin-left: 50px;
+        max-height: 35px;
+        font-size: 12px; 
+        li {
+            border-right: 1px Solid #6d6d6d;
+            max-height: 35px;
+            a {
+                color: @fontColor;
+                margin: 0;
+                padding-top: 8px; 
 
+            }
+            &:hover {
+                .dropdown-menu {
+                    background-color: #8cc344;
+                }
+                a {
+                    background-color: #8cc344;
+                    color:#FFF;
+                }
+            }
+        }
+        @media (max-width: 850px) {
+            font-size: 10px;
+            margin-left: 30px;
+        }
+        .first {
+            border-left: 1px Solid #6d6d6d;
+        }
+    }
+}
 
 #slider-2 .item {
     margin: 0px;
@@ -154,9 +195,9 @@ p {
 }
 
 #slider-1 .item h1 {
- color:#E9204A;
+   color:#E9204A;
 
- font-family: 'bree serif';
+   font-family: 'bree serif';
 
 }
 
@@ -172,10 +213,10 @@ p {
 
 }
 #slider-1 {
-   position: relative;
-   top: 100px;
-   width: 50%;
-   margin-left: 100px;
+ position: relative;
+ top: 100px;
+ width: 50%;
+ margin-left: 100px;
 }
 #left-col-first {
     background:url(../images/bgs1.svg);
@@ -202,9 +243,9 @@ p {
 
 
 #section2 ,#section3 {
-   color:#898B8E;
-   margin:2px;
-   padding:2px;
+ color:#898B8E;
+ margin:2px;
+ padding:2px;
 
 }
 
@@ -221,11 +262,11 @@ p {
         background:#E9204A;
         color:#ffffff;
     }
-                  @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
 
-                            font-size:15px;
-                            width:150px;
-               }
+        font-size:15px;
+        width:150px;
+    }
 
 }
 
@@ -245,23 +286,23 @@ p {
 
 }
 #twothird,#fourthird {
-   background-color:#E5E5E5;
-   padding-left:5%;
-   padding-top:5%;
+ background-color:#E5E5E5;
+ padding-left:5%;
+ padding-top:5%;
 }
 .post-navigate {
-   width:100%;
-   margin-left:-20%;
-   text-align:center;
-   display:block;
-    position:absolute;
+ width:100%;
+ margin-left:-20%;
+ text-align:center;
+ display:block;
+ position:absolute;
 
 
-    bottom:0;
-    .btn {
-         display:inline-block;
-        padding-top:25px;
-        font-size:24px;
+ bottom:0;
+ .btn {
+   display:inline-block;
+   padding-top:25px;
+   font-size:24px;
         //line-height:200%;
         background-color:#D1D2D1;
         height:100px;
@@ -269,12 +310,12 @@ p {
         border-radius: 150px 150px 0 0;
         -moz-border-radius: 150px 150px 0 0;
         -webkit-border-radius: 150px 150px 0 0;
-          @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
-                            height:50px;
-                            width:100px;
-                            font-size:10px;
-               }
- 
+        @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+            height:50px;
+            width:100px;
+            font-size:10px;
+        }
+
 
     }
 }
