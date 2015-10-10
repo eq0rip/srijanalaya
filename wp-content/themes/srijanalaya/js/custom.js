@@ -57,12 +57,12 @@ var $owl1 = $("#slider-1"),
  	$(".dropdown").hover(            
             function() {
                 //$('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-                $(this).toggleClass('open');
+                $(this).children('ul').slideDown(200);
                // $('b', this).toggleClass("caret caret-up");                
             },
             function() {
                // $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-                $(this).toggleClass('open');
+                $(this).children('ul').fadeOut(100);
                 //$('b', this).toggleClass("caret caret-up");                
             });
 
