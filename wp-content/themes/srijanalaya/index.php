@@ -189,25 +189,20 @@ get_header(); ?>
 	</div>
 </div>
 <div class="section" id="section4">
-	<div class="container-fluid fullheight">
-		<div class="row fullheight">
-			<div class="col-sm-6" id="fifthone">
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-				</div>
-			</div>
-			<div class="col-sm-6" id="fifthtwo">
-				<h1>Title of <span class="pink">Featured</span> Video Showcased.</h1>
-			</div>
-			<div class="col-sm-12" id="fifththree">
-				<div class="col-sm-4 col-sm-offset-4">
-					<h1> Quotation <span class="pink">space</span> of featured recent project in Nepal... “</h1>
-				</div>
-			</div>
-			<div class="col-sm-6" id="fifthfour">
-
+	<div class="col-xs-6 section-container bottom-container">
+		<div class="section-inner">
+			<div class="cover-wrap">
+				<h1>Title of <span class="key">Featured</span> Video Showcased</h1>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg vid-btn">Shop to Support</button>
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
 			</div>
 		</div>
+	</div>
+	<div class="col-xs-6 section-container bottom-container2">
+		<iframe src="https://player.vimeo.com/video/15023343?color=ffffff&badge=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
 </div>
 
