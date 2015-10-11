@@ -239,11 +239,11 @@ p {
 #left-col-first {
     background:url(../images/bgs1.svg);
     height: 100%;
-     @media(max-width:769px) {
+    @media(max-width:769px) {
         height: 40%;
         overflow:hidden;
     }
-     @media(max-width:729px) {
+    @media(max-width:729px) {
         height: 42%;
         overflow:hidden;
     }
@@ -251,7 +251,7 @@ p {
 #right-col-first {
     padding: 0;
     height: 100%;
-     @media(max-width:769px) {
+    @media(max-width:769px) {
         height: 52%;
         overflow:hidden;
     }
@@ -269,13 +269,13 @@ p {
     top:30px;
     width:70%;
     position: absolute;
- }
- @media(max-width:749px) {
+}
+@media(max-width:749px) {
     top:30px;
     width:70%;
     position: absolute;
     margin-left: 0;
- }
+}
 }
 #slider-1 .item h1 {
    color:#E9204A;
@@ -438,5 +438,25 @@ p {
         background-color: #8cc344 !important;
         color:#FFF !important;
     }
+}
+
+.fullimgclass {
+    overflow: hidden;
+    height: 100%;
+    .outimg {
+        -webkit-transform:scale(1);
+        -moz-transform:scale(1);
+        -o-transform:scale(1);
+        -webkit-transition-duration: 3s;
+        -moz-transition-duration: 3s;
+        -o-transition-duration: 3s;
+    }
+    &:hover{
+        .outimg {
+         -webkit-transform:scale(1.1);
+         -moz-transform:scale(1.1);
+         -o-transform:scale(1.1);
+     }
+ }
 }
 

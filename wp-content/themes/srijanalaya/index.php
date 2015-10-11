@@ -91,8 +91,8 @@ get_header(); ?>
 				</span>
 			</div>
 
-			<div class="col-sm-3 fullheight no-padding" id="twosecond">
-				<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" height="100%" style="margin-left:0px;" alt="">
+			<div class="col-sm-3 fullheight no-padding fullheight fullimgclass" id="twosecond">
+				<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="fullheight outimg" alt="">
 				<span class="overlay"></span>
 			</div>
 
@@ -109,8 +109,8 @@ get_header(); ?>
 
 			</div>
 
-			<div class="col-sm-3 fullheight no-padding" id="foursecond">
-				<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" height="100%" style="margin-left:0px;" alt="">
+			<div class="col-sm-3 fullheight no-padding fullheight fullimgclass" id="foursecond">
+				<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" class="fullheight outimg" alt="">
 				<div class="overlay"></div>									
 			</div>			
 		</div>
