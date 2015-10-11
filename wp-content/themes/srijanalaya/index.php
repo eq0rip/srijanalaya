@@ -76,8 +76,8 @@ get_header(); ?>
 <div class="section fullheight" id="section2">
 	<div class="container-fluid fullheight" >
 		<div class="row fullheight">
-			<div class="col-sm-3 fullheight no-padding" id="onesecond">
-				<h1>Upcoming Project</h1>
+			<div class="col-sm-3 fullheight no-padding container" id="onesecond">
+				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
@@ -87,26 +87,26 @@ get_header(); ?>
 				</span>
 			</div>
 
-			<div class="col-sm-3 fullheight no-padding" id="twosecond">
-				<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" height="100%" style="margin-left:0px;" alt="">
+			<div class="col-sm-3 fullheight no-padding fullheight fullimgclass" id="twosecond">
+				<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="fullheight outimg" alt="">
 				<span class="overlay"></span>
 			</div>
 
-			<div class="col-sm-3 fullheight no-padding" id="threesecond">
+			<div class="col-sm-3 fullheight no-padding container" id="threesecond">
 
-				<h1>Upcoming Project</h1>
+				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
 				<button type="button" class="btn btn-default btn-lg">View Resource</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg">Resource</button>
+					<button class="btn btn-default btn-lg semicircle">Resource</button>
 				</span>
 
 			</div>
 
-			<div class="col-sm-3 fullheight no-padding" id="foursecond">
-				<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" height="100%" style="margin-left:0px;" alt="">
+			<div class="col-sm-3 fullheight no-padding fullheight fullimgclass" id="foursecond">
+				<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" class="fullheight outimg" alt="">
 				<div class="overlay"></div>									
 			</div>			
 		</div>
