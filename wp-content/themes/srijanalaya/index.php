@@ -13,10 +13,6 @@
  */
 
 get_header(); ?>
-
-
-<div class="wrapper section fullheight" id="section1">
-		<div class="col-sm-6 slider-caption" id="left-col-first" >
 			<div id="slider-1" class="owl-carousel">
 				<div class="item">
 					<h1>Title Autde Juesl</h1>
