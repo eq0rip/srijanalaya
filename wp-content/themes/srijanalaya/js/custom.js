@@ -8,12 +8,6 @@
     $(document).on('click', '.yamm .dropdown-menu', function(e) {
       e.stopPropagation()
     })
-    // $('.slider-caption').height($(window).height() - 125);
-    $('#fullpage').fullpage({
-      scrollBar:true,
-      fitToSection:false
-    });
-	 //$('#section1').function({paddingTop:0px;});
 
 //owl sync
 var $owl1 = $("#slider-1"),
