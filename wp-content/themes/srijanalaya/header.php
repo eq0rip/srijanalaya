@@ -19,6 +19,25 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
 <body>
+<?php 
+  $menu_name="menutop";
+  $menu_store='';
+  $items=wp_get_nav_menu_items($menu_name);
+  foreach ((array) $items as $key=>$item){
+    $parent=$item->menu_item_parent;
+    $title=$item->title;
+    $url=$item->url;
+    $id=$item->ID;
+    if($parent==0) {
+      $key=$x++;
+      $menu_store[$id]=array('title'=>$title,'url'=>$url);
+            }
+    if($parent!=0){
+      $menu_store[$parent][]=array('title'=>$title,'url'=>$url);
+             }
+      
+  }
+?>
  <div id="fullpage" style="">
    <div class="section" id="section1" style="">
     <div style""><!--head div sart-->    
@@ -47,254 +66,43 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar" >
               <ul class="nav navbar-nav">
-                <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HOME<span class="caret" ></span></a>
+              <?php foreach ($menu_store as $key=>$value){?>
+
+                <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $value['title'];?><span class="caret" ></span></a>
                  <ul class="dropdown-menu">
                   <div class="yamm-content">
                     <ul class="col-sm-2 col-xs-4 list-unstyled">
-                     <li><a href="#"> Link Item </a></li>
-                     <li><a href="#"> Link Item </a></li>
-                     <li><a href="#"> Link Item </a></li>
+                     <li><a href="<?php echo $value[0]['url']; ?>"> <?php echo $value[0]['title']; ?> </a></li>
+                     <li><a href="<?php echo $value[1]['title']; ?>"> <?php echo $value[1]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[2]['title']; ?>"> <?php echo $value[2]['title']; ?></a></li>
                    </ul>
                    <ul class="col-sm-2 col-xs-4 list-unstyled">
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="<?php echo $value[3]['title']; ?>"> <?php echo $value[3]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[4]['title']; ?>"> <?php echo $value[4]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[5]['title']; ?>"> <?php echo $value[5]['title']; ?></a></li>
                   </ul>
                   <ul class="col-sm-2 col-xs-4 list-unstyled">
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="<?php echo $value[7]['title']; ?>"> <?php echo $value[6]['title']; ?></a></li>
+                   <li><a href="<?php echo $value[6]['title']; ?>"> <?php echo $value[7]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[8]['title']; ?>"> <?php echo $value[8]['title']; ?></a></li>
                   </ul>
                   <ul class="col-sm-2 col-xs-4 list-unstyled">
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="<?php echo $value[9]['title']; ?>"> <?php echo $value[9]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[10]['title']; ?>"> <?php echo $value[10]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[11]['title']; ?>"> <?php echo $value[11]['title']; ?></a></li>
                   </ul>
                   <ul class="col-sm-2 col-xs-4 list-unstyled">
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
-                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="<?php echo $value[12]['title']; ?>"> <?php echo $value[12]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[13]['title']; ?>"> <?php echo $value[13]['title']; ?></a></li>
+                    <li><a href="<?php echo $value[14]['title']; ?>"> <?php echo $value[14]['title']; ?></a></li>
                   </ul>
                 </div>
               </ul>
             </li>
-            <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT<span class="caret" ></span></a>
-             <ul class="dropdown-menu">
-              <div class="yamm-content">
-                <ul class="col-sm-2 col-xs-4 list-unstyled">
-                 <li><a href="#"> Link Item </a></li>
-                 <li><a href="#"> Link Item </a></li>
-                 <li><a href="#"> Link Item </a></li>
-               </ul>
-               <ul class="col-sm-2 col-xs-4 list-unstyled">
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-              </ul>
-              <ul class="col-sm-2 col-xs-4 list-unstyled">
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-              </ul>
-              <ul class="col-sm-2 col-xs-4 list-unstyled">
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-              </ul>
-              <ul class="col-sm-2 col-xs-4 list-unstyled">
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-                <li><a href="#"> Link Item </a></li>
-              </ul>
-            </div>
-          </ul>
-        </li>  
-        <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PROJECTS<span class="caret" ></span></a>
-          <ul class="dropdown-menu">
-            <div class="yamm-content">
-              <ul class="col-sm-2 col-xs-4 list-unstyled">
-               <li><a href="#"> Link Item </a></li>
-               <li><a href="#"> Link Item </a></li>
-               <li><a href="#"> Link Item </a></li>
-             </ul>
-             <ul class="col-sm-2 col-xs-4 list-unstyled">
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-            </ul>
-            <ul class="col-sm-2 col-xs-4 list-unstyled">
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-            </ul>
-            <ul class="col-sm-2 col-xs-4 list-unstyled">
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-            </ul>
-            <ul class="col-sm-2 col-xs-4 list-unstyled">
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-              <li><a href="#"> Link Item </a></li>
-            </ul>
-          </div>
-        </ul>
-      </li>
-      <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
-        <ul class="dropdown-menu">
-          <div class="yamm-content">
-            <ul class="col-sm-2 col-xs-4 list-unstyled">
-             <li><a href="#"> Link Item </a></li>
-             <li><a href="#"> Link Item </a></li>
-             <li><a href="#"> Link Item </a></li>
-           </ul>
-           <ul class="col-sm-2 col-xs-4 list-unstyled">
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-          </ul>
-          <ul class="col-sm-2 col-xs-4 list-unstyled">
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-          </ul>
-          <ul class="col-sm-2 col-xs-4 list-unstyled">
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-          </ul>
-          <ul class="col-sm-2 col-xs-4 list-unstyled">
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-            <li><a href="#"> Link Item </a></li>
-          </ul>
-        </div>
-      </ul>
-    </li>
-    <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RESOURCES<span class="caret" ></span></a>
-     <ul class="dropdown-menu">
-      <div class="yamm-content">
-        <ul class="col-sm-2 col-xs-4 list-unstyled">
-         <li><a href="#"> Link Item </a></li>
-         <li><a href="#"> Link Item </a></li>
-         <li><a href="#"> Link Item </a></li>
-       </ul>
-       <ul class="col-sm-2 col-xs-4 list-unstyled">
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-      </ul>
-      <ul class="col-sm-2 col-xs-4 list-unstyled">
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-      </ul>
-      <ul class="col-sm-2 col-xs-4 list-unstyled">
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-      </ul>
-      <ul class="col-sm-2 col-xs-4 list-unstyled">
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-        <li><a href="#"> Link Item </a></li>
-      </ul>
-    </div>
-  </ul>
-</li> 
-<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
-  <ul class="dropdown-menu">
-    <div class="yamm-content">
-     <ul class="col-sm-2 col-xs-4 list-unstyled">
-       <li><a href="#"> Link Item </a></li>
-       <li><a href="#"> Link Item </a></li>
-       <li><a href="#"> Link Item </a></li>
-     </ul>
-     <ul class="col-sm-2 col-xs-4 list-unstyled">
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-    </ul>
-    <ul class="col-sm-2 col-xs-4 list-unstyled">
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-    </ul>
-    <ul class="col-sm-2 col-xs-4 list-unstyled">
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-    </ul>
-    <ul class="col-sm-2 col-xs-4 list-unstyled">
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-      <li><a href="#"> Link Item </a></li>
-    </ul>
-  </div>
-</ul>
-</li> 
-<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">SHOP<span class="caret" ></span></a>
- <ul class="dropdown-menu">
-  <div class="yamm-content">
-    <ul class="col-sm-2 col-xs-4 list-unstyled">
-     <li><a href="#"> Link Item </a></li>
-     <li><a href="#"> Link Item </a></li>
-     <li><a href="#"> Link Item </a></li>
-   </ul>
-   <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-</div>
-</ul>
-</li>  
-<li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACT<span class="caret" ></span></a>
- <ul class="dropdown-menu">
-  <div class="yamm-content">
-    <ul class="col-sm-2 col-xs-4 list-unstyled">
-     <li><a href="#"> Link Item </a></li>
-     <li><a href="#"> Link Item </a></li>
-     <li><a href="#"> Link Item </a></li>
-   </ul>
-   <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-  <ul class="col-sm-2 col-xs-4 list-unstyled">
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-    <li><a href="#"> Link Item </a></li>
-  </ul>
-</div>
-</ul>
-</li>                                                                                                                                                                                  
+
+            <?php }?>
+              
+                                                                                                                                                                                       
 </ul>
 </div>
 </div>
