@@ -86,6 +86,14 @@ $("#left-col-first").hover(
 
   });
 });
+
+
+$('.even, .odd').hover(function() {
+  $('.transparent').fadeIn(500);
+},
+function() {
+  $('.transparent').fadeOut(100);
+});
 })(jQuery);
 
 
