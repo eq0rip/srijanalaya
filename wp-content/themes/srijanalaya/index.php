@@ -80,33 +80,37 @@ get_header(); ?>
 <div class="section fullheight" id="section2">
 	<div class="col-sm-6 quarter">
 		<div class="col-xs-6 fullheight section-container">
-			<h1>Upcoming <span class="key">Project</span></h1>
-			<h2> Icies Veil Liberois Pharetra</h2>
-			<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-			<button type="button" class="btn btn-default btn-lg">View Projects</button>
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
-			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle">News</button>
-			</span>
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
+			</div>
 		</div>
-		<div class="col-xs-6 fullheight section-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" alt="">
+		<div class="col-xs-6 fullheight section-container img-container">
+			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
 	</div>
 	<div class="col-sm-6 quarter2">
 		<div class="col-xs-6 fullheight section-container">
-			<h1>Upcoming <span class="key">Project</span></h1>
-			<h2> Icies Veil Liberois Pharetra</h2>
-			<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-			<button type="button" class="btn btn-default btn-lg">View Projects</button>
+		<div class="section-inner">
+				<h1>Upcoming <span class="key">Resource</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Resource</button>
 
-			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle">News</button>
-			</span>
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">Resource</button>
+				</span>
+			</div>
 		</div>
-		<div class="col-xs-6 fullheight section-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" alt="">
+		<div class="col-xs-6 fullheight section-container img-container">
+			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
 	</div>
