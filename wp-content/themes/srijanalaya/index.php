@@ -121,6 +121,10 @@ get_header(); ?>
 	<div class="transparent"></div>
 	<div class="col-sm-6 quarter3">
 		<div class="col-xs-6 fullheight section-container odd">
+			<div class="img-wrap">
+				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<div class="wrap" style="background:#000;opacity:0.7;"></div>
+			</div>
 			<div class="section-inner">
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
@@ -133,6 +137,10 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container even">
+			<div class="img-wrap">
+				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<div class="wrap" style="background:#000;opacity:0.7;"></div>
+			</div>
 			<div class="section-inner">
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
@@ -147,6 +155,10 @@ get_header(); ?>
 	</div>
 	<div class="col-sm-6 quarter4">
 		<div class="col-xs-6 fullheight section-container odd">
+			<div class="img-wrap">
+				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<div class="wrap" style="background:#000;opacity:0.7;"></div>
+			</div>
 			<div class="section-inner">
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
@@ -159,6 +171,10 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container even">
+			<div class="img-wrap">
+				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<div class="wrap" style="background:#000;opacity:0.7;"></div>
+			</div>
 			<div class="section-inner">
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>

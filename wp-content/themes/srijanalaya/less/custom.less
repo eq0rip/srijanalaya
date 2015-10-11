@@ -522,8 +522,12 @@ p {
 }
 .section-container {
     padding: 0;
+    background-size: cover;
     .section-inner {
         padding: 80px 50px;
+        position: relative;
+        z-index: 3;
+        height: 100%;
         @media(max-width:900px) {
             padding: 30px 20px;
             text-align: center;
@@ -563,19 +567,27 @@ p {
 }
 .odd {
     background-color: #e5e5e4;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
     &:hover {
         width:60%;
         z-index: 10;
+        color:#FFF;
     }
 }
 .even {
     background-color: #eaeae9;
     -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
     transition: all .5s;
     &:hover {
         width:60%;
         margin-left: -10%;
         z-index: 10;
+        color:#FFF;
     }
 }
 .transparent {
@@ -588,4 +600,21 @@ p {
     z-index: 9;
     opacity: 0.7;
     display: none;
+}
+.img-wrap {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    display: none;
+    img {
+        position: absolute;
+        width: 100%;
+    }
+    .wrap {
+        background: #000;
+        opacity: 0.3;
+        width: 100%;
+        min-height: 100%;
+    }
 }
