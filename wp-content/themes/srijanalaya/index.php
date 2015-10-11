@@ -80,73 +80,97 @@ get_header(); ?>
 <div class="section fullheight" id="section2">
 	<div class="col-sm-6 quarter">
 		<div class="col-xs-6 fullheight section-container">
-			<h1>Upcoming <span class="key">Project</span></h1>
-			<h2> Icies Veil Liberois Pharetra</h2>
-			<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-			<button type="button" class="btn btn-default btn-lg">View Projects</button>
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
-			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle">News</button>
-			</span>
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants</p>
+			</div>
 		</div>
-		<div class="col-xs-6 fullheight section-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" alt="">
+		<div class="col-xs-6 fullheight section-container img-container">
+			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
 	</div>
 	<div class="col-sm-6 quarter2">
 		<div class="col-xs-6 fullheight section-container">
-			<h1>Upcoming <span class="key">Project</span></h1>
-			<h2> Icies Veil Liberois Pharetra</h2>
-			<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-			<button type="button" class="btn btn-default btn-lg">View Projects</button>
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Resource</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Resource</button>
 
-			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle">News</button>
-			</span>
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">Resource</button>
+				</span>
+			</div>
 		</div>
-		<div class="col-xs-6 fullheight section-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" alt="">
+		<div class="col-xs-6 fullheight section-container img-container">
+			<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
 	</div>
 </div>
 
-<div class="section" id="section3">
-	<div class="container-fluid fullheight" >
-		<div class="row fullheight">
-			<div class="col-sm-3 fullheight no-padding" id="onethird">
-				<h1>Recent Project</h1>
+<div class="section fullheight" id="section3">
+	<div class="transparent"></div>
+	<div class="col-sm-6 quarter3">
+		<div class="col-xs-6 fullheight section-container odd">
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
 			</div>
-
-			<div class="col-sm-3 fullheight no-padding" id="twothird">
-				<h1>Recent News</h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">Read News</button>
-			</div>
-
-			<div class="col-sm-3 fullheight no-padding" id="threethird">
-
-				<h1>Product Showcase</h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">Shop to Support</button>
-			</div>
-
-			<div class="col-sm-3 fullheight no-padding" id="fourthird">
-				<h1>Art Exposure</h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Artwork</button>							
-			</div>			
 		</div>
-	</div>			
+		<div class="col-xs-6 fullheight section-container even">
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 quarter4">
+		<div class="col-xs-6 fullheight section-container odd">
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-xs-6 fullheight section-container even">
+			<div class="section-inner">
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+
+				<span class="post-navigate">
+					<button class="btn btn-default btn-lg semicircle">News</button>
+				</span>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="section" id="section4">
 	<div class="container-fluid fullheight">
