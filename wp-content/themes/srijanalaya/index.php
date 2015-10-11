@@ -15,9 +15,9 @@
 get_header(); ?>
 						
 
-						<div class="container-fluid" style="height:100%">
-									<div class="row" style="height:100%" >
-									   <div class="col-sm-6" id="left-col-first" style="height:100%;padding:0px;">
+						<div class="wrapper" >
+									<div class="row" >
+									   <div class="col-sm-6 slider-caption" id="left-col-first" >
 									   			<div id="slider-1" class="owl-carousel">
 									   				<div class="item">
 									   					<h1>Title Autde Juesl</h1>

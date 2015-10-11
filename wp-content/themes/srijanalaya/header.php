@@ -50,17 +50,27 @@
                 <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HOME<span class="caret" ></span></a>
                  <ul class="dropdown-menu">
                   <div class="yamm-content">
-                    <ul class="col-sm-4 list-unstyled">
+                    <ul class="col-sm-2 col-xs-4 list-unstyled">
                      <li><a href="#"> Link Item </a></li>
                      <li><a href="#"> Link Item </a></li>
                      <li><a href="#"> Link Item </a></li>
                    </ul>
-                   <ul class="col-sm-4 list-unstyled">
+                   <ul class="col-sm-2 col-xs-4 list-unstyled">
                     <li><a href="#"> Link Item </a></li>
                     <li><a href="#"> Link Item </a></li>
                     <li><a href="#"> Link Item </a></li>
                   </ul>
-                  <ul class="col-sm-4 list-unstyled">
+                  <ul class="col-sm-2 col-xs-4 list-unstyled">
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                  </ul>
+                  <ul class="col-sm-2 col-xs-4 list-unstyled">
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                    <li><a href="#"> Link Item </a></li>
+                  </ul>
+                  <ul class="col-sm-2 col-xs-4 list-unstyled">
                     <li><a href="#"> Link Item </a></li>
                     <li><a href="#"> Link Item </a></li>
                     <li><a href="#"> Link Item </a></li>
@@ -71,17 +81,27 @@
             <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ABOUT<span class="caret" ></span></a>
              <ul class="dropdown-menu">
               <div class="yamm-content">
-                <ul class="col-sm-4 list-unstyled">
+                <ul class="col-sm-2 col-xs-4 list-unstyled">
                  <li><a href="#"> Link Item </a></li>
                  <li><a href="#"> Link Item </a></li>
                  <li><a href="#"> Link Item </a></li>
                </ul>
-               <ul class="col-sm-4 list-unstyled">
+               <ul class="col-sm-2 col-xs-4 list-unstyled">
                 <li><a href="#"> Link Item </a></li>
                 <li><a href="#"> Link Item </a></li>
                 <li><a href="#"> Link Item </a></li>
               </ul>
-              <ul class="col-sm-4 list-unstyled">
+              <ul class="col-sm-2 col-xs-4 list-unstyled">
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+              </ul>
+              <ul class="col-sm-2 col-xs-4 list-unstyled">
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+                <li><a href="#"> Link Item </a></li>
+              </ul>
+              <ul class="col-sm-2 col-xs-4 list-unstyled">
                 <li><a href="#"> Link Item </a></li>
                 <li><a href="#"> Link Item </a></li>
                 <li><a href="#"> Link Item </a></li>
@@ -92,17 +112,27 @@
         <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">PROJECTS<span class="caret" ></span></a>
           <ul class="dropdown-menu">
             <div class="yamm-content">
-              <ul class="col-sm-4 list-unstyled">
+              <ul class="col-sm-2 col-xs-4 list-unstyled">
                <li><a href="#"> Link Item </a></li>
                <li><a href="#"> Link Item </a></li>
                <li><a href="#"> Link Item </a></li>
              </ul>
-             <ul class="col-sm-4 list-unstyled">
+             <ul class="col-sm-2 col-xs-4 list-unstyled">
               <li><a href="#"> Link Item </a></li>
               <li><a href="#"> Link Item </a></li>
               <li><a href="#"> Link Item </a></li>
             </ul>
-            <ul class="col-sm-4 list-unstyled">
+            <ul class="col-sm-2 col-xs-4 list-unstyled">
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+            </ul>
+            <ul class="col-sm-2 col-xs-4 list-unstyled">
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+              <li><a href="#"> Link Item </a></li>
+            </ul>
+            <ul class="col-sm-2 col-xs-4 list-unstyled">
               <li><a href="#"> Link Item </a></li>
               <li><a href="#"> Link Item </a></li>
               <li><a href="#"> Link Item </a></li>
@@ -113,17 +143,27 @@
       <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
         <ul class="dropdown-menu">
           <div class="yamm-content">
-            <ul class="col-sm-4 list-unstyled">
+            <ul class="col-sm-2 col-xs-4 list-unstyled">
              <li><a href="#"> Link Item </a></li>
              <li><a href="#"> Link Item </a></li>
              <li><a href="#"> Link Item </a></li>
            </ul>
-           <ul class="col-sm-4 list-unstyled">
+           <ul class="col-sm-2 col-xs-4 list-unstyled">
             <li><a href="#"> Link Item </a></li>
             <li><a href="#"> Link Item </a></li>
             <li><a href="#"> Link Item </a></li>
           </ul>
-          <ul class="col-sm-4 list-unstyled">
+          <ul class="col-sm-2 col-xs-4 list-unstyled">
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+          </ul>
+          <ul class="col-sm-2 col-xs-4 list-unstyled">
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+            <li><a href="#"> Link Item </a></li>
+          </ul>
+          <ul class="col-sm-2 col-xs-4 list-unstyled">
             <li><a href="#"> Link Item </a></li>
             <li><a href="#"> Link Item </a></li>
             <li><a href="#"> Link Item </a></li>
@@ -134,17 +174,27 @@
     <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">RESOURCES<span class="caret" ></span></a>
      <ul class="dropdown-menu">
       <div class="yamm-content">
-        <ul class="col-sm-4 list-unstyled">
+        <ul class="col-sm-2 col-xs-4 list-unstyled">
          <li><a href="#"> Link Item </a></li>
          <li><a href="#"> Link Item </a></li>
          <li><a href="#"> Link Item </a></li>
        </ul>
-       <ul class="col-sm-4 list-unstyled">
+       <ul class="col-sm-2 col-xs-4 list-unstyled">
         <li><a href="#"> Link Item </a></li>
         <li><a href="#"> Link Item </a></li>
         <li><a href="#"> Link Item </a></li>
       </ul>
-      <ul class="col-sm-4 list-unstyled">
+      <ul class="col-sm-2 col-xs-4 list-unstyled">
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+      </ul>
+      <ul class="col-sm-2 col-xs-4 list-unstyled">
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+        <li><a href="#"> Link Item </a></li>
+      </ul>
+      <ul class="col-sm-2 col-xs-4 list-unstyled">
         <li><a href="#"> Link Item </a></li>
         <li><a href="#"> Link Item </a></li>
         <li><a href="#"> Link Item </a></li>
@@ -155,17 +205,27 @@
 <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS<span class="caret" ></span></a>
   <ul class="dropdown-menu">
     <div class="yamm-content">
-      <ul class="col-sm-4 list-unstyled">
+     <ul class="col-sm-2 col-xs-4 list-unstyled">
        <li><a href="#"> Link Item </a></li>
        <li><a href="#"> Link Item </a></li>
        <li><a href="#"> Link Item </a></li>
      </ul>
-     <ul class="col-sm-4 list-unstyled">
+     <ul class="col-sm-2 col-xs-4 list-unstyled">
       <li><a href="#"> Link Item </a></li>
       <li><a href="#"> Link Item </a></li>
       <li><a href="#"> Link Item </a></li>
     </ul>
-    <ul class="col-sm-4 list-unstyled">
+    <ul class="col-sm-2 col-xs-4 list-unstyled">
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+    </ul>
+    <ul class="col-sm-2 col-xs-4 list-unstyled">
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+      <li><a href="#"> Link Item </a></li>
+    </ul>
+    <ul class="col-sm-2 col-xs-4 list-unstyled">
       <li><a href="#"> Link Item </a></li>
       <li><a href="#"> Link Item </a></li>
       <li><a href="#"> Link Item </a></li>
@@ -176,17 +236,27 @@
 <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">SHOP<span class="caret" ></span></a>
  <ul class="dropdown-menu">
   <div class="yamm-content">
-    <ul class="col-sm-4 list-unstyled">
+    <ul class="col-sm-2 col-xs-4 list-unstyled">
      <li><a href="#"> Link Item </a></li>
      <li><a href="#"> Link Item </a></li>
      <li><a href="#"> Link Item </a></li>
    </ul>
-   <ul class="col-sm-4 list-unstyled">
+   <ul class="col-sm-2 col-xs-4 list-unstyled">
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
   </ul>
-  <ul class="col-sm-4 list-unstyled">
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
@@ -197,17 +267,27 @@
 <li class="dropdown yamm-fw"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACT<span class="caret" ></span></a>
  <ul class="dropdown-menu">
   <div class="yamm-content">
-    <ul class="col-sm-4 list-unstyled">
+    <ul class="col-sm-2 col-xs-4 list-unstyled">
      <li><a href="#"> Link Item </a></li>
      <li><a href="#"> Link Item </a></li>
      <li><a href="#"> Link Item </a></li>
    </ul>
-   <ul class="col-sm-4 list-unstyled">
+   <ul class="col-sm-2 col-xs-4 list-unstyled">
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
   </ul>
-  <ul class="col-sm-4 list-unstyled">
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+    <li><a href="#"> Link Item </a></li>
+  </ul>
+  <ul class="col-sm-2 col-xs-4 list-unstyled">
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
     <li><a href="#"> Link Item </a></li>
