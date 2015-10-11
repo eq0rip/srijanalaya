@@ -33,7 +33,7 @@
         </div><!-- Top buttons-->
       </div>
 
-      <nav class="navbar yamm"><!--navbar-->
+      <nav class="navbar yamm hidden-xs"><!--navbar-->
         <div class="navbar-inner">
           <div class="cointainer">
 

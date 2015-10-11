@@ -103,6 +103,9 @@ p {
             margin-left: 28px;
             height: 50%;
         }
+        @media (max-width: 769px) {
+            margin-top: 2px;
+        }
     }
     .top-btn {
         float: right;
@@ -194,10 +197,30 @@ p {
 }
 .wrapper {
     margin-top: -35px;
+    height: 80%;
+    @media(max-width:769px) {
+        height: 40%;
+        margin-top: -25px;
+    }
+    .row {
+        height: 100%;
+    }
+}
+#section1 {
+    .fp-tableCell {
+        vertical-align: inherit;
+        margin-top: 80px;
+    }
+}
+.owl-carousel .owl-item {
+    height: 100%;
+}
+#slider-2, .owl-stage-outer, .owl-stage {
+    height: 100%;
 }
 #slider-2 .item {
     margin: 0px;
-
+    height: 100%;
 }
 
 #slider-2 , #sri-image div {
@@ -205,11 +228,54 @@ p {
     width: 100%
 }    
 #slider-2 .item img{
-
-    width: 100%;
+    max-width: none;
+    width: auto;
     height: 100%;
+    @media(max-width:769px) {
+        width: 100%;
+    }
 }
-
+#left-col-first {
+    background:url(../images/bgs1.svg);
+    height: 100%;
+     @media(max-width:769px) {
+        height: 40%;
+        overflow:hidden;
+    }
+     @media(max-width:729px) {
+        height: 42%;
+        overflow:hidden;
+    }
+}
+#right-col-first {
+    padding: 0;
+    height: 100%;
+     @media(max-width:769px) {
+        height: 52%;
+        overflow:hidden;
+    }
+    @media(max-width:729px) {
+        height: 50%;
+        overflow:hidden;
+    }
+}
+#slider-1 {
+ position: relative;
+ top: 100px;
+ width: 50%;
+ margin-left: 100px;
+ @media(max-width:769px) {
+    top:30px;
+    width:70%;
+    position: absolute;
+ }
+ @media(max-width:749px) {
+    top:30px;
+    width:70%;
+    position: absolute;
+    margin-left: 0;
+ }
+}
 #slider-1 .item h1 {
    color:#E9204A;
 
@@ -228,15 +294,7 @@ p {
     font-family: 'bree serif';
 
 }
-#slider-1 {
- position: relative;
- top: 100px;
- width: 50%;
- margin-left: 100px;
-}
-#left-col-first {
-    background:url(../images/bgs1.svg);
-}
+
 
 .fullheight {
     height:100%;
@@ -285,14 +343,6 @@ p {
     }
 
 }
-
-
-#left-col-first {
-    height:100%;
-    background-size: 225px 270px;
-
-}
-
 
 #threesecond , #onesecond , #onethird, #threethird {
     background-color:#F5F5F5;

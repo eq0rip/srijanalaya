@@ -8,7 +8,7 @@
     $(document).on('click', '.yamm .dropdown-menu', function(e) {
       e.stopPropagation()
     })
-
+    // $('.slider-caption').height($(window).height() - 125);
     $('#fullpage').fullpage({
       scrollBar:true,
       fitToSection:false
@@ -25,7 +25,7 @@ $owl1
 .owlCarousel({
   items: 1,
   margin: 0,
-  autoplay:true,
+  autoplay:false,
   autoplayTimeout:3000,
   loop:true
 })
