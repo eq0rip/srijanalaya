@@ -204,6 +204,12 @@ get_header(); ?>
 	<div class="col-xs-6 section-container bottom-container2">
 		<iframe src="https://player.vimeo.com/video/15023343?color=ffffff&badge=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
+	<div class="col-xs-12 halfheight">
+		<div class="quote-wrap">
+			<p>"Quotation <span class="key">space</span> of featured
+			recent project in Nepal..."</p>
+		</div>
+	</div>
 </div>
 
 </div> <!--full page end-->
