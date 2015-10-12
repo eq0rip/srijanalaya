@@ -7,7 +7,7 @@
 
     $(document).on('click', '.yamm .dropdown-menu', function(e) {
       e.stopPropagation()
-    })
+    });
 
 //owl sync
 var $owl1 = $("#slider-1"),
@@ -88,15 +88,15 @@ $("#right-col-first").hover(
 
 
  });
-$("#left-col-first").hover(
-  function() {
-    $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1_flip.svg)'});  
-  },
-  function() {
-    $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1.svg)'});       
+// $("#left-col-first").hover(
+//   function() {
+//     $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1_flip.svg)'});  
+//   },
+//   function() {
+//     $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1.svg)'});       
 
 
-  });
+//   });
 });
 
 //Homepage hover 3rd section
