@@ -109,11 +109,14 @@ function nirmal_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'nirmal_scripts' );
+
+add_action( 'wp_enqueue_scripts', 'nirmal_scripts()' );
+
+
+
 
 
 function is_mobile() {
-
 	// Get the user agent
 
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
