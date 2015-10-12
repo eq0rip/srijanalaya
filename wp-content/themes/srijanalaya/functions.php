@@ -109,7 +109,6 @@ function nirmal_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'nirmal_scripts' );
-
-
+add_action( 'wp_enqueue_scripts', 'nirmal_scripts()' );
+apply_filters('the_content','make_clickable');
 
