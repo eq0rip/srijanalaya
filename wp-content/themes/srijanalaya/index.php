@@ -206,11 +206,18 @@ get_header(); ?>
 	</div>
 	<div class="col-xs-12 halfheight">
 		<div class="quote-wrap">
-			<p>"Quotation <span class="key">space</span> of featured
-			recent project in Nepal..."</p>
+			<div class="inner-wrap">	
+				<p>"Quotation <span class="htext">space</span> of featured
+					recent project in Nepal..."</p>
+				</div>
+			</div>
+			<div class="inner-wrap">	
+				<p>"Quotation <span class="htext">space</span> of featured
+					recent project in Nepal..."</p>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 
 </div> <!--full page end-->
 

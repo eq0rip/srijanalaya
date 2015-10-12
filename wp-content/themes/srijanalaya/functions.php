@@ -80,41 +80,7 @@ function nirmal_setup() {
 endif; // nirmal_setup
 add_action( 'after_setup_theme', 'nirmal_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function nirmal_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'nirmal_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'nirmal_content_width', 0 );
-
-
-/**
- * Enqueue scripts and styles.
- */
-function nirmal_scripts() {
-	
-
-	
-	wp_enqueue_script( 'nirmal-navigation', get_template_directory_uri() . '/js/bootstrap.js', array(), '20120206', true );
-
-	
-	
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-
-add_action( 'wp_enqueue_scripts', 'nirmal_scripts()' );
-
-
-
-
+wp_enqueue_script( 'nirmal-navigation', get_template_directory_uri() . '/js/bootstrap.js', array(), '20120206', true );
 
 function is_mobile() {
 	// Get the user agent
