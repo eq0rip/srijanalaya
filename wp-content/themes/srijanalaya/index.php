@@ -210,21 +210,41 @@ get_header(); ?>
 				<p>"Quotation <span class="htext">space</span> of featured
 					recent project in Nepal..."</p>
 				</div>
-			</div>
-			<div class="inner-wrap">	
-				<p>"Quotation <span class="htext">space</span> of featured
-					recent project in Nepal..."</p>
+				<div class="inner-wrap footer-bar">	
+					<div class="col-md-8 col-md-offset-3 covers">
+						<div class="col-sm-3 footer-elements" id="fsection1">
+							<h4>Check us out</h4>
+							<ul class="list-unstyled">
+								<li><a href="!#">Who we are</a></li>
+								<li><a href="!#">Who we are</a></li>
+								<li><a href="!#">Who we are</a></li>
+								<li><a href="!#">Who we are</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-3 footer-elements" id="fsection2">
+							<h4>Project</h4>
+							<ul class="list-unstyled">
+								<li><a href="!#">Project Title</a></li>
+								<li><a href="!#">Project Title</a></li>
+								<li><a href="!#">Project Title</a></li>
+								<li><a href="!#">Project Title</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-3 footer-elements social-block">
+							<h4>f</h4><h4>tw</h4><h4>g+</h4><h4>p</h4>
+							<p>Sign up for Newsletter</p>
+							<p>Donate</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
-</div> <!--full page end-->
+		</div> <!--full page end-->
 
 
-</body>
+	</body>
 
-</html>
+	</html>
 
 
-<?php get_footer(); ?>
+	<?php get_footer(); ?>

@@ -78,6 +78,9 @@ p {
         font-size:15px;
     }
 }
+a:hover {
+    text-decoration: none;
+}
 @backgroundGrey: #4c4b4c;
 @fontColor: #cecece;
 .fullheight {
@@ -233,7 +236,7 @@ p {
     height: 100%;
 }
 #left-col-first {
-    background:url(../images/bgs1.svg);
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQUlEQVQYV4XMywkAIAwE0VhG7L81kzJWFBR/cef8mGRWoJqFlQDA3YThDtuN4QkZ3uAPXzDCT/jCITzxF66YwoErBChCl+FHYrwAAAAASUVORK5CYII=) repeat;
     height: 100%;
     @media(max-width:769px) {
         height: 40%;
@@ -666,20 +669,90 @@ p {
     position: absolute;
     top:50%;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('../images/bgs1_flip.svg') center repeat;
-    background-size: inherit;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARklEQVQYV4XQ2wkAIAwDQB1D91/NOkakguKjbfJ9JJAMAImkd0mZQUWl1BgupINu44lc+CITWuiDHrpghDZkaEKRBv2JZQDpyUKXo4UsOAAAAABJRU5ErkJggg==) repeat;
     .inner-wrap {
         height: 50%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         p {
             font-family: 'bree serif';
             margin: 0 auto;
             font-size: 24px;
-            width: 60%;
+            width: 30%;
             line-height: 25px;
             text-align: center;
         }
     }
+}
+.quote-wrap .footer-bar {
+    top:50%;
+    display: block;
+    color: #FFF;
+    align-items: left;
+    justify-content: left;
+    background-color: rgba(61, 61, 61, 0.93);
+    a {
+        color: #FFF;
+        &:hover {
+            color: #8cc344;
+        }
+    }
+    h4 {
+        background-color: #30302f;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+    }
+    ul {
+        background-color: #4c4b4c;
+        margin: 0;
+        font-size: 12px;
+        padding: 15px;
+    }
+    .covers {
+        @media(max-width:980px) {
+            left: 10%;
+        }
+        @media(max-width:769px) {
+            left: 0;
+        }
+        
+    }
+    .footer-elements {
+        padding: 0;
+        padding-right: 5px;
+        width: 20%;
+        min-width: 180px;
+        @media(max-width:769px) {
+         display: block;
+         margin: 0;
+         padding: 0;
+         top: 0;
+         position: relative;
+         min-width: none;
+         width: auto;
+     }
+ }
+ .social-block {
+    min-width: 233px;
+    @media(max-width:769px) {
+    }
+    width: 25%;
+    h4 {
+        display: inline-block;
+        width: 55px;
+        margin-right: 1px;
+        text-align: center;
+    }
+    p {
+     font-size: 14px;
+     width: 98%;
+     background-color: #4c4b4c;
+     margin: 0;
+     padding: 16px 17px;
+     margin-bottom: 2px;
+ }
+}
 }
