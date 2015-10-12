@@ -8,12 +8,6 @@
     $(document).on('click', '.yamm .dropdown-menu', function(e) {
       e.stopPropagation()
     })
-    // $('.slider-caption').height($(window).height() - 125);
-    $('#fullpage').fullpage({
-      scrollBar:true,
-      fitToSection:false
-    });
-	 //$('#section1').function({paddingTop:0px;});
 
 //owl sync
 var $owl1 = $("#slider-1"),
@@ -87,13 +81,24 @@ $("#left-col-first").hover(
   });
 });
 
-
+//Homepage hover 3rd section
 $('.even, .odd').hover(function() {
   $('.transparent').fadeIn(500);
+  $(this).children('.img-wrap').show();
 },
 function() {
   $('.transparent').fadeOut(100);
+  $(this).children('.img-wrap').hide();
 });
+
+$('.odd').hover(function() {
+  $(this).parent().children('.even').width('40.001%');
+},
+function() {
+  $(this).parent().children('.even').attr("style", "");;
+});
+
+
 })(jQuery);
 
 
