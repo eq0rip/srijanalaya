@@ -14,7 +14,7 @@
 	
 
 <?php wp_footer(); ?>
-
+<?php get_template_part('navigation');?>
 </body>
 
 <script src="<?php echo get_template_directory_uri();?>/js/owl.carousel.min.js"></script>

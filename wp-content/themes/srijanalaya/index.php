@@ -17,7 +17,15 @@ get_header(); ?>
 
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
+		<div class="progressbar">
+			<div class="col-sm-4 fullheight nomargin nopadding" ><div id="bar1"></div></div>
+			<div class="col-sm-4 fullheight nomargin nopadding" ><div id="bar2"></div></div>
+			<div class="col-sm-4 fullheight nomargin nopadding" ><div id="bar3"></div></div>	
+		</div>
+				
+		
 		<div id="slider-1" class="owl-carousel">
+		
 			<div class="item">
 				<h1>Title Autde Juesl</h1>
 				<h2>Cupidatat non proident</h2>
@@ -45,7 +53,7 @@ get_header(); ?>
 				<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<button type="button" class="btn btn-default btn-lg">Read more</button>
 			</div>
-
+			
 		</div>
 	</div>
 
