@@ -22,63 +22,45 @@ get_header(); ?>
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar3"></div></div>	
 		</div>
 				
-		
+			<?php
+	$args = array('posts_per_page'=>3,'post_type'=>'slider','meta_name' => 'wpcf-type', 'meta_value' => 'hometop');
+	$postslist = new WP_Query($args);
+	while ( $postslist->have_posts() ) : $postslist->the_post();
+
+	$image[]=types_render_field('image',array('raw'=>'true'));
+	$shortdesc[]=types_render_field('short-description');
+	$link[]=get_the_permalink();//or for custom link types_render_field('link',array('raw'=>'true'));
+	$title[]=get_the_title();
+	endwhile;
+	?>
 		<div id="slider-1" class="owl-carousel">
-		
-			<div class="item">
-				<h1>Title Autde Juesl</h1>
-				<h2>Cupidatat non proident</h2>
-				<p>Sunt in culpa qui officia deserunt excepteur sint occaecat cupidatat non proident, mollit anim id est laborum.</p>
-				<button type="button" class="btn btn-default btn-lg">Read more</button>
-			</div>
+		<?php 
 
-			<div class="item">
-				<h1>Deserunt excepteur</h1>
-				<h2>Ut enim ad minim</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-				<button type="button" class="btn btn-default btn-lg">Read more</button>
-			</div>
+			for($i=0;$i<3;$i++) {
+				$titles=explode('#',$title[$i]);
 
+		 ?>
 			<div class="item">
-				<h1>Juesl Title Autde </h1>
-				<h2>Cupidatat non proident</h2>
-				<p>Laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatu.</p>
-				<button type="button" class="btn btn-default btn-lg">Read more</button>
+				<h1><?php echo $titles[0];?></h1>
+				<h2><?php echo $titles[1];?></h2>
+				<p><?php echo $shortdesc[$i]; ?></p>
+				<a href="<?php echo $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
 			</div>
-
-			<div class="item">
-				<h1>Deserunt excepteur</h1>
-				<h2>eiusmod tempor incididunt</h2>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<button type="button" class="btn btn-default btn-lg">Read more</button>
-			</div>
+											<?php } ?>
 			
 		</div>
 	</div>
 
 	<div class="col-sm-6" id="right-col-first">
 		<div id="slider-2" class="owl-carousel">
-			<div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="1">
+		<?php for($i=0;$i<3;$i++){ ?>
+			<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
 				<span class="overlay11">
 
 				</span>
 
 			</div>
-			<div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="2">
-				<span class="overlay11">
-
-				</span>
-			</div>						      
-			<div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/8.JPG" alt="3">
-				<span class="overlay11">
-
-				</span>
-			</div>
-			<div class="item"><img class="img-responsive" src="<?php echo get_template_directory_uri();?>/images/9.JPG" alt="4">
-				<span class="overlay11">
-
-				</span>
-			</div>   
+		<?php } ?>	
 		</div>
 	</div>
 </div>
@@ -199,8 +181,17 @@ get_header(); ?>
 	<div class="col-xs-6 section-container bottom-container">
 		<div class="section-inner">
 			<div class="cover-wrap">
-				<h1>Title of <span class="key">Featured</span> Video Showcased</h1>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+					<?php
+						$args=array('posts_per_page'=>1,'post_type'=>'video');
+						$postslist = new WP_Query($args);
+						while($postslist->have_posts()):$postslist->the_post();
+							$title=get_the_title();
+							$title=explode('#',$title);
+							$description=get_the_content();
+							$urlvid=types_render_field('video-url',array('raw' => 'true'));
+					?>			
+				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
+				<p><?php echo get_the_content();?></p>
 				<button type="button" class="btn btn-default btn-lg vid-btn">Shop to Support</button>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle">News</button>
@@ -209,13 +200,21 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe src="https://player.vimeo.com/video/15023343?color=ffffff&badge=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe src="<?php  echo $urlvid;endwhile;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
 	<div class="col-xs-12 halfheight">
 		<div class="quote-wrap">
+				<?php
+               	  $args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
+               	  $postslist = new WP_Query( $args );
+                  while ( $postslist->have_posts() ) : $postslist->the_post();
+                  $content=get_the_content();
+                  $content=explode('#',$content);
+            	?>
+
+
 			<div class="inner-wrap">	
-				<p>"Quotation <span class="htext">space</span> of featured
-					recent project in Nepal..."</p>
+				<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
 				</div>
 				<div class="inner-wrap footer-bar">	
 					<div class="col-md-8 col-md-offset-3 covers">
