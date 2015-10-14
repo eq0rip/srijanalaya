@@ -473,9 +473,9 @@ a:hover {
         -moz-transform:scale(1);
         -o-transform:scale(1);
         transform:scale(1);
-        -webkit-transition-duration: 1s;
-        -moz-transition-duration: 1s;
-        -o-transition-duration: 1s;
+        -webkit-transition-duration: 5s;
+        -moz-transition-duration: 5s;
+        -o-transition-duration: 5s;
     }
     &:hover{
         .outimg {
@@ -586,28 +586,9 @@ a:hover {
         margin-top: 1px;
     }
 }
-.odd {
-    background-color: #e5e5e4;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
-    &:hover {
-        width:60%;
-        z-index: 10;
-        color:#FFF;
-    }
-}
-.even {
+.even, .odd {
     background-color: #eaeae9;
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
     &:hover {
-        width:60%;
-        margin-left: -10%;
-        z-index: 10;
         color:#FFF;
     }
 }

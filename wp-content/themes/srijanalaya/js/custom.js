@@ -69,13 +69,11 @@ $owl2
 $(".dropdown").hover(            
   function() {
     if($(window).width() > 769)
-      $(this).children('ul').slideDown(200);
-               // $('b', this).toggleClass("caret caret-up");                
+      $(this).children('ul').slideDown(200);       
              },
              function() {
               if($(window).width() > 769)
-                $(this).children('ul').fadeOut(100);
-                //$('b', this).toggleClass("caret caret-up");                
+                $(this).children('ul').fadeOut(100);               
               });
 
 
@@ -88,33 +86,17 @@ $("#right-col-first").hover(
 
 
  });
-// $("#left-col-first").hover(
-//   function() {
-//     $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1_flip.svg)'});  
-//   },
-//   function() {
-//     $(this).css({'background-image':'url(/srijanalaya/wp-content/themes/srijanalaya/images/bgs1.svg)'});       
 
-
-//   });
 });
 
 //Homepage hover 3rd section
 $('.even, .odd').hover(function() {
-  $('.transparent').fadeIn(500);
-  $(this).children('.img-wrap').show();
+  $(this).children('.img-wrap').fadeIn(200);
 },
 function() {
-  $('.transparent').fadeOut(100);
-  $(this).children('.img-wrap').hide();
+  $(this).children('.img-wrap').fadeOut(100);
 });
 
-$('.odd').hover(function() {
-  $(this).parent().children('.even').width('40.001%');
-},
-function() {
-  $(this).parent().children('.even').attr("style", "");;
-});
 
 
 })(jQuery);
