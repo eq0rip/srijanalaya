@@ -14,7 +14,6 @@
 
 get_header(); ?>
 
-
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
 		<div class="progressbar">
