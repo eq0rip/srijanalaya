@@ -18,12 +18,20 @@
 </body>
 
 <script src="<?php echo get_template_directory_uri();?>/js/owl.carousel.min.js"></script>
-<?php if(( is_home() || is_front_page() )) { //not working on desktop ?>
+<?php if((!is_mobile() || is_home() || is_front_page() )) { //not working on desktop ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
 <script>
 	jQuery('#fullpage').fullpage({
       scrollBar:true,
-      fitToSection:false
+      fitToSection:false,
+      onLeave:function(index,nextIndex,direction){
+      
+      	if(nextIndex==1)
+      		jQuery('.nav-icons').hide(10);
+      	else {
+      		jQuery('.nav-icons').show(10);
+      	}
+      }
     });
 </script>
 <?php } ?>
