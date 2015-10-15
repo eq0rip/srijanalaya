@@ -1,5 +1,12 @@
+<?php if(( is_home() || is_front_page() )) { 
+  $class = 'hideme';
+  }
+  else {
+    $class = '';
+    }
+    ?>
 
-      <nav class="nav-icons fixed">
+      <nav class="nav-icons fixed <?php echo $class;?>">
         <ul class="nav-links" style="display:none;">
           <li class="message"><a href="<?php echo site_url();?>/creatives"><span>Contact</span></a></li>
           <li class="bag"><a href="<?php echo site_url();?>/about"><span>Shop</span></a></li>

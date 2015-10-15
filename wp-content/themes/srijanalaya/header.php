@@ -19,7 +19,10 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
 <body>
-
+<div class="loader">
+  <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
+  <div class="transbg"></div>
+</div>
  <div id="fullpage" style="">
    <div class="section" id="section1" style="">
     <div style""><!--head div sart-->    
