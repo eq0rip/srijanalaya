@@ -280,3 +280,62 @@ return $is_mobile;
 function truncate($str, $width=300) {
 	return strtok(wordwrap($str, $width, " ...\n"), "\n");
 }
+
+function my_project_updated_send_email($post_id,$post){
+  $slug = 'project';
+
+    // If this isn't a 'book' post, don't update it.
+    if ( $slug != $post->post_type ) {
+        echo "success";return;
+    }
+
+	if ( wp_is_post_revision( $post_id ) ) { 
+	//echo "";
+	wp_mail('lstrrt@gmail.com','test','postupdate');
+	}
+
+	else {
+	//echo "";
+	}
+	remove_action( 'save_post', 'my_project_updated_send_email', 13, 2 );
+}
+
+add_action( 'save_post', 'my_project_updated_send_email',13,2 );
+
+
+
+//getting subscriber list
+function get_subscriber($id){
+		global $wpdb;
+		$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id = $id");
+	
+		foreach($data as $key=>$value)
+				{	
+					$subscribers[]=$value->email;	
+				}
+		
+		return $subscribers;
+
+}
+
+
+
+//adding subscriber
+function add_subscriber ($email,$project_id){
+	global $wpdb;
+	$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id=$project_id AND email='$email'");
+	if(count($data)==0)
+		return;
+$table='project_subscriber';
+$data=array('email'=>$email,'project_id'=>$project_id);
+$wpdb->insert( $table, $data);
+return;
+}
+
+//sort array of project by date
+function sort_project_by_date($a,$b)
+{
+
+if (strtotime($a[1])==strtotime($b[1])) return 0;
+return (strtotime($a[1])<strtotime($b[1]))?-1:1;
+}
