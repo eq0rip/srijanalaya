@@ -1,7 +1,6 @@
 <?php get_template_part('header');?>
 <?php 
 
-
 $sublist=get_subscriber(2);                         //function to get subscriber list by project id
 add_subscriber('isdfdsfddsnsert@insert',8);         //function to add subscriber 
 
@@ -10,7 +9,6 @@ add_subscriber('isdfdsfddsnsert@insert',8);         //function to add subscriber
 				$postslist=new WP_Query($args);                          //
 				while($postslist->have_posts()) : $postslist->the_post();//
 					$date_so=types_render_field('project-date');       //
-					
 					$project_id=get_the_id();
 					$project_list[]=array($project_id,$date_so);
 
