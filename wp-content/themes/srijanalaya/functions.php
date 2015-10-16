@@ -15,6 +15,8 @@ if ( ! function_exists( 'nirmal_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
+include('inc/custom-functions.php');
 function nirmal_setup() {
 	/*
 	 * Make theme available for translation.
@@ -339,3 +341,4 @@ function sort_project_by_date($a,$b)
 if (strtotime($a[1])==strtotime($b[1])) return 0;
 return (strtotime($a[1])<strtotime($b[1]))?-1:1;
 }
+
