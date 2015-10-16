@@ -14,28 +14,6 @@ html * {
   box-sizing: border-box;
 }
 
-body {
-  font-size: 100%;
-  font-family: "Droid Serif", serif;
-  color: #7f8c97;
-  background-color: #e9f0f5;
-}
-
-a {
-  color: #acb7c0;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-}
-
-img {
-  max-width: 100%;
-}
-
-h1, h2 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-}
-
 /* -------------------------------- 
 
 Modules - reusable parts of our design
@@ -155,7 +133,22 @@ header h1 {
   margin-top: -12px;
 }
 .cd-timeline-img.cd-picture {
-  background: #75ce66;
+  color: #FFF;
+  font-weight: bold;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAO0lEQVQYlY3KuREAIAwEMfff4sau44hgePwQKJMB6ri77CcBdZypjHtK453CGKUnZumIVVqxS4DsJwEaNVZlfKeJOMkAAAAASUVORK5CYII=) repeat;
+  overflow: hidden;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  @media (max-width:1200px) {
+    font-size: 14px;
+  }
+  @media (max-width:769px) {
+    font-size: 12px;
+  }
+}
+.cd-timeline-img.cd-picture span {
+  margin: 0 auto;
 }
 .cd-timeline-img.cd-movie {
   background: #c03b44;
@@ -482,5 +475,5 @@ header h1 {
   }
 }
 .next-project {
-  background-color: #ff3d2e !important;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQ0lEQVQYlY3KOREAIAwEwDiJEBxEBu5TI+CoYHjyFdstKQsyo3VQJSlLHFcK45nc+CYzWumLXrpilHbMkrKAKklZMAFmv+oRMko1WAAAAABJRU5ErkJggg==) repeat !important;
 }
