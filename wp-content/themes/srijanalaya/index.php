@@ -29,7 +29,7 @@ get_header(); ?>
 
 	$image[]=types_render_field('image',array('raw'=>'true'));
 	$shortdesc[]=types_render_field('short-description');
-	$link[]=get_the_permalink();//or for custom link types_render_field('link',array('raw'=>'true'));
+	$link[]=types_render_field('link',array('raw'=>'true'));
 	$title[]=get_the_title();
 	endwhile;
 	?>
@@ -44,7 +44,7 @@ get_header(); ?>
 				<h1><?php echo $titles[0];?></h1>
 				<h2><?php echo $titles[1];?></h2>
 				<p><?php echo $shortdesc[$i]; ?></p>
-				<a href="<?php echo $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
+				<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
 			</div>
 											<?php } ?>
 			

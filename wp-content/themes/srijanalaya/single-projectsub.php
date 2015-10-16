@@ -10,6 +10,7 @@ add_subscriber('isdfdsfddsnsert@insert',8);         //function to add subscriber
 				$postslist=new WP_Query($args);                          //
 				while($postslist->have_posts()) : $postslist->the_post();//
 					$date_so=types_render_field('project-date');       //
+					
 					$project_id=get_the_id();
 					$project_list[]=array($project_id,$date_so);
 
@@ -17,7 +18,8 @@ add_subscriber('isdfdsfddsnsert@insert',8);         //function to add subscriber
 			   
 
 
-
+print_r($project_list);
+echo "<br/>";
 usort($project_list,"sort_project_by_date");
 print_r($project_list);
 ?>
