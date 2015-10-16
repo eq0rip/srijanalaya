@@ -31,14 +31,18 @@ get_header(); ?>
 		$curDate = date('now');
 		while($postslist->have_posts()) : $postslist->the_post();
 		$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
+		$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+		if($imgsrc[0] == null || $imgsrc[0] == '')
+			$image = '';
+		else
+			$image = $imgsrc[0];
 		?>
 
 		<div class="cd-timeline-block" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
 			<div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
-				<?php echo parseDate($date);?>
+				<span><?php echo parseDate($date);?></span>
 			</div> <!-- cd-timeline-img -->
-
-			<div class="cd-timeline-content">
+			<div class="cd-timeline-content" <?php if( has_post_thumbnail() ) echo 'style=background-image:url("' . get_the_post_thumbnail() . '")';?>>
 				<h2><?php the_title();?></h2>
 				<p><?php echo types_render_field('summary');?></p>
 				<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
