@@ -42,7 +42,6 @@ get_header(); ?>
 				<h2><?php the_title();?></h2>
 				<p><?php echo types_render_field('summary');?></p>
 				<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
-				<span class="cd-date"><?php echo $date;?></span>
 			</div> <!-- cd-timeline-content -->
 		</div> <!-- cd-timeline-block -->
 	<?php endwhile; ?>
