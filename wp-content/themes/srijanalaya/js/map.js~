@@ -1,0 +1,34 @@
+
+//alert(mapdata);
+//alert(mapdata[0][0]);
+var map = L.map('map').setView([27.715, 85.407], 17);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+
+    maxZoom: 30,
+    id: 'eq0rip.no3hg91b',
+    accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
+}).addTo(map);
+
+//=============================================
+
+var markers = L.markerClusterGroup();
+var marker=L.marker([27.715037, 85.40578299999999]);
+marker.bindPopup('sfdddsdf');
+markers.addLayer(marker);
+
+
+
+markers.addLayer(L.marker([27.715037, 85.406116]));
+map.addLayer(markers);
+
+
+//=====================
+function onMapClick(e) {
+    alert("You clicked the map at " + e.latlng);
+}
+
+map.on('click', onMapClick);
+
+
+
+ 

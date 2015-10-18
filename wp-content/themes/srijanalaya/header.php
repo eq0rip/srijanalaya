@@ -19,9 +19,9 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
 <body>
-<div class="loader">
+<div class="loaders">
   <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
-  <div class="transbg"></div>
+  <div class="transbgs"></div>
 </div>
  <div id="fullpage" style="">
    <div class="section" id="section1" style="">

@@ -929,10 +929,39 @@ list-style-type:none;
     -webkit-transition: width 3000ms;
     transition: width 3000ms;
 }
+.btn {
+    background: transparent;
+    color:@white;
+    border-radius:24px;
+    width: 136px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-family:'helvetica';
+    margin-top:30px;
+    font-weight:bold;
+    letter-spacing:1px;
+    &:hover {
+        background:#E9204A;
+        color:#ffffff;
+    }
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+
+        font-size:15px;
+        width:150px;
+    }
+    @media(max-width:650px) {
+        margin-top: 0;
+    }
+    }
 .topbanner {
     height:500px;
     background-color:@theme-black;
+    color:@white;
     width:100%;
     margin-top:-35px;
+    .header-text{
+        margin:2% 2%;
+
+    }
 }
 
