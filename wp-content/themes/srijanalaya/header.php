@@ -19,9 +19,9 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
 <body>
-<div class="loaders">
+<!--<div class="loader">
   <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
-  <div class="transbgs"></div>
+  <div class="transbg"></div>-->
 </div>
  <div id="fullpage" style="">
    <div class="section" id="section1" style="">
@@ -30,9 +30,12 @@
         <img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="">
         <div class="btn-group top-btn">
           <button type="button" class="btn btn-icon">Donate</button>
-          <select class="btn-icon custom-dropdown">
-            <option value="en">English</option>
-            <option value="np">Nepali</option>
+             <?php 
+          $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+          ?>
+          <select class="btn-icon custom-dropdown" id="language-btn" onchange="change_language(this.value,'<?php echo $current_page;?>');">
+            <option  value="en" >English</option>
+            <option value="ne">Nepali</option>
           </select>
         </div><!-- Top buttons-->
       </div>
