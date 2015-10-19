@@ -26,7 +26,8 @@ get_header(); ?>
 	$url=types_render_field('url');
 	$lat=types_render_field('lat');
 	$long=types_render_field('longi');
-	$map[]=array(get_the_title(),$lat,$long,$url,$desc);
+	$icon=get_template_directory_uri()."/icon.png";
+	$map[]=array(get_the_title(),$lat,$long,$url,$desc,$icon);
 	endwhile;
 ?>
 <script>var mapdata=<?php echo json_encode($map); ?></script>
