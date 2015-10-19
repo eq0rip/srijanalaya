@@ -21,49 +21,49 @@ get_header(); ?>
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar2"></div></div>
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar3"></div></div>	
 		</div>
-				
-			<?php
-	$args = array('posts_per_page'=>3,'post_type'=>'slider','meta_name' => 'wpcf-type', 'meta_value' => 'hometop');
-	$postslist = new WP_Query($args);
-	while ( $postslist->have_posts() ) : $postslist->the_post();
 
-	$image[]=types_render_field('image',array('raw'=>'true'));
-	$shortdesc[]=types_render_field('short-description');
-	$link[]=types_render_field('link',array('raw'=>'true'));
-	$title[]=get_the_title();
-	endwhile;
-	?>
+		<?php
+		$args = array('posts_per_page'=>3,'post_type'=>'slider','meta_name' => 'wpcf-type', 'meta_value' => 'hometop');
+		$postslist = new WP_Query($args);
+		while ( $postslist->have_posts() ) : $postslist->the_post();
+
+		$image[]=types_render_field('image',array('raw'=>'true'));
+		$shortdesc[]=types_render_field('short-description');
+		$link[]=types_render_field('link',array('raw'=>'true'));
+		$title[]=get_the_title();
+		endwhile;
+		?>
 		<div id="slider-1" class="owl-carousel">
-		<?php 
+			<?php 
 
 			for($i=0;$i<3;$i++) {
 				$titles=explode('#',$title[$i]);
 
-		 ?>
-			<div class="item">
-				<h1><?php echo $titles[0];?></h1>
-				<h2><?php echo $titles[1];?></h2>
-				<p><?php echo $shortdesc[$i]; ?></p>
-				<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
-			</div>
-											<?php } ?>
-			
-		</div>
-	</div>
-
-	<div class="col-sm-6" id="right-col-first">
-		<div id="slider-2" class="owl-carousel">
-		<?php for($i=0;$i<3;$i++){ ?>
-			<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
-				<span class="overlay11">
-
-				</span>
+				?>
+				<div class="item">
+					<h1><?php echo $titles[0];?></h1>
+					<h2><?php echo $titles[1];?></h2>
+					<p><?php echo $shortdesc[$i]; ?></p>
+					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
+				</div>
+				<?php } ?>
 
 			</div>
-		<?php } ?>	
+		</div>
+
+		<div class="col-sm-6" id="right-col-first">
+			<div id="slider-2" class="owl-carousel">
+				<?php for($i=0;$i<3;$i++){ ?>
+				<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
+					<span class="overlay11">
+
+					</span>
+
+				</div>
+				<?php } ?>	
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <div class="section fullheight" id="section2">
@@ -178,18 +178,19 @@ get_header(); ?>
 	</div>
 </div>
 <div class="section" id="section4">
+	<?php
+	$args=array('posts_per_page' => 1,'post_type' => 'video','meta_query' => array(array('key' => 'wpcf-featured-video', 'value' => '1', 'compare' => '=')), 'orderby' => 'date', 'order' => 'DESC');
+	$postslist = new WP_Query($args);
+	while($postslist->have_posts()):$postslist->the_post();
+	$title = get_the_title();
+	$title = explode('#',$title);
+	$description = get_the_content();
+	$urlvid = types_render_field('video-url',array('raw' => 'true'));
+	?>	
 	<div class="col-xs-6 section-container bottom-container">
 		<div class="section-inner">
 			<div class="cover-wrap">
-					<?php
-						$args=array('posts_per_page'=>1,'post_type'=>'video');
-						$postslist = new WP_Query($args);
-						while($postslist->have_posts()):$postslist->the_post();
-							$title=get_the_title();
-							$title=explode('#',$title);
-							$description=get_the_content();
-							$urlvid=types_render_field('video-url',array('raw' => 'true'));
-					?>			
+
 				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
 				<p><?php echo get_the_content();?></p>
 				<button type="button" class="btn btn-default btn-lg vid-btn">Shop to Support</button>
@@ -200,57 +201,60 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe src="<?php  echo $urlvid;endwhile;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe src="<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
+	<?php
+	endwhile;
+	?>
 	<div class="col-xs-12 halfheight">
 		<div class="quote-wrap">
-				<?php
-               	  $args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
-               	  $postslist = new WP_Query( $args );
-                  while ( $postslist->have_posts() ) : $postslist->the_post();
-                  $content=get_the_content();
-                  $content=explode('#',$content);
-            	?>
+			<?php
+			$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
+			$postslist = new WP_Query( $args );
+			while ( $postslist->have_posts() ) : $postslist->the_post();
+			$content = get_the_content();
+			$content = explode( '#',$content );
+			?>
 
 
 			<div class="inner-wrap">	
 				<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
-				</div>
-				<div class="inner-wrap footer-bar">	
-					<div class="col-md-8 col-md-offset-3 covers">
-						<div class="col-sm-3 footer-elements" id="fsection1">
-							<h4>Check us out</h4>
-							<ul class="list-unstyled">
-								<li><a href="!#">Who we are</a></li>
-								<li><a href="!#">Who we are</a></li>
-								<li><a href="!#">Who we are</a></li>
-								<li><a href="!#">Who we are</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-3 footer-elements" id="fsection2">
-							<h4>Project</h4>
-							<ul class="list-unstyled">
-								<li><a href="!#">Project Title</a></li>
-								<li><a href="!#">Project Title</a></li>
-								<li><a href="!#">Project Title</a></li>
-								<li><a href="!#">Project Title</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-3 footer-elements social-block">
-							<h4>f</h4><h4>tw</h4><h4>g+</h4><h4>p</h4>
-							<p>Sign up for Newsletter</p>
-							<p>Donate</p>
-						</div>
+			</div>
+			<div class="inner-wrap footer-bar">	
+				<div class="col-md-8 col-md-offset-3 covers">
+					<div class="col-sm-3 footer-elements" id="fsection1">
+						<h4>Check us out</h4>
+						<ul class="list-unstyled">
+							<li><a href="!#">Who we are</a></li>
+							<li><a href="!#">Who we are</a></li>
+							<li><a href="!#">Who we are</a></li>
+							<li><a href="!#">Who we are</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3 footer-elements" id="fsection2">
+						<h4>Project</h4>
+						<ul class="list-unstyled">
+							<li><a href="!#">Project Title</a></li>
+							<li><a href="!#">Project Title</a></li>
+							<li><a href="!#">Project Title</a></li>
+							<li><a href="!#">Project Title</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3 footer-elements social-block">
+						<h4>f</h4><h4>tw</h4><h4>g+</h4><h4>p</h4>
+						<p>Sign up for Newsletter</p>
+						<p>Donate</p>
 					</div>
 				</div>
 			</div>
+		</div>
 
-		</div> <!--full page end-->
-
-
-	</body>
-
-	</html>
+	</div> <!--full page end-->
 
 
-	<?php get_footer(); ?>
+</body>
+
+</html>
+
+
+<?php get_footer(); ?>
