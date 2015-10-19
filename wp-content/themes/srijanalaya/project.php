@@ -42,7 +42,8 @@ get_header(); ?>
 			<div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 				<span><?php echo parseDate($date);?></span>
 			</div> <!-- cd-timeline-img -->
-			<div class="cd-timeline-content" <?php if( has_post_thumbnail() ) echo 'style=background-image:url("' . get_the_post_thumbnail() . '")';?>>
+			<div class="cd-timeline-content">
+			<div class="wrapper"><?php echo "<img src='" . $image . "' alt='" . get_the_title() . "' />"; ?></div>
 				<h2><?php the_title();?></h2>
 				<p><?php echo types_render_field('summary');?></p>
 				<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
