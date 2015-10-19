@@ -284,43 +284,36 @@ function truncate($str, $width=300) {
 }
 
 function my_project_updated_send_email($post_id,$post){
-  $slug = 'project';
+	$slug = 'project';
 
     // If this isn't a 'book' post, don't update it.
-    if ( $slug != $post->post_type ) {
-        echo "success";return;
-    }
+	if ( $slug != $post->post_type ) {
+		return;
+	}
 
 	if ( wp_is_post_revision( $post_id ) ) { 
 	//echo "";
-	wp_mail('lstrrt@gmail.com','test','postupdate');
-	}
-
-	else {
-	//echo "";
+		wp_mail('lstrrt@gmail.com','test','postupdate');
 	}
 	remove_action( 'save_post', 'my_project_updated_send_email', 13, 2 );
 }
-
 add_action( 'save_post', 'my_project_updated_send_email',13,2 );
 
 
 
 //getting subscriber list
 function get_subscriber($id){
-		global $wpdb;
-		$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id = $id");
+	global $wpdb;
+	$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id = $id");
 	
-		foreach($data as $key=>$value)
-				{	
-					$subscribers[]=$value->email;	
-				}
-		
-		return $subscribers;
+	foreach($data as $key=>$value)
+	{	
+		$subscribers[]=$value->email;	
+	}
+
+	return $subscribers;
 
 }
-
-
 
 //adding subscriber
 function add_subscriber ($email,$project_id){
@@ -328,83 +321,83 @@ function add_subscriber ($email,$project_id){
 	$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id=$project_id AND email='$email'");
 	if(count($data)==0)
 		return;
-$table='project_subscriber';
-$data=array('email'=>$email,'project_id'=>$project_id);
-$wpdb->insert( $table, $data);
-return;
+	$table='project_subscriber';
+	$data=array('email'=>$email,'project_id'=>$project_id);
+	$wpdb->insert( $table, $data);
+	return;
 }
 
 //sort array of project by date
 function sort_project_by_date($a,$b)
 {
 
-if (strtotime($a[1])==strtotime($b[1])) return 0;
-return (strtotime($a[1])<strtotime($b[1]))?-1:1;
+	if (strtotime($a[1])==strtotime($b[1])) return 0;
+	return (strtotime($a[1])<strtotime($b[1]))?-1:1;
 }
 
 
 function parseDate($date)
- {
-    $data = explode('-', $date);
-    $month = $data[1];
-    $year = $data[0];
-    $day = $data[2];
-    switch ($month) {
-      case 1:
-        $month = "January";
-        break;
-      case 2:
-        $month = "Feburary";
-        break;
-      case 3:
-        $month = "March";
-        break;
-      case 4:
-        $month = "April";
-        break;
-      case 5:
-        $month = "May";
-        break;
-      case 6:
-        $month = "June";
-        break;
-      case 7:
-        $month = "July";
-        break;
-      case 8:
-        $month = "August";
-        break;
-      case 9:
-        $month = "September";
-        break;
-      case 10:
-        $month = "October";
-        break;
-      case 11:
-        $month = "November";
-        break;
-      case 12:
-        $month = "December";
-        break;
-      default:
-        $month = "May'";
-        break;
-    }
+{
+	$data = explode('-', $date);
+	$month = $data[1];
+	$year = $data[0];
+	$day = $data[2];
+	switch ($month) {
+		case 1:
+		$month = "January";
+		break;
+		case 2:
+		$month = "Feburary";
+		break;
+		case 3:
+		$month = "March";
+		break;
+		case 4:
+		$month = "April";
+		break;
+		case 5:
+		$month = "May";
+		break;
+		case 6:
+		$month = "June";
+		break;
+		case 7:
+		$month = "July";
+		break;
+		case 8:
+		$month = "August";
+		break;
+		case 9:
+		$month = "September";
+		break;
+		case 10:
+		$month = "October";
+		break;
+		case 11:
+		$month = "November";
+		break;
+		case 12:
+		$month = "December";
+		break;
+		default:
+		$month = "May'";
+		break;
+	}
 
-    
-    switch ($day) {
-      case 1:
-        $day = '1st';
-        break;
-      case 2:
-        $day = '2nd';
-        break;
-      case 3:
-        $day = '3rd';
-        break;
-      default:
-        $day = $day.'th';
-        break;
-    }
-    return $day;
- }
+
+	switch ($day) {
+		case 1:
+		$day = '1st';
+		break;
+		case 2:
+		$day = '2nd';
+		break;
+		case 3:
+		$day = '3rd';
+		break;
+		default:
+		$day = $day.'th';
+		break;
+	}
+	return $day;
+}
