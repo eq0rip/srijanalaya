@@ -73,7 +73,7 @@ header h1 {
   left: 18px;
   height: 100%;
   width: 4px;
-  background: #d7e4ed;
+  background: #cececd;
 }
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
@@ -297,16 +297,17 @@ header h1 {
   .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
-    width: 48%;
+    width: 47.3%;
     .project-wrapper {
       background-size: cover;
       min-height: 200px;
+      width: 99%;
       .content {
         position: absolute;
         top: 230px;
         h2 {
           color: #e91f4a;
-          font-size: 12px;
+          font-size: 16px;
           font-family:'Helvetica Bold';
         }
         p {
@@ -314,13 +315,16 @@ header h1 {
           font-size: 12px;
           font-family:'Helvetica';
         }
+        .small-text img {
+          margin-top: -2px;
+        }
       }
     }
   }
   .project-wrapper-left::before {
     position: absolute;
     height: 125px;
-    left: 89%;
+    left: 88%;
     top: -10px;
     border-bottom: 20px solid transparent;
     border-right: 20px solid #FFF;
@@ -330,7 +334,7 @@ header h1 {
   .project-wrapper-left::after {
     position: absolute;
     height: 135px;
-    left: 89%;
+    left: 88%;
     top: 45%;
     border-top: 20px solid transparent;
     border-right: 20px solid #FFF;
@@ -525,4 +529,14 @@ header h1 {
 }
 .next-project {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQ0lEQVQYlY3KOREAIAwEwDiJEBxEBu5TI+CoYHjyFdstKQsyo3VQJSlLHFcK45nc+CYzWumLXrpilHbMkrKAKklZMAFmv+oRMko1WAAAAABJRU5ErkJggg==) repeat !important;
+}
+.circle {
+ border: 3px solid #ccc;
+ width: 12px;
+ height: 12px;
+ border-radius: 50%;
+ margin: 0 auto;
+}
+#cd-timeline {
+  margin-top: 0px;
 }

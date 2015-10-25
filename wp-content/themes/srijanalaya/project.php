@@ -5,6 +5,7 @@ Template Name: Timeline
 
 get_header(); ?>
 <div class="col-sm-8">
+<div class="circle"></div>
 	<section id="cd-timeline" class="cd-container">
 		<?php
 		$nextEvent = '';
@@ -55,7 +56,10 @@ get_header(); ?>
 				<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>>
 					<div class="content">
 						<h2><?php the_title();?></h2>
+						<p><?php echo types_render_field('location');?></p>
 						<p><?php echo types_render_field('summary');?></p>
+						<p><?php echo types_render_field('facilitators');?></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
 						<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
 					</div>
 				</div> <!-- cd-timeline-content -->
