@@ -1,4 +1,4 @@
-<?php if(( is_home() || is_front_page() )) { 
+<?php if(( !is_mobile() )) { 
   $class = 'hideme';
 }
 else {

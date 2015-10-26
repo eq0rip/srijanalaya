@@ -4,6 +4,9 @@ Template Name: Timeline
  */
 
 get_header(); ?>
+<div class="col-sm-12">
+	
+</div>
 <div class="col-sm-9">
 	<div class="circle"></div>
 	<section id="cd-timeline" class="cd-container">
@@ -69,11 +72,14 @@ get_header(); ?>
 		</div> <!-- cd-timeline-block -->
 	<?php endwhile; ?>
 </section> <!-- cd-timeline -->
+<div class="circle bottom-circle"></div>
 </div>
-<div class="col-sm-3">
+<div class="col-sm-3 fixed">
+	<h2>Calender</h2>
 	<div class="clndr-wrap">
 		<script type="text/template" id="clndr">
-			<div class="clndr-transparent-block"><div class="close-clndr-info">X</div>
+			<div class="clndr-transparent-block">
+				<div class="close-clndr-info" onclick="close_msg();">X</div>
 				<div class="content">
 					<h2 id="event-title">Event Title</h2>
 					<p id="event-date">2015-10-16</p>
@@ -109,10 +115,8 @@ get_header(); ?>
 <script type="text/javascript">
 	jQuery(window).load(function() {
 		var winSize = (jQuery(window).height()) / 2;
-		jQuery('.close-clndr-info').click(function() {
-			jQuery('clndr-transparent-block').fadeOut(300);
-		});
 		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
+		//moment.locale('en'); //{to change calender locale}
 		jQuery('.clndr-wrap').clndr({
 			template: jQuery('#clndr').html(),
 			startWithMonth: moment(),
@@ -123,10 +127,13 @@ get_header(); ?>
 						jQuery('#event-date').html(target.events[0].date);
 						jQuery('#event-title').html(target.events[0].title);
 						jQuery('#event-link').html("<a href='" + target.events[0].url + "' >View Project</a>");
-						jQuery('.clndr-transparent-block').animate(100).css('display', 'flex');
+						jQuery('.clndr-transparent-block').css("display", "flex").hide().fadeIn(300);
 					}
 				},
 			},
 		});
 	});
+	function close_msg() {
+		jQuery('.clndr-transparent-block').fadeOut(300);
+	}
 </script>
