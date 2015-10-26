@@ -69,11 +69,12 @@ header h1 {
   /* this is the vertical line */
   content: '';
   position: absolute;
-  top: 0;
+  top: -180px;
   left: 18px;
-  height: 115%;
+  height: 105%;
   width: 4px;
   background: #cececd;
+  margin-top: 120px;
 }
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
@@ -120,7 +121,7 @@ header h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  top: 34%;
+  top: 20%;
 }
 .cd-timeline-img img {
   display: block;
@@ -143,6 +144,10 @@ header h1 {
     color: #FFF;
     font-family: 'bree serif';
     font-weight: bold;
+    @media (max-width: 1159px) {
+      top: 25%;
+      font-size: 13px;
+    }
   }
 }
 .cd-timeline-img.cd-movie {
@@ -335,7 +340,7 @@ header h1 {
     position: absolute;
     height: 135px;
     left: 89.25%;
-    top: 50%;
+    top: 25%;
     border-top: 20px solid transparent;
     border-right: 20px solid #FFF;
     display: block;
@@ -360,7 +365,7 @@ header h1 {
     position: absolute;
     height: 135px;
     left: 5.42%;
-    top: 50%;
+    top: 25%;
     border-top: 20px solid transparent;
     border-left: 20px solid #FFF;
     display: block;
@@ -536,14 +541,62 @@ header h1 {
  height: 12px;
  border-radius: 50%;
  margin: 0 auto;
+ position: relative;
+ margin-top: -98px;
 }
 .bottom-circle {
-  margin-top: 22%;
+  margin-top: -93px;
+}
+.timeline-wrapper {
+  margin-top: 100px;
 }
 #cd-timeline {
-  margin-top: 0px;
+  margin-bottom: 0;
 }
 .fixed {
-  position: fixed;
+  // position: fixed;
   right: 10px;
+}
+.project-wrapper {
+  background-size: cover;
+}
+.cd-timeline-block {
+  height: 180px;
+}
+.cd-picture {
+  margin-top: 50px;
+}
+@media (max-width: 1170px) {
+  .cd-timeline-block {
+    height: 420px;
+  }
+  .project-wrapper {
+    height: 220px;
+  }
+  .cd-timeline-block {
+    margin-top: 0;
+    .cd-timeline-content {
+      margin-top: 0;
+    }
+  }
+  .circle {
+    margin-left: 14px;
+  }
+  .bottom-circle {
+    margin-top: -50px;
+  }
+}
+@media (max-width: 769px) {
+
+}
+@media (min-width:1160px) {
+  .project-wrapper-right-wrap {
+    margin-top: -150px;
+    .content {
+      margin-left: 20px;
+    }
+  }
+  .project-wrapper-right-wrap.first {
+    margin-top: 0;
+  }
 }

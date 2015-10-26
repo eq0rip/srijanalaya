@@ -29,6 +29,10 @@ h2 {
     font-family: 'bree serif' 'sans-serif';
     font-size: 13px;
     margin-left: -20px;
+    @media (max-width:1159px) {
+        width: 205px;
+        font-size: 11px;
+    }
     .clndr
     {
         .clndr-transparent-block {
@@ -41,6 +45,9 @@ h2 {
             align-items: center;
             text-align: center;
             display: none;
+            @media (max-width:1159px) {
+                width: 205px;
+            }
             .close-clndr-info {
                 padding: 5px;
                 color: #FFF;
@@ -121,7 +128,14 @@ h2 {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                @media (max-width:1159px) {
+                    margin: 2px;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 25px 25px;
+                }
             }
+
 
             .day
             {
@@ -135,7 +149,12 @@ h2 {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
+                @media (max-width:1159px) {
+                    margin: 2px;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 25px 25px;
+                }
                 &.event
                 {
                     background-color: #e91f4a;
@@ -155,6 +174,7 @@ h2 {
                 &.inactive{
                     color: gray;
                 }
+                
             }
 
             .empty, .adjacent-month
@@ -165,7 +185,13 @@ h2 {
                 background: #ddd;
                 margin: 5px;
                 border: 1px solid #a2a2a2;
-                border-radius: 25px 25px;
+                border-radius: 30px 30px;
+                 @media (max-width:1159px) {
+                    margin: 2px;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 25px 25px;
+                }
             }
         }
 
@@ -208,7 +234,9 @@ h2 {
         cursor: default;
     }
 }
-
+.fixed {
+    margin-top: 70px;
+}
 .fixed h2 {
     margin-left: -15px;
 }

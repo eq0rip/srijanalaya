@@ -4,12 +4,13 @@ Template Name: Timeline
  */
 
 get_header(); ?>
-<div class="col-sm-12">
+<div class="col-sm-12 wrapper banner">
 	
 </div>
-<div class="col-sm-9">
-	<div class="circle"></div>
+<div class="col-sm-9 timeline-wrapper">
+	
 	<section id="cd-timeline" class="cd-container">
+		<div class="circle"></div>
 		<?php
 		$nextEvent = '';
 		$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
@@ -33,7 +34,7 @@ get_header(); ?>
 		$args=array('posts_per_page'=>20, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
 		$postslist=new WP_Query($args);              
 		$curDate = date('now');
-		$i = 0;
+		$i = 1;$j=0;
 		$events = "";
 		while($postslist->have_posts()) : $postslist->the_post();
 		$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
@@ -49,30 +50,29 @@ get_header(); ?>
 		}
 		else {
 			$class = 'project-wrapper-right';
-			$i=0;
+			$i = 0;
 		}
 		?>
 
-		<div class="cd-timeline-block" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
+		<div class="cd-timeline-block <?php if($j == 0) echo 'first';?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
 			<div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 				<span><?php echo parseDate($date);?></span>
 			</div> <!-- cd-timeline-img -->
-			<div class="cd-timeline-content">
-				<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>>
-					<div class="content">
-						<h2><?php the_title();?></h2>
-						<p><?php echo types_render_field('location');?></p>
-						<p><?php echo types_render_field('summary');?></p>
-						<p><?php echo types_render_field('facilitators');?></p>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
-						<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
-					</div>
-				</div> <!-- cd-timeline-content -->
-			</div>
+			<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
+				<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div>
+				<div class="content">
+					<h2><?php the_title();?></h2>
+					<p><?php echo types_render_field('location');?></p>
+					<p><?php echo types_render_field('summary');?></p>
+					<p><?php echo types_render_field('facilitators');?></p>
+					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
+					<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
+				</div>
+			</div> <!-- cd-timeline-content -->
+
 		</div> <!-- cd-timeline-block -->
-	<?php endwhile; ?>
-</section> <!-- cd-timeline -->
-<div class="circle bottom-circle"></div>
+		<?php $j++; endwhile; ?>
+	</section> <!-- cd-timeline -->
 </div>
 <div class="col-sm-3 fixed">
 	<h2>Calender</h2>
@@ -132,6 +132,14 @@ get_header(); ?>
 				},
 			},
 		});
+	});
+	jQuery(window).scroll( function() {
+		if(jQuery(window).scrollTop() > 350) {
+			jQuery('.fixed').css('position','fixed');
+		}
+		else {
+			jQuery('.fixed').css('position','relative');
+		}
 	});
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
