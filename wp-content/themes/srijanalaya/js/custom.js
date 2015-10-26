@@ -3,8 +3,6 @@
     $('.loader').fadeOut(500);
   });
   $(document).ready(function($){
-
-
     $(document).on('click', '.yamm .dropdown-menu', function(e) {
       e.stopPropagation()
     });
@@ -96,6 +94,7 @@ $('.even, .odd').hover(function() {
 function() {
   $(this).children('.img-wrap').fadeOut(100);
 });
+
 
 
 

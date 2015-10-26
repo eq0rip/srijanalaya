@@ -4,8 +4,8 @@ Template Name: Timeline
  */
 
 get_header(); ?>
-<div class="col-sm-8">
-<div class="circle"></div>
+<div class="col-sm-9">
+	<div class="circle"></div>
 	<section id="cd-timeline" class="cd-container">
 		<?php
 		$nextEvent = '';
@@ -31,8 +31,10 @@ get_header(); ?>
 		$postslist=new WP_Query($args);              
 		$curDate = date('now');
 		$i = 0;
+		$events = "";
 		while($postslist->have_posts()) : $postslist->the_post();
 		$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
+		$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
 		$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
 		if($imgsrc[0] == null || $imgsrc[0] == '')
 			$image = '';
@@ -68,12 +70,63 @@ get_header(); ?>
 	<?php endwhile; ?>
 </section> <!-- cd-timeline -->
 </div>
+<div class="col-sm-3">
+	<div class="clndr-wrap">
+		<script type="text/template" id="clndr">
+			<div class="clndr-transparent-block"><div class="close-clndr-info">X</div>
+				<div class="content">
+					<h2 id="event-title">Event Title</h2>
+					<p id="event-date">2015-10-16</p>
+					<p id="event-link"><a href="gotto">View Project</a></p>
+				</div>
+			</div>
+			<div class="clndr-controls">
+				<div class="clndr-previous-button">&lsaquo;</div>
+				<div class="clndr-next-button">&rsaquo;</div>
+			</div>
+			<div class="clndr-grid">
+				<div class="days-of-the-week">
+					<% _.each(daysOfTheWeek, function(day) { %>
+						<div class="header-day"><%= day %></div>
+						<% }); %>
+					<div class="days">
+						<% _.each(days, function(day) { %>
+							<div class="<%= day.classes %>"><%= day.day %></div>
+							<% }); %>
+					</div>
+				</div>
+			</div>
+		</script>
+	</div>
+</div>
 <?php get_footer(); ?>
+<script>var eventdata=<?php echo '[' . $events . ']'; ?></script>
 <script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
 <script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
+<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
+<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
+<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
 <script type="text/javascript">
 	jQuery(window).load(function() {
 		var winSize = (jQuery(window).height()) / 2;
+		jQuery('.close-clndr-info').click(function() {
+			jQuery('clndr-transparent-block').fadeOut(300);
+		});
 		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
+		jQuery('.clndr-wrap').clndr({
+			template: jQuery('#clndr').html(),
+			startWithMonth: moment(),
+			events:  eventdata,
+			clickEvents: {
+				click: function(target){ 
+					if(target.events[0] != null) {
+						jQuery('#event-date').html(target.events[0].date);
+						jQuery('#event-title').html(target.events[0].title);
+						jQuery('#event-link').html("<a href='" + target.events[0].url + "' >View Project</a>");
+						jQuery('.clndr-transparent-block').animate(100).css('display', 'flex');
+					}
+				},
+			},
+		});
 	});
 </script>

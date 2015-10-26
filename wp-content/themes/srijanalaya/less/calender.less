@@ -1,0 +1,209 @@
+.noselect
+{
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.left-align
+{
+    text-align: left;
+}
+
+.right-align
+{
+    text-align: right;
+}
+
+
+@clndr-border: 1px solid #000;
+
+
+@box-size: 30px;
+
+.clndr-wrap
+{
+    max-width: 280px;
+    margin: 30px auto;
+    font-family: 'Helvetica' 'sans-serif';
+    font-size: 13px;
+    margin-left: -20px;
+    .clndr
+    {
+        .clndr-transparent-block {
+            height: 260px;
+            width: 280px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: none;
+            .close-clndr-info {
+                padding: 5px;
+                color: #FFF;
+                cursor: pointer;
+                opacity: 0.7;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .content {
+                opacity: 0.8;
+                h2 {
+                    color: #e91f4a;
+                    font-size: 16px;
+                }
+                p, a {
+                    color: #FFF;
+                    font-size: 12px;
+                }
+            }
+        }
+        .clndr-controls
+        {
+            display: block;
+            text-align: right;
+            color: #a2a2a2;
+            font-size: 32px;
+            max-width: 275px;
+            .clearfix;
+            width: 100%;
+            margin-bottom: 10px;
+
+            .clndr-previous-button
+            {
+                display: inline;
+                text-align: left;
+                cursor: pointer;
+                .noselect;
+                &:hover
+                {
+                    color: #e91f4a;
+                }
+            }
+            .month
+            {
+                float: left;
+                text-align: center;
+            }
+            .clndr-next-button
+            {
+                display: inline;
+                text-align: right;
+                cursor: pointer;
+                .noselect;
+                &:hover
+                {
+                    color: #e91f4a;
+                }
+            }
+        }
+
+        .clndr-grid
+        {
+            text-align: center;
+            .clearfix;
+
+            .header-day
+            {
+                float: left;
+                width: @box-size;
+                height: @box-size;
+                margin: 5px;
+                margin-bottom: 10px;
+                color: #e91f4a;
+                border: 1px solid #ebebeb;
+                border-radius: 30px 30px;
+                font-family: 'Helvetica Bold' 'sans-serif';
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .day
+            {
+                float: left;
+                width: @box-size;
+                height: @box-size;
+                margin: 5px;
+                color: #a2a2a2;
+                border: 1px solid #ebebeb;
+                border-radius: 30px 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.event
+                {
+                    background-color: #e91f4a;
+                    color: #FFF;
+                    cursor: pointer;
+                }
+
+                &.today
+                {
+                    background-color: #E3C57F;
+                    color: #FFF;
+                }
+                &.selected
+                {
+                    background-color: #E37FD6;
+                }
+                &.inactive{
+                    color: gray;
+                }
+            }
+
+            .empty, .adjacent-month
+            {
+                float: left;
+                width: @box-size;
+                height: @box-size;
+                background: #ddd;
+                margin: 5px;
+                border: 1px solid #a2a2a2;
+                border-radius: 25px 25px;
+            }
+        }
+
+        .clndr-today-button
+        {
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            &:hover
+            {
+                background-color: #ddd;
+            }
+        }
+    }
+
+    .multi-month-controls
+    {
+        .quarter-button
+        {
+            display: inline-block;
+            width: 25%;
+
+            &:hover
+            {
+                cursor: pointer;
+                background-color: #f4f4f4;
+            }
+        }
+    }
+}
+
+
+.clndr-next-button, .clndr-previous-button, .clndr-next-year-button, .clndr-previous-year-button
+{
+    .noselect;
+
+    &.inactive
+    {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
