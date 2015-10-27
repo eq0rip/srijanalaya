@@ -412,3 +412,8 @@ function add_slug_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+function wpse_hide_admin_bar() {
+	return false;
+}
+add_filter( 'show_admin_bar', 'wpse_hide_admin_bar' );

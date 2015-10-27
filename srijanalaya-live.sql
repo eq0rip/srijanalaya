@@ -43,7 +43,7 @@ INSERT INTO `project_subscriber` (`id`, `email`, `project_id`) VALUES
 (3, 'sllstrrt@gmail.com', 1),
 (4, 'smjrifle@gmail.com', 2),
 (5, 'digbijaya@saediworks.com', 3),
-(6, 'nepaldigbijaya@gmail.com', 3),
+(6, 'nepaldigbijaya@gmail.com', 3);
 
 -- --------------------------------------------------------
 

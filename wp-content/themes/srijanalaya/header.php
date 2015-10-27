@@ -19,7 +19,6 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
 <body class="home">
-<?php wp_head();?>
 <!--<div class="loader">
   <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
   <div class="transbg"></div>-->
@@ -102,3 +101,4 @@
   </div>
 </nav>
 </div><!--head div end -->    
+<?php wp_head();?>
