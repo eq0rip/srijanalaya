@@ -117,17 +117,32 @@ get_header('all'); ?>
 get_footer('all');
 get_footer(); 
 ?>
-<script>var eventdata=<?php echo '[' . $events . ']'; ?></script>
-<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
-<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
-<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
-<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
-<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
-<script type="text/javascript">
-	jQuery(window).load(function() {
+<?php 
+$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+$lang = 'en';
+if(strstr($current_page,'ne'))
+	$lang = 'ne';
+?>
+<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
+	var lang = '<?php echo $lang; ?>';</script>
+	<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
+	<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
+	<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
+	<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
+	<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+		//Go to next project
 		var winSize = (jQuery(window).height()) / 2;
-			//jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
-		//moment.locale('en'); //{to change calender locale}
+		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
+
+		//{to change calender locale}
+		if(lang == 'ne') 
+			moment.locale('ne'); 
+		else
+			moment.locale('en'); 
+
+		//Calender
 		jQuery('.clndr-wrap').clndr({
 			template: jQuery('#clndr').html(),
 			startWithMonth: moment(),
@@ -143,7 +158,11 @@ get_footer();
 				},
 			},
 		});
+
+
 	});
+
+	//Fix Calender
 	jQuery(window).scroll( function() {
 		if(jQuery(window).scrollTop() > 450) {
 			jQuery('.fixed').css('position','fixed');
