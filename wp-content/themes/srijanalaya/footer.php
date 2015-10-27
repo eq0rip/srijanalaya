@@ -26,11 +26,11 @@
       fitToSection:false,
       onLeave:function(index,nextIndex,direction){
       
-      	if(nextIndex==1)
-      		jQuery('.nav-icons').hide(10);
-      	else {
-      		jQuery('.nav-icons').show(10);
-      	}
+      	// if(nextIndex==1)
+      	// 	jQuery('.nav-icons').hide(10);
+      	// else {
+      	// 	jQuery('.nav-icons').show(10);
+      	// }
       }
     });
 </script>

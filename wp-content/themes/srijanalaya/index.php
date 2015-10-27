@@ -78,7 +78,7 @@ get_header(); ?>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle">News</button>
 				</span>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants</p>
+
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container img-container">
@@ -206,7 +206,7 @@ get_header(); ?>
 	<?php
 	endwhile;
 	?>
-	<div class="col-xs-12 halfheight">
+	<div class="col-xs-12 halfheight footer">
 		<div class="quote-wrap">
 			<?php
 			$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
@@ -222,7 +222,7 @@ get_header(); ?>
 			</div>
 			<div class="inner-wrap footer-bar">	
 				<div class="col-md-8 col-md-offset-3 covers">
-					<div class="col-sm-3 footer-elements" id="fsection1">
+					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
 						<h4>Check us out</h4>
 						<ul class="list-unstyled">
 							<li><a href="!#">Who we are</a></li>
@@ -231,7 +231,7 @@ get_header(); ?>
 							<li><a href="!#">Who we are</a></li>
 						</ul>
 					</div>
-					<div class="col-sm-3 footer-elements" id="fsection2">
+					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection2">
 						<h4>Project</h4>
 						<ul class="list-unstyled">
 							<li><a href="!#">Project Title</a></li>
@@ -240,9 +240,9 @@ get_header(); ?>
 							<li><a href="!#">Project Title</a></li>
 						</ul>
 					</div>
-					<div class="col-sm-3 footer-elements social-block">
-						<h4>f</h4><h4>tw</h4><h4>g+</h4><h4>p</h4>
-						<p>Sign up for Newsletter</p>
+					<div class="col-xs-12 col-sm-3 footer-elements social-block">
+						<h4 class='col-xs-3'>f</h4><h4 class='col-xs-3'>tw</h4><h4 class='col-xs-3'>g+</h4><h4 class='col-xs-3'>p</h4>
+						<p class='newsletter'>Sign up for Newsletter</p>
 						<p>Donate</p>
 					</div>
 				</div>
