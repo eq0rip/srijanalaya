@@ -63,30 +63,20 @@
             while ( $postslist->have_posts() ) : $postslist->the_post();
             $content=get_the_content();
             $contents=explode("\n",$content);
-
-
-
             ?>
 
             <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php the_title();?><span class="caret" ></span></a>
              <ul class="dropdown-menu">
               <div class="yamm-content">
-                <ul class="col-sm-2 col-xs-4 list-unstyled">
-                  <?php echo $contents[0];?>
-                  <?php echo $contents[1];?>
-                  <?php echo $contents[2];?>
-                </ul>
-                <ul class="col-sm-2 col-xs-4 list-unstyled">
-                  <?php echo $contents[3];?>
-                  <?php echo $contents[4];?>
-                  <?php echo $contents[5];?>
-                </ul>
-                <ul class="col-sm-2 col-xs-4 list-unstyled">
-                  <?php echo $contents[6];?>
-                  <?php echo $contents[7];?>
-                  <?php echo $contents[8];?>
-                </ul>
-
+                <?php for ($i = 0; $i < count($contents); $i++) { 
+                  if($i%3 == 0) {
+                    echo '<ul class="col-sm-2 col-xs-4 list-unstyled">';
+                  }
+                  echo '<li>' . $contents[$i] . '</li>';
+                  if($i%3 == 2) { 
+                    echo '</ul>';
+                  }
+                } ?>               
               </div>
             </ul>
           </li>
