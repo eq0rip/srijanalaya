@@ -38,7 +38,7 @@ get_header('all'); ?>
 			while($postslist->have_posts()) : $postslist->the_post();
 			$nextEvent = $post->ID;
 			endwhile;
-			$args=array('posts_per_page'=>20, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
+			$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
 			$postslist=new WP_Query($args);              
 			$curDate = date('now');
 			$i = 1;$j=0;

@@ -7,6 +7,17 @@
  * @package nirmal
  */
 
+
+//Page Slug Body Class
+function add_slug_body_class( $classes ) {
+	global $post;
+	if ( isset( $post ) ) {
+		$classes[] = $post->post_type . '-' . $post->post_name;
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
+
 if ( ! function_exists( 'nirmal_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -403,15 +414,6 @@ function parseDate($date)
 }
 
 
-//Page Slug Body Class
-function add_slug_body_class( $classes ) {
-	global $post;
-	if ( isset( $post ) ) {
-		$classes[] = $post->post_type . '-' . $post->post_name;
-	}
-	return $classes;
-}
-add_filter( 'body_class', 'add_slug_body_class' );
 
 function wpse_hide_admin_bar() {
 	return false;

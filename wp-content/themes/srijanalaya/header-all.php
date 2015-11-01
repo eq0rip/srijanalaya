@@ -18,7 +18,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
 </head>
-<body>
+<body <?php body_class();?>>
   <?php wp_head();?>
 <!--<div class="loader">
   <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
@@ -55,39 +55,10 @@
         <div class="access">
         </div>
         <div class="collapse navbar-collapse" id="myNavbar" >
-          <ul class="nav navbar-nav">
-            <?php
-
-            $args = array( 'posts_per_page' => 5, 'post_type' => 'sri-menu' );
-            $postslist = new WP_Query( $args );
-            while ( $postslist->have_posts() ) : $postslist->the_post();
-            $content=get_the_content();
-            $contents=explode("\n",$content);
-            ?>
-
-            <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php the_title();?><span class="caret" ></span></a>
-             <ul class="dropdown-menu">
-              <div class="yamm-content">
-                <?php for ($i = 0; $i < count($contents); $i++) { 
-                  if($i%3 == 0) {
-                    echo '<ul class="col-sm-2 col-xs-4 list-unstyled">';
-                  }
-                  echo '<li>' . $contents[$i] . '</li>';
-                  if($i%3 == 2) { 
-                    echo '</ul>';
-                  }
-                } ?>               
-              </div>
-            </ul>
-          </li>
-
-        <?php endwhile;?>
-
-
-      </ul>
+          <?php include('menu.php');?>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</nav>
+  </nav>
 </div><!--head div end -->    
 <div class="page-wrap">
