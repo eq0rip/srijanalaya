@@ -1,6 +1,6 @@
 <?php
 /**
-Template Name: Timeline
+Template Name: Map 
  */
 
 get_header();
