@@ -446,5 +446,18 @@ function wpb_track_post_views ($post_id) {
 	wpb_set_post_views($post_id);
 }
 add_action( 'wp_head', 'wpb_track_post_views');
+function postConnections() {
+    p2p_register_connection_type( array(
+        'name' => 'maps_to_project',
+        'from' => 'maps',
+        'to' => 'project',
+        'admin_box' => array(
+            'show' => 'any',
+            'context' => 'side'
+            )
+        ) );
+}
+add_action( 'p2p_init', 'postConnections' );
+
 
 
