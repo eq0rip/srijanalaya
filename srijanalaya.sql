@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2015 at 10:59 AM
+-- Generation Time: Nov 04, 2015 at 11:18 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.29
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `project_subscriber`
 --
 
+DROP TABLE IF EXISTS `project_subscriber`;
 CREATE TABLE IF NOT EXISTS `project_subscriber` (
   `id` int(3) unsigned NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -51,6 +52,7 @@ INSERT INTO `project_subscriber` (`id`, `email`, `project_id`) VALUES
 -- Table structure for table `wp_commentmeta`
 --
 
+DROP TABLE IF EXISTS `wp_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -64,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- Table structure for table `wp_comments`
 --
 
+DROP TABLE IF EXISTS `wp_comments`;
 CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL,
   `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -88,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
 -- Table structure for table `wp_links`
 --
 
+DROP TABLE IF EXISTS `wp_links`;
 CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -110,12 +114,13 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Table structure for table `wp_options`
 --
 
+DROP TABLE IF EXISTS `wp_options`;
 CREATE TABLE IF NOT EXISTS `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL,
   `option_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=1008 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -218,7 +223,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (94, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'widget_meta', 'a:2:{i:2;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (96, 'sidebars_widgets', 'a:3:{s:19:"wp_inactive_widgets";a:0:{}s:18:"orphaned_widgets_1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:13:"array_version";i:3;}', 'yes'),
-(99, 'cron', 'a:10:{i:1446635185;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1446646025;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446646050;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446664020;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446674785;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446681600;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446709511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446717985;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
+(99, 'cron', 'a:10:{i:1446638787;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1446646025;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446646050;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446664020;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446674785;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446681600;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446709511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446717985;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
 (104, '_transient_random_seed', '939c4fc047f750a090bcbd4d0a455b66', 'yes'),
 (112, 'can_compress_scripts', '0', 'yes'),
 (120, 'recently_activated', 'a:0:{}', 'yes'),
@@ -446,6 +451,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_p2p`
 --
 
+DROP TABLE IF EXISTS `wp_p2p`;
 CREATE TABLE IF NOT EXISTS `wp_p2p` (
   `p2p_id` bigint(20) unsigned NOT NULL,
   `p2p_from` bigint(20) unsigned NOT NULL,
@@ -469,6 +475,7 @@ INSERT INTO `wp_p2p` (`p2p_id`, `p2p_from`, `p2p_to`, `p2p_type`) VALUES
 -- Table structure for table `wp_p2pmeta`
 --
 
+DROP TABLE IF EXISTS `wp_p2pmeta`;
 CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `p2p_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -482,12 +489,13 @@ CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
 -- Table structure for table `wp_postmeta`
 --
 
+DROP TABLE IF EXISTS `wp_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=896 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=899 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -679,7 +687,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (367, 51, '_edit_lock', '1446185449:1'),
 (369, 51, '_wpcf-submenu-sort-order', 'a:1:{i:0;i:691;}'),
 (370, 52, '_edit_last', '1'),
-(371, 52, '_edit_lock', '1446185448:1'),
+(371, 52, '_edit_lock', '1446635052:1'),
 (373, 52, '_wpcf-submenu-sort-order', 'a:1:{i:0;i:781;}'),
 (383, 42, 'wpcf-submenu', ''),
 (385, 54, '_wp_types_group_filters_association', 'any'),
@@ -823,11 +831,11 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (616, 159, 'wpcf-date', '1439337600'),
 (617, 159, 'wpcf-dates', '2015/07/01'),
 (621, 160, '_edit_last', '1'),
-(622, 160, '_edit_lock', '1446621161:1'),
-(623, 160, '_wp_page_template', 'project.php'),
+(622, 160, '_edit_lock', '1446635700:1'),
+(623, 160, '_wp_page_template', 'page-project.php'),
 (625, 162, '_edit_last', '1'),
-(626, 162, '_wp_page_template', 'resource.php'),
-(627, 162, '_edit_lock', '1446352559:1'),
+(626, 162, '_wp_page_template', 'page-resource.php'),
+(627, 162, '_edit_lock', '1446635708:1'),
 (629, 172, '_edit_last', '1'),
 (630, 172, '_wp_page_template', 'default'),
 (631, 172, '_edit_lock', '1445163811:1'),
@@ -1001,7 +1009,10 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (889, 237, '_edit_lock', '1446632060:1'),
 (890, 238, '_edit_last', '1'),
 (891, 238, '_wp_page_template', 'default'),
-(892, 238, '_edit_lock', '1446634466:1');
+(892, 238, '_edit_lock', '1446634466:1'),
+(896, 244, '_edit_last', '1'),
+(897, 244, '_wp_page_template', 'page-news.php'),
+(898, 244, '_edit_lock', '1446635888:1');
 
 -- --------------------------------------------------------
 
@@ -1009,6 +1020,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
+DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE IF NOT EXISTS `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL,
   `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1033,7 +1045,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -1122,9 +1134,9 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (151, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'trash', 'closed', 'closed', '', 'hello', '', '', '2015-10-16 08:13:26', '2015-10-16 08:13:26', '', 0, 'http://localhost/srijanalaya/?post_type=resource&#038;p=151', 0, 'resource', '', 0),
 (152, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'inherit', 'closed', 'closed', '', '151-revision-v1', '', '', '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 151, 'http://localhost/srijanalaya/151-revision-v1/', 0, 'revision', '', 0),
 (159, 1, '2015-10-16 08:41:00', '2015-10-16 08:41:00', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'publish', 'closed', 'closed', '', 'project-4-2', '', '', '2015-11-04 07:19:41', '2015-11-04 07:19:41', '', 0, 'http://localhost/srijanalaya/project/project-4-2/', 5, 'project', '', 0),
-(160, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'publish', 'closed', 'closed', '', 'events', '', '', '2015-10-16 08:44:28', '2015-10-16 08:44:28', '', 0, 'http://localhost/srijanalaya/?page_id=160', 6, 'page', '', 0),
+(160, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'publish', 'closed', 'closed', '', 'events', '', '', '2015-11-04 17:02:23', '2015-11-04 11:17:23', '', 0, 'http://localhost/srijanalaya/?page_id=160', 7, 'page', '', 0),
 (161, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'inherit', 'closed', 'closed', '', '160-revision-v1', '', '', '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 160, 'http://localhost/srijanalaya/160-revision-v1/', 0, 'revision', '', 0),
-(162, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', '[:en]Resource[:ne]resourcess[:]', '', 'publish', 'closed', 'closed', '', 'resourcess', '', '', '2015-11-01 04:34:45', '2015-11-01 04:34:45', '', 0, 'http://localhost/srijanalaya/?page_id=162', 4, 'page', '', 0),
+(162, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 'Resource', '', 'publish', 'closed', 'closed', '', 'resourcess', '', '', '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 0, 'http://localhost/srijanalaya/?page_id=162', 5, 'page', '', 0),
 (163, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 'resource', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
 (164, 1, '2015-10-16 10:23:24', '2015-10-16 10:23:24', '', 'resourcess', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:23:24', '2015-10-16 10:23:24', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
 (165, 1, '2015-10-16 10:23:42', '2015-10-16 10:23:42', '', 'resource', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:23:42', '2015-10-16 10:23:42', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
@@ -1133,7 +1145,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (168, 1, '2015-10-16 10:27:58', '2015-10-16 10:27:58', '', 'resource1', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:27:58', '2015-10-16 10:27:58', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
 (169, 1, '2015-10-16 10:42:00', '2015-10-16 10:42:00', 'fasdfsadfsdaf asdf df', 'projectX', '', 'inherit', 'closed', 'closed', '', '159-revision-v1', '', '', '2015-10-16 10:42:00', '2015-10-16 10:42:00', '', 159, 'http://localhost/srijanalaya/159-revision-v1/', 0, 'revision', '', 0),
 (170, 1, '2015-10-16 10:44:46', '2015-10-16 10:44:46', '', 'resourcess', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:44:46', '2015-10-16 10:44:46', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
-(172, 1, '2015-10-18 06:09:29', '2015-10-18 06:09:29', 'map', 'map', '', 'publish', 'closed', 'closed', '', 'map', '', '', '2015-10-18 06:09:29', '2015-10-18 06:09:29', '', 0, 'http://localhost/srijanalaya/?page_id=172', 5, 'page', '', 0),
+(172, 1, '2015-10-18 06:09:29', '2015-10-18 06:09:29', 'map', 'map', '', 'publish', 'closed', 'closed', '', 'map', '', '', '2015-10-18 06:09:29', '2015-10-18 06:09:29', '', 0, 'http://localhost/srijanalaya/?page_id=172', 6, 'page', '', 0),
 (173, 1, '2015-10-18 06:09:29', '2015-10-18 06:09:29', 'map', 'map', '', 'inherit', 'closed', 'closed', '', '172-revision-v1', '', '', '2015-10-18 06:09:29', '2015-10-18 06:09:29', '', 172, 'http://localhost/srijanalaya/172-revision-v1/', 0, 'revision', '', 0),
 (174, 1, '2015-10-18 10:29:23', '2015-10-18 10:29:23', '', 'map', '', 'publish', 'closed', 'closed', '', 'map', '', '', '2015-10-18 10:42:41', '2015-10-18 10:42:41', '', 0, 'http://localhost/srijanalaya/wp-types-group/map/', 0, 'wp-types-group', '', 0),
 (175, 1, '2015-10-18 10:34:13', '2015-10-18 10:34:13', '', 'map4', '', 'publish', 'closed', 'closed', '', 'test', '', '', '2015-11-04 07:11:21', '2015-11-04 07:11:21', '', 0, 'http://localhost/srijanalaya/?post_type=maps&#038;p=175', 4, 'maps', '', 0),
@@ -1161,7 +1173,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (202, 1, '2015-10-25 09:49:22', '2015-10-25 09:49:22', 'fasdfsadfsdaf asdf df', '[:en]Project Title 4[:ne]project xyz[:]', '', 'inherit', 'closed', 'closed', '', '111-revision-v1', '', '', '2015-10-25 09:49:22', '2015-10-25 09:49:22', '', 111, 'http://localhost/srijanalaya/?p=202', 0, 'revision', '', 0),
 (203, 1, '2015-10-25 09:49:36', '2015-10-25 09:49:36', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'inherit', 'closed', 'closed', '', '110-revision-v1', '', '', '2015-10-25 09:49:36', '2015-10-25 09:49:36', '', 110, 'http://localhost/srijanalaya/?p=203', 0, 'revision', '', 0),
 (204, 1, '2015-10-25 09:52:08', '2015-10-25 09:52:08', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'inherit', 'closed', 'closed', '', '111-revision-v1', '', '', '2015-10-25 09:52:08', '2015-10-25 09:52:08', '', 111, 'http://localhost/srijanalaya/?p=204', 0, 'revision', '', 0),
-(206, 1, '2015-10-27 08:34:57', '2015-10-27 08:34:57', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.\r\n\r\n&nbsp;\r\n\r\n<a href="http://localhost/srijanalaya/?sri-menu=mabout-3">Download</a>[:]', '[:en]About[:]', '', 'publish', 'closed', 'closed', '', 'about', '', '', '2015-10-27 09:48:14', '2015-10-27 09:48:14', '', 0, 'http://localhost/srijanalaya/?page_id=206', 2, 'page', '', 0),
+(206, 1, '2015-10-27 08:34:57', '2015-10-27 08:34:57', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.\r\n\r\n&nbsp;\r\n\r\n<a href="http://localhost/srijanalaya/?sri-menu=mabout-3">Download</a>[:]', '[:en]About[:]', '', 'publish', 'closed', 'closed', '', 'about', '', '', '2015-10-27 09:48:14', '2015-10-27 09:48:14', '', 0, 'http://localhost/srijanalaya/?page_id=206', 3, 'page', '', 0),
 (207, 1, '2015-10-27 08:34:57', '2015-10-27 08:34:57', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.[:]', '[:en]About[:]', '', 'inherit', 'closed', 'closed', '', '206-revision-v1', '', '', '2015-10-27 08:34:57', '2015-10-27 08:34:57', '', 206, 'http://localhost/srijanalaya/?p=207', 0, 'revision', '', 0),
 (208, 1, '2015-10-27 08:55:33', '2015-10-27 08:55:33', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.\r\n\r\n&nbsp;\r\n\r\n<a href="http://localhost/srijanalaya/?sri-menu=mabout-3">Download</a>[:]', '[:en]About[:]', '', 'inherit', 'closed', 'closed', '', '206-revision-v1', '', '', '2015-10-27 08:55:33', '2015-10-27 08:55:33', '', 206, 'http://localhost/srijanalaya/?p=208', 0, 'revision', '', 0),
 (209, 1, '2015-11-01 04:34:27', '2015-11-01 04:34:27', '', '[:en]Resource[:ne]resourcess[:]', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-01 04:34:27', '2015-11-01 04:34:27', '', 162, 'http://localhost/srijanalaya/?p=209', 0, 'revision', '', 0),
@@ -1185,7 +1197,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (227, 1, '2015-11-01 07:39:39', '2015-11-01 07:39:39', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project1', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2-2-2', '', '', '2015-11-04 07:36:21', '2015-11-04 07:36:21', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2-2-2', 1, 'project', '', 0),
 (228, 1, '2015-11-01 07:40:13', '2015-11-01 07:40:13', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1 Copy[:ne]projectX Copy[:]', '', 'inherit', 'closed', 'closed', '', '224-revision-v1', '', '', '2015-11-01 07:40:13', '2015-11-01 07:40:13', '', 224, 'http://localhost/srijanalaya/?p=228', 0, 'revision', '', 0),
 (229, 1, '2015-11-01 07:42:22', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2015-11-01 07:42:22', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?page_id=229', 0, 'page', '', 0),
-(230, 1, '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', '[:en]Map[:]', '', 'publish', 'closed', 'closed', '', 'map-2', '', '', '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', 0, 'http://localhost/srijanalaya/?page_id=230', 3, 'page', '', 0),
+(230, 1, '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', '[:en]Map[:]', '', 'publish', 'closed', 'closed', '', 'map-2', '', '', '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', 0, 'http://localhost/srijanalaya/?page_id=230', 4, 'page', '', 0),
 (231, 1, '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', '[:en]Map[:]', '', 'inherit', 'closed', 'closed', '', '230-revision-v1', '', '', '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', 230, 'http://localhost/srijanalaya/?p=231', 0, 'revision', '', 0),
 (232, 1, '2015-11-04 05:51:37', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-11-04 05:51:37', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?p=232', 0, 'post', '', 0),
 (233, 1, '2015-11-04 07:11:32', '2015-11-04 07:11:32', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project1', '', 'inherit', 'closed', 'closed', '', '227-revision-v1', '', '', '2015-11-04 07:11:32', '2015-11-04 07:11:32', '', 227, 'http://localhost/srijanalaya/?p=233', 0, 'revision', '', 0),
@@ -1193,9 +1205,13 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (235, 1, '2015-11-04 07:11:51', '2015-11-04 07:11:51', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project3', '', 'inherit', 'closed', 'closed', '', '225-revision-v1', '', '', '2015-11-04 07:11:51', '2015-11-04 07:11:51', '', 225, 'http://localhost/srijanalaya/?p=235', 0, 'revision', '', 0),
 (236, 1, '2015-11-04 07:11:59', '2015-11-04 07:11:59', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project4', '', 'inherit', 'closed', 'closed', '', '224-revision-v1', '', '', '2015-11-04 07:11:59', '2015-11-04 07:11:59', '', 224, 'http://localhost/srijanalaya/?p=236', 0, 'revision', '', 0),
 (237, 1, '2015-11-04 10:14:08', '2015-11-04 10:14:08', '<html>\n            <head>\n                <title>{{{title}}}</title>\n                <meta http-equiv="Content-type" content="text/html; charset=utf-8">\n\n            <style type="text/css">\n                body,#wrap{\n                    text-align:center;\n                    margin:0px;\n                    background-color:#FFFFFF;\n                }\n            /*\n            @tab Top bar\n            @section top bar\n            @tip Choose a set of colors that look good with the colors of your logo image or text header.\n            */\n                #header{\n                    /*@tab Top bar\n            @section top bar\n            @tip Choose a set of colors that look good with the colors of your logo image or text header.*/background-color:#FFFFFF;\n                    margin:0px;\n                    /*@editable*/padding:10px;\n                    /*@editable*/color:#666;\n                    /*@editable*/font-size:11px;\n                    /*@editable*/font-family:Arial;\n                    /*@editable*/font-weight:normal;\n                    /*@editable*/text-align:center;\n                    /*@editable*/text-transform:lowercase;\n                    /*@editable*/border:none 0px #FFF;\n                }\n            /*\n            @tab Top bar\n            @section top bar links\n            @tip Choose a set of colors that look good with the colors of your logo image or text header.\n            */\n                #header a,#header a:link,#header a:visited{\n                    /*@editable*/color:#666;\n                    /*@editable*/text-decoration:underline;\n                    /*@editable*/font-weight:normal;\n                }\n            /*\n            @tab Body\n            @section default text\n            @tip This is the base font for the content of the email\n            */\n                #layout{\n                    /*@tab Body\n            @section default text\n            @tip This is the base font for the content of the email*/margin:0px auto;\n                    /*@editable*/text-align:center;\n                    /*@editable*/font-family:Georgia;\n                    /*@editable*/color:#404040;\n                    /*@editable*/line-height:160%;\n                    font-size:16px;\n                }\n            /*\n            @tab Body\n            @section appointment detail\n            @tip appointment detail styles\n            */\n                #appointment{\n                    /*@editable*/color:#666;\n                    /*@editable*/font-size:18px;\n                    /*@editable*/font-weight:normal;\n                    /*@editable*/font-family:Georgia;\n                    /*@editable*/text-align:center;\n                    /*@editable*/padding:0px 0px 40px 0px;\n                }\n            /*\n            @tab Body\n            @section title style\n            @tip Primary headline\n            @theme title\n            */\n                .primary-heading{\n                    /*@editable*/font-size:54px;\n                    /*@editable*/color:#000;\n                    /*@editable*/font-weight:normal;\n                    /*@editable*/font-family:Georgia;\n                    /*@editable*/line-height:120%;\n                    /*@editable*/margin:10px 0;\n                }\n            /*\n            @tab Body\n            @section subtitle style\n            @tip Secondary headline\n            @theme subtitle\n            */\n                .secondary-heading{\n                    /*@editable*/color:#000;\n                    /*@editable*/font-size:24px;\n                    /*@editable*/font-weight:normal;\n                    /*@editable*/font-style:normal;\n                    /*@editable*/font-family:Georgia;\n                    /*@editable*/margin:30px 0 10px 0;\n                }\n            /*\n            @tab Footer\n            @section footer\n            @tip Use the same color as your background to create the page curl\n            @theme footer\n            */\n                #footer{\n                    /*@tab Footer\n            @section footer\n            @tip Use the same color as your background to create the page curl\n            @theme footer*/background-color:#FFFFFF;\n                    /*@editable*/border-top:1px solid #CCC;\n                    /*@editable*/padding:20px;\n                    /*@editable*/font-size:10px;\n                    /*@editable*/color:#666;\n                    /*@editable*/line-height:100%;\n                    /*@editable*/font-family:Arial;\n                    /*@editable*/text-align:center;\n                }\n            /*\n            @tab Footer\n            @section link style\n            @tip Specify a color for your footer hyperlinks.\n            @theme link_footer\n            */\n                #footer a{\n                    /*@editable*/color:#666;\n                    /*@editable*/text-decoration:underline;\n                    /*@editable*/font-weight:normal;\n                }\n            /*\n            @tab Links\n            @section link style\n            @tip Specify a color for all the hyperlinks in your email.\n            @theme link\n            */\n                a,a:link,a:visited{\n                    /*@editable*/color:#666;\n                    /*@editable*/text-decoration:underline;\n                    /*@editable*/font-weight:normal;\n                }\n            </style></head>\n            <body class="background">\n                <div id="wrap" class="background">\n                    <table id="layout" border="0" cellspacing="0" cellpadding="0" width="600" class="layout_background">\n                        <tr>\n                            <td id="header" mc:edit="header" colspan="3">\n                                <!--*|IFNOT:ARCHIVE_PAGE|*-->\n                                <span>Email not displaying correctly? <a href="*|ARCHIVE|*" target="_blank">View it in your browser.</a></span>\n                                <!-- *|END:IF|* -->\n                            </td>\n                        </tr>\n                        <tr>\n                            <td id="lead_image" colspan="3">\n                                <img src="{{{image}}}">\n                            </td>\n                        </tr>\n                        <tr>\n                          <td id="lead_content" mc:edit="main" colspan="3">\n                            <h1 class="primary-heading">{{{title}}}</h1>\n                            <p>{{{teaser}}}</p>\n                            <p><a href="{{{permalink}}}">Read more...</a></p>\n                            <small>This post is written by {{{author}}}.</small>\n                          </td>\n                        </tr>\n                            <td id="footer" mc:edit="footer" colspan="3" class="background">\n                                <p><a href="*|UNSUB|*">Unsubscribe</a> *|EMAIL|* | <a href="*|UPDATE_PROFILE|*">Update your profile</a> | <a href="*|FORWARD|*">Forward to a friend</a></p>\n                                *|IFNOT:ARCHIVE_PAGE|*\n                                <p>*|LIST:DESCRIPTION|*</p>\n                                <p>*|HTML:LIST_ADDRESS_HTML|*</p>\n                                *|END:IF|*\n                                <p>Copyright (C) *|CURRENT_YEAR|* *|LIST:COMPANY|* All rights reserved.</p>\n                                *|IF:REWARDS|*\n                                *|HTML:REWARDS|*\n                                *|END:IF|*\n                            </td>\n                        </tr>\n                    </table>\n                </div>\n                <span style="padding: 0px;"></span>\n            </body>\n            </html>', 'Newsletter template example', '', 'publish', 'closed', 'closed', '', 'newsletter-template-example', '', '', '2015-11-04 10:14:08', '2015-11-04 10:14:08', '', 0, 'http://localhost/srijanalaya/?p=237', 0, 'email-templates', '', 0),
-(238, 1, '2015-11-04 16:21:25', '2015-11-04 10:36:25', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:ne]आको घॎआटॕ दड़ व५ऩय़ऑऌऋधढ़ ऴ४ऱ१ऱ१ अऱ१ऩय़म।ऎइखौ ळ३थज़ व५। ज॒ ऐम।ऴ४इखौऩय़तग़ चॐ। ङॏऒईऐ ऎऌ स८ज॒घॎओनफ़टॕ ओ चॐऌढक़ईस८फॡठॖ आ भॣङॏग्ऱ१ऄ थज़भॣङॏबॢअ। य॥ऋऋदड़नफ़ आऍभॣआदड़पॠ ऋ व५ऊपॠ ऩय़कोपॠढक़ऊफॡऍ। ओदड़र०ठॖ ऎ ऌऑतग़ऌऋऌझ॓ ञ॔इऐग्ऎ अ को धढ़ऌ ळ३ऍग्।\r\n\r\nऱ१य॥ङॏझ॓ र०नफ़ञ॔य॥बॢञ॔ ळ३व५ग्अऍऄडॗ अऄऋ ज॒णख़ऱ१ग्पॠ उभॣचॐई थज़नफ़ऱ१बॢअडॗ ऱ१फॡऩय़ल२ग् छ॑औऎ ऋर०ओ। ठॖऔईश६ भॣझ॓ऋओ ग्ऩय़ल२व५बॢउए। ऴ४घॎऔऒऑ ढक़ठॖऑ भॣश६ ऐव५र०ऌश६ य॥छ॑थज़म।दड़ ऍधढ़ईकोचॐऋआ कोअष७ऑऔम। ऒ थज़डॗऋव५औडॗ। भॣढक़ फॡखौऊऐ कोउष७ ढक़टॕएळ३ स८चॐछ॑औऑ। श६डॗल२अल२झ॓ भॣऎश६व५ङॏणख़तग़ य॥ य॥ङॏखौऱ१ज॒ऐअ ळ३बॢढक़णख़ अढक़ ङॏधढ़म। ङॏनफ़ऩय़य॥णख़ऒनफ़ औम।थज़श६खौ।\r\n\r\nढक़पॠओऐभॣऴ४फॡ बॢर०श६ ऎ थज़ ष७खौऒ औङॏढक़झ॓ फॡऒम।ङॏष७श६ऍ ल२भॣज॒ ऎघॎऑअ इऊ। ऩय़बॢटॕ ञ॔ओटॕधढ़डॗऊधढ़ थज़ऍएय॥ऌदड़ दड़य॥ऱ१ फॡऩय़ल२ऑव५इइ ऴ४ऒनफ़णख़र०ऒ टॕनफ़घॎ अचॐ। ऍटॕछ॑ऎझ॓ छ॑फॡऌआश६ऍव५ ओ ढक़झ॓पॠभॣ टॕऑफॡभॣ ठॖडॗ घॎचॐधढ़ऎळ३औओ। ऍङॏऎ इबॢतग़ठॖए फॡबॢठॖ उऔघॎणख़ऄञ॔ज॒ ङॏऋ र०तग़दड़कोटॕ। ऒऎज॒ ऩय़ईइउधढ़ ऎ अर०डॗभॣष७थज़ऐ घॎऑ बॢ इछ॑।[:]', '[:en]About Team[:ne]दल बारे[:]', '', 'publish', 'closed', 'closed', '', 'about-team', '', '', '2015-11-04 16:21:49', '2015-11-04 10:36:49', '', 206, 'http://localhost/srijanalaya/?page_id=238', 0, 'page', '', 0),
+(238, 1, '2015-11-04 16:21:25', '2015-11-04 10:36:25', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:ne]आको घॎआटॕ दड़ व५ऩय़ऑऌऋधढ़ ऴ४ऱ१ऱ१ अऱ१ऩय़म।ऎइखौ ळ३थज़ व५। ज॒ ऐम।ऴ४इखौऩय़तग़ चॐ। ङॏऒईऐ ऎऌ स८ज॒घॎओनफ़टॕ ओ चॐऌढक़ईस८फॡठॖ आ भॣङॏग्ऱ१ऄ थज़भॣङॏबॢअ। य॥ऋऋदड़नफ़ आऍभॣआदड़पॠ ऋ व५ऊपॠ ऩय़कोपॠढक़ऊफॡऍ। ओदड़र०ठॖ ऎ ऌऑतग़ऌऋऌझ॓ ञ॔इऐग्ऎ अ को धढ़ऌ ळ३ऍग्।\r\n\r\nऱ१य॥ङॏझ॓ र०नफ़ञ॔य॥बॢञ॔ ळ३व५ग्अऍऄडॗ अऄऋ ज॒णख़ऱ१ग्पॠ उभॣचॐई थज़नफ़ऱ१बॢअडॗ ऱ१फॡऩय़ल२ग् छ॑औऎ ऋर०ओ। ठॖऔईश६ भॣझ॓ऋओ ग्ऩय़ल२व५बॢउए। ऴ४घॎऔऒऑ ढक़ठॖऑ भॣश६ ऐव५र०ऌश६ य॥छ॑थज़म।दड़ ऍधढ़ईकोचॐऋआ कोअष७ऑऔम। ऒ थज़डॗऋव५औडॗ। भॣढक़ फॡखौऊऐ कोउष७ ढक़टॕएळ३ स८चॐछ॑औऑ। श६डॗल२अल२झ॓ भॣऎश६व५ङॏणख़तग़ य॥ य॥ङॏखौऱ१ज॒ऐअ ळ३बॢढक़णख़ अढक़ ङॏधढ़म। ङॏनफ़ऩय़य॥णख़ऒनफ़ औम।थज़श६खौ।\r\n\r\nढक़पॠओऐभॣऴ४फॡ बॢर०श६ ऎ थज़ ष७खौऒ औङॏढक़झ॓ फॡऒम।ङॏष७श६ऍ ल२भॣज॒ ऎघॎऑअ इऊ। ऩय़बॢटॕ ञ॔ओटॕधढ़डॗऊधढ़ थज़ऍएय॥ऌदड़ दड़य॥ऱ१ फॡऩय़ल२ऑव५इइ ऴ४ऒनफ़णख़र०ऒ टॕनफ़घॎ अचॐ। ऍटॕछ॑ऎझ॓ छ॑फॡऌआश६ऍव५ ओ ढक़झ॓पॠभॣ टॕऑफॡभॣ ठॖडॗ घॎचॐधढ़ऎळ३औओ। ऍङॏऎ इबॢतग़ठॖए फॡबॢठॖ उऔघॎणख़ऄञ॔ज॒ ङॏऋ र०तग़दड़कोटॕ। ऒऎज॒ ऩय़ईइउधढ़ ऎ अर०डॗभॣष७थज़ऐ घॎऑ बॢ इछ॑।[:]', '[:en]About Team[:ne]दल बारे[:]', '', 'publish', 'closed', 'closed', '', 'about-team', '', '', '2015-11-04 16:21:49', '2015-11-04 10:36:49', '', 206, 'http://localhost/srijanalaya/?page_id=238', 1, 'page', '', 0),
 (239, 1, '2015-11-04 16:21:25', '2015-11-04 10:36:25', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:]', 'About Team', '', 'inherit', 'closed', 'closed', '', '238-revision-v1', '', '', '2015-11-04 16:21:25', '2015-11-04 10:36:25', '', 238, 'http://localhost/srijanalaya/?p=239', 0, 'revision', '', 0),
-(240, 1, '2015-11-04 16:21:49', '2015-11-04 10:36:49', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:ne]आको घॎआटॕ दड़ व५ऩय़ऑऌऋधढ़ ऴ४ऱ१ऱ१ अऱ१ऩय़म।ऎइखौ ळ३थज़ व५। ज॒ ऐम।ऴ४इखौऩय़तग़ चॐ। ङॏऒईऐ ऎऌ स८ज॒घॎओनफ़टॕ ओ चॐऌढक़ईस८फॡठॖ आ भॣङॏग्ऱ१ऄ थज़भॣङॏबॢअ। य॥ऋऋदड़नफ़ आऍभॣआदड़पॠ ऋ व५ऊपॠ ऩय़कोपॠढक़ऊफॡऍ। ओदड़र०ठॖ ऎ ऌऑतग़ऌऋऌझ॓ ञ॔इऐग्ऎ अ को धढ़ऌ ळ३ऍग्।\r\n\r\nऱ१य॥ङॏझ॓ र०नफ़ञ॔य॥बॢञ॔ ळ३व५ग्अऍऄडॗ अऄऋ ज॒णख़ऱ१ग्पॠ उभॣचॐई थज़नफ़ऱ१बॢअडॗ ऱ१फॡऩय़ल२ग् छ॑औऎ ऋर०ओ। ठॖऔईश६ भॣझ॓ऋओ ग्ऩय़ल२व५बॢउए। ऴ४घॎऔऒऑ ढक़ठॖऑ भॣश६ ऐव५र०ऌश६ य॥छ॑थज़म।दड़ ऍधढ़ईकोचॐऋआ कोअष७ऑऔम। ऒ थज़डॗऋव५औडॗ। भॣढक़ फॡखौऊऐ कोउष७ ढक़टॕएळ३ स८चॐछ॑औऑ। श६डॗल२अल२झ॓ भॣऎश६व५ङॏणख़तग़ य॥ य॥ङॏखौऱ१ज॒ऐअ ळ३बॢढक़णख़ अढक़ ङॏधढ़म। ङॏनफ़ऩय़य॥णख़ऒनफ़ औम।थज़श६खौ।\r\n\r\nढक़पॠओऐभॣऴ४फॡ बॢर०श६ ऎ थज़ ष७खौऒ औङॏढक़झ॓ फॡऒम।ङॏष७श६ऍ ल२भॣज॒ ऎघॎऑअ इऊ। ऩय़बॢटॕ ञ॔ओटॕधढ़डॗऊधढ़ थज़ऍएय॥ऌदड़ दड़य॥ऱ१ फॡऩय़ल२ऑव५इइ ऴ४ऒनफ़णख़र०ऒ टॕनफ़घॎ अचॐ। ऍटॕछ॑ऎझ॓ छ॑फॡऌआश६ऍव५ ओ ढक़झ॓पॠभॣ टॕऑफॡभॣ ठॖडॗ घॎचॐधढ़ऎळ३औओ। ऍङॏऎ इबॢतग़ठॖए फॡबॢठॖ उऔघॎणख़ऄञ॔ज॒ ङॏऋ र०तग़दड़कोटॕ। ऒऎज॒ ऩय़ईइउधढ़ ऎ अर०डॗभॣष७थज़ऐ घॎऑ बॢ इछ॑।[:]', '[:en]About Team[:ne]दल बारे[:]', '', 'inherit', 'closed', 'closed', '', '238-revision-v1', '', '', '2015-11-04 16:21:49', '2015-11-04 10:36:49', '', 238, 'http://localhost/srijanalaya/?p=240', 0, 'revision', '', 0);
+(240, 1, '2015-11-04 16:21:49', '2015-11-04 10:36:49', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:ne]आको घॎआटॕ दड़ व५ऩय़ऑऌऋधढ़ ऴ४ऱ१ऱ१ अऱ१ऩय़म।ऎइखौ ळ३थज़ व५। ज॒ ऐम।ऴ४इखौऩय़तग़ चॐ। ङॏऒईऐ ऎऌ स८ज॒घॎओनफ़टॕ ओ चॐऌढक़ईस८फॡठॖ आ भॣङॏग्ऱ१ऄ थज़भॣङॏबॢअ। य॥ऋऋदड़नफ़ आऍभॣआदड़पॠ ऋ व५ऊपॠ ऩय़कोपॠढक़ऊफॡऍ। ओदड़र०ठॖ ऎ ऌऑतग़ऌऋऌझ॓ ञ॔इऐग्ऎ अ को धढ़ऌ ळ३ऍग्।\r\n\r\nऱ१य॥ङॏझ॓ र०नफ़ञ॔य॥बॢञ॔ ळ३व५ग्अऍऄडॗ अऄऋ ज॒णख़ऱ१ग्पॠ उभॣचॐई थज़नफ़ऱ१बॢअडॗ ऱ१फॡऩय़ल२ग् छ॑औऎ ऋर०ओ। ठॖऔईश६ भॣझ॓ऋओ ग्ऩय़ल२व५बॢउए। ऴ४घॎऔऒऑ ढक़ठॖऑ भॣश६ ऐव५र०ऌश६ य॥छ॑थज़म।दड़ ऍधढ़ईकोचॐऋआ कोअष७ऑऔम। ऒ थज़डॗऋव५औडॗ। भॣढक़ फॡखौऊऐ कोउष७ ढक़टॕएळ३ स८चॐछ॑औऑ। श६डॗल२अल२झ॓ भॣऎश६व५ङॏणख़तग़ य॥ य॥ङॏखौऱ१ज॒ऐअ ळ३बॢढक़णख़ अढक़ ङॏधढ़म। ङॏनफ़ऩय़य॥णख़ऒनफ़ औम।थज़श६खौ।\r\n\r\nढक़पॠओऐभॣऴ४फॡ बॢर०श६ ऎ थज़ ष७खौऒ औङॏढक़झ॓ फॡऒम।ङॏष७श६ऍ ल२भॣज॒ ऎघॎऑअ इऊ। ऩय़बॢटॕ ञ॔ओटॕधढ़डॗऊधढ़ थज़ऍएय॥ऌदड़ दड़य॥ऱ१ फॡऩय़ल२ऑव५इइ ऴ४ऒनफ़णख़र०ऒ टॕनफ़घॎ अचॐ। ऍटॕछ॑ऎझ॓ छ॑फॡऌआश६ऍव५ ओ ढक़झ॓पॠभॣ टॕऑफॡभॣ ठॖडॗ घॎचॐधढ़ऎळ३औओ। ऍङॏऎ इबॢतग़ठॖए फॡबॢठॖ उऔघॎणख़ऄञ॔ज॒ ङॏऋ र०तग़दड़कोटॕ। ऒऎज॒ ऩय़ईइउधढ़ ऎ अर०डॗभॣष७थज़ऐ घॎऑ बॢ इछ॑।[:]', '[:en]About Team[:ne]दल बारे[:]', '', 'inherit', 'closed', 'closed', '', '238-revision-v1', '', '', '2015-11-04 16:21:49', '2015-11-04 10:36:49', '', 238, 'http://localhost/srijanalaya/?p=240', 0, 'revision', '', 0),
+(242, 1, '2015-11-04 17:01:21', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2015-11-04 17:01:21', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?page_id=242', 0, 'page', '', 0),
+(243, 1, '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 'Resource', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 162, 'http://localhost/srijanalaya/?p=243', 0, 'revision', '', 0),
+(244, 1, '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', '[:en]News[:]', '', 'publish', 'closed', 'closed', '', 'news', '', '', '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', 0, 'http://localhost/srijanalaya/?page_id=244', 2, 'page', '', 0),
+(245, 1, '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', '[:en]News[:]', '', 'inherit', 'closed', 'closed', '', '244-revision-v1', '', '', '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', 244, 'http://localhost/srijanalaya/?p=245', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1203,6 +1219,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_terms`
 --
 
+DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE IF NOT EXISTS `wp_terms` (
   `term_id` bigint(20) unsigned NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1242,6 +1259,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 -- Table structure for table `wp_term_relationships`
 --
 
+DROP TABLE IF EXISTS `wp_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1326,6 +1344,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -1366,12 +1385,13 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Table structure for table `wp_usermeta`
 --
 
+DROP TABLE IF EXISTS `wp_usermeta`;
 CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -1425,7 +1445,10 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (45, 1, 'shipping_city', ''),
 (46, 1, 'shipping_postcode', ''),
 (47, 1, 'shipping_country', ''),
-(48, 1, 'shipping_state', '');
+(48, 1, 'shipping_state', ''),
+(49, 1, 'closedpostboxes_sri-menu', 'a:1:{i:0;s:20:"qtranxs-meta-box-lsb";}'),
+(50, 1, 'metaboxhidden_sri-menu', 'a:2:{i:0;s:14:"wpcf-marketing";i:1;s:7:"slugdiv";}'),
+(51, 1, 'meta-box-order_dashboard', 'a:4:{s:6:"normal";s:75:"dashboard_right_now,dashboard_activity,woocommerce_dashboard_recent_reviews";s:4:"side";s:50:"dashboard_quick_press,woocommerce_dashboard_status";s:7:"column3";s:0:"";s:7:"column4";s:0:"";}');
 
 -- --------------------------------------------------------
 
@@ -1433,6 +1456,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
+DROP TABLE IF EXISTS `wp_users`;
 CREATE TABLE IF NOT EXISTS `wp_users` (
   `ID` bigint(20) unsigned NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1459,6 +1483,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 -- Table structure for table `wp_woocommerce_api_keys`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_api_keys`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
   `key_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -1477,6 +1502,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
 -- Table structure for table `wp_woocommerce_attribute_taxonomies`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_attribute_taxonomies`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
   `attribute_id` bigint(20) NOT NULL,
   `attribute_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1492,6 +1518,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
 -- Table structure for table `wp_woocommerce_downloadable_product_permissions`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_downloadable_product_permissions`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
   `permission_id` bigint(20) NOT NULL,
   `download_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1512,6 +1539,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
 -- Table structure for table `wp_woocommerce_order_itemmeta`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_order_itemmeta`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
   `meta_id` bigint(20) NOT NULL,
   `order_item_id` bigint(20) NOT NULL,
@@ -1525,6 +1553,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
 -- Table structure for table `wp_woocommerce_order_items`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_order_items`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
   `order_item_id` bigint(20) NOT NULL,
   `order_item_name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1538,6 +1567,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
 -- Table structure for table `wp_woocommerce_tax_rates`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_tax_rates`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
   `tax_rate_id` bigint(20) NOT NULL,
   `tax_rate_country` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1557,6 +1587,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
 -- Table structure for table `wp_woocommerce_tax_rate_locations`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_tax_rate_locations`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
   `location_id` bigint(20) NOT NULL,
   `location_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1570,6 +1601,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
 -- Table structure for table `wp_woocommerce_termmeta`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_termmeta` (
   `meta_id` bigint(20) NOT NULL,
   `woocommerce_term_id` bigint(20) NOT NULL,
@@ -1741,7 +1773,7 @@ ALTER TABLE `wp_links`
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1008;
+  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1009;
 --
 -- AUTO_INCREMENT for table `wp_p2p`
 --
@@ -1756,12 +1788,12 @@ ALTER TABLE `wp_p2pmeta`
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=896;
+  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=899;
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=242;
+  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=246;
 --
 -- AUTO_INCREMENT for table `wp_terms`
 --
@@ -1776,7 +1808,7 @@ ALTER TABLE `wp_term_taxonomy`
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --
