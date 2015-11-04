@@ -3,7 +3,8 @@
 Template Name: Timeline
  */
 
-get_header('all'); ?>
+get_header('all'); 
+wp_reset_query();?>
 <div class="row">
 	<div class="col-sm-12 wrapper banner">
 		<div class="banner-content">
@@ -14,6 +15,20 @@ get_header('all'); ?>
 	</div>
 </div>
 <div class="row">
+<div style="width:100%:">
+
+<?php
+
+for($i=0;$i<count($tag);$i++){
+
+	$temp = strip_tags($tag[$i]);
+	$tag[$i]=$temp;
+?>
+<div class="col-sm-1"><?php echo $temp;?></div>
+<?php
+}
+ ?>
+</div>
 	<div class="col-sm-9 timeline-wrapper">
 
 		<section id="cd-timeline" class="cd-container">
