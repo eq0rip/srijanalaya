@@ -52,6 +52,7 @@ wp_reset_query();
 				<h2>Resources</h2>
 				<p><a href="#!">View Gallery</a></p>
 				<p><a href="#!">View Videos</a></p>
+				<?php include('social.php');?>
 			</div>
 		</div>
 	</div>
