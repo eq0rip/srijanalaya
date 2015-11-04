@@ -5,12 +5,11 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 	id: 'eq0rip.no3hg91b',
 	accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
 }).addTo(map);
-
-
-
+console.log(mapdata[0]);
+var iconurl = 'http://localhost/srijanalaya/wp-content/themes/srijanalaya/icon.png';
+console.log(iconurl);
 var greenIcon = L.icon({
-    iconUrl: mapdata[0][5],
-
+    iconUrl: iconurl,
     iconSize:     [32, 32], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
