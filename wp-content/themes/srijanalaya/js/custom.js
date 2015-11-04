@@ -152,4 +152,22 @@ else
 //alert(link);
 window.location=link;
 }
+var prev_class = '';
+function filter_timeline(x) {
+  if(x == prev_class){
+    return;
+  }
+  else {
+    prev_class = x;
+
+      jQuery('.cd-timeline-block').slideDown();
+      x="."+x;
+      jQuery(x).slideUp();
+   
+    
+  }
+}
+
+
+
 

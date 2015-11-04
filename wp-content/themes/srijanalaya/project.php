@@ -15,20 +15,18 @@ wp_reset_query();?>
 	</div>
 </div>
 <div class="row">
-<div style="width:100%:">
-
-<?php
-
-for($i=0;$i<count($tag);$i++){
-
-	$temp = strip_tags($tag[$i]);
-	$tag[$i]=$temp;
-?>
-<div class="col-sm-1"><?php echo $temp;?></div>
-<?php
-}
- ?>
-</div>
+	<div style="width:100%:">
+<ul>
+		<?php $tag=wp_tag_cloud( 'smallest=12&largest=12&taxonomy=project_tags&link=edit&format=array' );
+		
+		for($i=0;$i<count($tag);$i++){
+			$temp = strip_tags($tag[$i]);
+			$tag[$i]=$temp;
+			?>
+			<li class="col-sm-1"><a href="javascript:void(0)" onclick="filter_timeline('<?php echo $temp;?>');"><?php echo $temp;?></a></li>
+			<?php }?>
+			</ul>
+	</div>
 	<div class="col-sm-9 timeline-wrapper">
 
 		<section id="cd-timeline" class="cd-container">
@@ -59,6 +57,11 @@ for($i=0;$i<count($tag);$i++){
 			$i = 1;$j=0;
 			$events = "";
 			while($postslist->have_posts()) : $postslist->the_post();
+			$tags=get_the_terms( $post->id, 'project_tags');//tag array
+			$tag='';//tag string
+			foreach ($tags as $key=>$values){
+				$tag.=' '.$values->name;
+			}
 			$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
 			$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
 			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
@@ -76,7 +79,7 @@ for($i=0;$i<count($tag);$i++){
 			}
 			?>
 
-			<div class="cd-timeline-block <?php if($j == 0) echo 'first';?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
+			<div class="cd-timeline-block <?php if($j == 0) echo 'first';echo ' '.$tag;?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
 				<div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
 				</div> <!-- cd-timeline-img -->
