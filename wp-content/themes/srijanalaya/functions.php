@@ -447,17 +447,40 @@ function wpb_track_post_views ($post_id) {
 }
 add_action( 'wp_head', 'wpb_track_post_views');
 function postConnections() {
-    p2p_register_connection_type( array(
-        'name' => 'maps_to_project',
-        'from' => 'maps',
-        'to' => 'project',
-        'admin_box' => array(
-            'show' => 'any',
-            'context' => 'side'
-            )
-        ) );
+	p2p_register_connection_type( array(
+		'name' => 'maps_to_project',
+		'from' => 'maps',
+		'to' => 'project',
+		'admin_box' => array(
+			'show' => 'any',
+			'context' => 'side'
+			)
+		) );
 }
 add_action( 'p2p_init', 'postConnections' );
 
 
+function remove_footer_admin () 
+{
+	echo '<span id="footer-thankyou">Developed by <a href="http://saediworks.com" target="_blank">Saedi Works</a></span>';
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
 
+
+function example_remove_dashboard_widgets()
+{
+    // Globalize the metaboxes array, this holds all the widgets for wp-admin
+	global $wp_meta_boxes;
+
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+}
+add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
+
+
+add_action( 'admin_print_styles', 'load_custom_admin_css' );
+function load_custom_admin_css()
+{
+	wp_enqueue_style('my_style', WP_CONTENT_URL . '/themes/srijanalaya/less/admin.less');
+}

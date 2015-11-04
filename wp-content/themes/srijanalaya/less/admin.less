@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'bree serif';
+  src: url('../fonts/breeserif-regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/breeserif-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/breeserif-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+  url('../fonts/breeserif-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+  url('../fonts/breeserif-regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+  url('../fonts/breeserif-regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family: 'allerregular';
+    src: url('../fonts/aller_std_rg-webfont.eot');
+    src: url('../fonts/aller_std_rg-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/aller_std_rg-webfont.woff2') format('woff2'),
+    url('../fonts/aller_std_rg-webfont.woff') format('woff'),
+    url('../fonts/aller_std_rg-webfont.ttf') format('truetype'),
+    url('../fonts/aller_std_rg-webfont.svg#allerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html {
+    overflow-x: hidden;
+}
+body {
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 22px;//18
+    letter-spacing: 1.5px;
+    @media (max-width: 991px) {
+        font-size: 13px;
+        line-height: 18px;
+    }
+}
+h1, h2 {
+    margin-top: 0;
+
+}
+h1 {
+    font-size: 36px;
+    font-family: 'bree serif';
+    letter-spacing: 2px;
+    line-height: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+
+        font-size:29px;
+    }
+
+    
+}
+h2 {
+    font-size: 35px;
+    font-family:'bree serif';
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    line-height: 35px;
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+
+        font-size:28px;
+    }
+}
+
+p {
+
+    font-size: 12px;
+    font-family:'Helvetica';
+    @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
+
+        font-size:10px;
+    }
+}
+
+.wp-admin #footer-ozh-oam, .wp-admin #wpcf-marketing, #dashboard_right_now,  #dashboard_activity, #dashboard_quick_press, .wp-admin #footer-upgrade, #welcome-panel, #screen-meta-links, #screen-meta {
+	display: none !important;
+}
