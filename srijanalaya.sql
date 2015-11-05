@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.10
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2015 at 02:12 PM
--- Server version: 5.6.22
--- PHP Version: 5.5.29
+-- Generation Time: Nov 05, 2015 at 05:51 AM
+-- Server version: 10.0.21-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `srijanalaya`
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `project_subscriber`;
-CREATE TABLE IF NOT EXISTS `project_subscriber` (
-  `id` int(3) unsigned NOT NULL,
+CREATE TABLE `project_subscriber` (
+  `id` int(3) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `project_id` int(3) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `project_subscriber`
@@ -53,9 +53,9 @@ INSERT INTO `project_subscriber` (`id`, `email`, `project_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `wp_commentmeta`;
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_comments`;
-CREATE TABLE IF NOT EXISTS `wp_comments` (
-  `comment_ID` bigint(20) unsigned NOT NULL,
-  `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL,
+  `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `comment_author` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_author_url` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -81,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_approved` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `comment_agent` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `comment_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -92,15 +92,15 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
 --
 
 DROP TABLE IF EXISTS `wp_links`;
-CREATE TABLE IF NOT EXISTS `wp_links` (
-  `link_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_target` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_visible` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
-  `link_owner` bigint(20) unsigned NOT NULL DEFAULT '1',
+  `link_owner` bigint(20) UNSIGNED NOT NULL DEFAULT '1',
   `link_rating` int(11) NOT NULL DEFAULT '0',
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -115,12 +115,12 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 --
 
 DROP TABLE IF EXISTS `wp_options`;
-CREATE TABLE IF NOT EXISTS `wp_options` (
-  `option_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=1055 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -223,8 +223,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (94, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'widget_meta', 'a:2:{i:2;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (96, 'sidebars_widgets', 'a:3:{s:19:"wp_inactive_widgets";a:0:{}s:18:"orphaned_widgets_1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:13:"array_version";i:3;}', 'yes'),
-(99, 'cron', 'a:11:{i:1446647753;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1446647964;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1446664020;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446674785;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446681600;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446689225;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446709511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446717985;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446732450;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
-(104, '_transient_random_seed', '939c4fc047f750a090bcbd4d0a455b66', 'yes'),
+(99, 'cron', 'a:10:{i:1446704253;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1446705564;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1446707220;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446709511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446717985;a:2:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446732425;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1446732450;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1446768000;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
+(104, '_transient_random_seed', 'fd32308be4fdc89f808bdf7ca9bb92f2', 'yes'),
 (112, 'can_compress_scripts', '0', 'yes'),
 (120, 'recently_activated', 'a:0:{}', 'yes'),
 (126, 'wpcf7', 'a:1:{s:7:"version";s:3:"4.3";}', 'yes'),
@@ -303,7 +303,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (848, '_transient_feed_b9388c83948825c1edaef0d856b7b109', 'a:4:{s:5:"child";a:1:{s:0:"";a:1:{s:3:"rss";a:1:{i:0;a:6:{s:4:"data";s:3:"\n	\n";s:7:"attribs";a:1:{s:0:"";a:1:{s:7:"version";s:3:"2.0";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:1:{s:0:"";a:1:{s:7:"channel";a:1:{i:0;a:6:{s:4:"data";s:117:"\n		\n		\n		\n		\n		\n		\n				\n\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n		\n\n	";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:7:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:34:"WordPress Plugins » View: Popular";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:45:"https://wordpress.org/plugins/browse/popular/";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:34:"WordPress Plugins » View: Popular";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:8:"language";a:1:{i:0;a:5:{s:4:"data";s:5:"en-US";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Wed, 04 Nov 2015 05:36:50 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:9:"generator";a:1:{i:0;a:5:{s:4:"data";s:25:"http://bbpress.org/?v=1.1";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"item";a:30:{i:0;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:18:"WordPress Importer";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:60:"https://wordpress.org/plugins/wordpress-importer/#post-18101";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 20 May 2010 17:42:45 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"18101@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:101:"Import posts, pages, comments, custom fields, categories, tags and more from a WordPress export file.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:14:"Brian Colinger";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:1;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:11:"WP-PageNavi";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:51:"https://wordpress.org/plugins/wp-pagenavi/#post-363";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 09 Mar 2007 23:17:57 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:34:"363@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:49:"Adds a more advanced paging navigation interface.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:11:"Lester Chan";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:2;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:15:"NextGEN Gallery";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:56:"https://wordpress.org/plugins/nextgen-gallery/#post-1169";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 23 Apr 2007 20:08:06 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"1169@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:121:"The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 13 million downloads.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:9:"Alex Rabe";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:3;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:21:"Regenerate Thumbnails";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:62:"https://wordpress.org/plugins/regenerate-thumbnails/#post-6743";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Sat, 23 Aug 2008 14:38:58 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"6743@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:76:"Allows you to regenerate your thumbnails after changing the thumbnail sizes.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:25:"Alex Mills (Viper007Bond)";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:4;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:25:"Google Analytics by Yoast";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:71:"https://wordpress.org/plugins/google-analytics-for-wordpress/#post-2316";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 14 Sep 2007 12:15:27 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"2316@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:124:"Track your WordPress site easily with the latest tracking codes and lots added data for search result pages and error pages.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:13:"Joost de Valk";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:5;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:14:"Contact Form 7";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:55:"https://wordpress.org/plugins/contact-form-7/#post-2141";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 02 Aug 2007 12:45:03 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"2141@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:54:"Just another contact form plugin. Simple but flexible.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:16:"Takayuki Miyoshi";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:6;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:11:"Hello Dolly";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:52:"https://wordpress.org/plugins/hello-dolly/#post-5790";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 29 May 2008 22:11:34 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"5790@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:150:"This is not just a plugin, it symbolizes the hope and enthusiasm of an entire generation summed up in two words sung most famously by Louis Armstrong.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:14:"Matt Mullenweg";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:7;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:18:"Wordfence Security";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:51:"https://wordpress.org/plugins/wordfence/#post-29832";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Sun, 04 Sep 2011 03:13:51 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"29832@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:138:"The Wordfence WordPress security plugin provides free enterprise-class WordPress security, protecting your website from hacks and malware.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:9:"Wordfence";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:8;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:7:"Akismet";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:46:"https://wordpress.org/plugins/akismet/#post-15";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 09 Mar 2007 22:11:30 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:33:"15@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:98:"Akismet checks your comments against the Akismet Web service to see if they look like spam or not.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:14:"Matt Mullenweg";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:9;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:22:"Advanced Custom Fields";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:64:"https://wordpress.org/plugins/advanced-custom-fields/#post-25254";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 17 Mar 2011 04:07:30 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"25254@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:68:"Customise WordPress with powerful, professional and intuitive fields";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:12:"elliotcondon";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:10;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:19:"All in One SEO Pack";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:59:"https://wordpress.org/plugins/all-in-one-seo-pack/#post-753";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 30 Mar 2007 20:08:18 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:34:"753@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:126:"All in One SEO Pack is a WordPress SEO plugin to automatically optimize your WordPress blog for Search Engines such as Google.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:8:"uberdose";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:11;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"WooCommerce - excelling eCommerce";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:53:"https://wordpress.org/plugins/woocommerce/#post-29860";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 05 Sep 2011 08:13:36 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"29860@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:97:"WooCommerce is a powerful, extendable eCommerce plugin that helps you sell anything. Beautifully.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:9:"WooThemes";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:12;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:24:"Jetpack by WordPress.com";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:49:"https://wordpress.org/plugins/jetpack/#post-23862";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 20 Jan 2011 02:21:38 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"23862@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:28:"Your WordPress, Streamlined.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:9:"Tim Moore";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:13;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:19:"Google XML Sitemaps";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:64:"https://wordpress.org/plugins/google-sitemap-generator/#post-132";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 09 Mar 2007 22:31:32 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:34:"132@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:105:"This plugin will generate a special XML sitemap which will help search engines to better index your blog.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:14:"Arne Brachhold";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:14;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:9:"Yoast SEO";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:54:"https://wordpress.org/plugins/wordpress-seo/#post-8321";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 01 Jan 2009 20:34:44 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"8321@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:114:"Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using Yoast SEO plugin.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:13:"Joost de Valk";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:15;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:14:"W3 Total Cache";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:56:"https://wordpress.org/plugins/w3-total-cache/#post-12073";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Wed, 29 Jul 2009 18:46:31 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"12073@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:132:"Easy Web Performance Optimization (WPO) using caching: browser, page, object, database, minify and content delivery network support.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:16:"Frederick Townes";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:16;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:14:"WP Super Cache";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:55:"https://wordpress.org/plugins/wp-super-cache/#post-2572";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 05 Nov 2007 11:40:04 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"2572@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:73:"A very fast caching engine for WordPress that produces static html files.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:16:"Donncha O Caoimh";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:17;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:21:"Really Simple CAPTCHA";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:62:"https://wordpress.org/plugins/really-simple-captcha/#post-9542";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 09 Mar 2009 02:17:35 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"9542@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:138:"Really Simple CAPTCHA is a CAPTCHA module intended to be called from other plugins. It is originally created for my Contact Form 7 plugin.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:16:"Takayuki Miyoshi";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:18;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:16:"TinyMCE Advanced";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:57:"https://wordpress.org/plugins/tinymce-advanced/#post-2082";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Wed, 27 Jun 2007 15:00:26 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"2082@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:71:"Enables the advanced features of TinyMCE, the WordPress WYSIWYG editor.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:10:"Andrew Ozz";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:19;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:14:"Duplicate Post";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:55:"https://wordpress.org/plugins/duplicate-post/#post-2646";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Wed, 05 Dec 2007 17:40:03 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:35:"2646@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:22:"Clone posts and pages.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:4:"Lopo";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:20;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:16:"Disable Comments";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:58:"https://wordpress.org/plugins/disable-comments/#post-26907";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 27 May 2011 04:42:58 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"26907@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:134:"Allows administrators to globally disable comments on their site. Comments can be disabled according to post type. Multisite friendly.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:10:"Samir Shah";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:21;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:18:"WP Multibyte Patch";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:60:"https://wordpress.org/plugins/wp-multibyte-patch/#post-28395";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 14 Jul 2011 12:22:53 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"28395@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:71:"Multibyte functionality enhancement for the WordPress Japanese package.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:13:"plugin-master";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:22;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:27:"Black Studio TinyMCE Widget";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:69:"https://wordpress.org/plugins/black-studio-tinymce-widget/#post-31973";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 10 Nov 2011 15:06:14 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"31973@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:39:"The visual editor widget for Wordpress.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:12:"Marco Chiesi";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:23;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:46:"iThemes Security (formerly Better WP Security)";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:60:"https://wordpress.org/plugins/better-wp-security/#post-21738";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Fri, 22 Oct 2010 22:06:05 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"21738@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:150:"Protect your WordPress site by hiding vital areas of your site, protecting access to important files, preventing brute-force login attempts, detecting";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:13:"Chris Wiegman";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:24;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:26:"Page Builder by SiteOrigin";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:59:"https://wordpress.org/plugins/siteorigin-panels/#post-51888";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 11 Apr 2013 10:36:42 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"51888@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:111:"Build responsive page layouts using the widgets you know and love using this simple drag and drop page builder.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:11:"Greg Priday";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:25;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:33:"Google Analytics Dashboard for WP";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:75:"https://wordpress.org/plugins/google-analytics-dashboard-for-wp/#post-50539";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Sun, 10 Mar 2013 17:07:11 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"50539@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:127:"Displays Google Analytics reports in your WordPress Dashboard. Inserts the latest Google Analytics tracking code in your pages.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:10:"Alin Marcu";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:26;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:11:"Meta Slider";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:51:"https://wordpress.org/plugins/ml-slider/#post-49521";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 14 Feb 2013 16:56:31 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"49521@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:145:"Easy to use WordPress slider plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:11:"Matcha Labs";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:27;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:30:"Clef Two-Factor Authentication";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:48:"https://wordpress.org/plugins/wpclef/#post-47509";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Thu, 27 Dec 2012 01:25:57 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"47509@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:138:"Modern two-factor that people love to use: strong authentication without passwords or tokens; single sign on/off; magical user experience.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:9:"Dave Ross";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:28;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:34:"UpdraftPlus Backup and Restoration";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:53:"https://wordpress.org/plugins/updraftplus/#post-38058";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 21 May 2012 15:14:11 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"38058@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:148:"Backup and restoration made easy. Complete backups; manual or scheduled (backup to S3, Dropbox, Google Drive, Rackspace, FTP, SFTP, email + others).";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:14:"David Anderson";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}i:29;a:6:{s:4:"data";s:30:"\n			\n			\n			\n			\n			\n			\n					";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";s:5:"child";a:2:{s:0:"";a:5:{s:5:"title";a:1:{i:0;a:5:{s:4:"data";s:10:"Duplicator";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:52:"https://wordpress.org/plugins/duplicator/#post-26607";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:7:"pubDate";a:1:{i:0;a:5:{s:4:"data";s:31:"Mon, 16 May 2011 12:15:41 +0000";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:4:"guid";a:1:{i:0;a:5:{s:4:"data";s:36:"26607@https://wordpress.org/plugins/";s:7:"attribs";a:1:{s:0:"";a:1:{s:11:"isPermaLink";s:5:"false";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}s:11:"description";a:1:{i:0;a:5:{s:4:"data";s:88:"Duplicate, clone, backup, move and transfer an entire site from one location to another.";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}s:32:"http://purl.org/dc/elements/1.1/";a:1:{s:7:"creator";a:1:{i:0;a:5:{s:4:"data";s:10:"Cory Lamle";s:7:"attribs";a:0:{}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}s:27:"http://www.w3.org/2005/Atom";a:1:{s:4:"link";a:1:{i:0;a:5:{s:4:"data";s:0:"";s:7:"attribs";a:1:{s:0:"";a:3:{s:4:"href";s:46:"https://wordpress.org/plugins/rss/view/popular";s:3:"rel";s:4:"self";s:4:"type";s:19:"application/rss+xml";}}s:8:"xml_base";s:0:"";s:17:"xml_base_explicit";b:0;s:8:"xml_lang";s:0:"";}}}}}}}}}}}}s:4:"type";i:128;s:7:"headers";a:12:{s:6:"server";s:5:"nginx";s:4:"date";s:29:"Wed, 04 Nov 2015 05:51:53 GMT";s:12:"content-type";s:23:"text/xml; charset=UTF-8";s:10:"connection";s:5:"close";s:4:"vary";s:15:"Accept-Encoding";s:25:"strict-transport-security";s:11:"max-age=360";s:7:"expires";s:29:"Wed, 04 Nov 2015 06:11:50 GMT";s:13:"cache-control";s:0:"";s:6:"pragma";s:0:"";s:13:"last-modified";s:31:"Wed, 04 Nov 2015 05:36:50 +0000";s:15:"x-frame-options";s:10:"SAMEORIGIN";s:4:"x-nc";s:11:"HIT lax 249";}s:5:"build";s:14:"20151006071007";}', 'no'),
 (849, '_transient_timeout_feed_mod_b9388c83948825c1edaef0d856b7b109', '1446659513', 'no'),
 (850, '_transient_feed_mod_b9388c83948825c1edaef0d856b7b109', '1446616313', 'no'),
-(851, '_transient_timeout_plugin_slugs', '1446731051', 'no'),
+(851, '_transient_timeout_plugin_slugs', '1446787834', 'no'),
 (852, '_transient_plugin_slugs', 'a:16:{i:0;s:25:"add-to-any/add-to-any.php";i:1;s:39:"categories-images/categories-images.php";i:2;s:36:"contact-form-7/wp-contact-form-7.php";i:3;s:9:"hello.php";i:4;s:19:"jetpack/jetpack.php";i:5;s:28:"wysija-newsletters/index.php";i:6;s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";i:7;s:51:"parent-category-toggler/parent-category-toggler.php";i:8;s:38:"post-duplicator/m4c-postduplicator.php";i:9;s:33:"posts-to-posts/posts-to-posts.php";i:10;s:27:"qtranslate-x/qtranslate.php";i:11;s:53:"simple-custom-post-order/simple-custom-post-order.php";i:12;s:14:"types/wpcf.php";i:13;s:33:"w3-total-cache/w3-total-cache.php";i:14;s:27:"woocommerce/woocommerce.php";i:15;s:24:"wordpress-seo/wp-seo.php";}', 'no'),
 (853, '_transient_timeout_dash_88ae138922fe95674369b1cb3d215a2b', '1446659513', 'no'),
 (854, '_transient_dash_88ae138922fe95674369b1cb3d215a2b', '<div class="rss-widget"><ul><li><a class=''rsswidget'' href=''https://wordpress.org/news/2015/10/wordpress-4-4-beta-2/''>WordPress 4.4 Beta 2</a> <span class="rss-date">October 28, 2015</span><div class="rssSummary">WordPress 4.4 Beta 2 is now available for download and testing. This is software still in development, so we don’t recommend that you run it on a production site. To get the beta, try the WordPress Beta Tester plugin (you’ll want “bleeding edge nightlies”). Or you can download the beta here (zip). For more of what’s new in version 4.4, check out [&hellip;]</div></li></ul></div><div class="rss-widget"><ul><li><a class=''rsswidget'' href=''http://wptavern.com/93digital-publishes-wordpress-time-machine''>WPTavern: 93Digital Publishes WordPress Time Machine</a></li><li><a class=''rsswidget'' href=''http://ma.tt/2015/11/mario-and-nux/''>Matt: Mario and NUX</a></li><li><a class=''rsswidget'' href=''http://ma.tt/2015/11/fixing-dst/''>Matt: Fixing DST</a></li></ul></div><div class="rss-widget"><ul><li class=''dashboard-news-plugin''><span>Popular Plugin:</span> <a href=''https://wordpress.org/plugins/siteorigin-panels/'' class=''dashboard-news-plugin-link''>Page Builder by SiteOrigin</a>&nbsp;<span>(<a href=''plugin-install.php?tab=plugin-information&amp;plugin=siteorigin-panels&amp;_wpnonce=be8650eec7&amp;TB_iframe=true&amp;width=600&amp;height=800'' class=''thickbox'' title=''Page Builder by SiteOrigin''>Install</a>)</span></li></ul></div>', 'no'),
@@ -437,8 +437,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1003, '_transient_wc_low_stock_count', '0', 'no'),
 (1004, '_transient_timeout_wc_outofstock_count', '1449226610', 'no'),
 (1005, '_transient_wc_outofstock_count', '0', 'no'),
-(1006, '_transient_timeout_wc_admin_report', '1446721010', 'no'),
-(1007, '_transient_wc_admin_report', 'a:1:{s:32:"ecdceaf7251a48ca77df02b41eea0ab0";a:0:{}}', 'no'),
+(1006, '_transient_timeout_wc_admin_report', '1446787800', 'no'),
+(1007, '_transient_wc_admin_report', 'a:2:{s:32:"ecdceaf7251a48ca77df02b41eea0ab0";a:0:{}s:32:"efe5508751bb7a9e6a419b9a58fe7baa";a:0:{}}', 'no'),
 (1010, 'wpseo', 'a:20:{s:14:"blocking_files";a:0:{}s:26:"ignore_blog_public_warning";b:0;s:31:"ignore_meta_description_warning";b:0;s:20:"ignore_page_comments";b:0;s:16:"ignore_permalink";b:1;s:15:"ms_defaults_set";b:0;s:23:"theme_description_found";s:0:"";s:21:"theme_has_description";b:0;s:7:"version";s:5:"2.3.5";s:11:"alexaverify";s:0:"";s:12:"company_logo";s:0:"";s:12:"company_name";s:0:"";s:17:"company_or_person";s:0:"";s:20:"disableadvanced_meta";b:1;s:12:"googleverify";s:0:"";s:8:"msverify";s:0:"";s:11:"person_name";s:0:"";s:12:"website_name";s:0:"";s:22:"alternate_website_name";s:0:"";s:12:"yandexverify";s:0:"";}', 'yes'),
 (1011, 'wpseo_permalinks', 'a:13:{s:15:"cleanpermalinks";b:0;s:24:"cleanpermalink-extravars";s:0:"";s:29:"cleanpermalink-googlecampaign";b:0;s:31:"cleanpermalink-googlesitesearch";b:0;s:15:"cleanreplytocom";b:0;s:10:"cleanslugs";b:1;s:14:"hide-feedlinks";b:0;s:12:"hide-rsdlink";b:0;s:14:"hide-shortlink";b:0;s:16:"hide-wlwmanifest";b:0;s:18:"redirectattachment";b:0;s:17:"stripcategorybase";b:0;s:13:"trailingslash";b:0;}', 'yes'),
 (1012, 'wpseo_titles', 'a:183:{s:10:"title_test";i:0;s:17:"forcerewritetitle";b:0;s:9:"separator";s:7:"sc-dash";s:5:"noodp";b:0;s:6:"noydir";b:0;s:15:"usemetakeywords";b:0;s:16:"title-home-wpseo";s:42:"%%sitename%% %%page%% %%sep%% %%sitedesc%%";s:18:"title-author-wpseo";s:41:"%%name%%, Author at %%sitename%% %%page%%";s:19:"title-archive-wpseo";s:38:"%%date%% %%page%% %%sep%% %%sitename%%";s:18:"title-search-wpseo";s:63:"You searched for %%searchphrase%% %%page%% %%sep%% %%sitename%%";s:15:"title-404-wpseo";s:35:"Page not found %%sep%% %%sitename%%";s:19:"metadesc-home-wpseo";s:0:"";s:21:"metadesc-author-wpseo";s:0:"";s:22:"metadesc-archive-wpseo";s:0:"";s:18:"metakey-home-wpseo";s:0:"";s:20:"metakey-author-wpseo";s:0:"";s:22:"noindex-subpages-wpseo";b:0;s:20:"noindex-author-wpseo";b:0;s:21:"noindex-archive-wpseo";b:1;s:14:"disable-author";b:0;s:12:"disable-date";b:0;s:10:"title-post";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:13:"metadesc-post";s:0:"";s:12:"metakey-post";s:0:"";s:12:"noindex-post";b:0;s:13:"showdate-post";b:0;s:16:"hideeditbox-post";b:0;s:10:"title-page";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:13:"metadesc-page";s:0:"";s:12:"metakey-page";s:0:"";s:12:"noindex-page";b:0;s:13:"showdate-page";b:0;s:16:"hideeditbox-page";b:0;s:16:"title-attachment";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:19:"metadesc-attachment";s:0:"";s:18:"metakey-attachment";s:0:"";s:18:"noindex-attachment";b:0;s:19:"showdate-attachment";b:0;s:22:"hideeditbox-attachment";b:0;s:13:"title-product";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:16:"metadesc-product";s:0:"";s:15:"metakey-product";s:0:"";s:15:"noindex-product";b:0;s:16:"showdate-product";b:0;s:19:"hideeditbox-product";b:0;s:13:"title-wysijap";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:16:"metadesc-wysijap";s:0:"";s:15:"metakey-wysijap";s:0:"";s:15:"noindex-wysijap";b:0;s:16:"showdate-wysijap";b:0;s:19:"hideeditbox-wysijap";b:0;s:14:"title-sri-menu";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:17:"metadesc-sri-menu";s:0:"";s:16:"metakey-sri-menu";s:0:"";s:16:"noindex-sri-menu";b:0;s:17:"showdate-sri-menu";b:0;s:20:"hideeditbox-sri-menu";b:0;s:11:"title-video";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:14:"metadesc-video";s:0:"";s:13:"metakey-video";s:0:"";s:13:"noindex-video";b:0;s:14:"showdate-video";b:0;s:17:"hideeditbox-video";b:0;s:11:"title-quote";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:14:"metadesc-quote";s:0:"";s:13:"metakey-quote";s:0:"";s:13:"noindex-quote";b:0;s:14:"showdate-quote";b:0;s:17:"hideeditbox-quote";b:0;s:12:"title-slider";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:15:"metadesc-slider";s:0:"";s:14:"metakey-slider";s:0:"";s:14:"noindex-slider";b:0;s:15:"showdate-slider";b:0;s:18:"hideeditbox-slider";b:0;s:13:"title-project";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:16:"metadesc-project";s:0:"";s:15:"metakey-project";s:0:"";s:15:"noindex-project";b:0;s:16:"showdate-project";b:0;s:19:"hideeditbox-project";b:0;s:14:"title-resource";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:17:"metadesc-resource";s:0:"";s:16:"metakey-resource";s:0:"";s:16:"noindex-resource";b:0;s:17:"showdate-resource";b:0;s:20:"hideeditbox-resource";b:0;s:10:"title-maps";s:39:"%%title%% %%page%% %%sep%% %%sitename%%";s:13:"metadesc-maps";s:0:"";s:12:"metakey-maps";s:0:"";s:12:"noindex-maps";b:0;s:13:"showdate-maps";b:0;s:16:"hideeditbox-maps";b:0;s:23:"title-ptarchive-product";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:26:"metadesc-ptarchive-product";s:0:"";s:25:"metakey-ptarchive-product";s:0:"";s:25:"bctitle-ptarchive-product";s:0:"";s:25:"noindex-ptarchive-product";b:0;s:24:"title-ptarchive-sri-menu";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:27:"metadesc-ptarchive-sri-menu";s:0:"";s:26:"metakey-ptarchive-sri-menu";s:0:"";s:26:"bctitle-ptarchive-sri-menu";s:0:"";s:26:"noindex-ptarchive-sri-menu";b:0;s:21:"title-ptarchive-video";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:24:"metadesc-ptarchive-video";s:0:"";s:23:"metakey-ptarchive-video";s:0:"";s:23:"bctitle-ptarchive-video";s:0:"";s:23:"noindex-ptarchive-video";b:0;s:21:"title-ptarchive-quote";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:24:"metadesc-ptarchive-quote";s:0:"";s:23:"metakey-ptarchive-quote";s:0:"";s:23:"bctitle-ptarchive-quote";s:0:"";s:23:"noindex-ptarchive-quote";b:0;s:22:"title-ptarchive-slider";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:25:"metadesc-ptarchive-slider";s:0:"";s:24:"metakey-ptarchive-slider";s:0:"";s:24:"bctitle-ptarchive-slider";s:0:"";s:24:"noindex-ptarchive-slider";b:0;s:23:"title-ptarchive-project";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:26:"metadesc-ptarchive-project";s:0:"";s:25:"metakey-ptarchive-project";s:0:"";s:25:"bctitle-ptarchive-project";s:0:"";s:25:"noindex-ptarchive-project";b:0;s:24:"title-ptarchive-resource";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:27:"metadesc-ptarchive-resource";s:0:"";s:26:"metakey-ptarchive-resource";s:0:"";s:26:"bctitle-ptarchive-resource";s:0:"";s:26:"noindex-ptarchive-resource";b:0;s:20:"title-ptarchive-maps";s:51:"%%pt_plural%% Archive %%page%% %%sep%% %%sitename%%";s:23:"metadesc-ptarchive-maps";s:0:"";s:22:"metakey-ptarchive-maps";s:0:"";s:22:"bctitle-ptarchive-maps";s:0:"";s:22:"noindex-ptarchive-maps";b:0;s:18:"title-tax-category";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:21:"metadesc-tax-category";s:0:"";s:20:"metakey-tax-category";s:0:"";s:24:"hideeditbox-tax-category";b:0;s:20:"noindex-tax-category";b:0;s:18:"title-tax-post_tag";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:21:"metadesc-tax-post_tag";s:0:"";s:20:"metakey-tax-post_tag";s:0:"";s:24:"hideeditbox-tax-post_tag";b:0;s:20:"noindex-tax-post_tag";b:0;s:21:"title-tax-post_format";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:24:"metadesc-tax-post_format";s:0:"";s:23:"metakey-tax-post_format";s:0:"";s:27:"hideeditbox-tax-post_format";b:0;s:23:"noindex-tax-post_format";b:1;s:28:"title-tax-project_categories";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:31:"metadesc-tax-project_categories";s:0:"";s:30:"metakey-tax-project_categories";s:0:"";s:34:"hideeditbox-tax-project_categories";b:0;s:30:"noindex-tax-project_categories";b:0;s:22:"title-tax-project_tags";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:25:"metadesc-tax-project_tags";s:0:"";s:24:"metakey-tax-project_tags";s:0:"";s:28:"hideeditbox-tax-project_tags";b:0;s:24:"noindex-tax-project_tags";b:0;s:23:"title-tax-resource_tags";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:26:"metadesc-tax-resource_tags";s:0:"";s:25:"metakey-tax-resource_tags";s:0:"";s:29:"hideeditbox-tax-resource_tags";b:0;s:25:"noindex-tax-resource_tags";b:0;s:21:"title-tax-product_cat";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:24:"metadesc-tax-product_cat";s:0:"";s:23:"metakey-tax-product_cat";s:0:"";s:27:"hideeditbox-tax-product_cat";b:0;s:23:"noindex-tax-product_cat";b:0;s:21:"title-tax-product_tag";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:24:"metadesc-tax-product_tag";s:0:"";s:23:"metakey-tax-product_tag";s:0:"";s:27:"hideeditbox-tax-product_tag";b:0;s:23:"noindex-tax-product_tag";b:0;s:32:"title-tax-product_shipping_class";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:35:"metadesc-tax-product_shipping_class";s:0:"";s:34:"metakey-tax-product_shipping_class";s:0:"";s:38:"hideeditbox-tax-product_shipping_class";b:0;s:34:"noindex-tax-product_shipping_class";b:0;s:27:"title-tax-resource-taxonomy";s:53:"%%term_title%% Archives %%page%% %%sep%% %%sitename%%";s:30:"metadesc-tax-resource-taxonomy";s:0:"";s:29:"metakey-tax-resource-taxonomy";s:0:"";s:33:"hideeditbox-tax-resource-taxonomy";b:0;s:29:"noindex-tax-resource-taxonomy";b:0;}', 'yes'),
@@ -446,8 +446,6 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1014, 'wpseo_rss', 'a:2:{s:9:"rssbefore";s:0:"";s:8:"rssafter";s:53:"The post %%POSTLINK%% appeared first on %%BLOGLINK%%.";}', 'yes'),
 (1015, 'wpseo_internallinks', 'a:20:{s:20:"breadcrumbs-404crumb";s:25:"Error 404: Page not found";s:23:"breadcrumbs-blog-remove";b:0;s:20:"breadcrumbs-boldlast";b:0;s:25:"breadcrumbs-archiveprefix";s:12:"Archives for";s:18:"breadcrumbs-enable";b:0;s:16:"breadcrumbs-home";s:4:"Home";s:18:"breadcrumbs-prefix";s:0:"";s:24:"breadcrumbs-searchprefix";s:16:"You searched for";s:15:"breadcrumbs-sep";s:7:"&raquo;";s:23:"post_types-post-maintax";i:0;s:26:"post_types-product-maintax";i:0;s:26:"post_types-project-maintax";i:0;s:27:"post_types-resource-maintax";i:0;s:36:"taxonomy-project_categories-ptparent";i:0;s:30:"taxonomy-project_tags-ptparent";i:0;s:31:"taxonomy-resource_tags-ptparent";i:0;s:29:"taxonomy-product_cat-ptparent";i:0;s:29:"taxonomy-product_tag-ptparent";i:0;s:40:"taxonomy-product_shipping_class-ptparent";i:0;s:35:"taxonomy-resource-taxonomy-ptparent";i:0;}', 'yes'),
 (1016, 'wpseo_xml', 'a:34:{s:22:"disable_author_sitemap";b:1;s:22:"disable_author_noposts";b:1;s:16:"enablexmlsitemap";b:1;s:16:"entries-per-page";i:1000;s:14:"excluded-posts";s:0:"";s:38:"user_role-administrator-not_in_sitemap";b:0;s:31:"user_role-editor-not_in_sitemap";b:0;s:31:"user_role-author-not_in_sitemap";b:0;s:36:"user_role-contributor-not_in_sitemap";b:0;s:35:"user_role-subscriber-not_in_sitemap";b:0;s:33:"user_role-customer-not_in_sitemap";b:0;s:37:"user_role-shop_manager-not_in_sitemap";b:0;s:30:"post_types-post-not_in_sitemap";b:0;s:30:"post_types-page-not_in_sitemap";b:0;s:36:"post_types-attachment-not_in_sitemap";b:1;s:33:"post_types-product-not_in_sitemap";b:0;s:33:"post_types-wysijap-not_in_sitemap";b:0;s:34:"post_types-sri-menu-not_in_sitemap";b:0;s:31:"post_types-video-not_in_sitemap";b:0;s:31:"post_types-quote-not_in_sitemap";b:0;s:32:"post_types-slider-not_in_sitemap";b:0;s:33:"post_types-project-not_in_sitemap";b:0;s:34:"post_types-resource-not_in_sitemap";b:0;s:30:"post_types-maps-not_in_sitemap";b:0;s:34:"taxonomies-category-not_in_sitemap";b:0;s:34:"taxonomies-post_tag-not_in_sitemap";b:0;s:37:"taxonomies-post_format-not_in_sitemap";b:0;s:44:"taxonomies-project_categories-not_in_sitemap";b:0;s:38:"taxonomies-project_tags-not_in_sitemap";b:0;s:39:"taxonomies-resource_tags-not_in_sitemap";b:0;s:37:"taxonomies-product_cat-not_in_sitemap";b:0;s:37:"taxonomies-product_tag-not_in_sitemap";b:0;s:48:"taxonomies-product_shipping_class-not_in_sitemap";b:0;s:43:"taxonomies-resource-taxonomy-not_in_sitemap";b:0;}', 'yes'),
-(1019, '_transient_timeout_wpseo-dashboard-totals', '1446732507', 'no'),
-(1020, '_transient_wpseo-dashboard-totals', 'a:4:{i:0;a:0:{}i:1;a:0:{}i:2;a:0:{}i:3;a:0:{}}', 'no'),
 (1022, 'jetpack_options', 'a:4:{s:7:"version";s:16:"3.7.2:1446644364";s:11:"old_version";s:16:"3.7.2:1446644364";s:28:"fallback_no_verify_ssl_certs";i:0;s:9:"time_diff";i:1;}', 'yes'),
 (1023, 'jetpack_activated', '1', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -464,13 +462,28 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1039, 'sharedaddy_disable_resources', '0', 'yes'),
 (1040, 'jetpack-twitter-cards-site-tag', '', 'yes'),
 (1041, 'addtoany_options', 'a:39:{s:8:"position";s:6:"bottom";s:30:"display_in_posts_on_front_page";s:2:"-1";s:33:"display_in_posts_on_archive_pages";s:2:"-1";s:19:"display_in_excerpts";s:2:"-1";s:16:"display_in_posts";s:2:"-1";s:16:"display_in_pages";s:2:"-1";s:15:"display_in_feed";s:2:"-1";s:10:"show_title";s:2:"-1";s:7:"onclick";s:2:"-1";s:9:"icon_size";s:2:"16";s:6:"button";s:4:"NONE";s:13:"button_custom";s:0:"";s:6:"header";s:0:"";s:23:"additional_js_variables";s:0:"";s:14:"additional_css";s:0:"";s:12:"custom_icons";s:2:"-1";s:16:"custom_icons_url";s:1:"/";s:17:"custom_icons_type";s:3:"png";s:10:"inline_css";s:1:"1";s:5:"cache";s:2:"-1";s:22:"display_in_cpt_product";s:2:"-1";s:22:"display_in_cpt_wysijap";s:2:"-1";s:23:"display_in_cpt_sri-menu";s:2:"-1";s:20:"display_in_cpt_video";s:2:"-1";s:20:"display_in_cpt_quote";s:2:"-1";s:21:"display_in_cpt_slider";s:2:"-1";s:22:"display_in_cpt_project";s:2:"-1";s:23:"display_in_cpt_resource";s:2:"-1";s:19:"display_in_cpt_maps";s:2:"-1";s:11:"button_text";s:5:"Share";s:24:"special_facebook_options";a:1:{s:10:"show_count";s:2:"-1";}s:23:"special_twitter_options";a:1:{s:10:"show_count";s:2:"-1";}s:15:"active_services";a:5:{i:0;s:8:"facebook";i:1;s:7:"twitter";i:2;s:11:"google_plus";i:3;s:9:"pinterest";i:4;s:5:"email";}s:29:"special_facebook_like_options";a:1:{s:4:"verb";s:4:"like";}s:29:"special_twitter_tweet_options";a:1:{s:10:"show_count";s:2:"-1";}s:30:"special_google_plusone_options";a:1:{s:10:"show_count";s:2:"-1";}s:33:"special_google_plus_share_options";a:1:{s:10:"show_count";s:2:"-1";}s:29:"special_pinterest_pin_options";a:1:{s:10:"show_count";s:2:"-1";}s:25:"special_pinterest_options";a:1:{s:10:"show_count";s:2:"-1";}}', 'yes'),
-(1046, '_site_transient_timeout_theme_roots', '1446647845', 'yes'),
-(1047, '_site_transient_theme_roots', 'a:1:{s:11:"srijanalaya";s:7:"/themes";}', 'yes'),
-(1049, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.3.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.3.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.3.1";s:7:"version";s:5:"4.3.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1446646049;s:15:"version_checked";s:5:"4.3.1";s:12:"translations";a:1:{i:0;a:7:{s:4:"type";s:4:"core";s:4:"slug";s:7:"default";s:8:"language";s:5:"de_DE";s:7:"version";s:5:"4.3.1";s:7:"updated";s:19:"2015-10-26 23:06:55";s:7:"package";s:64:"https://downloads.wordpress.org/translation/core/4.3.1/de_DE.zip";s:10:"autoupdate";b:1;}}}', 'yes'),
-(1050, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1446646054;s:7:"checked";a:1:{s:11:"srijanalaya";s:3:"1.0";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes'),
-(1051, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1446646052;s:8:"response";a:1:{s:14:"types/wpcf.php";O:8:"stdClass":6:{s:2:"id";s:5:"24557";s:4:"slug";s:5:"types";s:6:"plugin";s:14:"types/wpcf.php";s:11:"new_version";s:5:"1.8.8";s:3:"url";s:36:"https://wordpress.org/plugins/types/";s:7:"package";s:54:"https://downloads.wordpress.org/plugin/types.1.8.8.zip";}}s:12:"translations";a:0:{}s:9:"no_update";a:15:{s:25:"add-to-any/add-to-any.php";O:8:"stdClass":7:{s:2:"id";s:3:"429";s:4:"slug";s:10:"add-to-any";s:6:"plugin";s:25:"add-to-any/add-to-any.php";s:11:"new_version";s:5:"1.6.7";s:3:"url";s:41:"https://wordpress.org/plugins/add-to-any/";s:7:"package";s:59:"https://downloads.wordpress.org/plugin/add-to-any.1.6.7.zip";s:14:"upgrade_notice";s:290:"If you are using AddToAny as a &quot;must-use&quot; autoloaded plugin (in the mu-plugins directory), the old method of moving add-to-any.php into mu-plugins is no longer supported and will not work. See the plugin&#039;s last FAQ about using a proxy PHP loader file that autoloads AddToAny.";}s:39:"categories-images/categories-images.php";O:8:"stdClass":6:{s:2:"id";s:5:"32132";s:4:"slug";s:17:"categories-images";s:6:"plugin";s:39:"categories-images/categories-images.php";s:11:"new_version";s:5:"2.5.1";s:3:"url";s:48:"https://wordpress.org/plugins/categories-images/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/categories-images.2.5.1.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:3:"4.3";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/contact-form-7.4.3.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}s:19:"jetpack/jetpack.php";O:8:"stdClass":6:{s:2:"id";s:5:"20101";s:4:"slug";s:7:"jetpack";s:6:"plugin";s:19:"jetpack/jetpack.php";s:11:"new_version";s:5:"3.7.2";s:3:"url";s:38:"https://wordpress.org/plugins/jetpack/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/jetpack.3.7.2.zip";}s:28:"wysija-newsletters/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"27505";s:4:"slug";s:18:"wysija-newsletters";s:6:"plugin";s:28:"wysija-newsletters/index.php";s:11:"new_version";s:6:"2.6.19";s:3:"url";s:49:"https://wordpress.org/plugins/wysija-newsletters/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/wysija-newsletters.2.6.19.zip";}s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";O:8:"stdClass":6:{s:2:"id";s:4:"1057";s:4:"slug";s:24:"ozh-admin-drop-down-menu";s:6:"plugin";s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";s:11:"new_version";s:6:"3.6.10";s:3:"url";s:55:"https://wordpress.org/plugins/ozh-admin-drop-down-menu/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/ozh-admin-drop-down-menu.zip";}s:51:"parent-category-toggler/parent-category-toggler.php";O:8:"stdClass":6:{s:2:"id";s:4:"5568";s:4:"slug";s:23:"parent-category-toggler";s:6:"plugin";s:51:"parent-category-toggler/parent-category-toggler.php";s:11:"new_version";s:5:"1.3.2";s:3:"url";s:54:"https://wordpress.org/plugins/parent-category-toggler/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/parent-category-toggler.zip";}s:38:"post-duplicator/m4c-postduplicator.php";O:8:"stdClass":6:{s:2:"id";s:5:"31128";s:4:"slug";s:15:"post-duplicator";s:6:"plugin";s:38:"post-duplicator/m4c-postduplicator.php";s:11:"new_version";s:3:"2.8";s:3:"url";s:46:"https://wordpress.org/plugins/post-duplicator/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/post-duplicator.zip";}s:33:"posts-to-posts/posts-to-posts.php";O:8:"stdClass":6:{s:2:"id";s:5:"14657";s:4:"slug";s:14:"posts-to-posts";s:6:"plugin";s:33:"posts-to-posts/posts-to-posts.php";s:11:"new_version";s:5:"1.6.5";s:3:"url";s:45:"https://wordpress.org/plugins/posts-to-posts/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip";}s:27:"qtranslate-x/qtranslate.php";O:8:"stdClass":7:{s:2:"id";s:5:"56032";s:4:"slug";s:12:"qtranslate-x";s:6:"plugin";s:27:"qtranslate-x/qtranslate.php";s:11:"new_version";s:7:"3.4.6.4";s:3:"url";s:43:"https://wordpress.org/plugins/qtranslate-x/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/qtranslate-x.3.4.6.4.zip";s:14:"upgrade_notice";s:66:"Fix: A fix for Internal Server Error 500 under some circumstances.";}s:53:"simple-custom-post-order/simple-custom-post-order.php";O:8:"stdClass":6:{s:2:"id";s:5:"42644";s:4:"slug";s:24:"simple-custom-post-order";s:6:"plugin";s:53:"simple-custom-post-order/simple-custom-post-order.php";s:11:"new_version";s:3:"2.3";s:3:"url";s:55:"https://wordpress.org/plugins/simple-custom-post-order/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/simple-custom-post-order.zip";}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":7:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.4.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip";s:14:"upgrade_notice";s:140:"Thanks for using W3 Total Cache! This release includes important security updates designed to contribute to a secure WordPress installation.";}s:27:"woocommerce/woocommerce.php";O:8:"stdClass":6:{s:2:"id";s:5:"25331";s:4:"slug";s:11:"woocommerce";s:6:"plugin";s:27:"woocommerce/woocommerce.php";s:11:"new_version";s:5:"2.4.8";s:3:"url";s:42:"https://wordpress.org/plugins/woocommerce/";s:7:"package";s:60:"https://downloads.wordpress.org/plugin/woocommerce.2.4.8.zip";}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":6:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"2.3.5";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip";}}}', 'yes'),
-(1053, '_site_transient_timeout_security_report_performed_recently', '1446647115', 'yes'),
-(1054, '_site_transient_security_report_performed_recently', '1', 'yes');
+(1058, '_transient_timeout_geoip_127.0.0.1', '1447262521', 'no'),
+(1059, '_transient_geoip_127.0.0.1', '', 'no'),
+(1060, '_transient_timeout_external_ip_address_127.0.0.1', '1447262529', 'no'),
+(1061, '_transient_external_ip_address_127.0.0.1', '49.244.39.182', 'no'),
+(1062, '_transient_timeout_geoip_49.244.39.182', '1447262531', 'no'),
+(1063, '_transient_geoip_49.244.39.182', 'NP', 'no'),
+(1064, 'installation_step', '16', 'yes'),
+(1065, 'wysija', 'YToxNzp7czo5OiJmcm9tX25hbWUiO3M6NToiYWRtaW4iO3M6MTI6InJlcGx5dG9fbmFtZSI7czo1OiJhZG1pbiI7czoxNToiZW1haWxzX25vdGlmaWVkIjtzOjE5OiJpbmZvQHNhZWRpd29ya3MuY29tIjtzOjEwOiJmcm9tX2VtYWlsIjtzOjE0OiJpbmZvQGxvY2FsaG9zdCI7czoxMzoicmVwbHl0b19lbWFpbCI7czoxNDoiaW5mb0Bsb2NhbGhvc3QiO3M6MTU6ImRlZmF1bHRfbGlzdF9pZCI7aToxO3M6MTc6InRvdGFsX3N1YnNjcmliZXJzIjtzOjE6IjEiO3M6MTY6ImltcG9ydHdwX2xpc3RfaWQiO2k6MjtzOjE4OiJjb25maXJtX2VtYWlsX2xpbmsiO2k6MjQ3O3M6MTI6InVwbG9hZGZvbGRlciI7czo0NzoiL3Zhci93d3cvc3JpamFuYWxheWEvd3AtY29udGVudC91cGxvYWRzL3d5c2lqYS8iO3M6OToidXBsb2FkdXJsIjtzOjU1OiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvdXBsb2Fkcy93eXNpamEvIjtzOjE2OiJjb25maXJtX2VtYWlsX2lkIjtpOjI7czo5OiJpbnN0YWxsZWQiO2I6MTtzOjIwOiJtYW5hZ2Vfc3Vic2NyaXB0aW9ucyI7YjoxO3M6MTQ6Imluc3RhbGxlZF90aW1lIjtpOjE0NDY2NTc3NDc7czoxNzoid3lzaWphX2RiX3ZlcnNpb24iO3M6NjoiMi42LjE5IjtzOjExOiJka2ltX2RvbWFpbiI7czo5OiJsb2NhbGhvc3QiO30=', 'yes'),
+(1066, 'wysija_reinstall', '0', 'no'),
+(1067, 'wysija_schedules', 'a:5:{s:5:"queue";a:3:{s:13:"next_schedule";i:1446704252;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:6:"bounce";a:3:{s:13:"next_schedule";i:1446744209;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:5:"daily";a:3:{s:13:"next_schedule";i:1446744209;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:6:"weekly";a:3:{s:13:"next_schedule";i:1447262609;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:7:"monthly";a:3:{s:13:"next_schedule";i:1449077009;s:13:"prev_schedule";i:0;s:7:"running";b:0;}}', 'yes'),
+(1077, 'wysija_check_pn', '1446700652.3379', 'yes'),
+(1078, 'wysija_last_scheduled_check', '1446700652', 'yes'),
+(1079, 'wysija_last_php_cron_call', '1446700652', 'yes'),
+(1102, '_site_transient_timeout_theme_roots', '1446702463', 'yes'),
+(1103, '_site_transient_theme_roots', 'a:1:{s:11:"srijanalaya";s:7:"/themes";}', 'yes'),
+(1105, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.3.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.3.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.3.1";s:7:"version";s:5:"4.3.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1446700669;s:15:"version_checked";s:5:"4.3.1";s:12:"translations";a:1:{i:0;a:7:{s:4:"type";s:4:"core";s:4:"slug";s:7:"default";s:8:"language";s:5:"de_DE";s:7:"version";s:5:"4.3.1";s:7:"updated";s:19:"2015-10-26 23:06:55";s:7:"package";s:64:"https://downloads.wordpress.org/translation/core/4.3.1/de_DE.zip";s:10:"autoupdate";b:1;}}}', 'yes'),
+(1106, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1446700674;s:7:"checked";a:1:{s:11:"srijanalaya";s:3:"1.0";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes'),
+(1107, '_site_transient_update_plugins', 'O:8:"stdClass":5:{s:12:"last_checked";i:1446701432;s:7:"checked";a:16:{s:25:"add-to-any/add-to-any.php";s:5:"1.6.7";s:39:"categories-images/categories-images.php";s:5:"2.5.1";s:36:"contact-form-7/wp-contact-form-7.php";s:3:"4.3";s:9:"hello.php";s:3:"1.6";s:19:"jetpack/jetpack.php";s:5:"3.7.2";s:28:"wysija-newsletters/index.php";s:6:"2.6.19";s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";s:6:"3.6.10";s:51:"parent-category-toggler/parent-category-toggler.php";s:5:"1.3.2";s:38:"post-duplicator/m4c-postduplicator.php";s:3:"2.8";s:33:"posts-to-posts/posts-to-posts.php";s:5:"1.6.5";s:27:"qtranslate-x/qtranslate.php";s:7:"3.4.6.4";s:53:"simple-custom-post-order/simple-custom-post-order.php";s:3:"2.3";s:14:"types/wpcf.php";s:7:"1.8.6.2";s:33:"w3-total-cache/w3-total-cache.php";s:7:"0.9.4.1";s:27:"woocommerce/woocommerce.php";s:5:"2.4.8";s:24:"wordpress-seo/wp-seo.php";s:5:"2.3.5";}s:8:"response";a:2:{s:19:"jetpack/jetpack.php";O:8:"stdClass":6:{s:2:"id";s:5:"20101";s:4:"slug";s:7:"jetpack";s:6:"plugin";s:19:"jetpack/jetpack.php";s:11:"new_version";s:5:"3.8.0";s:3:"url";s:38:"https://wordpress.org/plugins/jetpack/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/jetpack.3.8.0.zip";}s:14:"types/wpcf.php";O:8:"stdClass":6:{s:2:"id";s:5:"24557";s:4:"slug";s:5:"types";s:6:"plugin";s:14:"types/wpcf.php";s:11:"new_version";s:5:"1.8.8";s:3:"url";s:36:"https://wordpress.org/plugins/types/";s:7:"package";s:54:"https://downloads.wordpress.org/plugin/types.1.8.8.zip";}}s:12:"translations";a:0:{}s:9:"no_update";a:14:{s:25:"add-to-any/add-to-any.php";O:8:"stdClass":7:{s:2:"id";s:3:"429";s:4:"slug";s:10:"add-to-any";s:6:"plugin";s:25:"add-to-any/add-to-any.php";s:11:"new_version";s:5:"1.6.7";s:3:"url";s:41:"https://wordpress.org/plugins/add-to-any/";s:7:"package";s:59:"https://downloads.wordpress.org/plugin/add-to-any.1.6.7.zip";s:14:"upgrade_notice";s:290:"If you are using AddToAny as a &quot;must-use&quot; autoloaded plugin (in the mu-plugins directory), the old method of moving add-to-any.php into mu-plugins is no longer supported and will not work. See the plugin&#039;s last FAQ about using a proxy PHP loader file that autoloads AddToAny.";}s:39:"categories-images/categories-images.php";O:8:"stdClass":6:{s:2:"id";s:5:"32132";s:4:"slug";s:17:"categories-images";s:6:"plugin";s:39:"categories-images/categories-images.php";s:11:"new_version";s:5:"2.5.1";s:3:"url";s:48:"https://wordpress.org/plugins/categories-images/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/categories-images.2.5.1.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:3:"4.3";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/contact-form-7.4.3.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}s:28:"wysija-newsletters/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"27505";s:4:"slug";s:18:"wysija-newsletters";s:6:"plugin";s:28:"wysija-newsletters/index.php";s:11:"new_version";s:6:"2.6.19";s:3:"url";s:49:"https://wordpress.org/plugins/wysija-newsletters/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/wysija-newsletters.2.6.19.zip";}s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";O:8:"stdClass":6:{s:2:"id";s:4:"1057";s:4:"slug";s:24:"ozh-admin-drop-down-menu";s:6:"plugin";s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";s:11:"new_version";s:6:"3.6.10";s:3:"url";s:55:"https://wordpress.org/plugins/ozh-admin-drop-down-menu/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/ozh-admin-drop-down-menu.zip";}s:51:"parent-category-toggler/parent-category-toggler.php";O:8:"stdClass":6:{s:2:"id";s:4:"5568";s:4:"slug";s:23:"parent-category-toggler";s:6:"plugin";s:51:"parent-category-toggler/parent-category-toggler.php";s:11:"new_version";s:5:"1.3.2";s:3:"url";s:54:"https://wordpress.org/plugins/parent-category-toggler/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/parent-category-toggler.zip";}s:38:"post-duplicator/m4c-postduplicator.php";O:8:"stdClass":6:{s:2:"id";s:5:"31128";s:4:"slug";s:15:"post-duplicator";s:6:"plugin";s:38:"post-duplicator/m4c-postduplicator.php";s:11:"new_version";s:3:"2.8";s:3:"url";s:46:"https://wordpress.org/plugins/post-duplicator/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/post-duplicator.zip";}s:33:"posts-to-posts/posts-to-posts.php";O:8:"stdClass":6:{s:2:"id";s:5:"14657";s:4:"slug";s:14:"posts-to-posts";s:6:"plugin";s:33:"posts-to-posts/posts-to-posts.php";s:11:"new_version";s:5:"1.6.5";s:3:"url";s:45:"https://wordpress.org/plugins/posts-to-posts/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip";}s:27:"qtranslate-x/qtranslate.php";O:8:"stdClass":7:{s:2:"id";s:5:"56032";s:4:"slug";s:12:"qtranslate-x";s:6:"plugin";s:27:"qtranslate-x/qtranslate.php";s:11:"new_version";s:7:"3.4.6.4";s:3:"url";s:43:"https://wordpress.org/plugins/qtranslate-x/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/qtranslate-x.3.4.6.4.zip";s:14:"upgrade_notice";s:66:"Fix: A fix for Internal Server Error 500 under some circumstances.";}s:53:"simple-custom-post-order/simple-custom-post-order.php";O:8:"stdClass":6:{s:2:"id";s:5:"42644";s:4:"slug";s:24:"simple-custom-post-order";s:6:"plugin";s:53:"simple-custom-post-order/simple-custom-post-order.php";s:11:"new_version";s:3:"2.3";s:3:"url";s:55:"https://wordpress.org/plugins/simple-custom-post-order/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/simple-custom-post-order.zip";}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":7:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.4.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip";s:14:"upgrade_notice";s:140:"Thanks for using W3 Total Cache! This release includes important security updates designed to contribute to a secure WordPress installation.";}s:27:"woocommerce/woocommerce.php";O:8:"stdClass":6:{s:2:"id";s:5:"25331";s:4:"slug";s:11:"woocommerce";s:6:"plugin";s:27:"woocommerce/woocommerce.php";s:11:"new_version";s:5:"2.4.8";s:3:"url";s:42:"https://wordpress.org/plugins/woocommerce/";s:7:"package";s:60:"https://downloads.wordpress.org/plugin/woocommerce.2.4.8.zip";}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":6:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"2.3.5";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip";}}}', 'yes'),
+(1108, '_site_transient_timeout_security_report_performed_recently', '1446702290', 'yes'),
+(1109, '_site_transient_security_report_performed_recently', '1', 'yes'),
+(1110, '_transient_timeout_wpseo-dashboard-totals', '1446787849', 'no'),
+(1111, '_transient_wpseo-dashboard-totals', 'a:3:{i:0;a:0:{}i:1;a:0:{}i:2;a:0:{}}', 'no');
 
 -- --------------------------------------------------------
 
@@ -479,12 +492,12 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 --
 
 DROP TABLE IF EXISTS `wp_p2p`;
-CREATE TABLE IF NOT EXISTS `wp_p2p` (
-  `p2p_id` bigint(20) unsigned NOT NULL,
-  `p2p_from` bigint(20) unsigned NOT NULL,
-  `p2p_to` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_p2p` (
+  `p2p_id` bigint(20) UNSIGNED NOT NULL,
+  `p2p_from` bigint(20) UNSIGNED NOT NULL,
+  `p2p_to` bigint(20) UNSIGNED NOT NULL,
   `p2p_type` varchar(44) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_p2p`
@@ -503,9 +516,9 @@ INSERT INTO `wp_p2p` (`p2p_id`, `p2p_from`, `p2p_to`, `p2p_type`) VALUES
 --
 
 DROP TABLE IF EXISTS `wp_p2pmeta`;
-CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `p2p_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_p2pmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `p2p_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -517,12 +530,12 @@ CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_postmeta`;
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=903 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -816,14 +829,14 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (553, 109, '_edit_last', '1'),
 (554, 109, '_edit_lock', '1444899398:1'),
 (555, 110, '_edit_last', '1'),
-(556, 110, '_edit_lock', '1446621634:1'),
+(556, 110, '_edit_lock', '1446658005:1'),
 (557, 110, 'wpcf-date', '1443657600'),
 (558, 111, '_edit_last', '1'),
-(559, 111, '_edit_lock', '1446621621:1'),
+(559, 111, '_edit_lock', '1446658017:1'),
 (561, 112, '_edit_last', '1'),
-(562, 112, '_edit_lock', '1446621605:1'),
+(562, 112, '_edit_lock', '1446657993:1'),
 (564, 113, '_edit_last', '1'),
-(565, 113, '_edit_lock', '1446621594:1'),
+(565, 113, '_edit_lock', '1446657979:1'),
 (567, 113, 'wpcf-date', '1439337600'),
 (569, 112, 'wpcf-date', '1444089600'),
 (570, 111, 'wpcf-date', '1443657600'),
@@ -854,7 +867,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (606, 151, '_wp_trash_meta_status', 'publish'),
 (607, 151, '_wp_trash_meta_time', '1444983206'),
 (614, 159, '_edit_last', '1'),
-(615, 159, '_edit_lock', '1446621581:1'),
+(615, 159, '_edit_lock', '1446657939:1'),
 (616, 159, 'wpcf-date', '1439337600'),
 (617, 159, 'wpcf-dates', '2015/07/01'),
 (621, 160, '_edit_last', '1'),
@@ -986,22 +999,22 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (819, 221, 'wpcf-short-description', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.'),
 (820, 221, 'wpcf-image', 'http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_resource.png'),
 (821, 224, '_edit_last', '1'),
-(822, 224, '_edit_lock', '1446621571:1'),
+(822, 224, '_edit_lock', '1446657914:1'),
 (823, 224, 'wpcf-date', '1439337600'),
 (824, 224, 'wpcf-dates', '2015/07/01'),
 (825, 224, '_thumbnail_id', '192'),
 (830, 225, '_edit_last', '1'),
-(831, 225, '_edit_lock', '1446621559:1'),
+(831, 225, '_edit_lock', '1446657899:1'),
 (832, 225, 'wpcf-date', '1439337600'),
 (833, 225, 'wpcf-dates', '2015/07/01'),
 (834, 225, '_thumbnail_id', '192'),
 (839, 226, '_edit_last', '1'),
-(840, 226, '_edit_lock', '1446622507:1'),
+(840, 226, '_edit_lock', '1446657880:1'),
 (841, 226, 'wpcf-date', '1439337600'),
 (842, 226, 'wpcf-dates', '2015/07/01'),
 (843, 226, '_thumbnail_id', '192'),
 (848, 227, '_edit_last', '1'),
-(849, 227, '_edit_lock', '1446643587:1'),
+(849, 227, '_edit_lock', '1446657850:1'),
 (850, 227, 'wpcf-date', '1439337600'),
 (851, 227, 'wpcf-dates', '2015/07/01'),
 (852, 227, '_thumbnail_id', '192'),
@@ -1039,7 +1052,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (899, 178, 'wpcf-short-description', 'sdfsdfsdf'),
 (900, 178, 'wpcf-lat', '27.71617'),
 (901, 178, 'wpcf-longi', '85.4052'),
-(902, 178, 'wpcf-url', 'sfsdfdssfd');
+(902, 178, 'wpcf-url', 'sfsdfdssfd'),
+(903, 227, 'wpb_post_views_count', '0');
 
 -- --------------------------------------------------------
 
@@ -1048,9 +1062,9 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 --
 
 DROP TABLE IF EXISTS `wp_posts`;
-CREATE TABLE IF NOT EXISTS `wp_posts` (
-  `ID` bigint(20) unsigned NOT NULL,
-  `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1066,13 +1080,13 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content_filtered` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `post_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `guid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `menu_order` int(11) NOT NULL DEFAULT '0',
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -1150,17 +1164,17 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (107, 1, '2015-10-15 08:43:15', '2015-10-15 08:43:15', 'sdafdsfsdfsadfdssdafsfdasdfsddfdas sdfsdfd fdf ddsf  sdfsdf dfdsdssd fdsf sfa ds sdf dsf dsfads f sdfsdf dsf fdsfdsf ', 'sdfawd', '', 'inherit', 'closed', 'closed', '', '94-revision-v1', '', '', '2015-10-15 08:43:15', '2015-10-15 08:43:15', '', 94, 'http://localhost/srijanalaya/94-revision-v1/', 0, 'revision', '', 0),
 (108, 1, '2015-10-15 08:43:47', '2015-10-15 08:43:47', 'sdafdsfsdfsadfdssdafsfdasdfsddfdas sdfsdfd fdf ddsf  sdfsdf dfdsdssd fdsf sfa ds sdf dsf dsfads f sdfsdf dsf fdsfdsf  sdfsdf', 'sdfawd', '', 'inherit', 'closed', 'closed', '', '94-revision-v1', '', '', '2015-10-15 08:43:47', '2015-10-15 08:43:47', '', 94, 'http://localhost/srijanalaya/94-revision-v1/', 0, 'revision', '', 0),
 (109, 1, '2015-10-15 08:58:59', '2015-10-15 08:58:59', '', 'subscriber', '', 'publish', 'closed', 'closed', '', 'subscriber', '', '', '2015-10-15 08:58:59', '2015-10-15 08:58:59', '', 0, 'http://localhost/srijanalaya/?post_type=projectsub&#038;p=109', 0, 'projectsub', '', 0),
-(110, 1, '2015-10-15 10:37:15', '2015-10-15 10:37:15', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'publish', 'closed', 'closed', '', 'project', '', '', '2015-11-04 07:20:33', '2015-11-04 07:20:33', '', 0, 'http://localhost/srijanalaya/?post_type=project&#038;p=110', 9, 'project', '', 0),
-(111, 1, '2015-10-15 10:37:23', '2015-10-15 10:37:23', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'publish', 'closed', 'closed', '', 'project-2', '', '', '2015-11-04 07:20:20', '2015-11-04 07:20:20', '', 0, 'http://localhost/srijanalaya/project/project-2/', 8, 'project', '', 0),
-(112, 1, '2015-10-15 10:37:25', '2015-10-15 10:37:25', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 3[:ne]project00[:]', '', 'publish', 'closed', 'closed', '', 'project-3', '', '', '2015-11-04 07:20:04', '2015-11-04 07:20:04', '', 0, 'http://localhost/srijanalaya/project/project-3/', 7, 'project', '', 0),
-(113, 1, '2015-10-15 10:37:27', '2015-10-15 10:37:27', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'publish', 'closed', 'closed', '', 'project-4', '', '', '2015-11-04 07:19:54', '2015-11-04 07:19:54', '', 0, 'http://localhost/srijanalaya/project/project-4/', 6, 'project', '', 0),
+(110, 1, '2015-10-15 10:37:15', '2015-10-15 04:52:15', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'publish', 'closed', 'closed', '', 'project', '', '', '2015-11-04 23:11:45', '2015-11-04 17:26:45', '', 0, 'http://localhost/srijanalaya/?post_type=project&#038;p=110', 9, 'project', '', 0),
+(111, 1, '2015-10-15 10:37:23', '2015-10-15 04:52:23', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'publish', 'closed', 'closed', '', 'project-2', '', '', '2015-11-04 23:11:56', '2015-11-04 17:26:56', '', 0, 'http://localhost/srijanalaya/project/project-2/', 8, 'project', '', 0),
+(112, 1, '2015-10-15 10:37:25', '2015-10-15 04:52:25', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 3[:ne]project00[:]', '', 'publish', 'closed', 'closed', '', 'project-3', '', '', '2015-11-04 23:11:33', '2015-11-04 17:26:33', '', 0, 'http://localhost/srijanalaya/project/project-3/', 7, 'project', '', 0),
+(113, 1, '2015-10-15 10:37:27', '2015-10-15 04:52:27', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'publish', 'closed', 'closed', '', 'project-4', '', '', '2015-11-04 23:11:18', '2015-11-04 17:26:18', '', 0, 'http://localhost/srijanalaya/project/project-4/', 6, 'project', '', 0),
 (118, 1, '2015-10-16 06:46:38', '2015-10-16 06:46:38', 'sdfadsf', 'dsffds', '', 'trash', 'closed', 'closed', '', 'dsffds', '', '', '2015-10-16 06:46:56', '2015-10-16 06:46:56', '', 0, 'http://localhost/srijanalaya/?post_type=resouce&#038;p=118', 0, 'resouces', '', 0),
 (119, 1, '2015-10-16 06:46:38', '2015-10-16 06:46:38', 'sdfadsf', 'dsffds', '', 'inherit', 'closed', 'closed', '', '118-revision-v1', '', '', '2015-10-16 06:46:38', '2015-10-16 06:46:38', '', 118, 'http://localhost/srijanalaya/118-revision-v1/', 0, 'revision', '', 0),
 (126, 1, '2015-10-16 07:00:58', '2015-10-16 07:00:58', '', 'projectacm', '', 'publish', 'closed', 'closed', '', 'acf_projectacm', '', '', '2015-10-16 07:02:06', '2015-10-16 07:02:06', '', 0, 'http://localhost/srijanalaya/?post_type=acf&#038;p=126', 0, 'acf', '', 0),
 (149, 1, '2015-10-16 07:43:21', '2015-10-16 07:43:21', '', 'resource', '', 'publish', 'closed', 'closed', '', 'resource', '', '', '2015-10-16 07:48:19', '2015-10-16 07:48:19', '', 0, 'http://localhost/srijanalaya/wp-types-group/resource/', 0, 'wp-types-group', '', 0),
 (151, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'trash', 'closed', 'closed', '', 'hello', '', '', '2015-10-16 08:13:26', '2015-10-16 08:13:26', '', 0, 'http://localhost/srijanalaya/?post_type=resource&#038;p=151', 0, 'resource', '', 0),
 (152, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'inherit', 'closed', 'closed', '', '151-revision-v1', '', '', '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 151, 'http://localhost/srijanalaya/151-revision-v1/', 0, 'revision', '', 0),
-(159, 1, '2015-10-16 08:41:00', '2015-10-16 08:41:00', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'publish', 'closed', 'closed', '', 'project-4-2', '', '', '2015-11-04 07:19:41', '2015-11-04 07:19:41', '', 0, 'http://localhost/srijanalaya/project/project-4-2/', 5, 'project', '', 0),
+(159, 1, '2015-10-16 08:41:00', '2015-10-16 02:56:00', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'publish', 'closed', 'closed', '', 'project-4-2', '', '', '2015-11-04 23:10:38', '2015-11-04 17:25:38', '', 0, 'http://localhost/srijanalaya/project/project-4-2/', 5, 'project', '', 0),
 (160, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'publish', 'closed', 'closed', '', 'events', '', '', '2015-11-04 17:02:23', '2015-11-04 11:17:23', '', 0, 'http://localhost/srijanalaya/?page_id=160', 7, 'page', '', 0),
 (161, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'inherit', 'closed', 'closed', '', '160-revision-v1', '', '', '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 160, 'http://localhost/srijanalaya/160-revision-v1/', 0, 'revision', '', 0),
 (162, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 'Resource', '', 'publish', 'closed', 'closed', '', 'resourcess', '', '', '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 0, 'http://localhost/srijanalaya/?page_id=162', 5, 'page', '', 0),
@@ -1218,10 +1232,10 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (221, 1, '2015-11-01 04:54:25', '2015-11-01 04:54:25', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:]', '[:en]Resource[:] 7', '', 'publish', 'closed', 'closed', '', 'nepali-resource-2-4-2-2', '', '', '2015-11-01 04:54:32', '2015-11-01 04:54:32', '', 0, 'http://localhost/srijanalaya/?resource=nepali-resource-2-4-2-2', 1, 'resource', '', 0),
 (222, 1, '2015-11-01 04:54:32', '2015-11-01 04:54:32', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:]', '[:en]Resource[:] 7', '', 'inherit', 'closed', 'closed', '', '221-revision-v1', '', '', '2015-11-01 04:54:32', '2015-11-01 04:54:32', '', 221, 'http://localhost/srijanalaya/?p=222', 0, 'revision', '', 0),
 (223, 1, '2015-11-01 04:54:37', '2015-11-01 04:54:37', '[:en]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.[:]', '[:en]Resource[:] 6', '', 'inherit', 'closed', 'closed', '', '220-revision-v1', '', '', '2015-11-01 04:54:37', '2015-11-01 04:54:37', '', 220, 'http://localhost/srijanalaya/?p=223', 0, 'revision', '', 0),
-(224, 1, '2015-11-01 07:39:30', '2015-11-01 07:39:30', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project4', '', 'publish', 'closed', 'closed', '', 'project-4-2-2', '', '', '2015-11-04 07:19:30', '2015-11-04 07:19:30', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2', 4, 'project', '', 0),
-(225, 1, '2015-11-01 07:39:35', '2015-11-01 07:39:35', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project3', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2', '', '', '2015-11-04 07:19:18', '2015-11-04 07:19:18', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2', 3, 'project', '', 0),
-(226, 1, '2015-11-01 07:39:37', '2015-11-01 07:39:37', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project2', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2-2', '', '', '2015-11-04 07:36:49', '2015-11-04 07:36:49', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2-2', 2, 'project', '', 0),
-(227, 1, '2015-11-01 07:39:39', '2015-11-01 07:39:39', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project1', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2-2-2', '', '', '2015-11-04 07:36:21', '2015-11-04 07:36:21', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2-2-2', 1, 'project', '', 0),
+(224, 1, '2015-11-01 07:39:30', '2015-11-01 01:54:30', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project4', '', 'publish', 'closed', 'closed', '', 'project-4-2-2', '', '', '2015-11-04 23:10:14', '2015-11-04 17:25:14', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2', 4, 'project', '', 0),
+(225, 1, '2015-11-01 07:39:35', '2015-11-01 01:54:35', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project3', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2', '', '', '2015-11-04 23:09:58', '2015-11-04 17:24:58', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2', 3, 'project', '', 0),
+(226, 1, '2015-11-01 07:39:37', '2015-11-01 01:54:37', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project2', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2-2', '', '', '2015-11-04 23:09:40', '2015-11-04 17:24:40', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2-2', 2, 'project', '', 0),
+(227, 1, '2015-11-01 07:39:39', '2015-11-01 01:54:39', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', 'project1', '', 'publish', 'closed', 'closed', '', 'project-4-2-2-2-2-2', '', '', '2015-11-04 23:09:10', '2015-11-04 17:24:10', '', 0, 'http://localhost/srijanalaya/?project=project-4-2-2-2-2-2', 1, 'project', '', 0),
 (228, 1, '2015-11-01 07:40:13', '2015-11-01 07:40:13', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1 Copy[:ne]projectX Copy[:]', '', 'inherit', 'closed', 'closed', '', '224-revision-v1', '', '', '2015-11-01 07:40:13', '2015-11-01 07:40:13', '', 224, 'http://localhost/srijanalaya/?p=228', 0, 'revision', '', 0),
 (229, 1, '2015-11-01 07:42:22', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'closed', 'closed', '', '', '', '', '2015-11-01 07:42:22', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?page_id=229', 0, 'page', '', 0),
 (230, 1, '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', '[:en]Map[:]', '', 'publish', 'closed', 'closed', '', 'map-2', '', '', '2015-11-01 07:42:49', '2015-11-01 07:42:49', '', 0, 'http://localhost/srijanalaya/?page_id=230', 4, 'page', '', 0),
@@ -1239,7 +1253,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (243, 1, '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 'Resource', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-04 17:01:30', '2015-11-04 11:16:30', '', 162, 'http://localhost/srijanalaya/?p=243', 0, 'revision', '', 0),
 (244, 1, '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', '[:en]News[:]', '', 'publish', 'closed', 'closed', '', 'news', '', '', '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', 0, 'http://localhost/srijanalaya/?page_id=244', 2, 'page', '', 0),
 (245, 1, '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', '[:en]News[:]', '', 'inherit', 'closed', 'closed', '', '244-revision-v1', '', '', '2015-11-04 17:03:07', '2015-11-04 11:18:07', '', 244, 'http://localhost/srijanalaya/?p=245', 0, 'revision', '', 0),
-(246, 1, '2015-11-04 18:53:56', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-11-04 18:53:56', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?p=246', 0, 'post', '', 0);
+(246, 1, '2015-11-04 18:53:56', '0000-00-00 00:00:00', '', 'Auto Draft', '', 'auto-draft', 'open', 'open', '', '', '', '', '2015-11-04 18:53:56', '0000-00-00 00:00:00', '', 0, 'http://localhost/srijanalaya/?p=246', 0, 'post', '', 0),
+(247, 1, '2015-11-04 23:07:27', '2015-11-04 17:22:27', '[wysija_page]', 'Subscription confirmation', '', 'publish', 'closed', 'closed', '', 'subscriptions', '', '', '2015-11-04 23:07:27', '2015-11-04 17:22:27', '', 0, 'http://localhost/srijanalaya/?wysijap=subscriptions', 0, 'wysijap', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1248,13 +1263,13 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 --
 
 DROP TABLE IF EXISTS `wp_terms`;
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `term_group` bigint(10) NOT NULL DEFAULT '0',
   `term_order` int(4) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_terms`
@@ -1271,15 +1286,15 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 (10, 'catagory2', 'catagory2', 0, 0),
 (11, 'tag1', 'tag1', 0, 0),
 (12, 'tag2', 'tag2', 0, 0),
-(13, 'fourth', 'fourth', 0, 0),
-(14, 'fifth', 'fifth', 0, 0),
-(15, 'first', 'first', 0, 0),
-(16, 'second', 'second', 0, 0),
-(17, 'third', 'third', 0, 0),
 (18, 'simple', 'simple', 0, 0),
 (19, 'grouped', 'grouped', 0, 0),
 (20, 'variable', 'variable', 0, 0),
-(21, 'external', 'external', 0, 0);
+(21, 'external', 'external', 0, 0),
+(22, 'pahilo', 'pahilo', 0, 0),
+(23, 'dosro', 'dosro', 0, 0),
+(24, 'tesro', 'tesro', 0, 0),
+(25, 'pachau', 'pachau', 0, 0),
+(26, 'chautho', 'chautho', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1288,9 +1303,9 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 --
 
 DROP TABLE IF EXISTS `wp_term_relationships`;
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
-  `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_term_relationships` (
+  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `term_order` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1313,22 +1328,20 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (36, 4, 0),
 (40, 4, 0),
 (41, 4, 0),
-(110, 16, 0),
-(110, 17, 0),
-(111, 13, 0),
-(111, 14, 0),
-(111, 15, 0),
-(111, 17, 0),
-(112, 13, 0),
-(112, 14, 0),
-(112, 15, 0),
-(112, 17, 0),
-(113, 15, 0),
-(113, 17, 0),
+(110, 22, 0),
+(110, 25, 0),
+(111, 23, 0),
+(111, 24, 0),
+(112, 25, 0),
+(113, 22, 0),
+(113, 24, 0),
+(113, 26, 0),
 (151, 9, 0),
 (151, 10, 0),
-(159, 14, 0),
-(159, 16, 0),
+(159, 22, 0),
+(159, 23, 0),
+(159, 24, 0),
+(159, 25, 0),
 (183, 8, 0),
 (183, 10, 0),
 (183, 11, 0),
@@ -1357,14 +1370,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (221, 10, 0),
 (221, 11, 0),
 (221, 12, 0),
-(224, 14, 0),
-(224, 15, 0),
-(225, 13, 0),
-(225, 14, 0),
-(226, 15, 0),
-(226, 16, 0),
-(227, 15, 0),
-(227, 16, 0);
+(224, 23, 0),
+(224, 24, 0),
+(225, 22, 0),
+(225, 25, 0),
+(226, 23, 0),
+(226, 24, 0),
+(227, 22, 0),
+(227, 23, 0);
 
 -- --------------------------------------------------------
 
@@ -1373,14 +1386,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 --
 
 DROP TABLE IF EXISTS `wp_term_taxonomy`;
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) unsigned NOT NULL,
-  `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
+  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_term_taxonomy`
@@ -1397,15 +1410,15 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (10, 10, 'resource-taxonomy', '', 8, 7),
 (11, 11, 'resource_tags', '', 0, 7),
 (12, 12, 'resource_tags', '', 0, 7),
-(13, 13, 'project_tags', '', 0, 3),
-(14, 14, 'project_tags', '', 0, 5),
-(15, 15, 'project_tags', '', 0, 6),
-(16, 16, 'project_tags', '', 0, 4),
-(17, 17, 'project_tags', '', 0, 4),
 (18, 18, 'product_type', '', 0, 0),
 (19, 19, 'product_type', '', 0, 0),
 (20, 20, 'product_type', '', 0, 0),
-(21, 21, 'product_type', '', 0, 0);
+(21, 21, 'product_type', '', 0, 0),
+(22, 22, 'project_tags', '', 0, 5),
+(23, 23, 'project_tags', '', 0, 5),
+(24, 24, 'project_tags', '', 0, 5),
+(25, 25, 'project_tags', '', 0, 4),
+(26, 26, 'project_tags', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1414,12 +1427,12 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 --
 
 DROP TABLE IF EXISTS `wp_usermeta`;
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
-  `umeta_id` bigint(20) unsigned NOT NULL,
-  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -1438,8 +1451,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (10, 1, 'wp_capabilities', 'a:13:{s:13:"administrator";b:1;s:26:"wpcf_custom_post_type_view";b:1;s:26:"wpcf_custom_post_type_edit";b:1;s:33:"wpcf_custom_post_type_edit_others";b:1;s:25:"wpcf_custom_taxonomy_view";b:1;s:25:"wpcf_custom_taxonomy_edit";b:1;s:32:"wpcf_custom_taxonomy_edit_others";b:1;s:22:"wpcf_custom_field_view";b:1;s:22:"wpcf_custom_field_edit";b:1;s:29:"wpcf_custom_field_edit_others";b:1;s:25:"wpcf_user_meta_field_view";b:1;s:25:"wpcf_user_meta_field_edit";b:1;s:32:"wpcf_user_meta_field_edit_others";b:1;}'),
 (11, 1, 'wp_user_level', '10'),
 (12, 1, 'dismissed_wp_pointers', ''),
-(13, 1, 'show_welcome_panel', '1'),
-(14, 1, 'session_tokens', 'a:2:{s:64:"fcc0b921b699f6ed1065d8f33321aa938a998f0d5a22471854a4cbc26f26d7f0";a:4:{s:10:"expiration";i:1447057594;s:2:"ip";s:3:"::1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:5:"login";i:1445847994;}s:64:"e0ae96d49dfdab2e2be3b6d7405b708c408991ee4761b9bd43dafcbf025a8766";a:4:{s:10:"expiration";i:1446793410;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1446620610;}}'),
+(13, 1, 'show_welcome_panel', '0'),
+(14, 1, 'session_tokens', 'a:4:{s:64:"fcc0b921b699f6ed1065d8f33321aa938a998f0d5a22471854a4cbc26f26d7f0";a:4:{s:10:"expiration";i:1447057594;s:2:"ip";s:3:"::1";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:5:"login";i:1445847994;}s:64:"e0ae96d49dfdab2e2be3b6d7405b708c408991ee4761b9bd43dafcbf025a8766";a:4:{s:10:"expiration";i:1446793410;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1446620610;}s:64:"28d07b15d96f3632c5957e02ac9aac6c0ad5b4000fa1143781378911d6b83f32";a:4:{s:10:"expiration";i:1446830540;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1446657740;}s:64:"0fde8507d136c344813aee03b48dc8bbe338001ae43da543bbd4a521192f9d5f";a:4:{s:10:"expiration";i:1446874199;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1446701399;}}'),
 (15, 1, 'wp_user-settings', 'editor=tinymce&wplink=1&hidetb=1&libraryContent=browse&mfold=o'),
 (16, 1, 'wp_user-settings-time', '1446183089'),
 (17, 1, 'wp_dashboard_quick_press_last_post_id', '232'),
@@ -1488,8 +1501,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 --
 
 DROP TABLE IF EXISTS `wp_users`;
-CREATE TABLE IF NOT EXISTS `wp_users` (
-  `ID` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_pass` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1499,7 +1512,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   `user_activation_key` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
   `display_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_users`
@@ -1515,7 +1528,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_api_keys`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
+CREATE TABLE `wp_woocommerce_api_keys` (
   `key_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
@@ -1534,7 +1547,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_attribute_taxonomies`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
+CREATE TABLE `wp_woocommerce_attribute_taxonomies` (
   `attribute_id` bigint(20) NOT NULL,
   `attribute_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `attribute_label` longtext COLLATE utf8mb4_unicode_ci,
@@ -1550,7 +1563,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_downloadable_product_permissions`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
+CREATE TABLE `wp_woocommerce_downloadable_product_permissions` (
   `permission_id` bigint(20) NOT NULL,
   `download_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` bigint(20) NOT NULL,
@@ -1571,7 +1584,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_order_itemmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
+CREATE TABLE `wp_woocommerce_order_itemmeta` (
   `meta_id` bigint(20) NOT NULL,
   `order_item_id` bigint(20) NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1585,7 +1598,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_order_items`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
+CREATE TABLE `wp_woocommerce_order_items` (
   `order_item_id` bigint(20) NOT NULL,
   `order_item_name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_item_type` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1599,7 +1612,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_tax_rates`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
+CREATE TABLE `wp_woocommerce_tax_rates` (
   `tax_rate_id` bigint(20) NOT NULL,
   `tax_rate_country` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `tax_rate_state` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1619,7 +1632,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_tax_rate_locations`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
+CREATE TABLE `wp_woocommerce_tax_rate_locations` (
   `location_id` bigint(20) NOT NULL,
   `location_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tax_rate_id` bigint(20) NOT NULL,
@@ -1633,12 +1646,320 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_termmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_termmeta` (
+CREATE TABLE `wp_woocommerce_termmeta` (
   `meta_id` bigint(20) NOT NULL,
   `woocommerce_term_id` bigint(20) NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_campaign`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_campaign`;
+CREATE TABLE `wp_wysija_campaign` (
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_campaign`
+--
+
+INSERT INTO `wp_wysija_campaign` (`campaign_id`, `name`, `description`) VALUES
+(1, '5 Minute User Guide', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_campaign_list`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_campaign_list`;
+CREATE TABLE `wp_wysija_campaign_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `filter` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_custom_field`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_custom_field`;
+CREATE TABLE `wp_wysija_custom_field` (
+  `id` mediumint(9) NOT NULL,
+  `name` tinytext NOT NULL,
+  `type` tinytext NOT NULL,
+  `required` tinyint(1) NOT NULL DEFAULT '0',
+  `settings` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_email`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_email`;
+CREATE TABLE `wp_wysija_email` (
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `subject` varchar(250) NOT NULL DEFAULT '',
+  `body` longtext,
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
+  `modified_at` int(10) UNSIGNED DEFAULT NULL,
+  `sent_at` int(10) UNSIGNED DEFAULT NULL,
+  `from_email` varchar(250) DEFAULT NULL,
+  `from_name` varchar(250) DEFAULT NULL,
+  `replyto_email` varchar(250) DEFAULT NULL,
+  `replyto_name` varchar(250) DEFAULT NULL,
+  `attachments` text,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `type` tinyint(4) NOT NULL DEFAULT '1',
+  `number_sent` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_opened` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_unsub` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_bounce` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_forward` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `params` text,
+  `wj_data` longtext,
+  `wj_styles` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_email`
+--
+
+INSERT INTO `wp_wysija_email` (`email_id`, `campaign_id`, `subject`, `body`, `created_at`, `modified_at`, `sent_at`, `from_email`, `from_name`, `replyto_email`, `replyto_name`, `attachments`, `status`, `type`, `number_sent`, `number_opened`, `number_clicked`, `number_unsub`, `number_bounce`, `number_forward`, `params`, `wj_data`, `wj_styles`) VALUES
+(1, 1, '5 Minute User Guide', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\n<html xmlns="http://www.w3.org/1999/xhtml"  >\n<head>\n    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n    <title>5 Minute User Guide</title>\n    <style type="text/css">body {\n        width:100% !important;\n        -webkit-text-size-adjust:100%;\n        -ms-text-size-adjust:100%;\n        margin:0;\n        padding:0;\n    }\n\n    body,table,td,p,a,li,blockquote{\n        -ms-text-size-adjust:100%;\n        -webkit-text-size-adjust:100%;\n    }\n\n    .ReadMsgBody{\n        width:100%;\n    }.ExternalClass {width:100%;}.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important; background:#e8e8e8;}img {\n        outline:none;\n        text-decoration:none;\n        -ms-interpolation-mode: bicubic;\n    }\n    a img {border:none;}\n    .image_fix {display:block;}p {\n        font-family: "Arial";\n        font-size: 16px;\n        line-height: 150%;\n        margin: 1em 0;\n        padding: 0;\n    }h1,h2,h3,h4,h5,h6{\n        margin:0;\n        padding:0;\n    }h1 {\n        color:#000000 !important;\n        display:block;\n        font-family:Trebuchet MS;\n        font-size:40px;\n        font-style:normal;\n        font-weight:normal;\n        line-height:125%;\n        letter-spacing:normal;\n        margin:0;\n        \n        text-align:left;\n    }h2 {\n        color:#424242 !important;\n        display:block;\n        font-family:Trebuchet MS;\n        font-size:30px;\n        font-style:normal;\n        font-weight:normal;\n        line-height:125%;\n        letter-spacing:normal;\n        margin:0;\n        \n        text-align:left;\n    }h3 {\n        color:#424242 !important;\n        display:block;\n        font-family:Trebuchet MS;\n        font-size:24px;\n        font-style:normal;\n        font-weight:normal;\n        line-height:125%;\n        letter-spacing:normal;\n        margin:0;\n        \n        text-align:left;\n    }table td {border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;}table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }a {\n        color:#4a91b0;\n        word-wrap:break-word;\n    }\n    #outlook a {padding:0;}\n    .yshortcuts { color:#4a91b0; }\n\n    #wysija_wrapper {\n        background:#e8e8e8;\n        color:#000000;\n        font-family:"Arial";\n        font-size:16px;\n        -webkit-text-size-adjust:100%;\n        -ms-text-size-adjust:100%;\n        \n    }\n\n    .wysija_header_container {\n        mso-border-right-alt: 0;\n        mso-border-left-alt: 0;\n        mso-border-top-alt: 0;\n        mso-border-bottom-alt: 0;\n        \n    }\n\n    .wysija_block {\n        mso-border-right-alt: 0;\n        mso-border-left-alt: 0;\n        mso-border-top-alt: 0;\n        mso-border-bottom-alt: 0;\n        background:#ffffff;\n    }\n\n    .wysija_footer_container {\n        mso-border-right-alt: 0;\n        mso-border-left-alt: 0;\n        mso-border-top-alt: 0;\n        mso-border-bottom-alt: 0;\n        \n    }\n\n    .wysija_viewbrowser_container, .wysija_viewbrowser_container a {\n        font-family: "Arial" !important;\n        font-size: 12px !important;\n        color: #000000 !important;\n    }\n    .wysija_unsubscribe_container, .wysija_unsubscribe_container a {\n        text-align:center;\n        color: #000000 !important;\n        font-size:12px;\n    }\n    .wysija_viewbrowser_container a, .wysija_unsubscribe_container a {\n        text-decoration:underline;\n    }\n    .wysija_list_item {\n        margin:0;\n    }@media only screen and (max-device-width: 480px), screen and (max-width: 480px) {a[href^="tel"], a[href^="sms"] {\n            text-decoration: none;\n            color: #4a91b0;pointer-events: none;\n            cursor: default;\n        }\n\n        .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {\n            text-decoration: default;\n            color: #4a91b0 !important;\n            pointer-events: auto;\n            cursor: default;\n        }body, table, td, p, a, li, blockquote { -webkit-text-size-adjust:none !important; }body{ width:100% !important; min-width:100% !important; }\n    }@media only screen and (min-device-width: 768px) and (max-device-width: 1024px), screen and (min-width: 768px) and (max-width: 1024px) {a[href^="tel"],\n        a[href^="sms"] {\n            text-decoration: none;\n            color: #4a91b0;pointer-events: none;\n            cursor: default;\n        }\n\n        .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {\n            text-decoration: default;\n            color: #4a91b0 !important;\n            pointer-events: auto;\n            cursor: default;\n        }\n    }\n\n    @media only screen and (-webkit-min-device-pixel-ratio: 2) {\n    }@media only screen and (-webkit-device-pixel-ratio:.75){}\n    @media only screen and (-webkit-device-pixel-ratio:1){}\n    @media only screen and (-webkit-device-pixel-ratio:1.5){}</style><!--[if IEMobile 7]>\n<style type="text/css">\n\n</style>\n<![endif]--><!--[if gte mso 9]>\n<style type="text/css">.wysija_image_container {\n        padding-top:0 !important;\n    }\n    .wysija_image_placeholder {\n        mso-text-raise:0;\n        mso-table-lspace:0;\n        mso-table-rspace:0;\n        margin-bottom: 0 !important;\n    }\n    .wysija_block .wysija_image_placeholder {\n        margin:2px 1px 0 1px !important;\n    }\n    p {\n        line-height: 110% !important;\n    }\n    h1, h2, h3 {\n        line-height: 110% !important;\n        margin:0 !important;\n        padding: 0 !important;\n    }\n</style>\n<![endif]-->\n\n<!--[if gte mso 15]>\n<style type="text/css">table { font-size:1px; mso-line-height-alt:0; line-height:0; mso-margin-top-alt:0; }\n    tr { font-size:1px; mso-line-height-alt:0; mso-margin-top-alt:1px; }\n</style>\n<![endif]-->\n\n</head>\n<body bgcolor="#e8e8e8" yahoo="fix">\n    <span style="margin-bottom:0;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;display:block;background:#e8e8e8;">\n    <table width="100%" cellpadding="0" cellspacing="0" border="0" id="wysija_wrapper">\n        <tr>\n            <td valign="top" align="center">\n                <table width="600" cellpadding="0" cellspacing="0" border="0" align="center">\n                    \n                    <tr>\n                        <td width="600" style="min-width:600px;" valign="top" align="center"   >\n                            <p class="wysija_viewbrowser_container" style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 12px;color: #000000;color: #000000 !important;background-color: #e8e8e8;border: 0;text-align: center;padding-top: 8px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" >Display problems? <a style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 12px;color: #000000;color: #000000 !important;background-color: #e8e8e8;border: 0;" href="[view_in_browser_link]" target="_blank">View this newsletter in your browser.</a></p>\n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td width="600" style="min-width:600px;" valign="top" align="center">\n                            \n<table class="wysija_header" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">\n <tr>\n <td height="1" align="center" class="wysija_header_container" style="font-size:1px;line-height:1%;mso-line-height-rule:exactly;border: 0;min-width: 100%;background-color: #e8e8e8;border: 0;" >\n \n <img width="600" height="72" src="http://localhost/srijanalaya/wp-content/plugins/wysija-newsletters/img/default-newsletter/newsletter/header.png" border="0" alt="" class="image_fix" style="width:600px; height:72px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </td>\n </tr>\n</table>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width="600" style="min-width:600px;" valign="top" align="left">\n                            \n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n \n \n <td class="wysija_content_container left" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" align="left" >\n \n <div class="wysija_text_container"><h2 style="font-family: ''Trebuchet MS'', ''Lucida Grande'', ''Lucida Sans Unicode'', ''Lucida Sans'', Tahoma, sans-serif;font-size: 30px;color: #424242;color: #424242 !important;background-color: #ffffff;border: 0;font-weight: normal;font-style: normal;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 125%;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;"><strong>Step 1:</strong> hey, click on this text!</h2><p style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 16px;color: #000000;color: #000000 !important;background-color: #ffffff;border: 0;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 150%;margin-top: 1em;margin-right: 0;margin-bottom: 1em;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;vertical-align: top;word-wrap: break-word;">To edit, simply click on this block of text.</p></div>\n </td>\n \n </tr>\n</table>\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr style="font-size:1px; mso-line-height-alt:0; mso-margin-top-alt:1px;">\n <td width="100%" valign="middle" class="wysija_divider_container" style="height:1px;background-color: #ffffff;border: 0;padding-top: 15px;padding-right: 17px;padding-bottom: 15px;padding-left: 17px;" align="left">\n <div align="center">\n <img src="http://localhost/srijanalaya/wp-content/uploads/wysija/dividers/solid.jpg" border="0" width="564" height="1" alt="---" class="image_fix" style="width:564px; height:1px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </div>\n </td>\n </tr>\n</table>\n\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n \n \n <td class="wysija_content_container left" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" align="left" >\n \n <div class="wysija_text_container"><h2 style="font-family: ''Trebuchet MS'', ''Lucida Grande'', ''Lucida Sans Unicode'', ''Lucida Sans'', Tahoma, sans-serif;font-size: 30px;color: #424242;color: #424242 !important;background-color: #ffffff;border: 0;font-weight: normal;font-style: normal;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 125%;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;"><strong>Step 2:</strong> play with this image</h2></div>\n </td>\n \n </tr>\n</table>\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n \n \n <td class="wysija_content_container left" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" align="left" >\n \n \n \n <table style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;" width="1%" height="190" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr style="font-size:1px; mso-line-height-alt:0; mso-margin-top-alt:1px;">\n <td class="wysija_image_container left" style="border: 0;border-collapse: collapse;border: 1px solid #ffffff;display: block;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 10px;padding-bottom: 0;padding-left: 0;" width="1%" height="190" valign="top">\n <div align="left" class="wysija_image_placeholder left" style="height:190px;width:281px;border: 0;display: block;margin-top: 0;margin-right: 10px;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;" >\n \n <img width="281" height="190" src="http://localhost/srijanalaya/wp-content/plugins/wysija-newsletters/img/default-newsletter/newsletter/pigeon.png" border="0" alt="" class="image_fix" style="width:281px; height:190px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </div>\n </td>\n </tr>\n </table>\n\n <div class="wysija_text_container"><p style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 16px;color: #000000;color: #000000 !important;background-color: #ffffff;border: 0;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 150%;margin-top: 1em;margin-right: 0;margin-bottom: 1em;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;vertical-align: top;word-wrap: break-word;">Position your mouse over the image to the left.</p></div>\n </td>\n \n </tr>\n</table>\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr style="font-size:1px; mso-line-height-alt:0; mso-margin-top-alt:1px;">\n <td width="100%" valign="middle" class="wysija_divider_container" style="height:1px;background-color: #ffffff;border: 0;padding-top: 15px;padding-right: 17px;padding-bottom: 15px;padding-left: 17px;" align="left">\n <div align="center">\n <img src="http://localhost/srijanalaya/wp-content/uploads/wysija/dividers/solid.jpg" border="0" width="564" height="1" alt="---" class="image_fix" style="width:564px; height:1px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </div>\n </td>\n </tr>\n</table>\n\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n \n \n <td class="wysija_content_container left" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" align="left" >\n \n <div class="wysija_text_container"><h2 style="font-family: ''Trebuchet MS'', ''Lucida Grande'', ''Lucida Sans Unicode'', ''Lucida Sans'', Tahoma, sans-serif;font-size: 30px;color: #424242;color: #424242 !important;background-color: #ffffff;border: 0;font-weight: normal;font-style: normal;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 125%;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;"><strong>Step 3:</strong> drop content here</h2><p style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 16px;color: #000000;color: #000000 !important;background-color: #ffffff;border: 0;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 150%;margin-top: 1em;margin-right: 0;margin-bottom: 1em;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;vertical-align: top;word-wrap: break-word;">Drag and drop <strong>text, posts, dividers.</strong> Look on the right!</p><p style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 16px;color: #000000;color: #000000 !important;background-color: #ffffff;border: 0;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 150%;margin-top: 1em;margin-right: 0;margin-bottom: 1em;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;vertical-align: top;word-wrap: break-word;">You can even <strong>social bookmarks</strong> like these:</p></div>\n </td>\n \n </tr>\n</table>\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n <td class="wysija_gallery_container" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" >\n <table class="wysija_gallery_table center" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;text-align: center;margin-top: 0;margin-right: auto;margin-bottom: 0;margin-left: auto;" width="184" cellspacing="0" cellpadding="0" border="0" align="center">\n <tr>\n \n \n <td class="wysija_cell_container" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 1px solid #ffffff;" width="61" height="32" valign="top">\n <div align="center">\n <a style="color: #4a91b0;color: #4a91b0 !important;background-color: #ffffff;border: 0;word-wrap: break-word;" href="http://www.facebook.com/mailpoetplugin"><img src="http://localhost/srijanalaya/wp-content/uploads/wysija/bookmarks/medium/02/facebook.png" border="0" alt="Facebook" style="width:32px; height:32px;" /></a>\n </div>\n </td>\n \n \n \n <td class="wysija_cell_container" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 1px solid #ffffff;" width="61" height="32" valign="top">\n <div align="center">\n <a style="color: #4a91b0;color: #4a91b0 !important;background-color: #ffffff;border: 0;word-wrap: break-word;" href="http://www.twitter.com/mail_poet"><img src="http://localhost/srijanalaya/wp-content/uploads/wysija/bookmarks/medium/02/twitter.png" border="0" alt="Twitter" style="width:32px; height:32px;" /></a>\n </div>\n </td>\n \n \n \n <td class="wysija_cell_container" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 1px solid #ffffff;" width="61" height="32" valign="top">\n <div align="center">\n <a style="color: #4a91b0;color: #4a91b0 !important;background-color: #ffffff;border: 0;word-wrap: break-word;" href="https://plus.google.com/+Mailpoet"><img src="http://localhost/srijanalaya/wp-content/uploads/wysija/bookmarks/medium/02/google.png" border="0" alt="Google" style="width:32px; height:32px;" /></a>\n </div>\n </td>\n \n \n </tr>\n </table>\n </td>\n </tr>\n</table>\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr style="font-size:1px; mso-line-height-alt:0; mso-margin-top-alt:1px;">\n <td width="100%" valign="middle" class="wysija_divider_container" style="height:1px;background-color: #ffffff;border: 0;padding-top: 15px;padding-right: 17px;padding-bottom: 15px;padding-left: 17px;" align="left">\n <div align="center">\n <img src="http://localhost/srijanalaya/wp-content/uploads/wysija/dividers/solid.jpg" border="0" width="564" height="1" alt="---" class="image_fix" style="width:564px; height:1px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </div>\n </td>\n </tr>\n</table>\n\n\n<table class="wysija_block" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="left">\n <tr>\n \n \n <td class="wysija_content_container left" style="border: 0;border-collapse: collapse;background-color: #ffffff;border: 0;padding-top: 10px;padding-right: 17px;padding-bottom: 10px;padding-left: 17px;" align="left" >\n \n <div class="wysija_text_container"><h2 style="font-family: ''Trebuchet MS'', ''Lucida Grande'', ''Lucida Sans Unicode'', ''Lucida Sans'', Tahoma, sans-serif;font-size: 30px;color: #424242;color: #424242 !important;background-color: #ffffff;border: 0;font-weight: normal;font-style: normal;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 125%;margin-top: 0;margin-right: 0;margin-bottom: 0;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;"><strong>Step 4:</strong> and the footer?</h2><p style="font-family: Arial, ''Helvetica Neue'', Helvetica, sans-serif;font-size: 16px;color: #000000;color: #000000 !important;background-color: #ffffff;border: 0;letter-spacing: normal;mso-line-height-rule: exactly;-mso-line-height-rule: exactly;line-height: 150%;margin-top: 1em;margin-right: 0;margin-bottom: 1em;margin-left: 0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;vertical-align: top;word-wrap: break-word;">Change the footer''s content in MailPoet''s <strong>Settings</strong> page.</p></div>\n </td>\n \n </tr>\n</table>\n                        </td>\n                    </tr>\n                    <tr>\n                        <td width="600" style="min-width:600px;" valign="top" align="center"   >\n                            \n<table class="wysija_footer" style="border: 0;border-collapse: collapse;mso-table-lspace: 0pt; mso-table-rspace: 0pt;clear: both;border: 0;min-width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">\n <tr>\n <td height="1" align="center" class="wysija_footer_container" style="font-size:1px;line-height:1%;mso-line-height-rule:exactly;border: 0;min-width: 100%;background-color: #e8e8e8;border: 0;" >\n \n <img width="600" height="46" src="http://localhost/srijanalaya/wp-content/plugins/wysija-newsletters/img/default-newsletter/newsletter/footer.png" border="0" alt="" class="image_fix" style="width:600px; height:46px;text-decoration: none;outline: 0;border: 0;display: block;-ms-interpolation-mode: bicubic;" />\n </td>\n </tr>\n</table>\n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td width="600" style="min-width:600px;" valign="top" align="center"  >\n                            <p class="wysija_unsubscribe_container" style="font-family: Verdana, Geneva, sans-serif;font-size: 12px;color: #000000;color: #000000 !important;background-color: #e8e8e8;border: 0;text-align: center;padding-top: 8px;padding-right: 8px;padding-bottom: 8px;padding-left: 8px;" ><a style="color: #000000;color: #000000 !important;background-color: #e8e8e8;border: 0;" href="[unsubscribe_link]" target="_blank">Unsubscribe</a><br /><br /></p>\n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n    </table>\n    </span>\n</body>\n</html>', 1446657746, 1446657746, NULL, 'info@localhost', 'admin', 'info@localhost', 'admin', NULL, 0, 1, 0, 0, 0, 0, 0, 0, 'YToxOntzOjE0OiJxdWlja3NlbGVjdGlvbiI7YToxOntzOjY6IndwLTMwMSI7YTo1OntzOjEwOiJpZGVudGlmaWVyIjtzOjY6IndwLTMwMSI7czo1OiJ3aWR0aCI7aToyODE7czo2OiJoZWlnaHQiO2k6MTkwO3M6MzoidXJsIjtzOjExMToiaHR0cDovL2xvY2FsaG9zdC9zcmlqYW5hbGF5YS93cC1jb250ZW50L3BsdWdpbnMvd3lzaWphLW5ld3NsZXR0ZXJzL2ltZy9kZWZhdWx0LW5ld3NsZXR0ZXIvbmV3c2xldHRlci9waWdlb24ucG5nIjtzOjk6InRodW1iX3VybCI7czoxMTk6Imh0dHA6Ly9sb2NhbGhvc3Qvc3JpamFuYWxheWEvd3AtY29udGVudC9wbHVnaW5zL3d5c2lqYS1uZXdzbGV0dGVycy9pbWcvZGVmYXVsdC1uZXdzbGV0dGVyL25ld3NsZXR0ZXIvcGlnZW9uLTE1MHgxNTAucG5nIjt9fX0=', 'YTo0OntzOjc6InZlcnNpb24iO3M6NjoiMi42LjE5IjtzOjY6ImhlYWRlciI7YTo1OntzOjQ6InRleHQiO047czo1OiJpbWFnZSI7YTo1OntzOjM6InNyYyI7czoxMTE6Imh0dHA6Ly9sb2NhbGhvc3Qvc3JpamFuYWxheWEvd3AtY29udGVudC9wbHVnaW5zL3d5c2lqYS1uZXdzbGV0dGVycy9pbWcvZGVmYXVsdC1uZXdzbGV0dGVyL25ld3NsZXR0ZXIvaGVhZGVyLnBuZyI7czo1OiJ3aWR0aCI7aTo2MDA7czo2OiJoZWlnaHQiO2k6NzI7czo5OiJhbGlnbm1lbnQiO3M6NjoiY2VudGVyIjtzOjY6InN0YXRpYyI7YjowO31zOjk6ImFsaWdubWVudCI7czo2OiJjZW50ZXIiO3M6Njoic3RhdGljIjtiOjA7czo0OiJ0eXBlIjtzOjY6ImhlYWRlciI7fXM6NDoiYm9keSI7YTo5OntzOjc6ImJsb2NrLTEiO2E6Njp7czo0OiJ0ZXh0IjthOjE6e3M6NToidmFsdWUiO3M6MTQ4OiJQR2d5UGp4emRISnZibWMrVTNSbGNDQXhPand2YzNSeWIyNW5QaUJvWlhrc0lHTnNhV05ySUc5dUlIUm9hWE1nZEdWNGRDRThMMmd5UGp4d1BsUnZJR1ZrYVhRc0lITnBiWEJzZVNCamJHbGpheUJ2YmlCMGFHbHpJR0pzYjJOcklHOW1JSFJsZUhRdVBDOXdQZz09Ijt9czo1OiJpbWFnZSI7TjtzOjk6ImFsaWdubWVudCI7czo0OiJsZWZ0IjtzOjY6InN0YXRpYyI7YjowO3M6ODoicG9zaXRpb24iO2k6MTtzOjQ6InR5cGUiO3M6NzoiY29udGVudCI7fXM6NzoiYmxvY2stMiI7YTo1OntzOjg6InBvc2l0aW9uIjtpOjI7czo0OiJ0eXBlIjtzOjc6ImRpdmlkZXIiO3M6Mzoic3JjIjtzOjczOiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvdXBsb2Fkcy93eXNpamEvZGl2aWRlcnMvc29saWQuanBnIjtzOjU6IndpZHRoIjtpOjU2NDtzOjY6ImhlaWdodCI7aToxO31zOjc6ImJsb2NrLTMiO2E6Njp7czo0OiJ0ZXh0IjthOjE6e3M6NToidmFsdWUiO3M6NzI6IlBHZ3lQanh6ZEhKdmJtYytVM1JsY0NBeU9qd3ZjM1J5YjI1blBpQndiR0Y1SUhkcGRHZ2dkR2hwY3lCcGJXRm5aVHd2YURJKyI7fXM6NToiaW1hZ2UiO047czo5OiJhbGlnbm1lbnQiO3M6NDoibGVmdCI7czo2OiJzdGF0aWMiO2I6MDtzOjg6InBvc2l0aW9uIjtpOjM7czo0OiJ0eXBlIjtzOjc6ImNvbnRlbnQiO31zOjc6ImJsb2NrLTQiO2E6Njp7czo0OiJ0ZXh0IjthOjE6e3M6NToidmFsdWUiO3M6NzI6IlBIQStVRzl6YVhScGIyNGdlVzkxY2lCdGIzVnpaU0J2ZG1WeUlIUm9aU0JwYldGblpTQjBieUIwYUdVZ2JHVm1kQzQ4TDNBKyI7fXM6NToiaW1hZ2UiO2E6NTp7czozOiJzcmMiO3M6MTExOiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvcGx1Z2lucy93eXNpamEtbmV3c2xldHRlcnMvaW1nL2RlZmF1bHQtbmV3c2xldHRlci9uZXdzbGV0dGVyL3BpZ2Vvbi5wbmciO3M6NToid2lkdGgiO2k6MjgxO3M6NjoiaGVpZ2h0IjtpOjE5MDtzOjk6ImFsaWdubWVudCI7czo0OiJsZWZ0IjtzOjY6InN0YXRpYyI7YjowO31zOjk6ImFsaWdubWVudCI7czo0OiJsZWZ0IjtzOjY6InN0YXRpYyI7YjowO3M6ODoicG9zaXRpb24iO2k6NDtzOjQ6InR5cGUiO3M6NzoiY29udGVudCI7fXM6NzoiYmxvY2stNSI7YTo1OntzOjg6InBvc2l0aW9uIjtpOjU7czo0OiJ0eXBlIjtzOjc6ImRpdmlkZXIiO3M6Mzoic3JjIjtzOjczOiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvdXBsb2Fkcy93eXNpamEvZGl2aWRlcnMvc29saWQuanBnIjtzOjU6IndpZHRoIjtpOjU2NDtzOjY6ImhlaWdodCI7aToxO31zOjc6ImJsb2NrLTYiO2E6Njp7czo0OiJ0ZXh0IjthOjE6e3M6NToidmFsdWUiO3M6MjYwOiJQR2d5UGp4emRISnZibWMrVTNSbGNDQXpPand2YzNSeWIyNW5QaUJrY205d0lHTnZiblJsYm5RZ2FHVnlaVHd2YURJK1BIQStSSEpoWnlCaGJtUWdaSEp2Y0NBOGMzUnliMjVuUG5SbGVIUXNJSEJ2YzNSekxDQmthWFpwWkdWeWN5NDhMM04wY205dVp6NGdURzl2YXlCdmJpQjBhR1VnY21sbmFIUWhQQzl3UGp4d1BsbHZkU0JqWVc0Z1pYWmxiaUE4YzNSeWIyNW5Qbk52WTJsaGJDQmliMjlyYldGeWEzTThMM04wY205dVp6NGdiR2xyWlNCMGFHVnpaVG84TDNBKyI7fXM6NToiaW1hZ2UiO047czo5OiJhbGlnbm1lbnQiO3M6NDoibGVmdCI7czo2OiJzdGF0aWMiO2I6MDtzOjg6InBvc2l0aW9uIjtpOjY7czo0OiJ0eXBlIjtzOjc6ImNvbnRlbnQiO31zOjc6ImJsb2NrLTciO2E6NTp7czo1OiJ3aWR0aCI7aToxODQ7czo5OiJhbGlnbm1lbnQiO3M6NjoiY2VudGVyIjtzOjU6Iml0ZW1zIjthOjM6e2k6MDthOjc6e3M6MzoidXJsIjtzOjM4OiJodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9tYWlscG9ldHBsdWdpbiI7czozOiJhbHQiO3M6ODoiRmFjZWJvb2siO3M6OToiY2VsbFdpZHRoIjtpOjYxO3M6MTA6ImNlbGxIZWlnaHQiO2k6MzI7czozOiJzcmMiO3M6ODc6Imh0dHA6Ly9sb2NhbGhvc3Qvc3JpamFuYWxheWEvd3AtY29udGVudC91cGxvYWRzL3d5c2lqYS9ib29rbWFya3MvbWVkaXVtLzAyL2ZhY2Vib29rLnBuZyI7czo1OiJ3aWR0aCI7aTozMjtzOjY6ImhlaWdodCI7aTozMjt9aToxO2E6Nzp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly93d3cudHdpdHRlci5jb20vbWFpbF9wb2V0IjtzOjM6ImFsdCI7czo3OiJUd2l0dGVyIjtzOjk6ImNlbGxXaWR0aCI7aTo2MTtzOjEwOiJjZWxsSGVpZ2h0IjtpOjMyO3M6Mzoic3JjIjtzOjg2OiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvdXBsb2Fkcy93eXNpamEvYm9va21hcmtzL21lZGl1bS8wMi90d2l0dGVyLnBuZyI7czo1OiJ3aWR0aCI7aTozMjtzOjY6ImhlaWdodCI7aTozMjt9aToyO2E6Nzp7czozOiJ1cmwiO3M6MzM6Imh0dHBzOi8vcGx1cy5nb29nbGUuY29tLytNYWlscG9ldCI7czozOiJhbHQiO3M6NjoiR29vZ2xlIjtzOjk6ImNlbGxXaWR0aCI7aTo2MTtzOjEwOiJjZWxsSGVpZ2h0IjtpOjMyO3M6Mzoic3JjIjtzOjg1OiJodHRwOi8vbG9jYWxob3N0L3NyaWphbmFsYXlhL3dwLWNvbnRlbnQvdXBsb2Fkcy93eXNpamEvYm9va21hcmtzL21lZGl1bS8wMi9nb29nbGUucG5nIjtzOjU6IndpZHRoIjtpOjMyO3M6NjoiaGVpZ2h0IjtpOjMyO319czo4OiJwb3NpdGlvbiI7aTo3O3M6NDoidHlwZSI7czo3OiJnYWxsZXJ5Ijt9czo3OiJibG9jay04IjthOjU6e3M6ODoicG9zaXRpb24iO2k6ODtzOjQ6InR5cGUiO3M6NzoiZGl2aWRlciI7czozOiJzcmMiO3M6NzM6Imh0dHA6Ly9sb2NhbGhvc3Qvc3JpamFuYWxheWEvd3AtY29udGVudC91cGxvYWRzL3d5c2lqYS9kaXZpZGVycy9zb2xpZC5qcGciO3M6NToid2lkdGgiO2k6NTY0O3M6NjoiaGVpZ2h0IjtpOjE7fXM6NzoiYmxvY2stOSI7YTo2OntzOjQ6InRleHQiO2E6MTp7czo1OiJ2YWx1ZSI7czoxNzI6IlBHZ3lQanh6ZEhKdmJtYytVM1JsY0NBME9qd3ZjM1J5YjI1blBpQmhibVFnZEdobElHWnZiM1JsY2o4OEwyZ3lQanh3UGtOb1lXNW5aU0IwYUdVZ1ptOXZkR1Z5SjNNZ1kyOXVkR1Z1ZENCcGJpQk5ZV2xzVUc5bGRDZHpJRHh6ZEhKdmJtYytVMlYwZEdsdVozTThMM04wY205dVp6NGdjR0ZuWlM0OEwzQSsiO31zOjU6ImltYWdlIjtOO3M6OToiYWxpZ25tZW50IjtzOjQ6ImxlZnQiO3M6Njoic3RhdGljIjtiOjA7czo4OiJwb3NpdGlvbiI7aTo5O3M6NDoidHlwZSI7czo3OiJjb250ZW50Ijt9fXM6NjoiZm9vdGVyIjthOjU6e3M6NDoidGV4dCI7TjtzOjU6ImltYWdlIjthOjU6e3M6Mzoic3JjIjtzOjExMToiaHR0cDovL2xvY2FsaG9zdC9zcmlqYW5hbGF5YS93cC1jb250ZW50L3BsdWdpbnMvd3lzaWphLW5ld3NsZXR0ZXJzL2ltZy9kZWZhdWx0LW5ld3NsZXR0ZXIvbmV3c2xldHRlci9mb290ZXIucG5nIjtzOjU6IndpZHRoIjtpOjYwMDtzOjY6ImhlaWdodCI7aTo0NjtzOjk6ImFsaWdubWVudCI7czo2OiJjZW50ZXIiO3M6Njoic3RhdGljIjtiOjA7fXM6OToiYWxpZ25tZW50IjtzOjY6ImNlbnRlciI7czo2OiJzdGF0aWMiO2I6MDtzOjQ6InR5cGUiO3M6NjoiZm9vdGVyIjt9fQ==', 'YToxMDp7czo0OiJodG1sIjthOjE6e3M6MTA6ImJhY2tncm91bmQiO3M6NjoiZThlOGU4Ijt9czo2OiJoZWFkZXIiO2E6MTp7czoxMDoiYmFja2dyb3VuZCI7czo2OiJlOGU4ZTgiO31zOjQ6ImJvZHkiO2E6NDp7czo1OiJjb2xvciI7czo2OiIwMDAwMDAiO3M6NjoiZmFtaWx5IjtzOjU6IkFyaWFsIjtzOjQ6InNpemUiO2k6MTY7czoxMDoiYmFja2dyb3VuZCI7czo2OiJmZmZmZmYiO31zOjY6ImZvb3RlciI7YToxOntzOjEwOiJiYWNrZ3JvdW5kIjtzOjY6ImU4ZThlOCI7fXM6MjoiaDEiO2E6Mzp7czo1OiJjb2xvciI7czo2OiIwMDAwMDAiO3M6NjoiZmFtaWx5IjtzOjEyOiJUcmVidWNoZXQgTVMiO3M6NDoic2l6ZSI7aTo0MDt9czoyOiJoMiI7YTozOntzOjU6ImNvbG9yIjtzOjY6IjQyNDI0MiI7czo2OiJmYW1pbHkiO3M6MTI6IlRyZWJ1Y2hldCBNUyI7czo0OiJzaXplIjtpOjMwO31zOjI6ImgzIjthOjM6e3M6NToiY29sb3IiO3M6NjoiNDI0MjQyIjtzOjY6ImZhbWlseSI7czoxMjoiVHJlYnVjaGV0IE1TIjtzOjQ6InNpemUiO2k6MjQ7fXM6MToiYSI7YToyOntzOjU6ImNvbG9yIjtzOjY6IjRhOTFiMCI7czo5OiJ1bmRlcmxpbmUiO2I6MDt9czoxMToidW5zdWJzY3JpYmUiO2E6MTp7czo1OiJjb2xvciI7czo2OiIwMDAwMDAiO31zOjExOiJ2aWV3YnJvd3NlciI7YTozOntzOjU6ImNvbG9yIjtzOjY6IjAwMDAwMCI7czo2OiJmYW1pbHkiO3M6NToiQXJpYWwiO3M6NDoic2l6ZSI7aToxMjt9fQ=='),
+(2, 0, 'Confirm your subscription to [:en]Srijanalaya[:ne]सृजनालय [:]', 'Hello!\n\nHurray! You''ve subscribed to our site.\nWe need you to activate your subscription to the list(s): [lists_to_confirm] by clicking the link below: \n\n[activation_link]Click here to confirm your subscription.[/activation_link]\n\nThank you,\n\n The team!\n', 1446657747, 1446657747, NULL, 'info@localhost', 'admin', 'info@localhost', 'admin', NULL, 99, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_email_user_stat`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_email_user_stat`;
+CREATE TABLE `wp_wysija_email_user_stat` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `sent_at` int(10) UNSIGNED NOT NULL,
+  `opened_at` int(10) UNSIGNED DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_email_user_url`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_email_user_url`;
+CREATE TABLE `wp_wysija_email_user_url` (
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `url_id` int(10) UNSIGNED NOT NULL,
+  `clicked_at` int(10) UNSIGNED DEFAULT NULL,
+  `number_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_form`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_form`;
+CREATE TABLE `wp_wysija_form` (
+  `form_id` int(10) UNSIGNED NOT NULL,
+  `name` tinytext CHARACTER SET utf8 COLLATE utf8_bin,
+  `data` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `styles` longtext CHARACTER SET utf8 COLLATE utf8_bin,
+  `subscribed` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_form`
+--
+
+INSERT INTO `wp_wysija_form` (`form_id`, `name`, `data`, `styles`, `subscribed`) VALUES
+(1, 'Subscribe to our Newsletter', 'YTo0OntzOjc6InZlcnNpb24iO3M6MzoiMC40IjtzOjg6InNldHRpbmdzIjthOjQ6e3M6MTA6Im9uX3N1Y2Nlc3MiO3M6NzoibWVzc2FnZSI7czoxNToic3VjY2Vzc19tZXNzYWdlIjtzOjY1OiJDaGVjayB5b3VyIGluYm94IG9yIHNwYW0gZm9sZGVyIG5vdyB0byBjb25maXJtIHlvdXIgc3Vic2NyaXB0aW9uLiI7czo1OiJsaXN0cyI7YToxOntpOjA7czoxOiIxIjt9czoxNzoibGlzdHNfc2VsZWN0ZWRfYnkiO3M6NToiYWRtaW4iO31zOjQ6ImJvZHkiO2E6Mjp7aTowO2E6NDp7czo0OiJuYW1lIjtzOjU6IkVtYWlsIjtzOjQ6InR5cGUiO3M6NToiaW5wdXQiO3M6NToiZmllbGQiO3M6NToiZW1haWwiO3M6NjoicGFyYW1zIjthOjI6e3M6NToibGFiZWwiO3M6NToiRW1haWwiO3M6ODoicmVxdWlyZWQiO2I6MTt9fWk6MTthOjQ6e3M6NDoibmFtZSI7czo2OiJTdWJtaXQiO3M6NDoidHlwZSI7czo2OiJzdWJtaXQiO3M6NToiZmllbGQiO3M6Njoic3VibWl0IjtzOjY6InBhcmFtcyI7YToxOntzOjU6ImxhYmVsIjtzOjEwOiJTdWJzY3JpYmUhIjt9fX1zOjc6ImZvcm1faWQiO2k6MTt9', NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_list`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_list`;
+CREATE TABLE `wp_wysija_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `namekey` varchar(255) DEFAULT NULL,
+  `description` text,
+  `unsub_mail_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `welcome_mail_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `is_enabled` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `is_public` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
+  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_list`
+--
+
+INSERT INTO `wp_wysija_list` (`list_id`, `name`, `namekey`, `description`, `unsub_mail_id`, `welcome_mail_id`, `is_enabled`, `is_public`, `created_at`, `ordering`) VALUES
+(1, 'My first list', 'my-first-list', 'The list created automatically on install of the MailPoet.', 0, 0, 1, 1, 1446657746, 0),
+(2, 'WordPress Users', 'users', 'The list created automatically on import of the plugin''s subscribers : "WordPress', 0, 0, 0, 0, 1446657746, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_queue`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_queue`;
+CREATE TABLE `wp_wysija_queue` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `send_at` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `priority` tinyint(4) NOT NULL DEFAULT '0',
+  `number_try` tinyint(3) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_url`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_url`;
+CREATE TABLE `wp_wysija_url` (
+  `url_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `url` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_url_mail`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_url_mail`;
+CREATE TABLE `wp_wysija_url_mail` (
+  `email_id` int(11) NOT NULL,
+  `url_id` int(10) UNSIGNED NOT NULL,
+  `unique_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `total_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_user`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_user`;
+CREATE TABLE `wp_wysija_user` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `wpuser_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `email` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL DEFAULT '',
+  `lastname` varchar(255) NOT NULL DEFAULT '',
+  `ip` varchar(100) NOT NULL,
+  `confirmed_ip` varchar(100) NOT NULL DEFAULT '0',
+  `confirmed_at` int(10) UNSIGNED DEFAULT NULL,
+  `last_opened` int(10) UNSIGNED DEFAULT NULL,
+  `last_clicked` int(10) UNSIGNED DEFAULT NULL,
+  `keyuser` varchar(255) NOT NULL DEFAULT '',
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `domain` varchar(255) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_user`
+--
+
+INSERT INTO `wp_wysija_user` (`user_id`, `wpuser_id`, `email`, `firstname`, `lastname`, `ip`, `confirmed_ip`, `confirmed_at`, `last_opened`, `last_clicked`, `keyuser`, `created_at`, `status`, `domain`) VALUES
+(1, 1, 'info@saediworks.com', '', '', '', '0', NULL, NULL, NULL, '', 1446657747, 1, 'saediworks.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_user_field`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_user_field`;
+CREATE TABLE `wp_wysija_user_field` (
+  `field_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `column_name` varchar(250) NOT NULL DEFAULT '',
+  `type` tinyint(3) UNSIGNED DEFAULT '0',
+  `values` text,
+  `default` varchar(250) NOT NULL DEFAULT '',
+  `is_required` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `error_message` varchar(250) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_user_field`
+--
+
+INSERT INTO `wp_wysija_user_field` (`field_id`, `name`, `column_name`, `type`, `values`, `default`, `is_required`, `error_message`) VALUES
+(1, 'First name', 'firstname', 0, NULL, '', 0, 'Please enter first name'),
+(2, 'Last name', 'lastname', 0, NULL, '', 0, 'Please enter last name');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_user_history`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_user_history`;
+CREATE TABLE `wp_wysija_user_history` (
+  `history_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED DEFAULT '0',
+  `type` varchar(250) NOT NULL DEFAULT '',
+  `details` text,
+  `executed_at` int(10) UNSIGNED DEFAULT NULL,
+  `executed_by` int(10) UNSIGNED DEFAULT NULL,
+  `source` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wp_wysija_user_list`
+--
+
+DROP TABLE IF EXISTS `wp_wysija_user_list`;
+CREATE TABLE `wp_wysija_user_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `sub_date` int(10) UNSIGNED DEFAULT '0',
+  `unsub_date` int(10) UNSIGNED DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `wp_wysija_user_list`
+--
+
+INSERT INTO `wp_wysija_user_list` (`list_id`, `user_id`, `sub_date`, `unsub_date`) VALUES
+(1, 1, 1446657746, 0),
+(2, 1, 1446657747, 0);
 
 --
 -- Indexes for dumped tables
@@ -1654,127 +1975,265 @@ ALTER TABLE `project_subscriber`
 -- Indexes for table `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `comment_id` (`comment_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_comments`
 --
 ALTER TABLE `wp_comments`
-  ADD PRIMARY KEY (`comment_ID`), ADD KEY `comment_post_ID` (`comment_post_ID`), ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`), ADD KEY `comment_date_gmt` (`comment_date_gmt`), ADD KEY `comment_parent` (`comment_parent`), ADD KEY `comment_author_email` (`comment_author_email`(10));
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `comment_post_ID` (`comment_post_ID`),
+  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
+  ADD KEY `comment_parent` (`comment_parent`),
+  ADD KEY `comment_author_email` (`comment_author_email`(10));
 
 --
 -- Indexes for table `wp_links`
 --
 ALTER TABLE `wp_links`
-  ADD PRIMARY KEY (`link_id`), ADD KEY `link_visible` (`link_visible`);
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `link_visible` (`link_visible`);
 
 --
 -- Indexes for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  ADD PRIMARY KEY (`option_id`), ADD UNIQUE KEY `option_name` (`option_name`);
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`);
 
 --
 -- Indexes for table `wp_p2p`
 --
 ALTER TABLE `wp_p2p`
-  ADD PRIMARY KEY (`p2p_id`), ADD KEY `p2p_from` (`p2p_from`), ADD KEY `p2p_to` (`p2p_to`), ADD KEY `p2p_type` (`p2p_type`);
+  ADD PRIMARY KEY (`p2p_id`),
+  ADD KEY `p2p_from` (`p2p_from`),
+  ADD KEY `p2p_to` (`p2p_to`),
+  ADD KEY `p2p_type` (`p2p_type`);
 
 --
 -- Indexes for table `wp_p2pmeta`
 --
 ALTER TABLE `wp_p2pmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `p2p_id` (`p2p_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `p2p_id` (`p2p_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `post_id` (`post_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  ADD PRIMARY KEY (`ID`), ADD KEY `post_name` (`post_name`(191)), ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`), ADD KEY `post_parent` (`post_parent`), ADD KEY `post_author` (`post_author`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_name` (`post_name`(191)),
+  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  ADD KEY `post_parent` (`post_parent`),
+  ADD KEY `post_author` (`post_author`);
 
 --
 -- Indexes for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  ADD PRIMARY KEY (`term_id`), ADD KEY `slug` (`slug`(191)), ADD KEY `name` (`name`(191));
+  ADD PRIMARY KEY (`term_id`),
+  ADD KEY `slug` (`slug`(191)),
+  ADD KEY `name` (`name`(191));
 
 --
 -- Indexes for table `wp_term_relationships`
 --
 ALTER TABLE `wp_term_relationships`
-  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`), ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
 
 --
 -- Indexes for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  ADD PRIMARY KEY (`term_taxonomy_id`), ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`), ADD KEY `taxonomy` (`taxonomy`);
+  ADD PRIMARY KEY (`term_taxonomy_id`),
+  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  ADD KEY `taxonomy` (`taxonomy`);
 
 --
 -- Indexes for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  ADD PRIMARY KEY (`umeta_id`), ADD KEY `user_id` (`user_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`umeta_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_users`
 --
 ALTER TABLE `wp_users`
-  ADD PRIMARY KEY (`ID`), ADD KEY `user_login_key` (`user_login`), ADD KEY `user_nicename` (`user_nicename`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_login_key` (`user_login`),
+  ADD KEY `user_nicename` (`user_nicename`);
 
 --
 -- Indexes for table `wp_woocommerce_api_keys`
 --
 ALTER TABLE `wp_woocommerce_api_keys`
-  ADD PRIMARY KEY (`key_id`), ADD KEY `consumer_key` (`consumer_key`), ADD KEY `consumer_secret` (`consumer_secret`);
+  ADD PRIMARY KEY (`key_id`),
+  ADD KEY `consumer_key` (`consumer_key`),
+  ADD KEY `consumer_secret` (`consumer_secret`);
 
 --
 -- Indexes for table `wp_woocommerce_attribute_taxonomies`
 --
 ALTER TABLE `wp_woocommerce_attribute_taxonomies`
-  ADD PRIMARY KEY (`attribute_id`), ADD KEY `attribute_name` (`attribute_name`(191));
+  ADD PRIMARY KEY (`attribute_id`),
+  ADD KEY `attribute_name` (`attribute_name`(191));
 
 --
 -- Indexes for table `wp_woocommerce_downloadable_product_permissions`
 --
 ALTER TABLE `wp_woocommerce_downloadable_product_permissions`
-  ADD PRIMARY KEY (`permission_id`), ADD KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`(191),`download_id`), ADD KEY `download_order_product` (`download_id`,`order_id`,`product_id`);
+  ADD PRIMARY KEY (`permission_id`),
+  ADD KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`(191),`download_id`),
+  ADD KEY `download_order_product` (`download_id`,`order_id`,`product_id`);
 
 --
 -- Indexes for table `wp_woocommerce_order_itemmeta`
 --
 ALTER TABLE `wp_woocommerce_order_itemmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `order_item_id` (`order_item_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `order_item_id` (`order_item_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_woocommerce_order_items`
 --
 ALTER TABLE `wp_woocommerce_order_items`
-  ADD PRIMARY KEY (`order_item_id`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `wp_woocommerce_tax_rates`
 --
 ALTER TABLE `wp_woocommerce_tax_rates`
-  ADD PRIMARY KEY (`tax_rate_id`), ADD KEY `tax_rate_country` (`tax_rate_country`(191)), ADD KEY `tax_rate_state` (`tax_rate_state`(191)), ADD KEY `tax_rate_class` (`tax_rate_class`(191)), ADD KEY `tax_rate_priority` (`tax_rate_priority`);
+  ADD PRIMARY KEY (`tax_rate_id`),
+  ADD KEY `tax_rate_country` (`tax_rate_country`(191)),
+  ADD KEY `tax_rate_state` (`tax_rate_state`(191)),
+  ADD KEY `tax_rate_class` (`tax_rate_class`(191)),
+  ADD KEY `tax_rate_priority` (`tax_rate_priority`);
 
 --
 -- Indexes for table `wp_woocommerce_tax_rate_locations`
 --
 ALTER TABLE `wp_woocommerce_tax_rate_locations`
-  ADD PRIMARY KEY (`location_id`), ADD KEY `tax_rate_id` (`tax_rate_id`), ADD KEY `location_type` (`location_type`), ADD KEY `location_type_code` (`location_type`,`location_code`(90));
+  ADD PRIMARY KEY (`location_id`),
+  ADD KEY `tax_rate_id` (`tax_rate_id`),
+  ADD KEY `location_type` (`location_type`),
+  ADD KEY `location_type_code` (`location_type`,`location_code`(90));
 
 --
 -- Indexes for table `wp_woocommerce_termmeta`
 --
 ALTER TABLE `wp_woocommerce_termmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `woocommerce_term_id` (`woocommerce_term_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `woocommerce_term_id` (`woocommerce_term_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
+
+--
+-- Indexes for table `wp_wysija_campaign`
+--
+ALTER TABLE `wp_wysija_campaign`
+  ADD PRIMARY KEY (`campaign_id`);
+
+--
+-- Indexes for table `wp_wysija_campaign_list`
+--
+ALTER TABLE `wp_wysija_campaign_list`
+  ADD PRIMARY KEY (`list_id`,`campaign_id`);
+
+--
+-- Indexes for table `wp_wysija_custom_field`
+--
+ALTER TABLE `wp_wysija_custom_field`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wp_wysija_email`
+--
+ALTER TABLE `wp_wysija_email`
+  ADD PRIMARY KEY (`email_id`);
+
+--
+-- Indexes for table `wp_wysija_email_user_stat`
+--
+ALTER TABLE `wp_wysija_email_user_stat`
+  ADD PRIMARY KEY (`user_id`,`email_id`);
+
+--
+-- Indexes for table `wp_wysija_email_user_url`
+--
+ALTER TABLE `wp_wysija_email_user_url`
+  ADD PRIMARY KEY (`user_id`,`email_id`,`url_id`);
+
+--
+-- Indexes for table `wp_wysija_form`
+--
+ALTER TABLE `wp_wysija_form`
+  ADD PRIMARY KEY (`form_id`);
+
+--
+-- Indexes for table `wp_wysija_list`
+--
+ALTER TABLE `wp_wysija_list`
+  ADD PRIMARY KEY (`list_id`);
+
+--
+-- Indexes for table `wp_wysija_queue`
+--
+ALTER TABLE `wp_wysija_queue`
+  ADD PRIMARY KEY (`user_id`,`email_id`),
+  ADD KEY `SENT_AT_INDEX` (`send_at`);
+
+--
+-- Indexes for table `wp_wysija_url`
+--
+ALTER TABLE `wp_wysija_url`
+  ADD PRIMARY KEY (`url_id`);
+
+--
+-- Indexes for table `wp_wysija_url_mail`
+--
+ALTER TABLE `wp_wysija_url_mail`
+  ADD PRIMARY KEY (`email_id`,`url_id`);
+
+--
+-- Indexes for table `wp_wysija_user`
+--
+ALTER TABLE `wp_wysija_user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `EMAIL_UNIQUE` (`email`);
+
+--
+-- Indexes for table `wp_wysija_user_field`
+--
+ALTER TABLE `wp_wysija_user_field`
+  ADD PRIMARY KEY (`field_id`);
+
+--
+-- Indexes for table `wp_wysija_user_history`
+--
+ALTER TABLE `wp_wysija_user_history`
+  ADD PRIMARY KEY (`history_id`);
+
+--
+-- Indexes for table `wp_wysija_user_list`
+--
+ALTER TABLE `wp_wysija_user_list`
+  ADD PRIMARY KEY (`list_id`,`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1784,67 +2243,67 @@ ALTER TABLE `wp_woocommerce_termmeta`
 -- AUTO_INCREMENT for table `project_subscriber`
 --
 ALTER TABLE `project_subscriber`
-  MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_comments`
 --
 ALTER TABLE `wp_comments`
-  MODIFY `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_links`
 --
 ALTER TABLE `wp_links`
-  MODIFY `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1055;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
 --
 -- AUTO_INCREMENT for table `wp_p2p`
 --
 ALTER TABLE `wp_p2p`
-  MODIFY `p2p_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `p2p_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `wp_p2pmeta`
 --
 ALTER TABLE `wp_p2pmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=903;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=904;
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=247;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 --
 -- AUTO_INCREMENT for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --
 ALTER TABLE `wp_users`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_woocommerce_api_keys`
 --
@@ -1885,6 +2344,56 @@ ALTER TABLE `wp_woocommerce_tax_rate_locations`
 --
 ALTER TABLE `wp_woocommerce_termmeta`
   MODIFY `meta_id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_wysija_campaign`
+--
+ALTER TABLE `wp_wysija_campaign`
+  MODIFY `campaign_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `wp_wysija_custom_field`
+--
+ALTER TABLE `wp_wysija_custom_field`
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_wysija_email`
+--
+ALTER TABLE `wp_wysija_email`
+  MODIFY `email_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `wp_wysija_form`
+--
+ALTER TABLE `wp_wysija_form`
+  MODIFY `form_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `wp_wysija_list`
+--
+ALTER TABLE `wp_wysija_list`
+  MODIFY `list_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `wp_wysija_url`
+--
+ALTER TABLE `wp_wysija_url`
+  MODIFY `url_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_wysija_url_mail`
+--
+ALTER TABLE `wp_wysija_url_mail`
+  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `wp_wysija_user`
+--
+ALTER TABLE `wp_wysija_user`
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `wp_wysija_user_field`
+--
+ALTER TABLE `wp_wysija_user_field`
+  MODIFY `field_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `wp_wysija_user_history`
+--
+ALTER TABLE `wp_wysija_user_history`
+  MODIFY `history_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

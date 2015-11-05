@@ -104,10 +104,10 @@ $('.marquee-right').click(function() {
       opacity: 0.25,
       width: "toggle"
     }, 200, function() {
-    $('#' + current).removeClass('first');
-    current = $('#' + current).next().attr('id');
-    $('#' + current).addClass('first'); 
-  });
+      $('#' + current).removeClass('first');
+      current = $('#' + current).next().attr('id');
+      $('#' + current).addClass('first'); 
+    });
   }
 });
 $('.marquee-left').click(function() {
@@ -118,8 +118,8 @@ $('.marquee-left').click(function() {
       opacity: 1,
       width: "toggle"
     }, 200, function() {
-    $('#' + current).addClass('first'); 
-  });
+      $('#' + current).addClass('first'); 
+    });
   }
 });
 
@@ -160,12 +160,37 @@ function filter_timeline(x) {
   else {
     prev_class = x;
 
-      jQuery('.cd-timeline-block').slideDown();
-      x="."+x;
-      jQuery(x).slideUp();
-   
-    
+    jQuery('.cd-timeline-block').hide();
+    x="."+x;
+    jQuery(x).show();
+    var sort=0;
+    jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
+     if(sort==0){
+
+
+     // alert(jQuery(this).attr('class'))
+     if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
+      jQuery(this).find('cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
+    }
+    if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
+      jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
+    }
+    jQuery(this).find('.cd-timeline-content').css({'float':'right','margin-top':'0px'});
+    sort=1;
   }
+  else {
+   if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-right-wrap')){
+    jQuery(this).find('cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
+  }
+  if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
+    jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
+  }
+  jQuery(this).find('.cd-timeline-content').css({'float':'left','margin-top':'0px'});
+  sort=0;
+}
+    //alert(sort);
+  });
+}
 }
 
 
