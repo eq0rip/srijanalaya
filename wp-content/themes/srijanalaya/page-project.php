@@ -14,14 +14,20 @@ wp_reset_query();?>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div style="width:100%:">
+<div class="row" >
+	<div style="width:100%:" id="filter_div">
+		<div class="col-sm-8" id="tag_filter_div">
+			<ul>
+			
+			</ul>
+		</div>
+<br/>
 		<ul>
 			<?php 
 			$tags = get_terms('project_tags');
 			foreach($tags as $tag) {
 				?>
-				<li class="col-sm-1"><a href="javascript:void(0)" onclick="filter_timeline('<?php echo $tag->slug;?>');"><?php echo $tag->name;?></a></li>
+				<li class="col-sm-1"><a href="javascript:void(0)" onclick="add_filter( '<?php echo $tag->slug ?>' ,'tag_filter_div',0 )"><?php echo $tag->name;?></a></li>
 				<?php }?>
 			</ul>
 		</div>
@@ -81,17 +87,17 @@ wp_reset_query();?>
 				<a href="<?php echo get_the_permalink();?>"><div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
-					<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
-						<a href="<?php echo get_the_permalink();?>"><div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div></a>
-						<div class="content">
-							<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
-							<p><?php echo types_render_field('location');?></p>
-							<p><?php echo types_render_field('summary');?></p>
-							<p><?php echo types_render_field('facilitators');?></p>
-							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
-							<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
-						</div>
-					</div> <!-- cd-timeline-content -->
+				<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
+					<a href="<?php echo get_the_permalink();?>"><div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div></a>
+					<div class="content">
+						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
+						<p><?php echo types_render_field('location');?></p>
+						<p><?php echo types_render_field('summary');?></p>
+						<p><?php echo types_render_field('facilitators');?></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
+						<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
+					</div>
+				</div> <!-- cd-timeline-content -->
 
 			</div> <!-- cd-timeline-block -->
 			<?php $j++; endwhile; ?>
