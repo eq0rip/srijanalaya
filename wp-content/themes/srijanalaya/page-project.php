@@ -18,7 +18,7 @@ wp_reset_query();?>
 	<div style="width:100%:" id="filter_div">
 		<div class="col-sm-8" id="tag_filter_div">
 			<ul>
-			<li></li>
+			
 			</ul>
 		</div>
 <br/>
