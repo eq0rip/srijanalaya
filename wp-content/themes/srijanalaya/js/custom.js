@@ -164,28 +164,33 @@ function filter_timeline(x) {
     x="."+x;
     jQuery(x).show();
     var sort=0;
+    var first = 0;
     jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
      if(sort==0){
-
+      console.log('here');
 
      // alert(jQuery(this).attr('class'))
      if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
-      jQuery(this).find('cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
+      jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
     }
     if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
       jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
     }
-    jQuery(this).find('.cd-timeline-content').css({'float':'right','margin-top':'0px'});
+    jQuery(this).find('.cd-timeline-content').css({'float':'right'});
     sort=1;
-  }
-  else {
+    if(first == 0) {
+     jQuery(this).find('.cd-timeline-content').addClass('first');
+     jQuery(this).addClass('first');
+   }
+ }
+ else {
    if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-right-wrap')){
-    jQuery(this).find('cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
+    jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
   }
   if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
     jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
   }
-  jQuery(this).find('.cd-timeline-content').css({'float':'left','margin-top':'0px'});
+  jQuery(this).find('.cd-timeline-content').css({'float':'left'});
   sort=0;
 }
     //alert(sort);

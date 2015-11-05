@@ -16,51 +16,49 @@ wp_reset_query();?>
 </div>
 <div class="row">
 	<div style="width:100%:">
-<ul>
-		<?php $tag=wp_tag_cloud( 'smallest=12&largest=12&taxonomy=project_tags&link=edit&format=array' );
-		
-		for($i=0;$i<count($tag);$i++){
-			$temp = strip_tags($tag[$i]);
-			$tag[$i]=$temp;
-			?>
-			<li class="col-sm-1"><a href="javascript:void(0)" onclick="filter_timeline('<?php echo $temp;?>');"><?php echo $temp;?></a></li>
-			<?php }?>
+		<ul>
+			<?php 
+			$tags = get_terms('project_tags');
+			foreach($tags as $tag) {
+				?>
+				<li class="col-sm-1"><a href="javascript:void(0)" onclick="filter_timeline('<?php echo $tag->slug;?>');"><?php echo $tag->name;?></a></li>
+				<?php }?>
 			</ul>
-	</div>
-	<div class="col-sm-9 timeline-wrapper">
+		</div>
+		<div class="col-sm-9 timeline-wrapper">
 
-		<section id="cd-timeline" class="cd-container">
-			<div class="circle"></div>
-			<?php
-			$nextEvent = '';
-			$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
-				'meta_query' => array(
-					array(
-						'key' => 'wpcf-project-date'
+			<section id="cd-timeline" class="cd-container">
+				<div class="circle"></div>
+				<?php
+				$nextEvent = '';
+				$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+					'meta_query' => array(
+						array(
+							'key' => 'wpcf-project-date'
+							),
+						array(
+							'key' => 'wpcf-project-date',
+							'value' => strtotime('today'),
+							'compare' => '>='
+							)
 						),
-					array(
-						'key' => 'wpcf-project-date',
-						'value' => strtotime('today'),
-						'compare' => '>='
-						)
-					),
-				'orderby' => 'meta_value',
-				'order' => 'ASC'
-				); 
-			$postslist=new WP_Query($args);
-			while($postslist->have_posts()) : $postslist->the_post();
-			$nextEvent = $post->ID;
-			endwhile;
-			$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
-			$postslist=new WP_Query($args);              
-			$curDate = date('now');
-			$i = 1;$j=0;
-			$events = "";
-			while($postslist->have_posts()) : $postslist->the_post();
+					'orderby' => 'meta_value',
+					'order' => 'ASC'
+					); 
+				$postslist=new WP_Query($args);
+				while($postslist->have_posts()) : $postslist->the_post();
+				$nextEvent = $post->ID;
+				endwhile;
+				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
+				$postslist=new WP_Query($args);              
+				$curDate = date('now');
+				$i = 1;$j=0;
+				$events = "";
+				while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'project_tags');//tag array
 			$tag='';//tag string
 			foreach ($tags as $key=>$values){
-				$tag.=' '.$values->name;
+				$tag.=' '.$values->slug;
 			}
 			$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
 			$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
@@ -79,11 +77,11 @@ wp_reset_query();?>
 			}
 			?>
 
-			<div class="cd-timeline-block <?php if($j == 0) echo 'first';echo ' '.$tag;?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
+			<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
 				<div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
 				</div> <!-- cd-timeline-img -->
-				<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
+				<a href="<?php echo get_the_permalink();?>"><div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
 					<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div>
 					<div class="content">
 						<h2><?php the_title();?></h2>
@@ -91,8 +89,7 @@ wp_reset_query();?>
 						<p><?php echo types_render_field('summary');?></p>
 						<p><?php echo types_render_field('facilitators');?></p>
 						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
-						<a href="<?php the_permalink();?>" class="cd-read-more">Read more</a>
-					</div>
+					</div></a>
 				</div> <!-- cd-timeline-content -->
 
 			</div> <!-- cd-timeline-block -->
@@ -152,7 +149,7 @@ if(strstr($current_page,'ne'))
 		jQuery(window).load(function() {
 		//Go to next project
 		var winSize = (jQuery(window).height()) / 2;
-		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
+		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 500);
 
 		//{to change calender locale}
 		if(lang == 'ne') 
