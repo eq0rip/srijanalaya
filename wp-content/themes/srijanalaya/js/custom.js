@@ -168,7 +168,8 @@ function filter_timeline(x) {
     var first = 0;
     jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
      if(sort==0){
-
+///////////////////
+///////////////////////
      // alert(jQuery(this).attr('class'))
      if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
       jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
@@ -176,12 +177,15 @@ function filter_timeline(x) {
     if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
       jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
     }
-    jQuery(this).find('.cd-timeline-content').css({'float':'right'});
+    // jQuery(this).find('.cd-timeline-content').css({'float':'right'});
     sort=1;
     if(first == 0) {
      jQuery(this).find('.cd-timeline-content').addClass('first');
      jQuery(this).addClass('first');
      first = 1;
+   }
+   else {
+    jQuery(this).find('.cd-timeline-content').css({'margin-top':'0px'});
    }
  }
  else {
@@ -191,7 +195,7 @@ function filter_timeline(x) {
   if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
     jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
   }
-  jQuery(this).find('.cd-timeline-content').css({'float':'left'});
+  // jQuery(this).find('.cd-timeline-content').css({'float':'left'});
   sort=0;
 }
     //alert(sort);

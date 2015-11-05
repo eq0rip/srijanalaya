@@ -597,7 +597,7 @@ header h1 {
 }
 @media (min-width:1160px) {
   .project-wrapper-right-wrap {
-    margin-top: -150px;
+    // margin-top: -150px;
     .content {
       margin-left: 20px;
     }
@@ -610,3 +610,13 @@ header h1 {
 .visihide {
   visibility: hidden;
 }
+
+  .project-wrapper-right-wrap {
+    float: right !important;
+    @media (max-width:769px) {
+      float: left !important;
+    }
+  }
+  .project-wrapper-left-wrap {
+    float: left !important;
+  }
