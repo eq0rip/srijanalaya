@@ -90,6 +90,11 @@ header h1 {
 .cd-timeline-block {
   position: relative;
   margin: 2em 0;
+  a {
+    color: #807f7f;
+    font-size: 12px;
+    font-family: 'bree serif';
+  }
 }
 .cd-timeline-block:after {
   content: "";
@@ -245,7 +250,7 @@ header h1 {
   display: table;
   clear: both;
 }
-.cd-timeline-content h2 {
+.cd-timeline-content h2, .cd-timeline-content a {
   color: #e91f4a;
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
@@ -602,5 +607,6 @@ header h1 {
   }
 }
 
-.cd-timeline-content {
+.visihide {
+  visibility: hidden;
 }

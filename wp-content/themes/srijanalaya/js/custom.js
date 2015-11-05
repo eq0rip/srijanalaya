@@ -123,6 +123,7 @@ $('.marquee-left').click(function() {
   }
 });
 
+
 })(jQuery);
 function change_language(x,y) {
   var n = y.search("/srijanalaya/ne"); 
@@ -167,7 +168,6 @@ function filter_timeline(x) {
     var first = 0;
     jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
      if(sort==0){
-      console.log('here');
 
      // alert(jQuery(this).attr('class'))
      if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
@@ -181,6 +181,7 @@ function filter_timeline(x) {
     if(first == 0) {
      jQuery(this).find('.cd-timeline-content').addClass('first');
      jQuery(this).addClass('first');
+     first = 1;
    }
  }
  else {
