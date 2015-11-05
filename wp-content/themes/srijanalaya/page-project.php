@@ -190,7 +190,4 @@ if(strstr($current_page,'ne'))
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
-</script>() {
-jQuery('.clndr-transparent-block').fadeOut(300);
-}
 </script>
