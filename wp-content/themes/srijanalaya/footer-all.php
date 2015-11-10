@@ -45,6 +45,3 @@
 		</div> <!--full page end-->
 	</div>
 </div>
-
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-dropdate.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/date.format.js"></script>

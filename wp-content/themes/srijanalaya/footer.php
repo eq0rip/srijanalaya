@@ -36,6 +36,8 @@
     });
 </script>
 <?php } ?>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-dropdate.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/date.format.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
 
 </html>

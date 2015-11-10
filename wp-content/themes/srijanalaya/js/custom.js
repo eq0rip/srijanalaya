@@ -294,16 +294,17 @@ function apply_date_filter(x) {
   }
   if(x=='month'){
     dslack=current_Date.getDate()-1;
-    date=slack;
+    date=dslack;
   }
   if(x=='Lmonth'){
     dslack=current_Date.getMonth()-1;
     mslack=1;
-    date=slack;
+    date=dslack;
   }
   if(x=='year'){
     slack=current_Date.getMonth();
-    date=slack;
+    date=dslack;
+    
   }
   jQuery('#date_value_main').text(date);
 
