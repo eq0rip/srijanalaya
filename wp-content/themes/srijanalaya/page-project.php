@@ -20,47 +20,45 @@ wp_reset_query();?>
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
-			
-			<?php
+			<form id="kailash">
+				<?php
+				$dropdown_args = array(
+					'hide_empty'       => 0,
+					'hide_if_empty'    => false,
+					'taxonomy'         => 'project_categories',
+					'name'             => 'parent',
+					'orderby'          => 'name',
+					'hierarchical'     => true,
+					'show_option_none' => __( 'None' ),
+					);
+				$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
+				$tags=wp_dropdown_categories( $dropdown_args );
+				?>
 
-			$dropdown_args = array(
-				'hide_empty'       => 0,
-				'hide_if_empty'    => false,
-				'taxonomy'         => 'project_categories',
-				'name'             => 'parent',
-				'orderby'          => 'name',
-				'hierarchical'     => true,
-				'show_option_none' => __( 'None' ),
-				);
-			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
-			$tags=wp_dropdown_categories( $dropdown_args );
-			?>
-			
-			<select>
-				<option selected>Location</option>
-				<option>des</option>
-				<option>nepal</option>
-			</select>
-			
-			<select>
-				<option selected>By week</option>
-				<option>first</option>
-			</select>
-			<div class="date_filter">
-				<div class="date_value">
-					<span id='date_value_main'>hiii</span><span class='caret'></span>
+				<select id="location_value_main">
+					<option selected>Location</option>
+					<option>Kathmandu</option>
+					<option>Lalitpur</option>
+				</select>
+
+
+				<div class="date_filter">
+					<div class="date_value">
+						<span id='date_value_main'>By Date</span><span class='caret'></span>
+					</div>
+					<div class="date_value_dropdown">
+						<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
+						<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
+						<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
+						<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
+						<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
+						<span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
+						<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
+						<button onclick="apply_date_filter('custom')" class="btn">Apply</button>
+					</div>
 				</div>
-				<div class="date_value_dropdown">
-					<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
-					<input type="text" value="" class="dropdate"/>
-					<button onclick="apply_date_filter('default')">Apply</button>
-				</div>
-			</div>
-			<button type="button" class="btn btn-default">filter</button>	
+				<input id="clickMe" type="button" class="btn" onclick="filter_projects();" value="Filter" />	
+			</form>
 		</div>
 		<div class="col-sm-8" id="tag_filter_div">
 			<ul>
@@ -77,13 +75,15 @@ wp_reset_query();?>
 				<?php }?>
 			</ul>
 		</div>
-		<div class="col-sm-9 timeline-wrapper">
+	</div>
+	<div class="col-sm-9 timeline-wrapper">
 
-			<section id="cd-timeline" class="cd-container">
-				<div class="circle"></div>
-				<?php
-				$nextEvent = '';
-				$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+		<section id="cd-timeline" class="cd-container">
+			<div class="circle"></div>
+			<?php
+			$nextEvent = '';
+			if(!isset($_GET['location'])){
+				$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
 					'meta_query' => array(
 						array(
 							'key' => 'wpcf-project-date'
@@ -97,16 +97,61 @@ wp_reset_query();?>
 					'orderby' => 'meta_value',
 					'order' => 'ASC'
 					); 
-				$postslist=new WP_Query($args);
-				while($postslist->have_posts()) : $postslist->the_post();
-				$nextEvent = $post->ID;
-				endwhile;
-				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date', 'orderby' => 'meta_value', 'order' => 'DESC'); 
-				$postslist=new WP_Query($args);              
-				$curDate = date('now');
-				$i = 1;$j=0;
-				$events = "";
-				while($postslist->have_posts()) : $postslist->the_post();
+			}
+			else {
+				$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+					'meta_query' => array(
+						array(
+							'key' => 'wpcf-project-date'
+							),
+						array(
+							'key' => 'wpcf-project-date',
+							'value' => strtotime('today'),
+							'compare' => '>='
+							)
+						),array(
+						array(
+							'key' => 'wpcf-location'
+							),
+						array(
+							'key' => 'wpcf-location',
+							'value' => $_GET['location'],
+							'compare' => '='
+							)
+						),
+						'orderby' => 'meta_value',
+						'order' => 'ASC'
+						); 
+
+			}
+			$postslist=new WP_Query($args);
+			while($postslist->have_posts()) : $postslist->the_post();
+			$nextEvent = $post->ID;
+			endwhile;
+			if(!isset($_GET['location'])){
+			
+				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
+			}
+			else {
+		
+				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
+					'meta_query'=>array(
+						array(
+							'key'=>'wpcf-location',
+							),
+						array(
+							'key'=>'wpcf-location',
+							'value'=>$_GET['location'],
+							'compare'=>'='
+							)
+						),
+					'orderby' => 'meta_value', 'order' => 'DESC'); 
+			}
+			$postslist=new WP_Query($args);              
+			$curDate = date('now');
+			$i = 1;$j=0;
+			$events = "";
+			while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'project_tags');//tag array
 			$tag='';//tag string
 			foreach ($tags as $key=>$values){

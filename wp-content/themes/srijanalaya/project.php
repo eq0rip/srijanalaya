@@ -1,6 +1,5 @@
 <?php
 /**
-Template Name: Timeline
  */
 
 get_header('all'); 

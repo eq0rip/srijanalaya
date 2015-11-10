@@ -13,6 +13,9 @@
       });
 
 
+
+
+
 //owl sync
 var $owl1 = $("#slider-1"),
 $owl2 = $("#slider-2"),
@@ -268,47 +271,83 @@ jQuery('.date_value').on("click", function() {
   jQuery('.date_value_dropdown').slideToggle(300);
 });
 
-jQuery( "#datepicker" ).datepicker({
-  inline: true
-});
+
 function apply_date_filter(x) {
  // alert(x);
-  var dslack;
-  var mslack
-  var date='';
-  var current_Date=new Date();
+ var dslack;
+ var mslack
+ var from_Date='';
+ var to_Date=''
+ var current_Date=new Date();
+ var day=current_Date.getDay();
+ var dd=current_Date.getDate();
+ var mm=current_Date.getMonth()+1;
+ var yy=current_Date.getFullYear();
+ var to_Date=yy+'/'+mm+'/'+dd;
 
-  console.log(current_Date);
+ console.log(current_Date);
   //alert(current_Date.getFullYear());
-  //jQuery('.date_value_dropdown').hide();
-  if(x=='default'){
-    date=jQuery('.dropdate').val();
-  }
+
+
   if(x=='week'){
-    dslack=current_Date.getDay();
-    date=slack;
+
+    dd=dd-day;
   }
   if(x=='Lweek'){
-    slack=7+current_Date.getDay();
-    date=dslack;
+    dd=dd-day-7;
+
   }
   if(x=='month'){
-    dslack=current_Date.getDate()-1;
-    date=dslack;
+    dd=1;
   }
   if(x=='Lmonth'){
-    dslack=current_Date.getMonth()-1;
-    mslack=1;
-    date=dslack;
+    dd=1;
+    mm=mm-1;
   }
   if(x=='year'){
-    slack=current_Date.getMonth();
-    date=dslack;
-    
+    dd=1;
+    mm=1;
   }
-  jQuery('#date_value_main').text(date);
+  from_Date=yy+'/'+mm+'/'+dd;
+  if(x=='custom'){
+    from_Date=jQuery('#fromDate').val();
+    to_Date=jQuery('#toDate').val();
+    if(Date.parse(from_Date)>Date.parse(to_Date) || Date.parse(from_Date)==Date.parse(to_Date) )
+    {
+      alert('Invalid D ate range');
+      return;
+    }
+    if(isNaN(Date.parse(from_Date)) || isNaN(Date.parse(to_Date))){
+      alert('Invalid Date');
+      return;
+    }
+  }
+  jQuery('#date_value_main').text(from_Date+' to '+to_Date);
+  jQuery('.date_value_dropdown').hide();
 
 }
+function filter_projects () {
+  var error='';
+  var location=jQuery('#location_value_main').val();
+  var date=jQuery('#date_value_main').text().split(' to ');
+  var from=date[0];
+  var to=date[1];
+
+  if(jQuery('#location_value_main').val()=='Location'){
+   error+='Choose location. ';
+ }
+
+ if(jQuery('#date_value_main').text()=='By Date'){
+  error+='Choose date. ';
+}
+
+if(error!=''){
+  alert(error);
+  return;
+}
+window.location.href='http://localhost/srijanalaya/events'+'?location='+location+'&&from='+from+'&&to='+to;
+}
+
 
 
 

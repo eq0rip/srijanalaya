@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.8
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2015 at 09:38 AM
--- Server version: 5.5.42-37.1
--- PHP Version: 5.4.23
+-- Generation Time: Nov 10, 2015 at 08:35 PM
+-- Server version: 10.0.21-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `smjrifle_srijanalaya`
+-- Database: `srijanalaya`
 --
 
 -- --------------------------------------------------------
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `project_subscriber`;
-CREATE TABLE IF NOT EXISTS `project_subscriber` (
-  `id` int(3) unsigned NOT NULL,
+CREATE TABLE `project_subscriber` (
+  `id` int(3) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `project_id` int(3) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `project_subscriber`
@@ -53,9 +53,9 @@ INSERT INTO `project_subscriber` (`id`, `email`, `project_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `wp_commentmeta`;
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_comments`;
-CREATE TABLE IF NOT EXISTS `wp_comments` (
-  `comment_ID` bigint(20) unsigned NOT NULL,
-  `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL,
+  `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `comment_author` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_author_url` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -81,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_approved` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `comment_agent` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `comment_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_comments`
@@ -99,15 +99,15 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 --
 
 DROP TABLE IF EXISTS `wp_links`;
-CREATE TABLE IF NOT EXISTS `wp_links` (
-  `link_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_target` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `link_visible` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Y',
-  `link_owner` bigint(20) unsigned NOT NULL DEFAULT '1',
+  `link_owner` bigint(20) UNSIGNED NOT NULL DEFAULT '1',
   `link_rating` int(11) NOT NULL DEFAULT '0',
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 --
 
 DROP TABLE IF EXISTS `wp_options`;
-CREATE TABLE IF NOT EXISTS `wp_options` (
-  `option_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL,
   `option_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=962 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -230,8 +230,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (94, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'widget_meta', 'a:2:{i:2;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (96, 'sidebars_widgets', 'a:3:{s:19:"wp_inactive_widgets";a:0:{}s:18:"orphaned_widgets_1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:13:"array_version";i:3;}', 'yes'),
-(99, 'cron', 'a:11:{i:1447169801;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1447170651;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1447182420;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447195003;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447200000;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447207625;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447227911;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447238203;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447250850;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
-(104, '_transient_random_seed', '289665ae949d5792e1c28ff40241dadd', 'yes'),
+(99, 'cron', 'a:11:{i:1447187801;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1447188937;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1447195003;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447200000;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447207625;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447225620;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447227911;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447238203;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447250850;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
+(104, '_transient_random_seed', '0d9cf33fbbd4009b7b20b36a1a0ec117', 'yes'),
 (112, 'can_compress_scripts', '0', 'yes'),
 (120, 'recently_activated', 'a:0:{}', 'yes'),
 (126, 'wpcf7', 'a:1:{s:7:"version";s:3:"4.3";}', 'yes'),
@@ -298,7 +298,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (797, '_site_transient_timeout_browser_2805a2e57ac7b1ef90ec124657385578', '1447755684', 'yes'),
 (798, '_site_transient_browser_2805a2e57ac7b1ef90ec124657385578', 'a:9:{s:8:"platform";s:5:"Linux";s:4:"name";s:7:"Firefox";s:7:"version";s:4:"41.0";s:10:"update_url";s:23:"http://www.firefox.com/";s:7:"img_src";s:50:"http://s.wordpress.org/images/browsers/firefox.png";s:11:"img_src_ssl";s:49:"https://wordpress.org/images/browsers/firefox.png";s:15:"current_version";s:2:"16";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (800, 'p2p_storage', '4', 'yes'),
-(801, 'jetpack_options', 'a:2:{s:7:"version";s:16:"3.7.2:1447151801";s:11:"old_version";s:16:"3.7.2:1447151801";}', 'yes'),
+(801, 'jetpack_options', 'a:4:{s:7:"version";s:16:"3.7.2:1447151801";s:11:"old_version";s:16:"3.7.2:1447151801";s:28:"fallback_no_verify_ssl_certs";i:0;s:9:"time_diff";i:0;}', 'yes'),
 (802, 'jetpack_activated', '1', 'yes'),
 (803, 'jetpack_file_data', 'a:1:{s:5:"3.7.2";a:48:{s:32:"897a2742e7839607c0023b456ed14758";a:13:{s:4:"name";s:20:"Spelling and Grammar";s:11:"description";s:89:"Check your spelling, style, and grammar with the After the Deadline proofreading service.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"6";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:0:"";}s:32:"c870c79f222cdc3114d210d3a3502a79";a:13:{s:4:"name";s:8:"Carousel";s:11:"description";s:63:"Transform standard image galleries into full-screen slideshows.";s:14:"jumpstart_desc";s:79:"Brings your photos and images to life as full-size, easily navigable galleries.";s:4:"sort";s:2:"22";s:20:"recommendation_order";s:2:"12";s:10:"introduced";s:3:"1.5";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:17:"Photos and Videos";s:7:"feature";s:9:"Jumpstart";}s:32:"5626c5d4355e483f5d4356630646d742";a:13:{s:4:"name";s:8:"Comments";s:11:"description";s:79:"Let readers comment with WordPress.com, Twitter, Facebook, or Google+ accounts.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"20";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.4";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:6:"Social";s:7:"feature";s:0:"";}s:32:"24c526e6c78dd2c097eee51c33d627ee";a:13:{s:4:"name";s:12:"Contact Form";s:11:"description";s:44:"Insert a contact form anywhere on your site.";s:14:"jumpstart_desc";s:111:"Adds a button to your post and page editors, allowing you to build simple forms to help visitors stay in touch.";s:4:"sort";s:2:"15";s:20:"recommendation_order";s:2:"14";s:10:"introduced";s:3:"1.3";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:5:"Other";s:7:"feature";s:9:"Jumpstart";}s:32:"be64897c0a578ee6cadb1a459021fbbe";a:13:{s:4:"name";s:20:"Custom Content Types";s:11:"description";s:92:"Organize and display different types of content on your site, separate from posts and pages.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"34";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"3.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:0:"";}s:32:"6735e720fe2e3f6f2c48fcaf0fe0a157";a:13:{s:4:"name";s:10:"Custom CSS";s:11:"description";s:57:"Customize your site’s CSS without modifying your theme.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"2";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.7";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:10:"Appearance";s:7:"feature";s:0:"";}s:32:"3abad4b5ddebf37a03f03331b17c1e1b";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"e30ae0161f5ef7955a2e22021602969b";a:13:{s:4:"name";s:21:"Enhanced Distribution";s:11:"description";s:27:"Increase reach and traffic.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"5";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.2";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:6:"Public";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:7:"Traffic";}s:32:"e4e461477edd64344126af366b33ae7c";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"1e285572509707836075afa0b7a0d17a";a:13:{s:4:"name";s:19:"Gravatar Hovercards";s:11:"description";s:58:"Enable pop-up business cards over commenters’ Gravatars.";s:14:"jumpstart_desc";s:131:"Let commenters link their profiles to their Gravatar accounts, making it easy for your visitors to learn more about your community.";s:4:"sort";s:2:"11";s:20:"recommendation_order";s:2:"13";s:10:"introduced";s:3:"1.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:18:"Social, Appearance";s:7:"feature";s:9:"Jumpstart";}s:32:"2a62f28abd5ac11bea3ce7a8e9c4d893";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:8:"2.0.3 ??";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"fd2cbe6ae10ff814cc269d51b32baad9";a:13:{s:4:"name";s:15:"Infinite Scroll";s:11:"description";s:46:"Add support for infinite scroll to your theme.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"26";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.0";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:10:"Appearance";s:7:"feature";s:0:"";}s:32:"931a7a94c663547c5cb6cc430e98dd30";a:13:{s:4:"name";s:8:"JSON API";s:11:"description";s:69:"Allow applications to securely access your content through the cloud.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"19";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.9";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:6:"Public";s:11:"module_tags";s:19:"Writing, Developers";s:7:"feature";s:0:"";}s:32:"dd442dc05f950526d584e15e54628bfb";a:13:{s:4:"name";s:14:"Beautiful Math";s:11:"description";s:85:"Use LaTeX markup language in posts and pages for complex equations and other geekery.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"12";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:0:"";}s:32:"96f2d1988c22688e9e3d8a8cc5ee1b5b";a:13:{s:4:"name";s:5:"Likes";s:11:"description";s:70:"Give visitors an easy way to show their appreciation for your content.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"23";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.2";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:6:"Social";s:7:"feature";s:0:"";}s:32:"f79ea51a248d9f624e0936ef023cffe1";a:13:{s:4:"name";s:6:"Manage";s:11:"description";s:76:"Manage all your sites from a centralized place, https://wordpress.com/sites.";s:14:"jumpstart_desc";s:151:"Helps you remotely manage plugins, turn on automated updates, and more from <a href="https://wordpress.com/plugins/" target="_blank">wordpress.com</a>.";s:4:"sort";s:1:"1";s:20:"recommendation_order";s:1:"3";s:10:"introduced";s:3:"3.4";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:35:"Centralized Management, Recommended";s:7:"feature";s:22:"Recommended, Jumpstart";}s:32:"46da83c7358c834dcb193789272f7858";a:13:{s:4:"name";s:8:"Markdown";s:11:"description";s:51:"Write posts or pages in plain-text Markdown syntax.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"31";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.8";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:0:"";}s:32:"c189740a3e69c5f42f12a191a15c3dbf";a:13:{s:4:"name";s:12:"Mobile Theme";s:11:"description";s:64:"Optimize your site with a mobile-friendly theme for smartphones.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"21";s:20:"recommendation_order";s:2:"11";s:10:"introduced";s:3:"1.8";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:31:"Appearance, Mobile, Recommended";s:7:"feature";s:11:"Recommended";}s:32:"0f9fdc374b00a8d5ca816aac44e6d3f6";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"6f1872535dd77713441708214388213c";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"65f2f0936d11bffe8cd447696054f38e";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"a8ff13dae8129c451116dea8803b23da";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"0a38341a9df2d2cb6f90e4faf65b4d64";a:13:{s:4:"name";s:7:"Monitor";s:11:"description";s:25:"Reports on site downtime.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"28";s:20:"recommendation_order";s:2:"10";s:10:"introduced";s:3:"2.6";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:11:"Recommended";s:7:"feature";s:33:"Recommended, Performance-Security";}s:32:"1c8f61fb80e0f6dd697e6d995431161a";a:13:{s:4:"name";s:13:"Notifications";s:11:"description";s:84:"Receive notification of site activity via the admin toolbar and your Mobile devices.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"13";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.9";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:5:"Other";s:7:"feature";s:0:"";}s:32:"4ca0a2f31843f3b2a4522fa8b9fb18d3";a:13:{s:4:"name";s:10:"Omnisearch";s:11:"description";s:66:"Search your entire database from a single field in your Dashboard.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"16";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.3";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:10:"Developers";s:7:"feature";s:0:"";}s:32:"1f1289f469fe089a9ea32024df083f74";a:13:{s:4:"name";s:6:"Photon";s:11:"description";s:27:"Speed up images and photos.";s:14:"jumpstart_desc";s:141:"Mirrors and serves your images from our free and fast image CDN, improving your site’s performance with no additional load on your servers.";s:4:"sort";s:2:"25";s:20:"recommendation_order";s:1:"1";s:10:"introduced";s:3:"2.0";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:42:"Photos and Videos, Appearance, Recommended";s:7:"feature";s:44:"Recommended, Jumpstart, Performance-Security";}s:32:"53eb2f9dfe4e9d9b7203d47ab3a0c58e";a:13:{s:4:"name";s:13:"Post by Email";s:11:"description";s:58:"Publish posts by email, using any device and email client.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"14";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.0";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:7:"Writing";s:7:"feature";s:0:"";}s:32:"df74d4db35fc795c9bf4b7b2e769116d";a:13:{s:4:"name";s:7:"Protect";s:11:"description";s:28:"Prevent brute force attacks.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"1";s:20:"recommendation_order";s:1:"4";s:10:"introduced";s:3:"3.4";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:11:"Recommended";s:7:"feature";s:33:"Recommended, Performance-Security";}s:32:"e8b7c9d9b0be70888c41e139c34eb448";a:13:{s:4:"name";s:9:"Publicize";s:11:"description";s:30:"Automatically promote content.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"10";s:20:"recommendation_order";s:1:"7";s:10:"introduced";s:3:"2.0";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:19:"Social, Recommended";s:7:"feature";s:20:"Recommended, Traffic";}s:32:"04c7eedf95290d03db05e2fc8682a8da";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"f36c13c725ee67f8fbb85d85b4fa8bdb";a:13:{s:4:"name";s:13:"Related Posts";s:11:"description";s:24:"Display similar content.";s:14:"jumpstart_desc";s:113:"Keep visitors engaged on your blog by highlighting relevant and new content at the bottom of each published post.";s:4:"sort";s:2:"29";s:20:"recommendation_order";s:1:"9";s:10:"introduced";s:3:"2.9";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:11:"Recommended";s:7:"feature";s:31:"Recommended, Jumpstart, Traffic";}s:32:"4034d694a22b9864b7d9dbcc291a01f5";a:13:{s:4:"name";s:7:"Sharing";s:11:"description";s:32:"Visitors can share your content.";s:14:"jumpstart_desc";s:116:"Twitter, Facebook and Google+ buttons at the bottom of each post, making it easy for visitors to share your content.";s:4:"sort";s:1:"7";s:20:"recommendation_order";s:1:"6";s:10:"introduced";s:3:"1.1";s:7:"changed";s:3:"1.2";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:19:"Social, Recommended";s:7:"feature";s:31:"Recommended, Jumpstart, Traffic";}s:32:"a260ebaa113e875bbbe59b54cd2475b1";a:13:{s:4:"name";s:16:"Shortcode Embeds";s:11:"description";s:77:"Embed content from YouTube, Vimeo, SlideShare, and more, no coding necessary.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"3";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.1";s:7:"changed";s:3:"1.2";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:46:"Photos and Videos, Social, Writing, Appearance";s:7:"feature";s:0:"";}s:32:"48e6f4cc58711b5d627931f72a4f55a2";a:13:{s:4:"name";s:16:"WP.me Shortlinks";s:11:"description";s:56:"Enable WP.me-powered shortlinks for all posts and pages.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"8";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:6:"Social";s:7:"feature";s:0:"";}s:32:"0361b51d6b8957ba15a90c8893085e51";a:13:{s:4:"name";s:9:"Site Icon";s:11:"description";s:29:"Add a site icon to your site.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"22";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"3.2";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:5:"Other";s:7:"feature";s:0:"";}s:32:"03045ecc30a51f072431bd2f6ccffc37";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"2e89d8cf494aa4cc028023de2662b571";a:13:{s:4:"name";s:14:"Single Sign On";s:11:"description";s:27:"Secure user authentication.";s:14:"jumpstart_desc";s:98:"Lets you log in to all your Jetpack-enabled sites with one click using your WordPress.com account.";s:4:"sort";s:2:"30";s:20:"recommendation_order";s:1:"5";s:10:"introduced";s:3:"2.6";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:10:"Developers";s:7:"feature";s:31:"Jumpstart, Performance-Security";}s:32:"caf240bf1da3b6f8ec449d7477ac383e";a:13:{s:4:"name";s:10:"Site Stats";s:11:"description";s:35:"Collect traffic stats and insights.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"1";s:20:"recommendation_order";s:1:"2";s:10:"introduced";s:3:"1.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:23:"Site Stats, Recommended";s:7:"feature";s:20:"Recommended, Traffic";}s:32:"b6ef488128505d6cf819d8a6508a081f";a:13:{s:4:"name";s:13:"Subscriptions";s:11:"description";s:88:"Allow users to subscribe to your posts and comments and receive notifications via email.";s:14:"jumpstart_desc";s:126:"Give visitors two easy subscription options — while commenting, or via a separate email subscription widget you can display.";s:4:"sort";s:1:"9";s:20:"recommendation_order";s:1:"8";s:10:"introduced";s:3:"1.2";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:6:"Social";s:7:"feature";s:9:"Jumpstart";}s:32:"6c0c9cebc91c7aee0de35562fcb8d0b0";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"f354e2a9f6f0823a628e741e7aa88906";a:13:{s:4:"name";s:15:"Tiled Galleries";s:11:"description";s:73:"Display your image galleries in a variety of sleek, graphic arrangements.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"24";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.1";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:2:"No";s:11:"module_tags";s:17:"Photos and Videos";s:7:"feature";s:0:"";}s:32:"fb806f9c3f633a466076615f99329d22";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"c6908213746b1364a541c3fde961936f";a:13:{s:4:"name";s:10:"VaultPress";s:11:"description";s:27:"Backups and security scans.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"32";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:5:"0:1.2";s:7:"changed";s:0:"";s:10:"deactivate";s:5:"false";s:4:"free";s:5:"false";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:0:"";s:7:"feature";s:20:"Performance-Security";}s:32:"df97f3fe6750f6490164e710152d5946";a:13:{s:4:"name";s:17:"Site Verification";s:11:"description";s:78:"Verify your site or domain with Google Webmaster Tools, Pinterest, and others.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"33";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"3.0";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}s:32:"5e000fbc427cecaed6e1b8dbf2732462";a:13:{s:4:"name";s:10:"VideoPress";s:11:"description";s:68:"Upload and embed videos right on your site. (Subscription required.)";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"27";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.5";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:5:"false";s:19:"requires_connection";s:3:"Yes";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:17:"Photos and Videos";s:7:"feature";s:0:"";}s:32:"86f746acdf5d11f8fe753092aec6f619";a:13:{s:4:"name";s:17:"Widget Visibility";s:11:"description";s:57:"Specify which widgets appear on which pages of your site.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:2:"17";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"2.4";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:10:"Appearance";s:7:"feature";s:0:"";}s:32:"b91d486b68701c78e5f2776144c546f4";a:13:{s:4:"name";s:21:"Extra Sidebar Widgets";s:11:"description";s:79:"Add images, Twitter streams, your site’s RSS links, and more to your sidebar.";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:1:"4";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:3:"1.2";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:2:"No";s:13:"auto_activate";s:3:"Yes";s:11:"module_tags";s:18:"Social, Appearance";s:7:"feature";s:0:"";}s:32:"98a767d5a9377cc7b8d08fda01d960c0";a:13:{s:4:"name";s:0:"";s:11:"description";s:0:"";s:14:"jumpstart_desc";s:0:"";s:4:"sort";s:0:"";s:20:"recommendation_order";s:0:"";s:10:"introduced";s:0:"";s:7:"changed";s:0:"";s:10:"deactivate";s:0:"";s:4:"free";s:0:"";s:19:"requires_connection";s:0:"";s:13:"auto_activate";s:0:"";s:11:"module_tags";s:0:"";s:7:"feature";s:0:"";}}}', 'yes');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
@@ -408,7 +408,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (915, '_transient_timeout_geoip_43.245.86.171', '1447756607', 'no'),
 (916, '_transient_geoip_43.245.86.171', 'NP', 'no'),
 (917, 'woocommerce_meta_box_errors', 'a:0:{}', 'yes'),
-(919, 'wysija_schedules', 'a:5:{s:5:"queue";a:3:{s:13:"next_schedule";i:1447170650;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:6:"bounce";a:3:{s:13:"next_schedule";i:1447238207;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:5:"daily";a:3:{s:13:"next_schedule";i:1447238207;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:6:"weekly";a:3:{s:13:"next_schedule";i:1447756607;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:7:"monthly";a:3:{s:13:"next_schedule";i:1449571007;s:13:"prev_schedule";i:0;s:7:"running";b:0;}}', 'yes'),
+(919, 'wysija_schedules', 'a:5:{s:5:"queue";a:3:{s:13:"next_schedule";i:1447188936;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:6:"bounce";a:3:{s:13:"next_schedule";i:1447238207;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:5:"daily";a:3:{s:13:"next_schedule";i:1447238207;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:6:"weekly";a:3:{s:13:"next_schedule";i:1447756607;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:7:"monthly";a:3:{s:13:"next_schedule";i:1449571007;s:13:"prev_schedule";i:0;s:7:"running";b:0;}}', 'yes'),
 (920, '_transient_timeout_wc_upgrade_notice_2.4.8', '1447238275', 'no'),
 (921, '_transient_wc_upgrade_notice_2.4.8', '', 'no'),
 (922, 'scporder_options', 'a:2:{s:7:"objects";a:12:{i:0;s:4:"post";i:1;s:4:"page";i:2;s:7:"product";i:3;s:10:"shop_order";i:4;s:11:"shop_coupon";i:5;s:8:"sri-menu";i:6;s:5:"video";i:7;s:5:"quote";i:8;s:6:"slider";i:9;s:7:"project";i:10;s:8:"resource";i:11;s:4:"maps";}s:4:"tags";s:0:"";}', 'yes'),
@@ -418,23 +418,30 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (930, '_transient_wc_outofstock_count', '0', 'no'),
 (931, '_transient_timeout_wc_admin_report', '1447240718', 'no'),
 (932, '_transient_wc_admin_report', 'a:1:{s:32:"7022f87d459e58e9022a0d7c423aa71a";a:0:{}}', 'no'),
-(933, 'wysija_last_php_cron_call', '1447167050', 'yes'),
-(934, 'wysija_check_pn', '1447167050.16', 'yes'),
-(935, 'wysija_last_scheduled_check', '1447167050', 'yes'),
+(933, 'wysija_last_php_cron_call', '1447185336', 'yes'),
+(934, 'wysija_check_pn', '1447185336.7526', 'yes'),
+(935, 'wysija_last_scheduled_check', '1447185336', 'yes'),
 (938, '_transient_timeout_geoip_49.244.5.244', '1447768196', 'no'),
 (939, '_transient_geoip_49.244.5.244', 'NP', 'no'),
-(940, '_site_transient_timeout_theme_roots', '1447165942', 'yes'),
-(941, '_site_transient_theme_roots', 'a:1:{s:11:"srijanalaya";s:7:"/themes";}', 'yes'),
-(947, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.3.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.3.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.3.1";s:7:"version";s:5:"4.3.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1447164452;s:15:"version_checked";s:5:"4.3.1";s:12:"translations";a:1:{i:0;a:7:{s:4:"type";s:4:"core";s:4:"slug";s:7:"default";s:8:"language";s:5:"de_DE";s:7:"version";s:5:"4.3.1";s:7:"updated";s:19:"2015-11-09 20:22:42";s:7:"package";s:64:"https://downloads.wordpress.org/translation/core/4.3.1/de_DE.zip";s:10:"autoupdate";b:1;}}}', 'yes'),
-(948, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1447164453;s:7:"checked";a:1:{s:11:"srijanalaya";s:3:"1.0";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes');
-INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(949, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1447164452;s:8:"response";a:5:{s:19:"akismet/akismet.php";O:8:"stdClass":8:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.1.5";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.1.5.zip";s:14:"upgrade_notice";s:78:"Version 3.1.5 contains security fixes and is highly recommended for all users.";s:10:"autoupdate";b:1;}s:19:"jetpack/jetpack.php";O:8:"stdClass":6:{s:2:"id";s:5:"20101";s:4:"slug";s:7:"jetpack";s:6:"plugin";s:19:"jetpack/jetpack.php";s:11:"new_version";s:5:"3.8.0";s:3:"url";s:38:"https://wordpress.org/plugins/jetpack/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/jetpack.3.8.0.zip";}s:38:"post-duplicator/m4c-postduplicator.php";O:8:"stdClass":6:{s:2:"id";s:5:"31128";s:4:"slug";s:15:"post-duplicator";s:6:"plugin";s:38:"post-duplicator/m4c-postduplicator.php";s:11:"new_version";s:4:"2.10";s:3:"url";s:46:"https://wordpress.org/plugins/post-duplicator/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/post-duplicator.zip";}s:14:"types/wpcf.php";O:8:"stdClass":6:{s:2:"id";s:5:"24557";s:4:"slug";s:5:"types";s:6:"plugin";s:14:"types/wpcf.php";s:11:"new_version";s:5:"1.8.8";s:3:"url";s:36:"https://wordpress.org/plugins/types/";s:7:"package";s:54:"https://downloads.wordpress.org/plugin/types.1.8.8.zip";}s:27:"woocommerce/woocommerce.php";O:8:"stdClass":6:{s:2:"id";s:5:"25331";s:4:"slug";s:11:"woocommerce";s:6:"plugin";s:27:"woocommerce/woocommerce.php";s:11:"new_version";s:6:"2.4.10";s:3:"url";s:42:"https://wordpress.org/plugins/woocommerce/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/woocommerce.2.4.10.zip";}}s:12:"translations";a:0:{}s:9:"no_update";a:13:{s:25:"add-to-any/add-to-any.php";O:8:"stdClass":7:{s:2:"id";s:3:"429";s:4:"slug";s:10:"add-to-any";s:6:"plugin";s:25:"add-to-any/add-to-any.php";s:11:"new_version";s:5:"1.6.7";s:3:"url";s:41:"https://wordpress.org/plugins/add-to-any/";s:7:"package";s:59:"https://downloads.wordpress.org/plugin/add-to-any.1.6.7.zip";s:14:"upgrade_notice";s:290:"If you are using AddToAny as a &quot;must-use&quot; autoloaded plugin (in the mu-plugins directory), the old method of moving add-to-any.php into mu-plugins is no longer supported and will not work. See the plugin&#039;s last FAQ about using a proxy PHP loader file that autoloads AddToAny.";}s:39:"categories-images/categories-images.php";O:8:"stdClass":6:{s:2:"id";s:5:"32132";s:4:"slug";s:17:"categories-images";s:6:"plugin";s:39:"categories-images/categories-images.php";s:11:"new_version";s:5:"2.5.1";s:3:"url";s:48:"https://wordpress.org/plugins/categories-images/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/categories-images.2.5.1.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:3:"4.3";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/contact-form-7.4.3.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}s:28:"wysija-newsletters/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"27505";s:4:"slug";s:18:"wysija-newsletters";s:6:"plugin";s:28:"wysija-newsletters/index.php";s:11:"new_version";s:6:"2.6.19";s:3:"url";s:49:"https://wordpress.org/plugins/wysija-newsletters/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/wysija-newsletters.2.6.19.zip";}s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";O:8:"stdClass":6:{s:2:"id";s:4:"1057";s:4:"slug";s:24:"ozh-admin-drop-down-menu";s:6:"plugin";s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";s:11:"new_version";s:6:"3.6.10";s:3:"url";s:55:"https://wordpress.org/plugins/ozh-admin-drop-down-menu/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/ozh-admin-drop-down-menu.zip";}s:51:"parent-category-toggler/parent-category-toggler.php";O:8:"stdClass":6:{s:2:"id";s:4:"5568";s:4:"slug";s:23:"parent-category-toggler";s:6:"plugin";s:51:"parent-category-toggler/parent-category-toggler.php";s:11:"new_version";s:5:"1.3.2";s:3:"url";s:54:"https://wordpress.org/plugins/parent-category-toggler/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/parent-category-toggler.zip";}s:33:"posts-to-posts/posts-to-posts.php";O:8:"stdClass":6:{s:2:"id";s:5:"14657";s:4:"slug";s:14:"posts-to-posts";s:6:"plugin";s:33:"posts-to-posts/posts-to-posts.php";s:11:"new_version";s:5:"1.6.5";s:3:"url";s:45:"https://wordpress.org/plugins/posts-to-posts/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip";}s:27:"qtranslate-x/qtranslate.php";O:8:"stdClass":7:{s:2:"id";s:5:"56032";s:4:"slug";s:12:"qtranslate-x";s:6:"plugin";s:27:"qtranslate-x/qtranslate.php";s:11:"new_version";s:7:"3.4.6.4";s:3:"url";s:43:"https://wordpress.org/plugins/qtranslate-x/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/qtranslate-x.3.4.6.4.zip";s:14:"upgrade_notice";s:66:"Fix: A fix for Internal Server Error 500 under some circumstances.";}s:53:"simple-custom-post-order/simple-custom-post-order.php";O:8:"stdClass":6:{s:2:"id";s:5:"42644";s:4:"slug";s:24:"simple-custom-post-order";s:6:"plugin";s:53:"simple-custom-post-order/simple-custom-post-order.php";s:11:"new_version";s:3:"2.3";s:3:"url";s:55:"https://wordpress.org/plugins/simple-custom-post-order/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/simple-custom-post-order.zip";}s:25:"sucuri-scanner/sucuri.php";O:8:"stdClass":6:{s:2:"id";s:5:"27199";s:4:"slug";s:14:"sucuri-scanner";s:6:"plugin";s:25:"sucuri-scanner/sucuri.php";s:11:"new_version";s:6:"1.7.13";s:3:"url";s:45:"https://wordpress.org/plugins/sucuri-scanner/";s:7:"package";s:64:"https://downloads.wordpress.org/plugin/sucuri-scanner.1.7.13.zip";}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":7:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.4.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip";s:14:"upgrade_notice";s:140:"Thanks for using W3 Total Cache! This release includes important security updates designed to contribute to a secure WordPress installation.";}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":6:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"2.3.5";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip";}}}', 'yes'),
 (955, '_transient_timeout_geoip_43.245.84.168', '1447771657', 'no'),
 (956, '_transient_geoip_43.245.84.168', 'NP', 'no'),
-(958, '_site_transient_timeout_security_report_performed_recently', '1447169023', 'yes'),
-(959, '_site_transient_security_report_performed_recently', '1', 'yes'),
 (960, '_site_transient_timeout_browser_b10ea858e287322be96ef3a56d4aafea', '1447772944', 'yes'),
-(961, '_site_transient_browser_b10ea858e287322be96ef3a56d4aafea', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:12:"46.0.2490.80";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes');
+(961, '_site_transient_browser_b10ea858e287322be96ef3a56d4aafea', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:12:"46.0.2490.80";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
+(962, '_transient_timeout_geoip_127.0.0.1', '1447775488', 'no'),
+(963, '_transient_geoip_127.0.0.1', '', 'no'),
+(964, '_transient_timeout_external_ip_address_127.0.0.1', '1447775489', 'no'),
+(965, '_transient_external_ip_address_127.0.0.1', '49.244.5.244', 'no'),
+(969, '_transient_timeout_jetpack_https_test', '1447257160', 'no'),
+(970, '_transient_jetpack_https_test', '0', 'no'),
+(992, 'project_categories_children', 'a:0:{}', 'yes'),
+(999, '_site_transient_timeout_theme_roots', '1447184387', 'yes'),
+(1000, '_site_transient_theme_roots', 'a:1:{s:11:"srijanalaya";s:7:"/themes";}', 'yes'),
+(1002, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-4.3.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-4.3.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-4.3.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"4.3.1";s:7:"version";s:5:"4.3.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"4.1";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1447182595;s:15:"version_checked";s:5:"4.3.1";s:12:"translations";a:1:{i:0;a:7:{s:4:"type";s:4:"core";s:4:"slug";s:7:"default";s:8:"language";s:5:"de_DE";s:7:"version";s:5:"4.3.1";s:7:"updated";s:19:"2015-11-09 20:22:42";s:7:"package";s:64:"https://downloads.wordpress.org/translation/core/4.3.1/de_DE.zip";s:10:"autoupdate";b:1;}}}', 'yes'),
+(1003, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1447182597;s:7:"checked";a:1:{s:11:"srijanalaya";s:3:"1.0";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes');
+INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
+(1004, '_site_transient_update_plugins', 'O:8:"stdClass":4:{s:12:"last_checked";i:1447182597;s:8:"response";a:5:{s:19:"akismet/akismet.php";O:8:"stdClass":8:{s:2:"id";s:2:"15";s:4:"slug";s:7:"akismet";s:6:"plugin";s:19:"akismet/akismet.php";s:11:"new_version";s:5:"3.1.5";s:3:"url";s:38:"https://wordpress.org/plugins/akismet/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/akismet.3.1.5.zip";s:14:"upgrade_notice";s:78:"Version 3.1.5 contains security fixes and is highly recommended for all users.";s:10:"autoupdate";b:1;}s:19:"jetpack/jetpack.php";O:8:"stdClass":6:{s:2:"id";s:5:"20101";s:4:"slug";s:7:"jetpack";s:6:"plugin";s:19:"jetpack/jetpack.php";s:11:"new_version";s:5:"3.8.0";s:3:"url";s:38:"https://wordpress.org/plugins/jetpack/";s:7:"package";s:56:"https://downloads.wordpress.org/plugin/jetpack.3.8.0.zip";}s:38:"post-duplicator/m4c-postduplicator.php";O:8:"stdClass":6:{s:2:"id";s:5:"31128";s:4:"slug";s:15:"post-duplicator";s:6:"plugin";s:38:"post-duplicator/m4c-postduplicator.php";s:11:"new_version";s:4:"2.10";s:3:"url";s:46:"https://wordpress.org/plugins/post-duplicator/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/post-duplicator.zip";}s:14:"types/wpcf.php";O:8:"stdClass":6:{s:2:"id";s:5:"24557";s:4:"slug";s:5:"types";s:6:"plugin";s:14:"types/wpcf.php";s:11:"new_version";s:5:"1.8.8";s:3:"url";s:36:"https://wordpress.org/plugins/types/";s:7:"package";s:54:"https://downloads.wordpress.org/plugin/types.1.8.8.zip";}s:27:"woocommerce/woocommerce.php";O:8:"stdClass":6:{s:2:"id";s:5:"25331";s:4:"slug";s:11:"woocommerce";s:6:"plugin";s:27:"woocommerce/woocommerce.php";s:11:"new_version";s:6:"2.4.10";s:3:"url";s:42:"https://wordpress.org/plugins/woocommerce/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/woocommerce.2.4.10.zip";}}s:12:"translations";a:0:{}s:9:"no_update";a:13:{s:25:"add-to-any/add-to-any.php";O:8:"stdClass":7:{s:2:"id";s:3:"429";s:4:"slug";s:10:"add-to-any";s:6:"plugin";s:25:"add-to-any/add-to-any.php";s:11:"new_version";s:5:"1.6.7";s:3:"url";s:41:"https://wordpress.org/plugins/add-to-any/";s:7:"package";s:59:"https://downloads.wordpress.org/plugin/add-to-any.1.6.7.zip";s:14:"upgrade_notice";s:290:"If you are using AddToAny as a &quot;must-use&quot; autoloaded plugin (in the mu-plugins directory), the old method of moving add-to-any.php into mu-plugins is no longer supported and will not work. See the plugin&#039;s last FAQ about using a proxy PHP loader file that autoloads AddToAny.";}s:39:"categories-images/categories-images.php";O:8:"stdClass":6:{s:2:"id";s:5:"32132";s:4:"slug";s:17:"categories-images";s:6:"plugin";s:39:"categories-images/categories-images.php";s:11:"new_version";s:5:"2.5.1";s:3:"url";s:48:"https://wordpress.org/plugins/categories-images/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/categories-images.2.5.1.zip";}s:36:"contact-form-7/wp-contact-form-7.php";O:8:"stdClass":6:{s:2:"id";s:3:"790";s:4:"slug";s:14:"contact-form-7";s:6:"plugin";s:36:"contact-form-7/wp-contact-form-7.php";s:11:"new_version";s:3:"4.3";s:3:"url";s:45:"https://wordpress.org/plugins/contact-form-7/";s:7:"package";s:61:"https://downloads.wordpress.org/plugin/contact-form-7.4.3.zip";}s:9:"hello.php";O:8:"stdClass":6:{s:2:"id";s:4:"3564";s:4:"slug";s:11:"hello-dolly";s:6:"plugin";s:9:"hello.php";s:11:"new_version";s:3:"1.6";s:3:"url";s:42:"https://wordpress.org/plugins/hello-dolly/";s:7:"package";s:58:"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip";}s:28:"wysija-newsletters/index.php";O:8:"stdClass":6:{s:2:"id";s:5:"27505";s:4:"slug";s:18:"wysija-newsletters";s:6:"plugin";s:28:"wysija-newsletters/index.php";s:11:"new_version";s:6:"2.6.19";s:3:"url";s:49:"https://wordpress.org/plugins/wysija-newsletters/";s:7:"package";s:68:"https://downloads.wordpress.org/plugin/wysija-newsletters.2.6.19.zip";}s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";O:8:"stdClass":6:{s:2:"id";s:4:"1057";s:4:"slug";s:24:"ozh-admin-drop-down-menu";s:6:"plugin";s:45:"ozh-admin-drop-down-menu/wp_ozh_adminmenu.php";s:11:"new_version";s:6:"3.6.10";s:3:"url";s:55:"https://wordpress.org/plugins/ozh-admin-drop-down-menu/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/ozh-admin-drop-down-menu.zip";}s:51:"parent-category-toggler/parent-category-toggler.php";O:8:"stdClass":6:{s:2:"id";s:4:"5568";s:4:"slug";s:23:"parent-category-toggler";s:6:"plugin";s:51:"parent-category-toggler/parent-category-toggler.php";s:11:"new_version";s:5:"1.3.2";s:3:"url";s:54:"https://wordpress.org/plugins/parent-category-toggler/";s:7:"package";s:66:"https://downloads.wordpress.org/plugin/parent-category-toggler.zip";}s:33:"posts-to-posts/posts-to-posts.php";O:8:"stdClass":6:{s:2:"id";s:5:"14657";s:4:"slug";s:14:"posts-to-posts";s:6:"plugin";s:33:"posts-to-posts/posts-to-posts.php";s:11:"new_version";s:5:"1.6.5";s:3:"url";s:45:"https://wordpress.org/plugins/posts-to-posts/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/posts-to-posts.1.6.5.zip";}s:27:"qtranslate-x/qtranslate.php";O:8:"stdClass":7:{s:2:"id";s:5:"56032";s:4:"slug";s:12:"qtranslate-x";s:6:"plugin";s:27:"qtranslate-x/qtranslate.php";s:11:"new_version";s:7:"3.4.6.4";s:3:"url";s:43:"https://wordpress.org/plugins/qtranslate-x/";s:7:"package";s:63:"https://downloads.wordpress.org/plugin/qtranslate-x.3.4.6.4.zip";s:14:"upgrade_notice";s:66:"Fix: A fix for Internal Server Error 500 under some circumstances.";}s:53:"simple-custom-post-order/simple-custom-post-order.php";O:8:"stdClass":6:{s:2:"id";s:5:"42644";s:4:"slug";s:24:"simple-custom-post-order";s:6:"plugin";s:53:"simple-custom-post-order/simple-custom-post-order.php";s:11:"new_version";s:3:"2.3";s:3:"url";s:55:"https://wordpress.org/plugins/simple-custom-post-order/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/simple-custom-post-order.zip";}s:25:"sucuri-scanner/sucuri.php";O:8:"stdClass":6:{s:2:"id";s:5:"27199";s:4:"slug";s:14:"sucuri-scanner";s:6:"plugin";s:25:"sucuri-scanner/sucuri.php";s:11:"new_version";s:6:"1.7.13";s:3:"url";s:45:"https://wordpress.org/plugins/sucuri-scanner/";s:7:"package";s:64:"https://downloads.wordpress.org/plugin/sucuri-scanner.1.7.13.zip";}s:33:"w3-total-cache/w3-total-cache.php";O:8:"stdClass":7:{s:2:"id";s:4:"9376";s:4:"slug";s:14:"w3-total-cache";s:6:"plugin";s:33:"w3-total-cache/w3-total-cache.php";s:11:"new_version";s:7:"0.9.4.1";s:3:"url";s:45:"https://wordpress.org/plugins/w3-total-cache/";s:7:"package";s:65:"https://downloads.wordpress.org/plugin/w3-total-cache.0.9.4.1.zip";s:14:"upgrade_notice";s:140:"Thanks for using W3 Total Cache! This release includes important security updates designed to contribute to a secure WordPress installation.";}s:24:"wordpress-seo/wp-seo.php";O:8:"stdClass":6:{s:2:"id";s:4:"5899";s:4:"slug";s:13:"wordpress-seo";s:6:"plugin";s:24:"wordpress-seo/wp-seo.php";s:11:"new_version";s:5:"2.3.5";s:3:"url";s:44:"https://wordpress.org/plugins/wordpress-seo/";s:7:"package";s:62:"https://downloads.wordpress.org/plugin/wordpress-seo.2.3.5.zip";}}}', 'yes'),
+(1009, '_site_transient_timeout_security_report_performed_recently', '1447186729', 'yes'),
+(1010, '_site_transient_security_report_performed_recently', '1', 'yes');
 
 -- --------------------------------------------------------
 
@@ -443,10 +450,10 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 --
 
 DROP TABLE IF EXISTS `wp_p2p`;
-CREATE TABLE IF NOT EXISTS `wp_p2p` (
-  `p2p_id` bigint(20) unsigned NOT NULL,
-  `p2p_from` bigint(20) unsigned NOT NULL,
-  `p2p_to` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_p2p` (
+  `p2p_id` bigint(20) UNSIGNED NOT NULL,
+  `p2p_from` bigint(20) UNSIGNED NOT NULL,
+  `p2p_to` bigint(20) UNSIGNED NOT NULL,
   `p2p_type` varchar(44) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -457,9 +464,9 @@ CREATE TABLE IF NOT EXISTS `wp_p2p` (
 --
 
 DROP TABLE IF EXISTS `wp_p2pmeta`;
-CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `p2p_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_p2pmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `p2p_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -471,12 +478,12 @@ CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_postmeta`;
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
-  `meta_id` bigint(20) unsigned NOT NULL,
-  `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL,
+  `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=812 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -783,14 +790,14 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (553, 109, '_edit_last', '1'),
 (554, 109, '_edit_lock', '1444899398:1'),
 (555, 110, '_edit_last', '1'),
-(556, 110, '_edit_lock', '1445781977:1'),
+(556, 110, '_edit_lock', '1447179357:1'),
 (557, 110, 'wpcf-date', '1443657600'),
 (558, 111, '_edit_last', '1'),
-(559, 111, '_edit_lock', '1445781977:1'),
+(559, 111, '_edit_lock', '1447179351:1'),
 (561, 112, '_edit_last', '1'),
-(562, 112, '_edit_lock', '1445781976:1'),
+(562, 112, '_edit_lock', '1447179344:1'),
 (564, 113, '_edit_last', '1'),
-(565, 113, '_edit_lock', '1445781978:1'),
+(565, 113, '_edit_lock', '1447185949:1'),
 (567, 113, 'wpcf-date', '1439337600'),
 (569, 112, 'wpcf-date', '1444089600'),
 (570, 111, 'wpcf-date', '1443657600'),
@@ -821,15 +828,15 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (606, 151, '_wp_trash_meta_status', 'publish'),
 (607, 151, '_wp_trash_meta_time', '1444983206'),
 (614, 159, '_edit_last', '1'),
-(615, 159, '_edit_lock', '1445781978:1'),
+(615, 159, '_edit_lock', '1447183739:1'),
 (616, 159, 'wpcf-date', '1439337600'),
 (617, 159, 'wpcf-dates', '2015/07/01'),
 (621, 160, '_edit_last', '1'),
-(622, 160, '_edit_lock', '1445847883:1'),
-(623, 160, '_wp_page_template', 'project.php'),
+(622, 160, '_edit_lock', '1447177270:1'),
+(623, 160, '_wp_page_template', 'page-project.php'),
 (625, 162, '_edit_last', '1'),
 (626, 162, '_wp_page_template', 'page-resource.php'),
-(627, 162, '_edit_lock', '1447164421:1'),
+(627, 162, '_edit_lock', '1447170762:1'),
 (629, 172, '_edit_last', '1'),
 (630, 172, '_wp_page_template', 'default'),
 (631, 172, '_edit_lock', '1445163811:1'),
@@ -897,14 +904,6 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (710, 112, '_thumbnail_id', '192'),
 (712, 111, '_thumbnail_id', '192'),
 (714, 110, '_thumbnail_id', '192'),
-(748, 159, 'wpcf-project-date', '1476500640'),
-(749, 159, 'wpcf-location', 'Lalitpur'),
-(750, 159, 'wpcf-summary', 'Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio'),
-(751, 159, 'wpcf-facilitators', 'Facilator 1, Facilator 2'),
-(752, 113, 'wpcf-project-date', '1444791840'),
-(753, 113, 'wpcf-location', 'Kathmandu'),
-(754, 113, 'wpcf-summary', 'Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio'),
-(755, 113, 'wpcf-facilitators', 'Facilator 1, Facilator 2'),
 (756, 112, 'wpcf-project-date', '1446289800'),
 (757, 112, 'wpcf-location', 'Location Description'),
 (758, 112, 'wpcf-summary', 'Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio'),
@@ -949,12 +948,20 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (803, 50, 'wpb_post_views_count', '6'),
 (804, 52, 'wpb_post_views_count', '1'),
 (805, 48, 'wpb_post_views_count', '0'),
-(806, 49, 'wpb_post_views_count', '4'),
+(806, 49, 'wpb_post_views_count', '5'),
 (807, 113, 'wpb_post_views_count', '5'),
 (808, 183, 'wpb_post_views_count', '0'),
 (809, 183, '_thumbnail_id', '192'),
 (810, 112, 'wpb_post_views_count', '0'),
-(811, 111, 'wpb_post_views_count', '0');
+(811, 111, 'wpb_post_views_count', '0'),
+(816, 159, 'wpcf-project-date', '1476500640'),
+(817, 159, 'wpcf-location', 'Lalitpur'),
+(818, 159, 'wpcf-summary', 'Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio'),
+(819, 159, 'wpcf-facilitators', 'Facilator 1, Facilator 2'),
+(832, 113, 'wpcf-project-date', '1444791840'),
+(833, 113, 'wpcf-location', 'Kathmandu'),
+(834, 113, 'wpcf-summary', 'Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio'),
+(835, 113, 'wpcf-facilitators', 'Facilator 1, Facilator 2');
 
 -- --------------------------------------------------------
 
@@ -963,9 +970,9 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 --
 
 DROP TABLE IF EXISTS `wp_posts`;
-CREATE TABLE IF NOT EXISTS `wp_posts` (
-  `ID` bigint(20) unsigned NOT NULL,
-  `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
+  `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -981,13 +988,13 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_content_filtered` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `post_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `guid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `menu_order` int(11) NOT NULL DEFAULT '0',
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `comment_count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_posts`
@@ -1067,18 +1074,18 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (107, 1, '2015-10-15 08:43:15', '2015-10-15 08:43:15', 'sdafdsfsdfsadfdssdafsfdasdfsddfdas sdfsdfd fdf ddsf  sdfsdf dfdsdssd fdsf sfa ds sdf dsf dsfads f sdfsdf dsf fdsfdsf ', 'sdfawd', '', 'inherit', 'closed', 'closed', '', '94-revision-v1', '', '', '2015-10-15 08:43:15', '2015-10-15 08:43:15', '', 94, 'http://localhost/srijanalaya/94-revision-v1/', 0, 'revision', '', 0),
 (108, 1, '2015-10-15 08:43:47', '2015-10-15 08:43:47', 'sdafdsfsdfsadfdssdafsfdasdfsddfdas sdfsdfd fdf ddsf  sdfsdf dfdsdssd fdsf sfa ds sdf dsf dsfads f sdfsdf dsf fdsfdsf  sdfsdf', 'sdfawd', '', 'inherit', 'closed', 'closed', '', '94-revision-v1', '', '', '2015-10-15 08:43:47', '2015-10-15 08:43:47', '', 94, 'http://localhost/srijanalaya/94-revision-v1/', 0, 'revision', '', 0),
 (109, 1, '2015-10-15 08:58:59', '2015-10-15 08:58:59', '', 'subscriber', '', 'publish', 'closed', 'closed', '', 'subscriber', '', '', '2015-10-15 08:58:59', '2015-10-15 08:58:59', '', 0, 'http://localhost/srijanalaya/?post_type=projectsub&#038;p=109', 0, 'projectsub', '', 0),
-(110, 1, '2015-10-15 10:37:15', '2015-10-15 10:37:15', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'publish', 'closed', 'closed', '', 'project', '', '', '2015-10-25 09:54:13', '2015-10-25 09:54:13', '', 0, 'http://localhost/srijanalaya/?post_type=project&#038;p=110', 5, 'project', '', 0),
-(111, 1, '2015-10-15 10:37:23', '2015-10-15 10:37:23', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'publish', 'closed', 'closed', '', 'project-2', '', '', '2015-10-25 09:54:04', '2015-10-25 09:54:04', '', 0, 'http://localhost/srijanalaya/project/project-2/', 4, 'project', '', 0),
-(112, 1, '2015-10-15 10:37:25', '2015-10-15 10:37:25', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 3[:ne]project00[:]', '', 'publish', 'closed', 'closed', '', 'project-3', '', '', '2015-10-25 09:53:58', '2015-10-25 09:53:58', '', 0, 'http://localhost/srijanalaya/project/project-3/', 3, 'project', '', 0),
-(113, 1, '2015-10-15 10:37:27', '2015-10-15 10:37:27', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'publish', 'closed', 'closed', '', 'project-4', '', '', '2015-10-25 09:53:45', '2015-10-25 09:53:45', '', 0, 'http://localhost/srijanalaya/project/project-4/', 2, 'project', '', 0),
+(110, 1, '2015-10-15 10:37:15', '2015-10-15 10:37:15', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'publish', 'closed', 'closed', '', 'project', '', '', '2015-11-10 18:15:57', '2015-11-10 18:15:57', '', 0, 'http://localhost/srijanalaya/?post_type=project&#038;p=110', 5, 'project', '', 0),
+(111, 1, '2015-10-15 10:37:23', '2015-10-15 10:37:23', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'publish', 'closed', 'closed', '', 'project-2', '', '', '2015-11-10 18:15:51', '2015-11-10 18:15:51', '', 0, 'http://localhost/srijanalaya/project/project-2/', 4, 'project', '', 0),
+(112, 1, '2015-10-15 10:37:25', '2015-10-15 10:37:25', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 3[:ne]project00[:]', '', 'publish', 'closed', 'closed', '', 'project-3', '', '', '2015-11-10 18:15:43', '2015-11-10 18:15:43', '', 0, 'http://localhost/srijanalaya/project/project-3/', 3, 'project', '', 0),
+(113, 1, '2015-10-15 10:37:27', '2015-10-15 10:37:27', '[:en]Project Descriptiosn lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'publish', 'closed', 'closed', '', 'project-4', '', '', '2015-11-10 20:05:49', '2015-11-10 20:05:49', '', 0, 'http://localhost/srijanalaya/project/project-4/', 2, 'project', '', 0),
 (118, 1, '2015-10-16 06:46:38', '2015-10-16 06:46:38', 'sdfadsf', 'dsffds', '', 'trash', 'closed', 'closed', '', 'dsffds', '', '', '2015-10-16 06:46:56', '2015-10-16 06:46:56', '', 0, 'http://localhost/srijanalaya/?post_type=resouce&#038;p=118', 0, 'resouces', '', 0),
 (119, 1, '2015-10-16 06:46:38', '2015-10-16 06:46:38', 'sdfadsf', 'dsffds', '', 'inherit', 'closed', 'closed', '', '118-revision-v1', '', '', '2015-10-16 06:46:38', '2015-10-16 06:46:38', '', 118, 'http://localhost/srijanalaya/118-revision-v1/', 0, 'revision', '', 0),
 (126, 1, '2015-10-16 07:00:58', '2015-10-16 07:00:58', '', 'projectacm', '', 'publish', 'closed', 'closed', '', 'acf_projectacm', '', '', '2015-10-16 07:02:06', '2015-10-16 07:02:06', '', 0, 'http://localhost/srijanalaya/?post_type=acf&#038;p=126', 0, 'acf', '', 0),
 (149, 1, '2015-10-16 07:43:21', '2015-10-16 07:43:21', '', 'resource', '', 'publish', 'closed', 'closed', '', 'resource', '', '', '2015-10-16 07:48:19', '2015-10-16 07:48:19', '', 0, 'http://localhost/srijanalaya/wp-types-group/resource/', 0, 'wp-types-group', '', 0),
 (151, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'trash', 'closed', 'closed', '', 'hello', '', '', '2015-10-16 08:13:26', '2015-10-16 08:13:26', '', 0, 'http://localhost/srijanalaya/?post_type=resource&#038;p=151', 0, 'resource', '', 0),
 (152, 1, '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 'hello', '', 'inherit', 'closed', 'closed', '', '151-revision-v1', '', '', '2015-10-16 07:48:35', '2015-10-16 07:48:35', '', 151, 'http://localhost/srijanalaya/151-revision-v1/', 0, 'revision', '', 0),
-(159, 1, '2015-10-16 08:41:00', '2015-10-16 08:41:00', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'publish', 'closed', 'closed', '', 'project-4-2', '', '', '2015-10-25 09:53:39', '2015-10-25 09:53:39', '', 0, 'http://localhost/srijanalaya/project/project-4-2/', 1, 'project', '', 0),
-(160, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'publish', 'closed', 'closed', '', 'events', '', '', '2015-10-16 08:44:28', '2015-10-16 08:44:28', '', 0, 'http://localhost/srijanalaya/?page_id=160', 7, 'page', '', 0),
+(159, 1, '2015-10-16 08:41:00', '2015-10-16 08:41:00', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'publish', 'closed', 'closed', '', 'project-4-2', '', '', '2015-11-10 18:15:31', '2015-11-10 18:15:31', '', 0, 'http://localhost/srijanalaya/project/project-4-2/', 1, 'project', '', 0),
+(160, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'publish', 'closed', 'closed', '', 'events', '', '', '2015-11-10 16:16:43', '2015-11-10 16:16:43', '', 0, 'http://localhost/srijanalaya/?page_id=160', 7, 'page', '', 0),
 (161, 1, '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 'Project', '', 'inherit', 'closed', 'closed', '', '160-revision-v1', '', '', '2015-10-16 08:41:59', '2015-10-16 08:41:59', '', 160, 'http://localhost/srijanalaya/160-revision-v1/', 0, 'revision', '', 0),
 (162, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', '[:en]Resources[:ne]resourcess[:]', '', 'publish', 'closed', 'closed', '', 'resources', '', '', '2015-11-10 14:02:57', '2015-11-10 14:02:57', '', 0, 'http://localhost/srijanalaya/?page_id=162', 8, 'page', '', 0),
 (163, 1, '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 'resource', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-10-16 10:23:06', '2015-10-16 10:23:06', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
@@ -1110,11 +1117,11 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (196, 1, '2015-10-25 07:58:25', '2015-10-25 07:58:25', 'fasdfsadfsdaf asdf df', 'project', '', 'inherit', 'closed', 'closed', '', '110-revision-v1', '', '', '2015-10-25 07:58:25', '2015-10-25 07:58:25', '', 110, 'http://localhost/srijanalaya/110-revision-v1/', 0, 'revision', '', 0),
 (197, 1, '2015-10-25 09:48:15', '2015-10-25 09:48:15', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'inherit', 'closed', 'closed', '', '159-revision-v1', '', '', '2015-10-25 09:48:15', '2015-10-25 09:48:15', '', 159, 'http://localhost/srijanalaya/?p=197', 0, 'revision', '', 0),
 (198, 1, '2015-10-25 09:48:23', '2015-10-25 09:48:23', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'inherit', 'closed', 'closed', '', '113-revision-v1', '', '', '2015-10-25 09:48:23', '2015-10-25 09:48:23', '', 113, 'http://localhost/srijanalaya/?p=198', 0, 'revision', '', 0),
-(199, 1, '2015-10-25 09:48:37', '2015-10-25 09:48:37', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'inherit', 'closed', 'closed', '', '159-revision-v1', '', '', '2015-10-25 09:48:37', '2015-10-25 09:48:37', '', 159, 'http://localhost/srijanalaya/?p=199', 0, 'revision', '', 0);
-INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
+(199, 1, '2015-10-25 09:48:37', '2015-10-25 09:48:37', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf dfsadasdas[:]', '[:en]Project Title 1[:ne]projectX[:]', '', 'inherit', 'closed', 'closed', '', '159-revision-v1', '', '', '2015-10-25 09:48:37', '2015-10-25 09:48:37', '', 159, 'http://localhost/srijanalaya/?p=199', 0, 'revision', '', 0),
 (200, 1, '2015-10-25 09:48:46', '2015-10-25 09:48:46', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'inherit', 'closed', 'closed', '', '113-revision-v1', '', '', '2015-10-25 09:48:46', '2015-10-25 09:48:46', '', 113, 'http://localhost/srijanalaya/?p=200', 0, 'revision', '', 0),
 (201, 1, '2015-10-25 09:49:06', '2015-10-25 09:49:06', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 3[:ne]project00[:]', '', 'inherit', 'closed', 'closed', '', '112-revision-v1', '', '', '2015-10-25 09:49:06', '2015-10-25 09:49:06', '', 112, 'http://localhost/srijanalaya/?p=201', 0, 'revision', '', 0),
-(202, 1, '2015-10-25 09:49:22', '2015-10-25 09:49:22', 'fasdfsadfsdaf asdf df', '[:en]Project Title 4[:ne]project xyz[:]', '', 'inherit', 'closed', 'closed', '', '111-revision-v1', '', '', '2015-10-25 09:49:22', '2015-10-25 09:49:22', '', 111, 'http://localhost/srijanalaya/?p=202', 0, 'revision', '', 0),
+(202, 1, '2015-10-25 09:49:22', '2015-10-25 09:49:22', 'fasdfsadfsdaf asdf df', '[:en]Project Title 4[:ne]project xyz[:]', '', 'inherit', 'closed', 'closed', '', '111-revision-v1', '', '', '2015-10-25 09:49:22', '2015-10-25 09:49:22', '', 111, 'http://localhost/srijanalaya/?p=202', 0, 'revision', '', 0);
+INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (203, 1, '2015-10-25 09:49:36', '2015-10-25 09:49:36', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 5[:ne]project[:]', '', 'inherit', 'closed', 'closed', '', '110-revision-v1', '', '', '2015-10-25 09:49:36', '2015-10-25 09:49:36', '', 110, 'http://localhost/srijanalaya/?p=203', 0, 'revision', '', 0),
 (204, 1, '2015-10-25 09:52:08', '2015-10-25 09:52:08', '[:en]Project Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 4[:ne]project xyz[:]', '', 'inherit', 'closed', 'closed', '', '111-revision-v1', '', '', '2015-10-25 09:52:08', '2015-10-25 09:52:08', '', 111, 'http://localhost/srijanalaya/?p=204', 0, 'revision', '', 0),
 (206, 1, '2015-10-27 08:34:57', '2015-10-27 08:34:57', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.\r\n\r\n&nbsp;\r\n\r\n<a href="http://localhost/srijanalaya/?sri-menu=mabout-3">Download</a>[:]', '[:en]About[:]', '', 'publish', 'closed', 'closed', '', 'about', '', '', '2015-10-27 09:48:14', '2015-10-27 09:48:14', '', 0, 'http://localhost/srijanalaya/?page_id=206', 2, 'page', '', 0),
@@ -1133,7 +1140,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (219, 1, '2015-11-10 10:30:08', '2015-11-10 10:30:08', '[:en]Tolor sit amet, consectetur adipiscing elit. Sed vulputate lobortis condimentum. Nunc pharetra, nibh ut ornare bibendum, ligula lectus sodales urna, non dignissim diam orci sit amet ante. Nulla semper odio a gravida accumsan. Etiam posuere, diam quis aliquam blandit, mi libero bibendum diam, sit amet fermentum diam ligula at libero. Aliquam auctor, mauris vitae suscipit volutpat, libero turpis vestibulum ligula, facilisis sagittis sem urna tincidunt nisi. Donec luctus est vitae molestie placerat. Quisque urna dui, porta a vestibulum quis, vulputate a purus.\r\n\r\n&nbsp;\r\n\r\nSuspendisse ultricies vel libero a porta. Ut pharetra nibh a purus dapibus luctus. Ut ante urna, varius eu nisl vel, ullamcorper tempus metus. Curabitur lacinia orci mi. Donec vel augue nibh. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat. Aliquam at justo ac ante viverra accumsan vitae ac tellus. In mi risus, gravida id justo et, volutpat con Quisque purus mi, pellentesque eget vehicula ac, hendrerit ac lectus. Fusce tortor libero, tempor feugiat libero pulvinar, finibus posuere magna. Morbi sagittis, dolor at placerat.\r\n\r\n&nbsp;\r\n\r\n<a href="http://localhost/srijanalaya/?sri-menu=mabout-3">Download</a>[:]', 'Current Initiative', '', 'inherit', 'closed', 'closed', '', '217-revision-v1', '', '', '2015-11-10 10:30:08', '2015-11-10 10:30:08', '', 217, 'http://localhost/srijanalaya/?p=219', 0, 'revision', '', 0),
 (220, 1, '2015-11-10 10:36:46', '2015-11-10 10:36:46', '[wysija_page]', 'Subscription confirmation', '', 'publish', 'closed', 'closed', '', 'subscriptions', '', '', '2015-11-10 10:36:46', '2015-11-10 10:36:46', '', 0, 'http://localhost/srijanalaya/?wysijap=subscriptions', 0, 'wysijap', '', 0),
 (221, 1, '2015-11-10 11:19:09', '2015-11-10 11:19:09', '', '[:en]resources[:ne]resourcess[:]', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-10 11:19:09', '2015-11-10 11:19:09', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
-(222, 1, '2015-11-10 11:19:21', '2015-11-10 11:19:21', '', '[:en]Resources[:ne]resourcess[:]', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-10 11:19:21', '2015-11-10 11:19:21', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0);
+(222, 1, '2015-11-10 11:19:21', '2015-11-10 11:19:21', '', '[:en]Resources[:ne]resourcess[:]', '', 'inherit', 'closed', 'closed', '', '162-revision-v1', '', '', '2015-11-10 11:19:21', '2015-11-10 11:19:21', '', 162, 'http://localhost/srijanalaya/162-revision-v1/', 0, 'revision', '', 0),
+(223, 1, '2015-11-10 20:04:36', '2015-11-10 20:04:36', '[:en]Project Descriptiosn lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio\r\n\r\nProject Description lorum ipsum scription ety lorum etu ipsum ethus et  lorum ipsum scriptio[:ne]fasdfsadfsdaf asdf df[:]', '[:en]Project Title 2[:ne]project2[:]', '', 'inherit', 'closed', 'closed', '', '113-revision-v1', '', '', '2015-11-10 20:04:36', '2015-11-10 20:04:36', '', 113, 'http://localhost/srijanalaya/113-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1142,13 +1150,13 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 --
 
 DROP TABLE IF EXISTS `wp_terms`;
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `term_group` bigint(10) NOT NULL DEFAULT '0',
   `term_order` int(4) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_terms`
@@ -1166,7 +1174,13 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 (11, 'simple', 'simple', 0, 0),
 (12, 'grouped', 'grouped', 0, 0),
 (13, 'variable', 'variable', 0, 0),
-(14, 'external', 'external', 0, 0);
+(14, 'external', 'external', 0, 0),
+(15, 'Artworks', 'artworks', 0, 0),
+(16, 'Visual Science', 'visual-science', 0, 0),
+(17, 'artwork', 'artwork', 0, 0),
+(18, 'visual', 'visual', 0, 0),
+(19, 'project_cat_1', 'project_cat_1', 0, 0),
+(20, 'project_cat_2', 'project_cat_2', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1175,9 +1189,9 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 --
 
 DROP TABLE IF EXISTS `wp_term_relationships`;
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
-  `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_term_relationships` (
+  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `term_order` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1204,8 +1218,13 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (36, 4, 0),
 (40, 4, 0),
 (41, 4, 0),
+(110, 19, 0),
+(111, 19, 0),
+(112, 20, 0),
 (151, 9, 0),
-(151, 10, 0);
+(151, 10, 0),
+(159, 18, 0),
+(159, 20, 0);
 
 -- --------------------------------------------------------
 
@@ -1214,14 +1233,14 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 --
 
 DROP TABLE IF EXISTS `wp_term_taxonomy`;
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) unsigned NOT NULL,
-  `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
+  `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `count` bigint(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_term_taxonomy`
@@ -1239,7 +1258,13 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (11, 11, 'product_type', '', 0, 0),
 (12, 12, 'product_type', '', 0, 0),
 (13, 13, 'product_type', '', 0, 0),
-(14, 14, 'product_type', '', 0, 0);
+(14, 14, 'product_type', '', 0, 0),
+(15, 15, 'project_tags', '', 0, 0),
+(16, 16, 'project_tags', '', 0, 0),
+(17, 17, 'project_tags', '', 0, 0),
+(18, 18, 'project_tags', '', 0, 1),
+(19, 19, 'project_categories', '', 0, 2),
+(20, 20, 'project_categories', '', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1248,12 +1273,12 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 --
 
 DROP TABLE IF EXISTS `wp_usermeta`;
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
-  `umeta_id` bigint(20) unsigned NOT NULL,
-  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_value` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_usermeta`
@@ -1273,7 +1298,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (11, 1, 'wp_user_level', '10'),
 (12, 1, 'dismissed_wp_pointers', ''),
 (13, 1, 'show_welcome_panel', '0'),
-(14, 1, 'session_tokens', 'a:3:{s:64:"759261c6a0a827d711ba84048265ca905550809536857fde1aa1147afbb56ca6";a:4:{s:10:"expiration";i:1447323682;s:2:"ip";s:13:"43.245.86.171";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1447150882;}s:64:"be5d73a8695141526e674ba21132219782a755eb4d776c8ea410fd31eea3d8fe";a:4:{s:10:"expiration";i:1447336213;s:2:"ip";s:12:"49.244.5.244";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1447163413;}s:64:"8675a82c82a9dba8aee2c0a454f7345551f2dd84f88e56bdb9fc0eecf21c80a1";a:4:{s:10:"expiration";i:1447340943;s:2:"ip";s:13:"43.245.84.168";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:5:"login";i:1447168143;}}'),
+(14, 1, 'session_tokens', 'a:4:{s:64:"759261c6a0a827d711ba84048265ca905550809536857fde1aa1147afbb56ca6";a:4:{s:10:"expiration";i:1447323682;s:2:"ip";s:13:"43.245.86.171";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1447150882;}s:64:"be5d73a8695141526e674ba21132219782a755eb4d776c8ea410fd31eea3d8fe";a:4:{s:10:"expiration";i:1447336213;s:2:"ip";s:12:"49.244.5.244";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1447163413;}s:64:"8675a82c82a9dba8aee2c0a454f7345551f2dd84f88e56bdb9fc0eecf21c80a1";a:4:{s:10:"expiration";i:1447340943;s:2:"ip";s:13:"43.245.84.168";s:2:"ua";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:5:"login";i:1447168143;}s:64:"fafb69ec6f97417ee499319a08ff25bfaed9841a11fce26bf9a76353ff551930";a:4:{s:10:"expiration";i:1447343554;s:2:"ip";s:9:"127.0.0.1";s:2:"ua";s:76:"Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0";s:5:"login";i:1447170754;}}'),
 (15, 1, 'wp_user-settings', 'editor=html&wplink=1&hidetb=1&libraryContent=browse&mfold=o'),
 (16, 1, 'wp_user-settings-time', '1447154492'),
 (17, 1, 'wp_dashboard_quick_press_last_post_id', '209'),
@@ -1296,8 +1321,8 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 --
 
 DROP TABLE IF EXISTS `wp_users`;
-CREATE TABLE IF NOT EXISTS `wp_users` (
-  `ID` bigint(20) unsigned NOT NULL,
+CREATE TABLE `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_pass` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_nicename` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1307,7 +1332,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
   `user_activation_key` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
   `display_name` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_users`
@@ -1323,7 +1348,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_api_keys`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
+CREATE TABLE `wp_woocommerce_api_keys` (
   `key_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
   `description` longtext COLLATE utf8mb4_unicode_ci,
@@ -1342,7 +1367,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_attribute_taxonomies`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
+CREATE TABLE `wp_woocommerce_attribute_taxonomies` (
   `attribute_id` bigint(20) NOT NULL,
   `attribute_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `attribute_label` longtext COLLATE utf8mb4_unicode_ci,
@@ -1358,7 +1383,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_downloadable_product_permissions`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
+CREATE TABLE `wp_woocommerce_downloadable_product_permissions` (
   `permission_id` bigint(20) NOT NULL,
   `download_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` bigint(20) NOT NULL,
@@ -1379,7 +1404,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_order_itemmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
+CREATE TABLE `wp_woocommerce_order_itemmeta` (
   `meta_id` bigint(20) NOT NULL,
   `order_item_id` bigint(20) NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1393,7 +1418,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_order_items`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
+CREATE TABLE `wp_woocommerce_order_items` (
   `order_item_id` bigint(20) NOT NULL,
   `order_item_name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_item_type` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1407,7 +1432,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_tax_rates`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
+CREATE TABLE `wp_woocommerce_tax_rates` (
   `tax_rate_id` bigint(20) NOT NULL,
   `tax_rate_country` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `tax_rate_state` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -1427,7 +1452,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_tax_rate_locations`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
+CREATE TABLE `wp_woocommerce_tax_rate_locations` (
   `location_id` bigint(20) NOT NULL,
   `location_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tax_rate_id` bigint(20) NOT NULL,
@@ -1441,7 +1466,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
 --
 
 DROP TABLE IF EXISTS `wp_woocommerce_termmeta`;
-CREATE TABLE IF NOT EXISTS `wp_woocommerce_termmeta` (
+CREATE TABLE `wp_woocommerce_termmeta` (
   `meta_id` bigint(20) NOT NULL,
   `woocommerce_term_id` bigint(20) NOT NULL,
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1455,11 +1480,11 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_termmeta` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_campaign`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_campaign` (
-  `campaign_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_campaign` (
+  `campaign_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `description` text
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_campaign`
@@ -1475,9 +1500,9 @@ INSERT INTO `wp_wysija_campaign` (`campaign_id`, `name`, `description`) VALUES
 --
 
 DROP TABLE IF EXISTS `wp_wysija_campaign_list`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_campaign_list` (
-  `list_id` int(10) unsigned NOT NULL,
-  `campaign_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_campaign_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
   `filter` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1488,7 +1513,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_campaign_list` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_custom_field`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_custom_field` (
+CREATE TABLE `wp_wysija_custom_field` (
   `id` mediumint(9) NOT NULL,
   `name` tinytext NOT NULL,
   `type` tinytext NOT NULL,
@@ -1503,14 +1528,14 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_custom_field` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_email`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_email` (
-  `email_id` int(10) unsigned NOT NULL,
-  `campaign_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_wysija_email` (
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `subject` varchar(250) NOT NULL DEFAULT '',
   `body` longtext,
-  `created_at` int(10) unsigned DEFAULT NULL,
-  `modified_at` int(10) unsigned DEFAULT NULL,
-  `sent_at` int(10) unsigned DEFAULT NULL,
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
+  `modified_at` int(10) UNSIGNED DEFAULT NULL,
+  `sent_at` int(10) UNSIGNED DEFAULT NULL,
   `from_email` varchar(250) DEFAULT NULL,
   `from_name` varchar(250) DEFAULT NULL,
   `replyto_email` varchar(250) DEFAULT NULL,
@@ -1518,16 +1543,16 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_email` (
   `attachments` text,
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `type` tinyint(4) NOT NULL DEFAULT '1',
-  `number_sent` int(10) unsigned NOT NULL DEFAULT '0',
-  `number_opened` int(10) unsigned NOT NULL DEFAULT '0',
-  `number_clicked` int(10) unsigned NOT NULL DEFAULT '0',
-  `number_unsub` int(10) unsigned NOT NULL DEFAULT '0',
-  `number_bounce` int(10) unsigned NOT NULL DEFAULT '0',
-  `number_forward` int(10) unsigned NOT NULL DEFAULT '0',
+  `number_sent` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_opened` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_unsub` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_bounce` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `number_forward` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text,
   `wj_data` longtext,
   `wj_styles` longtext
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_email`
@@ -1544,11 +1569,11 @@ INSERT INTO `wp_wysija_email` (`email_id`, `campaign_id`, `subject`, `body`, `cr
 --
 
 DROP TABLE IF EXISTS `wp_wysija_email_user_stat`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_stat` (
-  `user_id` int(10) unsigned NOT NULL,
-  `email_id` int(10) unsigned NOT NULL,
-  `sent_at` int(10) unsigned NOT NULL,
-  `opened_at` int(10) unsigned DEFAULT NULL,
+CREATE TABLE `wp_wysija_email_user_stat` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `sent_at` int(10) UNSIGNED NOT NULL,
+  `opened_at` int(10) UNSIGNED DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1559,12 +1584,12 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_stat` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_email_user_url`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_url` (
-  `email_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `url_id` int(10) unsigned NOT NULL,
-  `clicked_at` int(10) unsigned DEFAULT NULL,
-  `number_clicked` int(10) unsigned NOT NULL DEFAULT '0'
+CREATE TABLE `wp_wysija_email_user_url` (
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `url_id` int(10) UNSIGNED NOT NULL,
+  `clicked_at` int(10) UNSIGNED DEFAULT NULL,
+  `number_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1574,13 +1599,13 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_url` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_form`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_form` (
-  `form_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_form` (
+  `form_id` int(10) UNSIGNED NOT NULL,
   `name` tinytext CHARACTER SET utf8 COLLATE utf8_bin,
   `data` longtext CHARACTER SET utf8 COLLATE utf8_bin,
   `styles` longtext CHARACTER SET utf8 COLLATE utf8_bin,
-  `subscribed` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `subscribed` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_form`
@@ -1596,18 +1621,18 @@ INSERT INTO `wp_wysija_form` (`form_id`, `name`, `data`, `styles`, `subscribed`)
 --
 
 DROP TABLE IF EXISTS `wp_wysija_list`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_list` (
-  `list_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `namekey` varchar(255) DEFAULT NULL,
   `description` text,
-  `unsub_mail_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `welcome_mail_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `is_enabled` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `is_public` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `created_at` int(10) unsigned DEFAULT NULL,
-  `ordering` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `unsub_mail_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `welcome_mail_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `is_enabled` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `is_public` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
+  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_list`
@@ -1624,12 +1649,12 @@ INSERT INTO `wp_wysija_list` (`list_id`, `name`, `namekey`, `description`, `unsu
 --
 
 DROP TABLE IF EXISTS `wp_wysija_queue`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_queue` (
-  `user_id` int(10) unsigned NOT NULL,
-  `email_id` int(10) unsigned NOT NULL,
-  `send_at` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_wysija_queue` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED NOT NULL,
+  `send_at` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `priority` tinyint(4) NOT NULL DEFAULT '0',
-  `number_try` tinyint(3) unsigned NOT NULL DEFAULT '0'
+  `number_try` tinyint(3) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1639,8 +1664,8 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_queue` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_url`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_url` (
-  `url_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_url` (
+  `url_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `url` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1652,11 +1677,11 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_url` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_url_mail`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_url_mail` (
+CREATE TABLE `wp_wysija_url_mail` (
   `email_id` int(11) NOT NULL,
-  `url_id` int(10) unsigned NOT NULL,
-  `unique_clicked` int(10) unsigned NOT NULL DEFAULT '0',
-  `total_clicked` int(10) unsigned NOT NULL DEFAULT '0'
+  `url_id` int(10) UNSIGNED NOT NULL,
+  `unique_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `total_clicked` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1666,22 +1691,22 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_url_mail` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_user`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_user` (
-  `user_id` int(10) unsigned NOT NULL,
-  `wpuser_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `wp_wysija_user` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `wpuser_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `email` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL DEFAULT '',
   `lastname` varchar(255) NOT NULL DEFAULT '',
   `ip` varchar(100) NOT NULL,
   `confirmed_ip` varchar(100) NOT NULL DEFAULT '0',
-  `confirmed_at` int(10) unsigned DEFAULT NULL,
-  `last_opened` int(10) unsigned DEFAULT NULL,
-  `last_clicked` int(10) unsigned DEFAULT NULL,
+  `confirmed_at` int(10) UNSIGNED DEFAULT NULL,
+  `last_opened` int(10) UNSIGNED DEFAULT NULL,
+  `last_clicked` int(10) UNSIGNED DEFAULT NULL,
   `keyuser` varchar(255) NOT NULL DEFAULT '',
-  `created_at` int(10) unsigned DEFAULT NULL,
+  `created_at` int(10) UNSIGNED DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
   `domain` varchar(255) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_user`
@@ -1697,16 +1722,16 @@ INSERT INTO `wp_wysija_user` (`user_id`, `wpuser_id`, `email`, `firstname`, `las
 --
 
 DROP TABLE IF EXISTS `wp_wysija_user_field`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_user_field` (
-  `field_id` int(10) unsigned NOT NULL,
+CREATE TABLE `wp_wysija_user_field` (
+  `field_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `column_name` varchar(250) NOT NULL DEFAULT '',
-  `type` tinyint(3) unsigned DEFAULT '0',
+  `type` tinyint(3) UNSIGNED DEFAULT '0',
   `values` text,
   `default` varchar(250) NOT NULL DEFAULT '',
-  `is_required` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_required` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `error_message` varchar(250) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `wp_wysija_user_field`
@@ -1723,14 +1748,14 @@ INSERT INTO `wp_wysija_user_field` (`field_id`, `name`, `column_name`, `type`, `
 --
 
 DROP TABLE IF EXISTS `wp_wysija_user_history`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_user_history` (
-  `history_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `email_id` int(10) unsigned DEFAULT '0',
+CREATE TABLE `wp_wysija_user_history` (
+  `history_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email_id` int(10) UNSIGNED DEFAULT '0',
   `type` varchar(250) NOT NULL DEFAULT '',
   `details` text,
-  `executed_at` int(10) unsigned DEFAULT NULL,
-  `executed_by` int(10) unsigned DEFAULT NULL,
+  `executed_at` int(10) UNSIGNED DEFAULT NULL,
+  `executed_by` int(10) UNSIGNED DEFAULT NULL,
   `source` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1741,11 +1766,11 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_user_history` (
 --
 
 DROP TABLE IF EXISTS `wp_wysija_user_list`;
-CREATE TABLE IF NOT EXISTS `wp_wysija_user_list` (
-  `list_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `sub_date` int(10) unsigned DEFAULT '0',
-  `unsub_date` int(10) unsigned DEFAULT '0'
+CREATE TABLE `wp_wysija_user_list` (
+  `list_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `sub_date` int(10) UNSIGNED DEFAULT '0',
+  `unsub_date` int(10) UNSIGNED DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1770,127 +1795,173 @@ ALTER TABLE `project_subscriber`
 -- Indexes for table `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `comment_id` (`comment_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `comment_id` (`comment_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_comments`
 --
 ALTER TABLE `wp_comments`
-  ADD PRIMARY KEY (`comment_ID`), ADD KEY `comment_post_ID` (`comment_post_ID`), ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`), ADD KEY `comment_date_gmt` (`comment_date_gmt`), ADD KEY `comment_parent` (`comment_parent`), ADD KEY `comment_author_email` (`comment_author_email`(10));
+  ADD PRIMARY KEY (`comment_ID`),
+  ADD KEY `comment_post_ID` (`comment_post_ID`),
+  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
+  ADD KEY `comment_parent` (`comment_parent`),
+  ADD KEY `comment_author_email` (`comment_author_email`(10));
 
 --
 -- Indexes for table `wp_links`
 --
 ALTER TABLE `wp_links`
-  ADD PRIMARY KEY (`link_id`), ADD KEY `link_visible` (`link_visible`);
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `link_visible` (`link_visible`);
 
 --
 -- Indexes for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  ADD PRIMARY KEY (`option_id`), ADD UNIQUE KEY `option_name` (`option_name`);
+  ADD PRIMARY KEY (`option_id`),
+  ADD UNIQUE KEY `option_name` (`option_name`);
 
 --
 -- Indexes for table `wp_p2p`
 --
 ALTER TABLE `wp_p2p`
-  ADD PRIMARY KEY (`p2p_id`), ADD KEY `p2p_from` (`p2p_from`), ADD KEY `p2p_to` (`p2p_to`), ADD KEY `p2p_type` (`p2p_type`);
+  ADD PRIMARY KEY (`p2p_id`),
+  ADD KEY `p2p_from` (`p2p_from`),
+  ADD KEY `p2p_to` (`p2p_to`),
+  ADD KEY `p2p_type` (`p2p_type`);
 
 --
 -- Indexes for table `wp_p2pmeta`
 --
 ALTER TABLE `wp_p2pmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `p2p_id` (`p2p_id`), ADD KEY `meta_key` (`meta_key`(250));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `p2p_id` (`p2p_id`),
+  ADD KEY `meta_key` (`meta_key`(250));
 
 --
 -- Indexes for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `post_id` (`post_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `post_id` (`post_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  ADD PRIMARY KEY (`ID`), ADD KEY `post_name` (`post_name`(191)), ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`), ADD KEY `post_parent` (`post_parent`), ADD KEY `post_author` (`post_author`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_name` (`post_name`(191)),
+  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  ADD KEY `post_parent` (`post_parent`),
+  ADD KEY `post_author` (`post_author`);
 
 --
 -- Indexes for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  ADD PRIMARY KEY (`term_id`), ADD KEY `slug` (`slug`(191)), ADD KEY `name` (`name`(191));
+  ADD PRIMARY KEY (`term_id`),
+  ADD KEY `slug` (`slug`(191)),
+  ADD KEY `name` (`name`(191));
 
 --
 -- Indexes for table `wp_term_relationships`
 --
 ALTER TABLE `wp_term_relationships`
-  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`), ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
 
 --
 -- Indexes for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  ADD PRIMARY KEY (`term_taxonomy_id`), ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`), ADD KEY `taxonomy` (`taxonomy`);
+  ADD PRIMARY KEY (`term_taxonomy_id`),
+  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  ADD KEY `taxonomy` (`taxonomy`);
 
 --
 -- Indexes for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  ADD PRIMARY KEY (`umeta_id`), ADD KEY `user_id` (`user_id`), ADD KEY `meta_key` (`meta_key`(191));
+  ADD PRIMARY KEY (`umeta_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `meta_key` (`meta_key`(191));
 
 --
 -- Indexes for table `wp_users`
 --
 ALTER TABLE `wp_users`
-  ADD PRIMARY KEY (`ID`), ADD KEY `user_login_key` (`user_login`), ADD KEY `user_nicename` (`user_nicename`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `user_login_key` (`user_login`),
+  ADD KEY `user_nicename` (`user_nicename`);
 
 --
 -- Indexes for table `wp_woocommerce_api_keys`
 --
 ALTER TABLE `wp_woocommerce_api_keys`
-  ADD PRIMARY KEY (`key_id`), ADD KEY `consumer_key` (`consumer_key`), ADD KEY `consumer_secret` (`consumer_secret`);
+  ADD PRIMARY KEY (`key_id`),
+  ADD KEY `consumer_key` (`consumer_key`),
+  ADD KEY `consumer_secret` (`consumer_secret`);
 
 --
 -- Indexes for table `wp_woocommerce_attribute_taxonomies`
 --
 ALTER TABLE `wp_woocommerce_attribute_taxonomies`
-  ADD PRIMARY KEY (`attribute_id`), ADD KEY `attribute_name` (`attribute_name`);
+  ADD PRIMARY KEY (`attribute_id`),
+  ADD KEY `attribute_name` (`attribute_name`);
 
 --
 -- Indexes for table `wp_woocommerce_downloadable_product_permissions`
 --
 ALTER TABLE `wp_woocommerce_downloadable_product_permissions`
-  ADD PRIMARY KEY (`permission_id`), ADD KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`,`download_id`), ADD KEY `download_order_product` (`download_id`,`order_id`,`product_id`);
+  ADD PRIMARY KEY (`permission_id`),
+  ADD KEY `download_order_key_product` (`product_id`,`order_id`,`order_key`,`download_id`),
+  ADD KEY `download_order_product` (`download_id`,`order_id`,`product_id`);
 
 --
 -- Indexes for table `wp_woocommerce_order_itemmeta`
 --
 ALTER TABLE `wp_woocommerce_order_itemmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `order_item_id` (`order_item_id`), ADD KEY `meta_key` (`meta_key`(250));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `order_item_id` (`order_item_id`),
+  ADD KEY `meta_key` (`meta_key`(250));
 
 --
 -- Indexes for table `wp_woocommerce_order_items`
 --
 ALTER TABLE `wp_woocommerce_order_items`
-  ADD PRIMARY KEY (`order_item_id`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `wp_woocommerce_tax_rates`
 --
 ALTER TABLE `wp_woocommerce_tax_rates`
-  ADD PRIMARY KEY (`tax_rate_id`), ADD KEY `tax_rate_country` (`tax_rate_country`), ADD KEY `tax_rate_state` (`tax_rate_state`), ADD KEY `tax_rate_class` (`tax_rate_class`), ADD KEY `tax_rate_priority` (`tax_rate_priority`);
+  ADD PRIMARY KEY (`tax_rate_id`),
+  ADD KEY `tax_rate_country` (`tax_rate_country`),
+  ADD KEY `tax_rate_state` (`tax_rate_state`),
+  ADD KEY `tax_rate_class` (`tax_rate_class`),
+  ADD KEY `tax_rate_priority` (`tax_rate_priority`);
 
 --
 -- Indexes for table `wp_woocommerce_tax_rate_locations`
 --
 ALTER TABLE `wp_woocommerce_tax_rate_locations`
-  ADD PRIMARY KEY (`location_id`), ADD KEY `tax_rate_id` (`tax_rate_id`), ADD KEY `location_type` (`location_type`), ADD KEY `location_type_code` (`location_type`,`location_code`(90));
+  ADD PRIMARY KEY (`location_id`),
+  ADD KEY `tax_rate_id` (`tax_rate_id`),
+  ADD KEY `location_type` (`location_type`),
+  ADD KEY `location_type_code` (`location_type`,`location_code`(90));
 
 --
 -- Indexes for table `wp_woocommerce_termmeta`
 --
 ALTER TABLE `wp_woocommerce_termmeta`
-  ADD PRIMARY KEY (`meta_id`), ADD KEY `woocommerce_term_id` (`woocommerce_term_id`), ADD KEY `meta_key` (`meta_key`(250));
+  ADD PRIMARY KEY (`meta_id`),
+  ADD KEY `woocommerce_term_id` (`woocommerce_term_id`),
+  ADD KEY `meta_key` (`meta_key`(250));
 
 --
 -- Indexes for table `wp_wysija_campaign`
@@ -1944,7 +2015,8 @@ ALTER TABLE `wp_wysija_list`
 -- Indexes for table `wp_wysija_queue`
 --
 ALTER TABLE `wp_wysija_queue`
-  ADD PRIMARY KEY (`user_id`,`email_id`), ADD KEY `SENT_AT_INDEX` (`send_at`);
+  ADD PRIMARY KEY (`user_id`,`email_id`),
+  ADD KEY `SENT_AT_INDEX` (`send_at`);
 
 --
 -- Indexes for table `wp_wysija_url`
@@ -1962,7 +2034,8 @@ ALTER TABLE `wp_wysija_url_mail`
 -- Indexes for table `wp_wysija_user`
 --
 ALTER TABLE `wp_wysija_user`
-  ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `EMAIL_UNIQUE` (`email`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `EMAIL_UNIQUE` (`email`);
 
 --
 -- Indexes for table `wp_wysija_user_field`
@@ -1990,67 +2063,67 @@ ALTER TABLE `wp_wysija_user_list`
 -- AUTO_INCREMENT for table `project_subscriber`
 --
 ALTER TABLE `project_subscriber`
-  MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `wp_commentmeta`
 --
 ALTER TABLE `wp_commentmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_comments`
 --
 ALTER TABLE `wp_comments`
-  MODIFY `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_links`
 --
 ALTER TABLE `wp_links`
-  MODIFY `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=962;
+  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
 --
 -- AUTO_INCREMENT for table `wp_p2p`
 --
 ALTER TABLE `wp_p2p`
-  MODIFY `p2p_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `p2p_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_p2pmeta`
 --
 ALTER TABLE `wp_p2pmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=812;
+  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=836;
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=223;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
 --
 -- AUTO_INCREMENT for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `wp_usermeta`
 --
 ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `wp_users`
 --
 ALTER TABLE `wp_users`
-  MODIFY `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_woocommerce_api_keys`
 --
@@ -2095,7 +2168,7 @@ ALTER TABLE `wp_woocommerce_termmeta`
 -- AUTO_INCREMENT for table `wp_wysija_campaign`
 --
 ALTER TABLE `wp_wysija_campaign`
-  MODIFY `campaign_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `campaign_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_wysija_custom_field`
 --
@@ -2105,22 +2178,22 @@ ALTER TABLE `wp_wysija_custom_field`
 -- AUTO_INCREMENT for table `wp_wysija_email`
 --
 ALTER TABLE `wp_wysija_email`
-  MODIFY `email_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `email_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wp_wysija_form`
 --
 ALTER TABLE `wp_wysija_form`
-  MODIFY `form_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `form_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_wysija_list`
 --
 ALTER TABLE `wp_wysija_list`
-  MODIFY `list_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `list_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wp_wysija_url`
 --
 ALTER TABLE `wp_wysija_url`
-  MODIFY `url_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `url_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `wp_wysija_url_mail`
 --
@@ -2130,17 +2203,17 @@ ALTER TABLE `wp_wysija_url_mail`
 -- AUTO_INCREMENT for table `wp_wysija_user`
 --
 ALTER TABLE `wp_wysija_user`
-  MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wp_wysija_user_field`
 --
 ALTER TABLE `wp_wysija_user_field`
-  MODIFY `field_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `field_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `wp_wysija_user_history`
 --
 ALTER TABLE `wp_wysija_user_history`
-  MODIFY `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `history_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
