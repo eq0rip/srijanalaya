@@ -9,7 +9,7 @@
   $j = 0;
   ?>
 
-  <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php the_title();?><span class="caret" ></span></a>
+  <li class="dropdown yamm-fw first"><a class="dropdown-toggle" data-toggle="dropdown" href="http://srijanalaya.saediworks.com/<?php if(get_the_title()=='HOME' || get_the_title()=='SHOP' || get_the_title()=='CONTACT'){} if(get_the_title()=='PROJECTS'){echo 'events';}if(get_the_title()=='RESOURCES' || get_the_title()=='NEWS' || get_the_title()=='ABOUT'){the_title();}?>"><?php the_title();?><span class="caret" ></span></a>
    <ul class="dropdown-menu">
     <div class="yamm-content">
       <?php for ($i = 0; $i < count($contents); $i++) { 
