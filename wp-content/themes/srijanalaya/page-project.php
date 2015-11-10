@@ -5,7 +5,9 @@ Template Name: Timeline
 
 get_header('all'); 
 wp_reset_query();?>
+
 <div class="row">
+
 	<div class="col-sm-12 wrapper banner">
 		<div class="banner-content">
 			<h2>Current Event Promotion Phare</h2>
@@ -15,13 +17,57 @@ wp_reset_query();?>
 	</div>
 </div>
 <div class="row" >
+
 	<div style="width:100%:" id="filter_div">
+		<div id="custom_filters">
+			
+			<?php
+
+			$dropdown_args = array(
+				'hide_empty'       => 0,
+				'hide_if_empty'    => false,
+				'taxonomy'         => 'project_categories',
+				'name'             => 'parent',
+				'orderby'          => 'name',
+				'hierarchical'     => true,
+				'show_option_none' => __( 'None' ),
+				);
+			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
+			$tags=wp_dropdown_categories( $dropdown_args );
+			?>
+			
+			<select>
+				<option selected>Location</option>
+				<option>des</option>
+				<option>nepal</option>
+			</select>
+			
+			<select>
+				<option selected>By week</option>
+				<option>first</option>
+			</select>
+			<div class="date_filter">
+				<div class="date_value">
+					<span id='date_value_main'>hiii</span><span class='caret'></span>
+				</div>
+				<div class="date_value_dropdown">
+					<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
+					<input type="text" value="" class="dropdate"/>
+					<button onclick="apply_date_filter('default')">Apply</button>
+				</div>
+			</div>
+			<button type="button" class="btn btn-default">filter</button>	
+		</div>
 		<div class="col-sm-8" id="tag_filter_div">
 			<ul>
-			
+
 			</ul>
 		</div>
-<br/>
+		<br/>
 		<ul>
 			<?php 
 			$tags = get_terms('project_tags');
@@ -155,6 +201,7 @@ if(strstr($current_page,'ne'))
 	<script type="text/javascript">
 		jQuery(window).load(function() {
 		//Go to next project
+		
 		var winSize = (jQuery(window).height()) / 2;
 		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
 

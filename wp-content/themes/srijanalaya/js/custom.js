@@ -3,9 +3,15 @@
     $('.loader').fadeOut(500);
   });
   $(document).ready(function($){
-    $(document).on('click', '.yamm .dropdown-menu', function(e) {
-      e.stopPropagation()
-    });
+      //datepicker
+      $('.dropdate').dropdate({
+        dateFormat:'mm/dd/yyyy'
+      });
+
+      $(document).on('click', '.yamm .dropdown-menu', function(e) {
+        e.stopPropagation()
+      });
+
 
 //owl sync
 var $owl1 = $("#slider-1"),
@@ -252,7 +258,58 @@ sort=0;
 
 jQuery("#tag_filter_div ul").on("click",'li', function(){
   jQuery(this).remove();
+  var hide_project=jQuery(this).text().replace(" x","");
+  hide_project='.'+hide_project;
+  //alert(hide_project);
+  jQuery(hide_project).hide('fast');
+  filter_timeline();
 });
+jQuery('.date_value').on("click", function() {
+  jQuery('.date_value_dropdown').slideToggle(300);
+});
+
+jQuery( "#datepicker" ).datepicker({
+  inline: true
+});
+function apply_date_filter(x) {
+ // alert(x);
+  var dslack;
+  var mslack
+  var date='';
+  var current_Date=new Date();
+
+  console.log(current_Date);
+  //alert(current_Date.getFullYear());
+  //jQuery('.date_value_dropdown').hide();
+  if(x=='default'){
+    date=jQuery('.dropdate').val();
+  }
+  if(x=='week'){
+    dslack=current_Date.getDay();
+    date=slack;
+  }
+  if(x=='Lweek'){
+    slack=7+current_Date.getDay();
+    date=dslack;
+  }
+  if(x=='month'){
+    dslack=current_Date.getDate()-1;
+    date=dslack;
+  }
+  if(x=='Lmonth'){
+    dslack=current_Date.getMonth()-1;
+    mslack=1;
+    date=dslack;
+  }
+  if(x=='year'){
+    slack=current_Date.getMonth();
+    date=dslack;
+    
+  }
+  jQuery('#date_value_main').text(date);
+
+}
+
 
 
 

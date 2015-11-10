@@ -20,6 +20,7 @@
 <script src="<?php echo get_template_directory_uri();?>/js/owl.carousel.min.js"></script>
 <?php if((!is_mobile() && ( is_home() || is_front_page()) )) { //not working on desktop ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
+
 <script>
 	jQuery('#fullpage').fullpage({
       scrollBar:true,
@@ -35,6 +36,8 @@
     });
 </script>
 <?php } ?>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-dropdate.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/date.format.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
 
 </html>

@@ -1161,3 +1161,51 @@ a:hover {
 
     }
 }
+
+
+#custom_filters {
+    width: auto;
+    //margin:0px auto;
+    select {
+        float: left;
+        list-style-type: none;
+        margin-left:10px;
+    }
+    .btn {
+        margin: 0px;
+        background: #F2F2F2;
+        color:#807F7F;
+        border-radius: 0px;
+        &:hover {
+            background:#E91F4A;
+            color:#ffffff;
+        }
+    }
+
+}
+.date_filter {
+    float:left;
+    .caret {
+        float:right;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .date_value{
+        width: 150px;
+        cursor: pointer;
+        background: #F2F2F2;
+
+    }
+    .date_value_dropdown {
+        position: absolute;
+        z-index: 100000;
+        height:150px;
+        width: 200px;
+
+        background: #F2F2F2;
+        display: none;
+    }
+
+}
+
