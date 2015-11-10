@@ -491,15 +491,13 @@ function auto_id_headings( $content, $heading ) {
 	$id = array();
 	$content2 = '';
 	$i = 0;
-	$content = preg_replace_callback( '/(\<h3(.*?))\>(.*)(<\/h3>)/i', function( $matches ) {
+	$content = preg_replace_callback( '/(\<h3(.*?))\>(.*)(<\/h3>)/i', function( $matches ) use (&$jump_menu, &$id) {
 		if ( ! stripos( $matches[0], 'id=' ) ) :
 			$matches[0] = '<br/>' . $matches[1] . $matches[2] . ' id="' . sanitize_title( $matches[3] ) . '">' . $matches[3] . $matches[4];
-		endif;
-		return $matches[0];
-	}, $content );
-	$jump_menu_wrap = preg_replace_callback( '/(\<h3(.*?))\>(.*)(<\/h3>)/i', function( $matches ) use (&$jump_menu, &$id){
 		$jump_menu = $jump_menu . '<li><a href=#' . str_replace(' ','-',strtolower($matches[3])) . '>' . $matches[3] . '</a></li>';
 		$id[] = str_replace(' ','-',strtolower($matches[3]));
+		endif;
+		return $matches[0];
 	}, $content );
 	echo '<h3>' . $heading . '</h3>';
 	echo '<ul>' . $jump_menu . '</ul>';
