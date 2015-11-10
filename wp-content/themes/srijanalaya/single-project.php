@@ -2,7 +2,7 @@
 get_header('all');
 wp_reset_query();
 ?>
-<div class="page-wrapper wrapper">
+<div class="page-wrapper">
 	<div class="row">
 		<div class="col-sm-12 wrapper banner">
 			<div class="banner-content">

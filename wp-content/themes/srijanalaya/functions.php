@@ -486,7 +486,7 @@ function load_custom_admin_css()
 }
 
 //Heading
-function auto_id_headings( $content, $heading ) {
+function auto_id_headings( $content, $heading = NULL) {
 	$jump_menu = '';
 	$id = array();
 	$content2 = '';
@@ -505,7 +505,7 @@ function auto_id_headings( $content, $heading ) {
 	foreach ($ary as $section) {
 		if(!empty($section)){
 			$class = ($i == 0) ? ' first-sub-head' : '';
-			$content2 = $content2 . '<div class="subhead' . $class . '" id="span' . $id[$i++] . '">' . $section . 'Thisistest</div>';
+			$content2 = $content2 . '<div class="subhead' . $class . '" id="span' . $id[$i++] . '">' . $section . '</div>';
 		}
 	}
 	return $content2;
