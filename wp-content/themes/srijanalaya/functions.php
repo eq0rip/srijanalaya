@@ -521,3 +521,8 @@ function auto_id_headings( $content, $heading = NULL) {
 
 /* Disable the Admin Bar. */
 add_filter( 'show_admin_bar', '__return_false' );
+
+add_action( 'load-edit.php', 'wpse34956_force_excerpt' );
+function wpse34956_force_excerpt() {
+    $_REQUEST['mode'] = 'excerpt';
+}
