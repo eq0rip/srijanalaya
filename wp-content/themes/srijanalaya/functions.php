@@ -448,7 +448,7 @@ function postConnections() {
 		'from' => 'maps',
 		'to' => 'project',
 		'admin_box' => array(
-			'show' => 'any',
+			'show' => 'to',
 			'context' => 'side'
 			)
 		) );

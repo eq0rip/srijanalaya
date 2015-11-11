@@ -65,10 +65,11 @@ $postlist = new WP_Query($args);
 // $map = "";
 while ($postlist->have_posts()): 
 	$postlist->the_post();
-$desc = types_render_field('short-description');
+$location = get_field(  'maplatlng', $post->ID );
+$desc = get_the_content();
 $url = types_render_field('url');
-$lat = types_render_field('lat');
-$long = types_render_field('longi');
+$lat = $location['lat'];
+$long = $location['lng'];
 $icon = get_template_directory_uri()."/icon.png";
 $map[] = array(get_the_title(),$lat,$long,$url,$desc,$icon);
 endwhile;
