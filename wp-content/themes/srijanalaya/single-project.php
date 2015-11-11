@@ -15,7 +15,7 @@ wp_reset_query();
 			<?php
 			$categories = get_terms('project_categories');
                 foreach ( $categories  as $category ) {
-                	print_r($category);
+                	$category = $category->ID;
                 }
 			?>
 			
