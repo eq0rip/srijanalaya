@@ -415,10 +415,6 @@ function parseDate($date)
 
 
 
-function wpse_hide_admin_bar() {
-	return false;
-}
-add_filter( 'show_admin_bar', 'wpse_hide_admin_bar' );
 
 
 //For post View
@@ -467,13 +463,6 @@ function remove_footer_admin ()
 add_filter('admin_footer_text', 'remove_footer_admin');
 
 
-function remove_dashboard_widgets()
-{
-// Remove dashboard widgets 
-remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
-remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
-}
-add_action('wp_dashboard_setup','remove_dashboard_widgets');
 
 add_action('wp_dashboard_setup', 'my_dashboard_widgets');
 function my_dashboard_widgets() {
@@ -485,7 +474,6 @@ function my_dashboard_widgets() {
      );
      wp_add_dashboard_widget( 'dashboard_custom_feed', 'Smjrifle' , 'dashboard_custom_feed_output' );
 }
-
 function dashboard_custom_feed_output() {
      echo '<div class="rss-widget">';
      wp_widget_rss_output(array(
@@ -530,3 +518,23 @@ function auto_id_headings( $content, $heading = NULL) {
 	}
 	return $content2;
 }
+
+/* Disable the Admin Bar. */
+add_filter( 'show_admin_bar', '__return_false' );
+
+function yoast_hide_admin_bar_settings() {
+?>
+	<style type="text/css">
+		.show-admin-bar {
+			display: none;
+		}
+	</style>
+<?php
+}
+
+function yoast_disable_admin_bar() {
+    add_filter( 'show_admin_bar', '__return_false' );
+    add_action( 'admin_print_scripts-profile.php', 
+         'yoast_hide_admin_bar_settings' );
+}
+add_action( 'init', 'yoast_disable_admin_bar' , 9 );
