@@ -1,6 +1,6 @@
 <?php
 /**
-Template Name: About 
+Default Template 
  */
 
 get_header('all');

@@ -12,14 +12,25 @@ wp_reset_query();
 	<div class="row">
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
+			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 			<?php
 			$categories = get_terms('project_categories');
-                foreach ( $categories  as $category ) {
-                	$category = $category->ID;
-                }
+			$cats = array();
+			foreach ( $categories  as $category ) {
+				array_push($cats, $category->term_id);
+			}
+			$ids = get_the_id();
+			$args=array('posts_per_page' => 7, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC', array( 'category__in' => array($cats)),  'post__not_in' => array($ids)); 
+			$postslist=new WP_Query($args);              
+			echo '<div class="title col-xs-1">More Projects</div>';
+			echo '<div class="mid-nav-inner"><ul>';
+			$j = 0;
+			while($postslist->have_posts()) : $postslist->the_post();
+			$class = ($j == 0) ? 'first' : '';
+			echo '<li class="subpageMenu ' . $class . '" id="item' . $j++ . '"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+			endwhile;
+			echo '</ul></div>';
 			?>
-			
-			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 		</div>
 		<div class="page-content">
 			<div class="col-xs-7 col-xs-offset-1">

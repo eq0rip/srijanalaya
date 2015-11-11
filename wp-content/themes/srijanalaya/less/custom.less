@@ -1066,6 +1066,7 @@ a:hover {
 }
 .mid-nav {
     width: 100%;
+    overflow: hidden;
     height: 35px;
     background-color: #f2f2f2;
     -webkit-box-shadow: 0px 6px 5px 0px rgba(221, 221, 221, 0.75);
@@ -1078,16 +1079,15 @@ a:hover {
         }
     }
     .mid-nav-inner { 
-        width: 150%;
         overflow: hidden;
-        position: absolute;
-        left: 70px;
         height: 35px;
-        margin-left: 70px;
     }
     .title {
-        padding: 7px 100px;
+        position: relative;
+        left: 70px;
+        margin-right: 50px;
         color: #807f7f;
+        padding: 7px 0;
     }
     .subpageMenu, a {
         width: 200px;
