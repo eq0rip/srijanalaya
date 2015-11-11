@@ -45,7 +45,16 @@ wp_reset_query();?>
 
 			<div class="date_filter">
 				<div class="date_value">
-					<span id='date_value_main'>By Date</span><span class='caret'></span>
+					<span id='date_value_main'>
+						<?php if(isset($_GET['from'])){
+							echo $_GET['from'].' to '.$_GET['to'];
+						}
+						else {
+							echo 'By Date';
+						}
+						?>
+
+					</span><span class='caret'></span>
 				</div>
 				<div class="date_value_dropdown">
 					<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
@@ -67,7 +76,7 @@ wp_reset_query();?>
 			</ul>
 		</div>
 		<br/>
-		<ul>
+		<ul class="fetch_tag">
 			<?php 
 			$tags = get_terms('project_tags');
 			foreach($tags as $tag) {
@@ -117,16 +126,16 @@ wp_reset_query();?>
 						array(
 							'key' => 'wpcf-location',
 							'value' => $_GET['location'],
-							'compare' => '='
+							'compare' => '>='
 							)
 						),
 						'tax_query' => array(
-						array(
-							'taxonomy' => 'project_categories',
-							'field'    => 'slug',
-							'terms'    => $_GET['category'],
+							array(
+								'taxonomy' => 'project_categories',
+								'field'    => 'slug',
+								'terms'    => $_GET['category'],
+								),
 							),
-						),
 						'orderby' => 'meta_value',
 						'order' => 'ASC'
 						); 
@@ -152,15 +161,24 @@ wp_reset_query();?>
 							'value'=>$_GET['location'],
 							'compare'=>'='
 							)
-						),
-					'tax_query' => array(
+						),array(
 						array(
-							'taxonomy' => 'project_categories',
-							'field'    => 'slug',
-							'terms'    => $_GET['category'],
+							'key'=>'wpcf-project-date',
 							),
+						array(
+							'key'=>'wpcf-project-date',
+							'value'=>strtotime($_GET['from']),
+							'compare'=>'='
+							)
 						),
-					'orderby' => 'meta_value', 'order' => 'DESC'); 
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'project_categories',
+								'field'    => 'slug',
+								'terms'    => $_GET['category'],
+								),
+							),
+						'orderby' => 'meta_value', 'order' => 'DESC'); 
 			}
 			$postslist=new WP_Query($args);              
 			$curDate = date('now');
@@ -198,7 +216,7 @@ wp_reset_query();?>
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
 						<p><?php echo types_render_field('location');?></p>
-						<p><?php echo types_render_field('summary');?></p>
+						<p><?php echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
 						<p><?php echo types_render_field('facilitators');?></p>
 						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
 						<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
@@ -303,4 +321,5 @@ if(strstr($current_page,'ne'))
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
+	jQuery()
 </script>
