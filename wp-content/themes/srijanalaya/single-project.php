@@ -13,27 +13,7 @@ wp_reset_query();
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<?php
-//for use in the loop, list 5 post titles related to first tag on current post
-			print_r(get_the_category());
-			if ($tags) {
-				echo 'Related Posts';
-				$first_tag = $tags[0]->term_id;
-				$args=array(
-					'tag__in' => array($first_tag),
-					'post__not_in' => array($post->ID),
-					'posts_per_page'=>5,
-					'caller_get_posts'=>1
-					);
-				$my_query = new WP_Query($args);
-				if( $my_query->have_posts() ) {
-					while ($my_query->have_posts()) : $my_query->the_post(); ?>
-					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-
-					<?php
-					endwhile;
-				}
-				wp_reset_query();
-			}
+			print_r(get_the_category($post->ID));
 			?>
 			
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
@@ -42,7 +22,6 @@ wp_reset_query();
 			<div class="col-xs-7 col-xs-offset-1">
 				<?php
 				while ( have_posts() ) : the_post();
-				print_r(get_the_category());
 				echo '<h2>' . get_the_title() . '</h2>';
 				?>
 				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
