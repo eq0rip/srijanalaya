@@ -12,6 +12,20 @@
         e.stopPropagation()
       });
 
+      //category dropdown timeline page change
+      var temp=1;
+      $('#custom_filters select:first-child option').each(function (){
+
+        if(temp==1){
+          $(this).text('By Type');
+          $(this).val('By Type');
+          temp=2;
+        }
+        else{
+          $(this).val($(this).text());
+        }
+      });
+
 
 
 
@@ -321,6 +335,7 @@ function apply_date_filter(x) {
       alert('Invalid Date');
       return;
     }
+
   }
   jQuery('#date_value_main').text(from_Date+' to '+to_Date);
   jQuery('.date_value_dropdown').hide();
@@ -332,6 +347,7 @@ function filter_projects () {
   var date=jQuery('#date_value_main').text().split(' to ');
   var from=date[0];
   var to=date[1];
+  var category=jQuery('#custom_filters select:first-child').val();
 
   if(jQuery('#location_value_main').val()=='Location'){
    error+='Choose location. ';
@@ -340,12 +356,16 @@ function filter_projects () {
  if(jQuery('#date_value_main').text()=='By Date'){
   error+='Choose date. ';
 }
+if(jQuery('#custom_filters select:first-child').val()=='By Type')
+{
+  error+='invalid Type';
+}
 
 if(error!=''){
   alert(error);
   return;
 }
-window.location.href='http://localhost/srijanalaya/events'+'?location='+location+'&&from='+from+'&&to='+to;
+window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&&location='+location+'&&from='+from+'&&to='+to;
 }
 
 

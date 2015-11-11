@@ -20,45 +20,46 @@ wp_reset_query();?>
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
-			<form id="kailash">
-				<?php
-				$dropdown_args = array(
-					'hide_empty'       => 0,
-					'hide_if_empty'    => false,
-					'taxonomy'         => 'project_categories',
-					'name'             => 'parent',
-					'orderby'          => 'name',
-					'hierarchical'     => true,
-					'show_option_none' => __( 'None' ),
-					);
-				$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
-				$tags=wp_dropdown_categories( $dropdown_args );
-				?>
+			
+			<?php
+			$dropdown_args = array(
+				'hide_empty'       => 0,
+				'hide_if_empty'    => false,
+				'taxonomy'         => 'project_categories',
+				'name'             => 'parent',
+				'orderby'          => 'name',
+				'hierarchical'     => true,
+				'show_option_none' => __( 'None' ),
+				);
+			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
+			$tags=wp_dropdown_categories( $dropdown_args );
+			?>
 
-				<select id="location_value_main">
-					<option selected>Location</option>
-					<option>Kathmandu</option>
-					<option>Lalitpur</option>
-				</select>
+			<select id="location_value_main">
+				<option selected>Location</option>
+				<option>Kathmandu</option>
+				<option>Lalitpur</option>
+				<option>Bhaktapurpp</option>
+			</select>
 
 
-				<div class="date_filter">
-					<div class="date_value">
-						<span id='date_value_main'>By Date</span><span class='caret'></span>
-					</div>
-					<div class="date_value_dropdown">
-						<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
-						<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
-						<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
-						<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
-						<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
-						<span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
-						<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
-						<button onclick="apply_date_filter('custom')" class="btn">Apply</button>
-					</div>
+			<div class="date_filter">
+				<div class="date_value">
+					<span id='date_value_main'>By Date</span><span class='caret'></span>
 				</div>
-				<input id="clickMe" type="button" class="btn" onclick="filter_projects();" value="Filter" />	
-			</form>
+				<div class="date_value_dropdown">
+					<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
+					<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
+					<span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
+					<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
+					<button onclick="apply_date_filter('custom')" class="btn">Apply</button>
+				</div>
+			</div>
+			<input id="clickMe" type="button" class="btn" onclick="filter_projects();" value="Filter" />	
+
 		</div>
 		<div class="col-sm-8" id="tag_filter_div">
 			<ul>
@@ -119,6 +120,13 @@ wp_reset_query();?>
 							'compare' => '='
 							)
 						),
+						'tax_query' => array(
+						array(
+							'taxonomy' => 'project_categories',
+							'field'    => 'slug',
+							'terms'    => $_GET['category'],
+							),
+						),
 						'orderby' => 'meta_value',
 						'order' => 'ASC'
 						); 
@@ -129,11 +137,11 @@ wp_reset_query();?>
 			$nextEvent = $post->ID;
 			endwhile;
 			if(!isset($_GET['location'])){
-			
+
 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
 			}
 			else {
-		
+
 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
 					'meta_query'=>array(
 						array(
@@ -144,6 +152,13 @@ wp_reset_query();?>
 							'value'=>$_GET['location'],
 							'compare'=>'='
 							)
+						),
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'project_categories',
+							'field'    => 'slug',
+							'terms'    => $_GET['category'],
+							),
 						),
 					'orderby' => 'meta_value', 'order' => 'DESC'); 
 			}
