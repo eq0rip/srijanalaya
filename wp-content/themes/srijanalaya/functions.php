@@ -467,17 +467,37 @@ function remove_footer_admin ()
 add_filter('admin_footer_text', 'remove_footer_admin');
 
 
-function example_remove_dashboard_widgets()
+function remove_dashboard_widgets()
 {
-    // Globalize the metaboxes array, this holds all the widgets for wp-admin
-	global $wp_meta_boxes;
-
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+// Remove dashboard widgets 
+remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
+remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
 }
-add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
+add_action('wp_dashboard_setup','remove_dashboard_widgets');
 
+add_action('wp_dashboard_setup', 'my_dashboard_widgets');
+function my_dashboard_widgets() {
+     global $wp_meta_boxes;
+     unset(
+          $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'],
+          $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'],
+          $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']
+     );
+     wp_add_dashboard_widget( 'dashboard_custom_feed', 'Smjrifle' , 'dashboard_custom_feed_output' );
+}
+
+function dashboard_custom_feed_output() {
+     echo '<div class="rss-widget">';
+     wp_widget_rss_output(array(
+          'url' => 'http://smjrifle.net/feed',  //Feed URL
+          'title' => 'Smjrifle', //Title of Feed
+          'items' => 4,  //Number of items to fetch
+          'show_summary' => 1,
+          'show_author' => 0,
+          'show_date' => 1
+     ));
+     echo '</div>';
+}
 
 add_action( 'admin_print_styles', 'load_custom_admin_css' );
 function load_custom_admin_css()

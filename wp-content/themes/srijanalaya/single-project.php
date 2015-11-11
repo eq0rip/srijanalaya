@@ -13,7 +13,10 @@ wp_reset_query();
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<?php
-			print_r(get_the_category($post->ID));
+			$categories = get_terms('project_categories');
+                foreach ( $categories  as $category ) {
+                	print_r($category);
+                }
 			?>
 			
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
