@@ -26,10 +26,26 @@
         }
       });
 
-$("SELECT").transformSelect();
-$('.subscribe-inner').click(function() {
-  $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
-});
+      $(".postform").transformSelect({
+        dropDownClass: "transformSelect transformSelect1",
+        });
+      $("#location_value_main").transformSelect({
+        dropDownClass: "transformSelect transformSelect2",
+        });
+      $('.transformSelect li').addClass('open');
+      $('.transformSelect').hover(function() {
+        $(this).children('li').addClass('open');
+        console.log($(this).children('li').children('.transformSelectDropdown').html());
+        $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
+        $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
+      }, function() {
+        $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
+        $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
+        $(this).children('li').removeClass('open');
+      });
+      $('.subscribe-inner').click(function() {
+        $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
+      });
 
 
 //owl sync
@@ -254,18 +270,18 @@ function filter_timeline() {
 }
 else {
   if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
-    {
-      jQuery(this).find('.cd-timeline-content').removeClass('first');
-      jQuery(this).removeClass('first');
-    }
- if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-right-wrap')){
-  jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
-}
-if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
-  jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
-}
+  {
+    jQuery(this).find('.cd-timeline-content').removeClass('first');
+    jQuery(this).removeClass('first');
+  }
+  if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-right-wrap')){
+    jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
+  }
+  if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
+    jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
+  }
 
-sort=0;
+  sort=0;
 }
 });
 jQuery(window).scrollTop(jQuery(window).scrollTop() + 1);
@@ -299,46 +315,42 @@ function apply_date_filter(x) {
  var yy=current_Date.getFullYear();
  var to_Date=yy+'/'+mm+'/'+dd;
 
- console.log(current_Date);
-  //alert(current_Date.getFullYear());
+ if(x=='week'){
 
+  dd=dd-day;
+}
+if(x=='Lweek'){
+  dd=dd-day-7;
 
-  if(x=='week'){
+}
+if(x=='month'){
+  dd=1;
+}
+if(x=='Lmonth'){
+  dd=1;
+  mm=mm-1;
+}
+if(x=='year'){
+  dd=1;
+  mm=1;
+}
+from_Date=yy+'/'+mm+'/'+dd;
+if(x=='custom'){
+  from_Date=jQuery('#fromDate').val();
+  to_Date=jQuery('#toDate').val();
+  if(Date.parse(from_Date)>Date.parse(to_Date) || Date.parse(from_Date)==Date.parse(to_Date) )
+  {
+    alert('Invalid Date range');
+    return;
+  }
+  if(isNaN(Date.parse(from_Date)) || isNaN(Date.parse(to_Date))){
+    alert('Invalid Date');
+    return;
+  }
 
-    dd=dd-day;
-  }
-  if(x=='Lweek'){
-    dd=dd-day-7;
-
-  }
-  if(x=='month'){
-    dd=1;
-  }
-  if(x=='Lmonth'){
-    dd=1;
-    mm=mm-1;
-  }
-  if(x=='year'){
-    dd=1;
-    mm=1;
-  }
-  from_Date=yy+'/'+mm+'/'+dd;
-  if(x=='custom'){
-    from_Date=jQuery('#fromDate').val();
-    to_Date=jQuery('#toDate').val();
-    if(Date.parse(from_Date)>Date.parse(to_Date) || Date.parse(from_Date)==Date.parse(to_Date) )
-    {
-      alert('Invalid Date range');
-      return;
-    }
-    if(isNaN(Date.parse(from_Date)) || isNaN(Date.parse(to_Date))){
-      alert('Invalid Date');
-      return;
-    }
-
-  }
-  jQuery('#date_value_main').text(from_Date+' to '+to_Date);
-  jQuery('.date_value_dropdown').hide();
+}
+jQuery('#date_value_main').text(from_Date+' to '+to_Date);
+jQuery('.date_value_dropdown').hide();
 
 }
 function filter_projects () {
@@ -353,9 +365,9 @@ function filter_projects () {
    location='nepal';
  }
 
- if(jQuery('#date_value_main').text()=='By Date'){
+ if(jQuery('#date_value_main').text().trim()=='By Date'){
   from='2010/1/1';
-  to='';
+  to=jQuery.datepicker.formatDate('yy/mm/dd', new Date());
 }
 if(jQuery('#custom_filters select:first-child').val()=='By Type')
 {
