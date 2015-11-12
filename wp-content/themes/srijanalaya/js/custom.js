@@ -26,7 +26,7 @@
         }
       });
 
-
+$("SELECT").transformSelect();
 $('.subscribe-inner').click(function() {
   $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
 });

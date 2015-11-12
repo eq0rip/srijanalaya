@@ -18,6 +18,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/jquery-ui.min.css" >
+  <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
 </head>
 <body <?php body_class();?>>
