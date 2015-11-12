@@ -92,55 +92,20 @@ wp_reset_query();?>
 			<div class="circle"></div>
 			<?php
 			$nextEvent = '';
-			if(!isset($_GET['location'])){
-				$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
-					'meta_query' => array(
-						array(
-							'key' => 'wpcf-project-date'
-							),
-						array(
-							'key' => 'wpcf-project-date',
-							'value' => strtotime('today'),
-							'compare' => '>='
-							)
+			$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+				'meta_query' => array(
+					array(
+						'key' => 'wpcf-project-date'
 						),
-					'orderby' => 'meta_value',
-					'order' => 'ASC'
-					); 
-			}
-			else {
-				$args=array('posts_per_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
-					'meta_query' => array(
-						array(
-							'key' => 'wpcf-project-date'
-							),
-						array(
-							'key' => 'wpcf-project-date',
-							'value' => strtotime('today'),
-							'compare' => '>='
-							)
-						),array(
-						array(
-							'key' => 'wpcf-location'
-							),
-						array(
-							'key' => 'wpcf-location',
-							'value' => $_GET['location'],
-							'compare' => '>='
-							)
-						),
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'project_categories',
-								'field'    => 'slug',
-								'terms'    => $_GET['category'],
-								),
-							),
-						'orderby' => 'meta_value',
-						'order' => 'ASC'
-						); 
-
-			}
+					array(
+						'key' => 'wpcf-project-date',
+						'value' => strtotime('today'),
+						'compare' => '>='
+						)
+					),
+				'orderby' => 'meta_value',
+				'order' => 'ASC'
+				); 
 			$postslist=new WP_Query($args);
 			while($postslist->have_posts()) : $postslist->the_post();
 			$nextEvent = $post->ID;
@@ -187,8 +152,10 @@ wp_reset_query();?>
 			while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'project_tags');//tag array
 			$tag='';//tag string
-			foreach ($tags as $key=>$values){
-				$tag.=' '.$values->slug;
+			if(!empty($tags)) {
+				foreach ($tags as $key=>$values){
+					$tag.=' '.$values->slug;
+				}
 			}
 			$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
 			$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
@@ -215,7 +182,22 @@ wp_reset_query();?>
 					<a href="<?php echo get_the_permalink();?>"><div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div></a>
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
-						<p><?php echo types_render_field('location');?></p>
+						<p>
+							<?php 
+							global $wpdb;
+							$con_id = 0;
+							$query = "SELECT p2p_from FROM wp_p2p where p2p_to = $post->ID and p2p_type = 'maps_to_project'";
+							$results = $wpdb->get_results($query);
+							foreach ($results as $result) {
+								$con_id = $result->p2p_from;
+							}
+							if($con_id != 0) {
+								$con_array = wp_get_single_post($con_id);
+								$location =  get_field(  'maplatlng', $con_id );
+								echo $location['address'];
+							}
+							?>
+						</p>
 						<p><?php echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
 						<p><?php echo types_render_field('facilitators');?></p>
 						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>

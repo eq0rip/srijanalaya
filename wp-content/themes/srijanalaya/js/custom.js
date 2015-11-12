@@ -183,10 +183,11 @@ else
   link=y.replace('/ne/','/en/');
 }
 }
-//alert(link);
+
 window.location=link;
 }
 //var prev_class = '';
+
 
 
 function add_filter(x,div,r) {
@@ -196,25 +197,13 @@ function add_filter(x,div,r) {
   {
     return;
   }
- //alert(jQuery(query).length));
- // {
- //    alert('chaina');
- //  }
- //  else {
- //    alert('cha');
- //    return;
- //  }
- div='#'+div+' ul';
- jQuery(div).append('<li>'+x+'  x</li>');
- var query=div+' li';
- // alert(query);
- jQuery(query).each(function () {
-  var toPush=jQuery(this).text().replace(" x","");
-  choosen_tags.push(toPush);
-  
-
-});
-  //console.log(choosen_tags);
+  div='#'+div+' ul';
+  jQuery(div).append('<li class="remove-tag">'+x+'  x</li>');
+  var query=div+' li';
+  jQuery(query).each(function () {
+    var toPush=jQuery(this).text().replace(" x","");
+    choosen_tags.push(toPush);
+  });
   if(r==1){
     return choosen_tags;
   }
@@ -226,13 +215,10 @@ function apply_filter(choosen_tags,units){
   jQuery(units).hide();
   for(var i=0;i<choosen_tags.length;i++)
   {
-
     x='.'+choosen_tags[i];
-
     jQuery(x).show();
-   // alert('displayed from'+choosen_tags[i]);
- }
- filter_timeline();
+  }
+  filter_timeline();
 
 
 }
@@ -270,17 +256,19 @@ if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
 sort=0;
 }
 });
-
+jQuery(window).scrollTop(jQuery(window).scrollTop() + 1);
 }
 
 jQuery("#tag_filter_div ul").on("click",'li', function(){
   jQuery(this).remove();
   var hide_project=jQuery(this).text().replace(" x","");
   hide_project='.'+hide_project;
-  //alert(hide_project);
   jQuery(hide_project).hide('fast');
+  if(jQuery('#tag_filter_div ul').children().length == 0)
+    jQuery('.cd-timeline-block').show();
   filter_timeline();
 });
+
 jQuery('.date_value').on("click", function() {
   jQuery('.date_value_dropdown').slideToggle(300);
 });
@@ -328,7 +316,7 @@ function apply_date_filter(x) {
     to_Date=jQuery('#toDate').val();
     if(Date.parse(from_Date)>Date.parse(to_Date) || Date.parse(from_Date)==Date.parse(to_Date) )
     {
-      alert('Invalid D ate range');
+      alert('Invalid Date range');
       return;
     }
     if(isNaN(Date.parse(from_Date)) || isNaN(Date.parse(to_Date))){

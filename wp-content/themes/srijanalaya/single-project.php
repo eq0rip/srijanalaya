@@ -2,7 +2,6 @@
 get_header('all');
 get_header('mapbox');
 wp_reset_query();
-$location = array();
 ?>
 <div class="page-wrapper">
 	<div class="row">
@@ -37,32 +36,29 @@ $location = array();
 		<div class="page-content">
 			<div class="col-xs-7 col-xs-offset-1">
 				<?php
-				$count = 4;
-				$addr = '';
-				$connected = new WP_Query( array(
-					'connected_type' => 'maps_to_project',
-					'connected_items' => get_queried_object(),
-					'nopaging' => true,
-					) );
-				if ( $connected->post ) :
-					while ( $connected->post ) : $connected->the_post();
-				global $location;
-				$location =  get_field(  'maplatlng', $post->id );
-				$addr = $location['address'];
-				$count = $count + 2;
-				endwhile;
-				endif;
 
-				echo $location . 'ASDzfg' . $count . ' ' . $addr;
 				while ( have_posts() ) : the_post();
-				
-				// wp_reset_postdata();
 				
 				echo '<h2>' . get_the_title() . '</h2>';
 				?>
 				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Date: <span class="col2"><?php echo parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
 				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Time: <span class="col2"><?php echo date('h:i A',types_render_field('project-date', array('raw' => 'true')));?></span></p>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Location: <span class="col2"><?php echo $location['address'];?></span></p>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Location: 
+					<span class="col2"><?php 
+						$connected = new WP_Query( array(
+							'connected_type' => 'maps_to_project',
+							'connected_items' => get_queried_object(),
+							'nopaging' => true,
+							) );
+						if ( $connected->post ) :
+							while ( $connected->post ) : $connected->the_post();
+						$location =  get_field(  'maplatlng', $post->id );
+						echo $location['address'];
+						endwhile;
+						endif;
+						wp_reset_query();?>
+					</span>
+				</p>
 				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Participants: <span class="col2"><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
 				<?php
 				echo '<p>' . auto_id_headings(get_the_content(), 'Project Details') . '</p>';
@@ -95,8 +91,10 @@ $location = array();
 		if ( $connected->post ) :
 			while ( $connected->post ) : $connected->the_post();
 		$latlng = get_field(  'maplatlng', $post->ID );
-		echo '<script>var lat = ' .$latlng['lat'] . '</script>';
-		echo '<script>var lng = ' .$latlng['lng'] . '</script>';
+		if($latlng['lat'] != null && $latlng['lat'] != '') {
+			echo '<script>var lat = ' .$latlng['lat'] . '</script>';
+			echo '<script>var lng = ' .$latlng['lng'] . '</script>';
+		}
 		endwhile;
 		endif;
 		wp_reset_query();
@@ -105,9 +103,12 @@ $location = array();
 		get_footer();
 		get_footer('all');
 		?>
-		
+
 		<script type="text/javascript">
-			var map = L.map('project-map').setView([lat,lng], 7);
+			var map = L.map('project-map', {
+				center: [lat,lng],
+				zoom: 13
+			});
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 				maxZoom: 24,
 				id: 'eq0rip.no3hg91b',
