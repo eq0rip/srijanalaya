@@ -348,14 +348,17 @@ function filter_projects () {
   var from=date[0];
   var to=date[1];
   var category=jQuery('#custom_filters select:first-child').val();
-
+  if(jQuery('#location_value_main').val()=='Location' && jQuery('#date_value_main').text().trim()=='By Date' && jQuery('#custom_filters select:first-child').val()=='By Type'){
+    alert('all field cant be empty');
+    return;
+  }
   if(jQuery('#location_value_main').val()=='Location'){
    location='nepal';
  }
 
- if(jQuery('#date_value_main').text()=='By Date'){
+ if(jQuery('#date_value_main').text().trim()=='By Date'){
   from='2010/1/1';
-  to='';
+  to=jQuery.datepicker.formatDate('yy/mm/dd', new Date());
 }
 if(jQuery('#custom_filters select:first-child').val()=='By Type')
 {
