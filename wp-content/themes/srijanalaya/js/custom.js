@@ -123,19 +123,19 @@ function() {
 var current = 'item0';
 var firstID = $('.mid-nav-inner ul').children("li").first().attr('id');
 var lastID = $('.mid-nav-inner ul').children("li").last().attr('id');
-$('.marquee-right').click(function() {
+$('.marquee-left').click(function() {
   if(current != lastID) {
     $('#' + current).animate({
       opacity: 0.25,
       width: "toggle"
-    }, 200, function() {
+    }, 500, function() {
       $('#' + current).removeClass('first');
       current = $('#' + current).next().attr('id');
       $('#' + current).addClass('first'); 
     });
   }
 });
-$('.marquee-left').click(function() {
+$('.marquee-right').click(function() {
   if(current != firstID) {
     $('#' + current).removeClass('first');
     current = $('#' + current).prev().attr('id');

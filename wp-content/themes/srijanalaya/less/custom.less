@@ -989,7 +989,7 @@ a:hover {
     width: 100%;
     background-image: url('../images/banner.png');
     background-size: cover;
-    height: 375px;
+    height: 400px;
 }
 
 .footer {
@@ -1081,6 +1081,7 @@ a:hover {
     .mid-nav-inner { 
         overflow: hidden;
         height: 35px;
+        padding-top: 7px;
     }
     .title {
         position: relative;
@@ -1089,10 +1090,13 @@ a:hover {
         color: #807f7f;
         padding: 7px 0;
         min-width: 120px;
+        font-size: 14px;
+        font-weight: bold;
     }
     .subpageMenu, a {
         width: 200px;
-        padding-top: 3px;
+        font-size: 14px;
+        font-weight: 400;
         display: inline-block;
         color: #807f7f;
     }
@@ -1331,6 +1335,55 @@ form .btn {
     font-family: 'allerregular';
     color: #ffffff;
 }
+.jumpheading {
+    color: #807f7f;
+    font-size: 14px !important;
+    font-weight: bold;
+    font-family: 'bree serif';
+}
+.jumpmenu-ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+    .jump-menu {
+        display: inline;
+        padding: 5px 10px;
+        background-color: #f6f6f6;
+        margin-right: 10px;
+        a {
+            color: #a2a1a1;
+            font-weight: bold;
+            font-size: 12px;
+            &:hover {
+               color: #e91f4a;
+           }
+       }
+   }
+}
+.subhead {
+    h3 {
+        color: #807f7f;
+        font-size: 14px !important;
+        font-weight: bold;
+        font-family: 'bree serif';
+    }
+    color: #807f7f;
+    font-size: 12px;
+    font-family: 'allerregular';
+    font-weight: 500;
+}
+.info-wrap {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.sidebar {
+    min-width: 300px;
+}
+
+
+
+
+
 @media(max-width:991px) {
     .mid-nav {
         height: 30px;
@@ -1340,6 +1393,10 @@ form .btn {
     }
 }
 @media(max-width:769px) {
+    .subhead {
+        border-bottom: 1px solid #f6f6f6;
+        padding-bottom: 50px;
+    }
     .project-inner-page-content {
         text-align: center;
         padding-left: 30px;
