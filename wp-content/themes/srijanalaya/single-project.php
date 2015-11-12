@@ -59,70 +59,74 @@ wp_reset_query();
 						wp_reset_query();?>
 					</span>
 				</p>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Participants: <span class="col2"><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Age Group: <span class="col2"><?php echo types_render_field('age-group');?></span></p>
 				<?php
-				echo '<p>' . auto_id_headings(get_the_content(), 'Project Details') . '</p>';
-				endwhile;
-				?>
+				if(strtolower(types_render_field('project-type')) == 'public') {?>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Participants: <span class="col2"><?php echo types_render_field('participants');?></span></p>
+				<?php
+			}
+			echo '<p>' . auto_id_headings(get_the_content(), 'Project Details') . '</p>';
+			endwhile;
+			?>
+		</div>
+		<div class="col-sm-2">
+			<div class="side-wrap">
+				<h2>Resources</h2>
+				<p><a href="#!">View Gallery</a></p>
+				<p><a href="#!">View Videos</a></p>
 			</div>
-			<div class="col-sm-2">
+			<div class="side-wrap">
+				<h2>Find Us</h2>
+				<div id="project-map"></div>
+			</div>
+			<div class="side-wrap">
+				<?php include('social.php');?>
 				<div class="side-wrap">
-					<h2>Resources</h2>
-					<p><a href="#!">View Gallery</a></p>
-					<p><a href="#!">View Videos</a></p>
-				</div>
-				<div class="side-wrap">
-					<h2>Find Us</h2>
-					<div id="project-map"></div>
-				</div>
-				<div class="side-wrap">
-					<?php include('social.php');?>
-					<div class="side-wrap">
-					</div>
 				</div>
 			</div>
 		</div>
-		<?php
-		$connected = new WP_Query( array(
-			'connected_type' => 'maps_to_project',
-			'connected_items' => get_queried_object(),
-			'nopaging' => true,
-			) );
-		if ( $connected->post ) :
-			while ( $connected->post ) : $connected->the_post();
-		$latlng = get_field(  'maplatlng', $post->ID );
-		if($latlng['lat'] != null && $latlng['lat'] != '') {
-			echo '<script>var lat = ' .$latlng['lat'] . '</script>';
-			echo '<script>var lng = ' .$latlng['lng'] . '</script>';
-		}
-		endwhile;
-		endif;
-		wp_reset_query();
-		?>
-		<?php
-		get_footer();
-		get_footer('all');
-		?>
+	</div>
+	<?php
+	$connected = new WP_Query( array(
+		'connected_type' => 'maps_to_project',
+		'connected_items' => get_queried_object(),
+		'nopaging' => true,
+		) );
+	if ( $connected->post ) :
+		while ( $connected->post ) : $connected->the_post();
+	$latlng = get_field(  'maplatlng', $post->ID );
+	if($latlng['lat'] != null && $latlng['lat'] != '') {
+		echo '<script>var lat = ' .$latlng['lat'] . '</script>';
+		echo '<script>var lng = ' .$latlng['lng'] . '</script>';
+	}
+	endwhile;
+	endif;
+	wp_reset_query();
+	?>
+	<?php
+	get_footer();
+	get_footer('all');
+	?>
 
-		<script type="text/javascript">
-			var map = L.map('project-map', {
-				center: [lat,lng],
-				zoom: 13
-			});
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-				maxZoom: 24,
-				id: 'eq0rip.no3hg91b',
-				accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
-			}).addTo(map);
-			var iconurl = 'http://localhost/srijanalaya/wp-content/themes/srijanalaya/icon.png';
-			var greenIcon = L.icon({
-				iconUrl: iconurl,
+	<script type="text/javascript">
+		var map = L.map('project-map', {
+			center: [lat,lng],
+			zoom: 13
+		});
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			maxZoom: 24,
+			id: 'eq0rip.no3hg91b',
+			accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
+		}).addTo(map);
+		var iconurl = 'http://localhost/srijanalaya/wp-content/themes/srijanalaya/icon.png';
+		var greenIcon = L.icon({
+			iconUrl: iconurl,
     iconSize:     [32, 32], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-			L.marker([lat,lng], {icon: greenIcon}).addTo(map);
+		L.marker([lat,lng], {icon: greenIcon}).addTo(map);
 
-		</script>
+	</script>
