@@ -35,12 +35,12 @@ wp_reset_query();?>
 			?>
 			
 			<select id="location_value_main">
-				<option selected>Location</option>
+				<option selected value="Location">Location</option>
 				<?php $args=array('posts_per_page'=>-1,'post_type'=>'maps');
 				$postslist=new WP_Query($args);
 				while($postslist->have_posts()):$postslist->the_post();
 				?>
-				<option><?php the_title();?></option>
+				<option value="<?php the_title();?>"><?php the_title();?></option>
 			<?php endwhile; ?>
 		</select>
 
@@ -257,14 +257,25 @@ wp_reset_query();?>
 		$lang = 'ne';
 	?>
 	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
-		var lang = '<?php echo $lang; ?>';</script>
-		<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
-		<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
-		<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
-		<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
-		<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
-		<script type="text/javascript">
-			jQuery(window).load(function() {
+		var lang = '<?php echo $lang; ?>';
+		var location123="<?php echo $_GET['location'];?>";
+		
+		<?php if(isset($_GET['category'])){?>
+			jQuery('#custom_filters .postform:first').val(category123);
+			<?php }?>
+			<?php if(isset($_GET['location'])){?>
+				jQuery('#location_value_main').val(location123);
+				<?php }?>
+
+
+			</script>
+			<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
+			<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
+			<script type="text/javascript">
+				jQuery(window).load(function() {
 		//Go to next project
 		
 		var winSize = (jQuery(window).height()) / 2;
@@ -309,4 +320,5 @@ wp_reset_query();?>
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
 	jQuery()
+
 </script>
