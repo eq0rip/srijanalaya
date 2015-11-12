@@ -245,9 +245,19 @@ function filter_timeline() {
    }
    else {
     jQuery(this).find('.cd-timeline-content').css({'margin-top':'0px'});
+    if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
+    {
+      jQuery(this).find('.cd-timeline-content').removeClass('first');
+      jQuery(this).removeClass('first');
+    }
   }
 }
 else {
+  if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
+    {
+      jQuery(this).find('.cd-timeline-content').removeClass('first');
+      jQuery(this).removeClass('first');
+    }
  if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-right-wrap')){
   jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-right-wrap').addClass('project-wrapper-left-wrap');
 }
