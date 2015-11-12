@@ -41,9 +41,9 @@ wp_reset_query();
 				
 				echo '<h2>' . get_the_title() . '</h2>';
 				?>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Date: <span class="col2"><?php echo parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Time: <span class="col2"><?php echo date('h:i A',types_render_field('project-date', array('raw' => 'true')));?></span></p>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Location: 
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt="">Date: <span class="col2"><?php echo parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt="">Time: <span class="col2"><?php echo date('h:i A',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/loc.png" class="outimg" alt="">Location: 
 					<span class="col2"><?php 
 						$connected = new WP_Query( array(
 							'connected_type' => 'maps_to_project',
@@ -59,7 +59,7 @@ wp_reset_query();
 						wp_reset_query();?>
 					</span>
 				</p>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Age Group: <span class="col2"><?php echo types_render_field('age-group');?></span></p>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/age.png" class="outimg" alt="">Age Group: <span class="col2"><?php echo types_render_field('age-group');?></span></p>
 				<?php
 				if(strtolower(types_render_field('project-type')) == 'public') {?>
 				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">Participants: <span class="col2"><?php echo types_render_field('participants');?></span></p>
