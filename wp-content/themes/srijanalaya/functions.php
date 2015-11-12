@@ -327,15 +327,15 @@ function get_subscriber($id){
 }
 
 //adding subscriber
-function add_subscriber ($email,$project_id){
+function add_subscriber($email,$project_id){
 	global $wpdb;
 	$data = $wpdb->get_results("SELECT *  FROM project_subscriber WHERE project_id=$project_id AND email='$email'");
-	if(count($data)==0)
-		return;
+	if(count($data)!=0)
+		return 'Already Subscribed';
 	$table='project_subscriber';
 	$data=array('email'=>$email,'project_id'=>$project_id);
 	$wpdb->insert( $table, $data);
-	return;
+	return 'Thanks for Subscribing';
 }
 
 //sort array of project by date

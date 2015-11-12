@@ -350,22 +350,22 @@ function filter_projects () {
   var category=jQuery('#custom_filters select:first-child').val();
 
   if(jQuery('#location_value_main').val()=='Location'){
-   error+='Choose location. ';
+   location='nepal';
  }
 
  if(jQuery('#date_value_main').text()=='By Date'){
-  error+='Choose date. ';
+  from='2010/1/1';
+  to='';
 }
 if(jQuery('#custom_filters select:first-child').val()=='By Type')
 {
-  error+='invalid Type';
-}
-
-if(error!=''){
-  alert(error);
+  window.location.href='http://localhost/srijanalaya/events'+'?location='+location+'&from='+from+'&to='+to;
   return;
 }
-window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&&location='+location+'&&from='+from+'&&to='+to;
+
+
+
+window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
 
 
