@@ -211,7 +211,7 @@ wp_reset_query();?>
 	</div>
 	<div class="col-sm-3 fixed hidden-xs">
 		<h2>Calender</h2>
-		<div class="clndr-wrap">
+		<div class="clndr-wrap side-wrap">
 			<script type="text/template" id="clndr">
 				<div class="clndr-transparent-block">
 					<div class="close-clndr-info" onclick="close_msg();">X</div>
@@ -238,6 +238,9 @@ wp_reset_query();?>
 					</div>
 				</div>
 			</script>
+		</div>
+		<div class="side-wrap last">
+			<?php include('social.php');?>
 		</div>
 	</div>
 </div>
