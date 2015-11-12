@@ -126,9 +126,9 @@ var lastID = $('.mid-nav-inner ul').children("li").last().attr('id');
 $('.marquee-left').click(function() {
   if(current != lastID) {
     $('#' + current).animate({
-      opacity: 0.25,
+      // opacity: 0.25,
       width: "toggle"
-    }, 500, function() {
+    }, 200, function() {
       $('#' + current).removeClass('first');
       current = $('#' + current).next().attr('id');
       $('#' + current).addClass('first'); 
