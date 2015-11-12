@@ -14,6 +14,7 @@ wp_reset_query();
 	<div class="row">
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
+			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 			<?php
 			wp_reset_query();
 			$pageTitle = get_the_title();
@@ -37,7 +38,6 @@ wp_reset_query();
 			}
 			endwhile;
 			?>
-			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 		</div>
 		<div class="page-content">
 			<div class="col-xs-7 col-xs-offset-1">
@@ -65,10 +65,11 @@ $postlist = new WP_Query($args);
 // $map = "";
 while ($postlist->have_posts()): 
 	$postlist->the_post();
-$desc = types_render_field('short-description');
+$location = get_field(  'maplatlng', $post->ID );
+$desc = get_the_content();
 $url = types_render_field('url');
-$lat = types_render_field('lat');
-$long = types_render_field('longi');
+$lat = $location['lat'];
+$long = $location['lng'];
 $icon = get_template_directory_uri()."/icon.png";
 $map[] = array(get_the_title(),$lat,$long,$url,$desc,$icon);
 endwhile;

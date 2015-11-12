@@ -415,10 +415,6 @@ function parseDate($date)
 
 
 
-function wpse_hide_admin_bar() {
-	return false;
-}
-add_filter( 'show_admin_bar', 'wpse_hide_admin_bar' );
 
 
 //For post View
@@ -452,7 +448,7 @@ function postConnections() {
 		'from' => 'maps',
 		'to' => 'project',
 		'admin_box' => array(
-			'show' => 'any',
+			'show' => 'to',
 			'context' => 'side'
 			)
 		) );
@@ -467,17 +463,29 @@ function remove_footer_admin ()
 add_filter('admin_footer_text', 'remove_footer_admin');
 
 
-function example_remove_dashboard_widgets()
-{
-    // Globalize the metaboxes array, this holds all the widgets for wp-admin
+
+add_action('wp_dashboard_setup', 'my_dashboard_widgets');
+function my_dashboard_widgets() {
 	global $wp_meta_boxes;
-
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset(
+		$wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'],
+		$wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'],
+		$wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']
+		);
+	wp_add_dashboard_widget( 'dashboard_custom_feed', 'Smjrifle' , 'dashboard_custom_feed_output' );
 }
-add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );
-
+function dashboard_custom_feed_output() {
+	echo '<div class="rss-widget">';
+	wp_widget_rss_output(array(
+          'url' => 'http://smjrifle.net/feed',  //Feed URL
+          'title' => 'Smjrifle', //Title of Feed
+          'items' => 4,  //Number of items to fetch
+          'show_summary' => 1,
+          'show_author' => 0,
+          'show_date' => 1
+          ));
+	echo '</div>';
+}
 
 add_action( 'admin_print_styles', 'load_custom_admin_css' );
 function load_custom_admin_css()
@@ -494,13 +502,13 @@ function auto_id_headings( $content, $heading = NULL) {
 	$content = preg_replace_callback( '/(\<h3(.*?))\>(.*)(<\/h3>)/i', function( $matches ) use (&$jump_menu, &$id) {
 		if ( ! stripos( $matches[0], 'id=' ) ) :
 			$matches[0] = '<br/>' . $matches[1] . $matches[2] . ' id="' . sanitize_title( $matches[3] ) . '">' . $matches[3] . $matches[4];
-		$jump_menu = $jump_menu . '<li><a href=#' . str_replace(' ','-',strtolower($matches[3])) . '>' . $matches[3] . '</a></li>';
+		$jump_menu = $jump_menu . '<li class="jump-menu"><a href=#' . str_replace(' ','-',strtolower($matches[3])) . '>' . $matches[3] . '</a></li>';
 		$id[] = str_replace(' ','-',strtolower($matches[3]));
 		endif;
 		return $matches[0];
 	}, $content );
-	echo '<h3>' . $heading . '</h3>';
-	echo '<ul>' . $jump_menu . '</ul>';
+	echo '<h2 class="jumpheading">' . $heading . '</h2>';
+	echo '<ul class="jumpmenu-ul">' . $jump_menu . '</ul>';
 	$ary = explode('<br/>',$content);
 	foreach ($ary as $section) {
 		if(!empty($section)){
@@ -509,4 +517,12 @@ function auto_id_headings( $content, $heading = NULL) {
 		}
 	}
 	return $content2;
+}
+
+/* Disable the Admin Bar. */
+add_filter( 'show_admin_bar', '__return_false' );
+
+add_action( 'load-edit.php', 'wpse34956_force_excerpt' );
+function wpse34956_force_excerpt() {
+    $_REQUEST['mode'] = 'excerpt';
 }
