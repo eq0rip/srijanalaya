@@ -277,7 +277,7 @@ jQuery("#tag_filter_div ul").on("click",'li', function(){
   hide_project='.'+hide_project;
   jQuery(hide_project).hide('fast');
   if(jQuery('#tag_filter_div ul').children().length == 0)
-    jQuery('.cd-timeline-block').show();
+    jQuery('.cd-timeline-block').show('fast');
   filter_timeline();
 });
 
