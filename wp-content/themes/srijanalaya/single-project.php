@@ -33,8 +33,8 @@ wp_reset_query();
 			echo '</ul></div>';
 			?>
 		</div>
-		<div class="page-content">
-			<div class="col-xs-7 col-xs-offset-1">
+		<div class="page-content project-inner-page-content">
+			<div class="col-sm-7 col-sm-offset-1">
 				<?php
 
 				while ( have_posts() ) : the_post();
@@ -69,19 +69,34 @@ wp_reset_query();
 			endwhile;
 			?>
 		</div>
-		<div class="col-sm-2">
-			<div class="side-wrap">
-				<h2>Resources</h2>
-				<p><a href="#!">View Gallery</a></p>
-				<p><a href="#!">View Videos</a></p>
-			</div>
-			<div class="side-wrap">
-				<h2>Find Us</h2>
-				<div id="project-map"></div>
-			</div>
-			<div class="side-wrap">
-				<?php include('social.php');?>
+		<div class="col-sm-3">
+			<div class="col-sm-10 no-padding">
+			<div class="side-wrap no-padding">
+					<h2>Get updates</h2>
+					<p><a href="#!">Add to Calendar Sync with iCal, <br/>outlook, google calendar</a></p>
+					<p class="subscribe-inner"><a href="#!">Alert for any updates</a></p>
+					<div class="side-transparent-block">
+						<div class="close-info" onclick="close_msg();">X</div>
+						<div class="content">
+							<form action="" method="POST">
+								<input type="hidden" name="post_id" value="<?php echo $ids;?>" />
+								<input type="email" name="subscriber_email" placeholder="Enter your Email" />
+								<input type="Submit" class="btn" name="subscribe" value="Subscribe" />
+							</form>
+						</div>
+					</div>
+				</div>
 				<div class="side-wrap">
+					<h2>Resources</h2>
+					<p><a href="#!">View Gallery</a></p>
+					<p><a href="#!">View Videos</a></p>
+				</div>
+				<div class="side-wrap">
+					<h2>Find Us</h2>
+					<div id="project-map"></div>
+				</div>
+				<div class="side-wrap last">
+					<?php include('social.php');?>
 				</div>
 			</div>
 		</div>
@@ -128,5 +143,7 @@ wp_reset_query();
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 		L.marker([lat,lng], {icon: greenIcon}).addTo(map);
-
+		function close_msg() {
+			jQuery('.side-transparent-block').fadeOut(300);
+		}
 	</script>
