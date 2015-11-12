@@ -28,6 +28,7 @@ wp_reset_query();?>
 				'name'             => 'parent',
 				'orderby'          => 'name',
 				'hierarchical'     => true,
+				'class'            => 'project-categories',
 				'show_option_none' => __( 'None' ),
 				);
 			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
@@ -221,6 +222,7 @@ wp_reset_query();?>
 					</div>
 				</div>
 				<div class="clndr-controls">
+					<div class="header-day"><%= month %>&nbsp;<%= year %></div>
 					<div class="clndr-previous-button">&lsaquo;</div>
 					<div class="clndr-next-button">&rsaquo;</div>
 				</div>

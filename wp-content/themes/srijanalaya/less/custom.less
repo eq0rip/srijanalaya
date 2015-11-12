@@ -1202,31 +1202,46 @@ a:hover {
         float: left;
         list-style-type: none;
         margin-left:0px;
-        color: #868585;
-
+        color: #807f7f;
         font-weight: bold;
         padding:7px 0px 5px 5px;
         border: 0px;
         border-left:3px solid #E8E8E7;
-        background: #F2F2F2;    }
-        .btn {
-            margin: 0px;
-            background: #E91F4A;
-            color:#ffffff;
-            font-weight: normal;
-            width:100px;
-            padding:5px 0px 5px 5px;
-            border-radius: 0px;
-            &:hover {
-                background:#E91F4A;
-                color:#ffffff;
-            }
+        height: 35px;
+        border-radius: 0;
+        width: 130px;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px;
+        background: #f2f2f2 url('../images/arrow.png') no-repeat center right;
+        &:hover {
+            color: #FFF;
+            background: #E91F4A url('../images/arrow-hover.png') no-repeat center right;
         }
-
-
+        option {
+            position: absolute;
+            top: 0;
+            
+        }
     }
-    .date_filter {
-        float:left;
+    .btn {
+        margin: 0px;
+        background: #E91F4A;
+        color:#ffffff;
+        font-weight: normal;
+        width:100px;
+        padding:5px 0px 5px 5px;
+        border-radius: 0px;
+        &:hover {
+            background:#E91F4A;
+            color:#ffffff;
+        }
+    }
+
+
+}
+.date_filter {
+    float:left;
     //font-size: 14px;
 
     margin:0px;

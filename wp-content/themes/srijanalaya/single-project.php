@@ -15,14 +15,21 @@ wp_reset_query();
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 			<?php
-			$categories = get_terms('project_categories');
-			$cats = array();
+			$categories = wp_get_post_terms(get_the_id(),'project_categories');
+			$cats = '';
 			foreach ( $categories  as $category ) {
-				array_push($cats, $category->term_id);
+				$cats = $category->term_id;
 			}
 			$ids = get_the_id();
-			$args=array('posts_per_page' => 7, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC', array( 'category__in' => array($cats)),  'post__not_in' => array($ids)); 
-			$postslist=new WP_Query($args);              
+			$args=array('posts_per_page' => 10, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC', 'tax_query' => array(
+				array(
+					'taxonomy' => 'project_categories',
+					'field' => 'id',
+					'terms' => $cats
+					)
+				),
+			'post__not_in' => array($ids)); 
+			$postslist=new WP_Query($args);            
 			echo '<div class="title col-xs-1">More Projects</div>';
 			echo '<div class="mid-nav-inner"><ul>';
 			$j = 0;
