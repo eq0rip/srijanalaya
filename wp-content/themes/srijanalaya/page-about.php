@@ -18,10 +18,16 @@ wp_reset_query();
 			<?php
 			wp_reset_query();
 			$pageTitle = get_the_title();
+			if ($post->post_parent != 0){
+				$ids = $post->post_parent;
+			}
+			else {
+				$ids = get_the_id();
+			}
 			$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
 			$postslist = new WP_Query( $args );
 			while ( $postslist->have_posts() ) : $postslist->the_post();
-			if(strtolower(get_the_title()) == strtolower($pageTitle)) {
+			if(strtolower(get_the_id()) == strtolower($ids)) {
 				echo '<div class="title col-xs-1">' . get_the_title() . '</div>';
 				$content=get_the_content();
 				$contents=explode("\n",$content);
