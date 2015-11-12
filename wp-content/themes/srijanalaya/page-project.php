@@ -300,7 +300,7 @@ wp_reset_query();?>
 
 	//Fix Calender
 	jQuery(window).scroll( function() {
-		if(jQuery(window).scrollTop() > 450) {
+		if(jQuery(window).scrollTop() > 500) {
 			jQuery('.fixed').css('position','fixed');
 		}
 		else {
