@@ -88,9 +88,9 @@ wp_reset_query();
 							<div class="close-info" onclick="close_msg();">X</div>
 							<div class="content">
 								<form action="" method="POST">
-									<input type="hidden" name="post_id" value="<?php echo $ids;?>" />
-									<input type="email" name="subscriber_email" placeholder="Enter your Email" />
-									<input type="Submit" class="btn" name="subscribe" value="Subscribe" />
+									<input id="p_id" type="hidden" name="post_id" value="<?php echo $ids;?>" />
+									<input id="email" type="email" name="subscriber_email" placeholder="Enter your Email" />
+									<input type="button" id="submit" class="btn" name="subscribe" value="Subscribe" />
 								</form>
 							</div>
 						</div>
@@ -155,4 +155,30 @@ wp_reset_query();
 			function close_msg() {
 				jQuery('.side-transparent-block').fadeOut(300);
 			}
+jQuery(document).ready(function(){
+jQuery("#submit").click(function(){
+var p_id = jQuery("#p_id").val();
+var email = jQuery("#email").val();
+var dataString = 'p_id='+ p_id + '&email='+ email;
+if(email=='')
+{
+alert("Please enter email");
+}
+else
+{
+// AJAX Code To Submit Form.
+jQuery.ajax({
+type: "POST",
+url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
+data: dataString,
+cache: false,
+success: function(result){
+alert(result);
+}
+});
+}
+return false;
+
+});
+});
 		</script>
