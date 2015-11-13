@@ -72,6 +72,7 @@ wp_reset_query();?>
 
 		</div>
 		<div class="col-sm-8" id="tag_filter_div">
+			<span class="active-tags">ACTIVE TAGS: </span>
 			<ul>
 
 			</ul>
@@ -88,7 +89,7 @@ wp_reset_query();?>
 		</div>
 	</div>
 	<div class="col-sm-9 timeline-wrapper">
-
+		<div class="current-date">2015<br/><span class='cur-month'>Oct</span></div>
 		<section id="cd-timeline" class="cd-container">
 			<div class="circle"></div>
 			<?php
@@ -202,7 +203,7 @@ wp_reset_query();?>
 						<p><?php 
 							echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
 							<p><?php echo types_render_field('facilitators');?></p>
-							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
+							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
 							<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
 						</div>
 					</div> <!-- cd-timeline-content -->
@@ -224,6 +225,7 @@ wp_reset_query();?>
 						</div>
 					</div>
 					<div class="clndr-controls">
+						<div class="header-day"><%= month %><%= year %></div>
 						<div class="clndr-previous-button">&lsaquo;</div>
 						<div class="clndr-next-button">&rsaquo;</div>
 					</div>
@@ -274,6 +276,9 @@ wp_reset_query();?>
 			<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/withinviewport.js"></script> <!-- CLNDR jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/jquery.withinviewport.js"></script> <!-- CLNDR jQuery -->
+			
 			<script type="text/javascript">
 				jQuery(window).load(function() {
 		//Go to next project
@@ -309,6 +314,11 @@ wp_reset_query();?>
 
 	//Fix Calender
 	jQuery(window).scroll( function() {
+		var bottomDate = jQuery('.time-to-event').withinviewport({sides:'top', bottom: 10});
+		if(bottomDate[0] != undefined) {
+			var curr = bottomDate[0].innerText.split(" ");
+			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+		}
 		if(jQuery(window).scrollTop() > 500) {
 			jQuery('.fixed').css('position','fixed');
 		}
@@ -319,6 +329,10 @@ wp_reset_query();?>
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
-	jQuery()
+	jQuery(document).ready(function() {
+		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html()
+		var curr = bottomDate.split(" ");
+		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+	});
 
 </script>

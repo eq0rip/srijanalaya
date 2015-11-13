@@ -69,7 +69,7 @@ header h1 {
   /* this is the vertical line */
   content: '';
   position: absolute;
-  top: -180px;
+  top: -182px;
   left: 18px;
   height: 105%;
   width: 4px;
@@ -93,7 +93,7 @@ header h1 {
   a {
     color: #807f7f;
     font-size: 12px;
-    font-family: 'bree serif';
+    font-family: 'Helvetica';
   }
 }
 .cd-timeline-block:after {
@@ -147,7 +147,7 @@ header h1 {
     top: 32%;
     font-size: 20px;
     color: #FFF;
-    font-family: 'bree serif';
+    font-family: 'Helvetica';
     font-weight: bold;
     @media (max-width: 1159px) {
       top: 25%;
@@ -323,7 +323,7 @@ header h1 {
         p {
           color: #807f7f;
           font-size: 12px;
-          font-family:'bree serif';
+          font-family:'Helvetica';
         }
         .small-text img {
           margin-top: -2px;
@@ -334,7 +334,7 @@ header h1 {
   .project-wrapper-left::before {
     position: absolute;
     height: 125px;
-    left: 89.25%;
+    left: 89.35%;
     top: -3px;
     border-bottom: 20px solid transparent;
     border-right: 20px solid #FFF;
@@ -348,7 +348,7 @@ header h1 {
   .project-wrapper-left::after {
     position: absolute;
     height: 135px;
-    left: 89.25%;
+    left: 89.35%;
     top: 25%;
     border-top: 20px solid transparent;
     border-right: 20px solid #FFF;
@@ -367,7 +367,7 @@ header h1 {
   .project-wrapper-right::before {
     position: absolute;
     height: 125px;
-    left: 5.42%;
+    left: 4.5%;
     top: -3px;
     border-bottom: 20px solid transparent;
     border-left: 20px solid #FFF;
@@ -381,7 +381,7 @@ header h1 {
   .project-wrapper-right::after {
     position: absolute;
     height: 135px;
-    left: 5.42%;
+    left: 4.5%;
     top: 25%;
     border-top: 20px solid transparent;
     border-left: 20px solid #FFF;
@@ -625,12 +625,16 @@ header h1 {
   visibility: hidden;
 }
 
-  .project-wrapper-right-wrap {
-    float: right !important;
-    @media (max-width:1169px) {
-      float: left !important;
-    }
-  }
-  .project-wrapper-left-wrap {
+.project-wrapper-right-wrap {
+  float: right !important;
+  @media (max-width:1169px) {
     float: left !important;
   }
+}
+.project-wrapper-left-wrap {
+  float: left !important;
+}
+
+.cd-timeline-content .content {
+  width: 380px;
+}

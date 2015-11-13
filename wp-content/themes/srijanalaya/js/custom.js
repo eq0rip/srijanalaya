@@ -35,7 +35,6 @@
       $('.transformSelect li').addClass('open');
       $('.transformSelect').hover(function() {
         $(this).children('li').addClass('open');
-        console.log($(this).children('li').children('.transformSelectDropdown').html());
         $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
       }, function() {

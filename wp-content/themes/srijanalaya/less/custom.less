@@ -48,6 +48,7 @@ html {
 }
 body {
     font-size: 15px;
+    font-family: 'Helvetica';
     -webkit-font-smoothing: antialiased;
     line-height: 22px;//18
     letter-spacing: 1.5px;
@@ -1481,9 +1482,33 @@ form .btn {
 .page-wrap {
     margin-top: -35px;
 }
-
-
-
+#tag_filter_div {
+    padding-top: 10px;
+    .active-tags {
+        font-family: 'Helvetica Bold';
+        padding-left: 120px;
+        font-size: 12px;
+        font-weight: bold;
+        padding-top: 5px;
+        position: relative;
+        top: 3px;
+    }
+    ul {
+        position: absolute;
+        display: inline;
+    }
+}
+.current-date {
+    position: fixed;
+    top:40%;
+    border-left: 10px solid #dbdbdb;
+    left: 0;
+    color: #b8b8b8;
+    padding: 10px;
+    .cur-month {
+        padding-left: 10px;
+    }
+}
 
 
 

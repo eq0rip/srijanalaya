@@ -19,7 +19,6 @@ wp_reset_query();?>
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
-			
 			<?php
 			$dropdown_args = array(
 				'hide_empty'       => 0,
@@ -28,49 +27,51 @@ wp_reset_query();?>
 				'name'             => 'parent',
 				'orderby'          => 'name',
 				'hierarchical'     => true,
-				'class'            => 'project-categories',
-				'show_option_none' => __( 'None' ),
+				'show_option_none' => 'Type',
 				);
 			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
 			$tags=wp_dropdown_categories( $dropdown_args );
 			?>
-
+			
 			<select id="location_value_main">
-				<option selected>Location</option>
-				<option>Kathmandu</option>
-				<option>Lalitpur</option>
-				<option>Bhaktapurpp</option>
-			</select>
+				<option selected value="Location">Location</option>
+				<?php $args=array('posts_per_page'=>-1,'post_type'=>'maps');
+				$postslist=new WP_Query($args);
+				while($postslist->have_posts()):$postslist->the_post();
+				?>
+				<option value="<?php the_title();?>"><?php the_title();?></option>
+			<?php endwhile; ?>
+		</select>
 
+		<ul class="transformSelect trans-element transformSelect3">
+			<li class="">
+				<span id='date_value_main'>
+					<?php if(isset($_GET['from'])){
+						echo $_GET['from'].' to '.$_GET['to'];
+					}
+					else {
+						echo 'By Date';
+					}
+					?>
 
-			<div class="date_filter">
-				<div class="date_value">
-					<span id='date_value_main'>
-						<?php if(isset($_GET['from'])){
-							echo $_GET['from'].' to '.$_GET['to'];
-						}
-						else {
-							echo 'By Date';
-						}
-						?>
-
-					</span><span class='caret'></span>
-				</div>
-				<div class="date_value_dropdown">
-					<a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a><br/>
-					<a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a><br/>
-					<span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
-					<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
-					<button onclick="apply_date_filter('custom')" class="btn">Apply</button>
-				</div>
-			</div>
+				</span>
+				<ul style="display: none;" class="transformSelectDropdown">
+					<li data-settings="" class="selected open"><span><a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a></span></li>
+					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a></span></li>
+					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a></span></li>
+					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a></span></li>
+					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a></span></li>
+					<li data-settings="" class="open"><span><span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
+						<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
+						<button onclick="apply_date_filter('custom')" class="btn">Apply</button></span></li>
+					</ul>
+				</li>
+			</ul>
 			<input id="clickMe" type="button" class="btn" onclick="filter_projects();" value="Filter" />	
 
 		</div>
 		<div class="col-sm-8" id="tag_filter_div">
+			<span class="active-tags">ACTIVE TAGS: </span>
 			<ul>
 
 			</ul>
@@ -87,7 +88,7 @@ wp_reset_query();?>
 		</div>
 	</div>
 	<div class="col-sm-9 timeline-wrapper">
-
+		<div class="current-date">2015<br/><span class='cur-month'>Oct</span></div>
 		<section id="cd-timeline" class="cd-container">
 			<div class="circle"></div>
 			<?php
@@ -110,40 +111,21 @@ wp_reset_query();?>
 			while($postslist->have_posts()) : $postslist->the_post();
 			$nextEvent = $post->ID;
 			endwhile;
-			if(!isset($_GET['location'])){
+			if(!isset($_GET['category']) ){
 
 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
 			}
 			else {
 
 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
-					'meta_query'=>array(
+					'tax_query' => array(
 						array(
-							'key'=>'wpcf-location',
+							'taxonomy' => 'project_categories',
+							'field'    => 'slug',
+							'terms'    => $_GET['category'],
 							),
-						array(
-							'key'=>'wpcf-location',
-							'value'=>$_GET['location'],
-							'compare'=>'='
-							)
-						),array(
-						array(
-							'key'=>'wpcf-project-date',
-							),
-						array(
-							'key'=>'wpcf-project-date',
-							'value'=>strtotime($_GET['from']),
-							'compare'=>'='
-							)
 						),
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'project_categories',
-								'field'    => 'slug',
-								'terms'    => $_GET['category'],
-								),
-							),
-						'orderby' => 'meta_value', 'order' => 'DESC'); 
+					'orderby' => 'meta_value', 'order' => 'DESC'); 
 			}
 			$postslist=new WP_Query($args);              
 			$curDate = date('now');
@@ -151,6 +133,7 @@ wp_reset_query();?>
 			$events = "";
 			while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'project_tags');//tag array
+
 			$tag='';//tag string
 			if(!empty($tags)) {
 				foreach ($tags as $key=>$values){
@@ -172,6 +155,37 @@ wp_reset_query();?>
 				$class = 'project-wrapper-right';
 				$i = 0;
 			}
+			$datepp=types_render_field('project-date');
+			if(isset($_GET['from']) && isset($_GET['to'])){
+				if(strtotime($datepp)>=strtotime($_GET['from']) && strtotime($datepp)<=strtotime($_GET['to']) ){
+
+				}
+				else {
+					continue;
+				}
+			}
+			?>
+			<?php 
+			global $wpdb;
+			$con_id = 0;
+			$query = "SELECT p2p_from FROM wp_p2p where p2p_to = $post->ID and p2p_type = 'maps_to_project'";
+			$results = $wpdb->get_results($query);
+			foreach ($results as $result) {
+				$con_id = $result->p2p_from;
+			}
+			if($con_id != 0) {
+				$con_array = wp_get_single_post($con_id);
+				$location =  get_field(  'maplatlng', $con_id );
+
+			}
+
+			if(isset($_GET['location'])){
+
+				if (stripos($location['address'],$_GET['location']) !== false) {
+					
+				}
+				else {continue;}
+			}
 			?>
 
 			<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
@@ -183,87 +197,89 @@ wp_reset_query();?>
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
 						<p>
-							<?php 
-							global $wpdb;
-							$con_id = 0;
-							$query = "SELECT p2p_from FROM wp_p2p where p2p_to = $post->ID and p2p_type = 'maps_to_project'";
-							$results = $wpdb->get_results($query);
-							foreach ($results as $result) {
-								$con_id = $result->p2p_from;
-							}
-							if($con_id != 0) {
-								$con_array = wp_get_single_post($con_id);
-								$location =  get_field(  'maplatlng', $con_id );
-								echo $location['address'];
-							}
-							?>
+							<?php echo $location['address']; ?>
 						</p>
-						<p><?php echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
-						<p><?php echo types_render_field('facilitators');?></p>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt="">200 participants | <?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></p>
-						<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
-					</div>
-				</div> <!-- cd-timeline-content -->
+						<p><?php 
+							echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
+							<p><?php echo types_render_field('facilitators');?></p>
+							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+							<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
+						</div>
+					</div> <!-- cd-timeline-content -->
 
-			</div> <!-- cd-timeline-block -->
-			<?php $j++; endwhile; ?>
-		</section> <!-- cd-timeline -->
-	</div>
-	<div class="col-sm-3 fixed hidden-xs">
-		<h2>Calender</h2>
-		<div class="clndr-wrap side-wrap">
-			<script type="text/template" id="clndr">
-				<div class="clndr-transparent-block">
-					<div class="close-clndr-info" onclick="close_msg();">X</div>
-					<div class="content">
-						<h2 id="event-title">Event Title</h2>
-						<p id="event-date">2015-10-16</p>
-						<p id="event-link"><a href="gotto">View Project</a></p>
-					</div>
-				</div>
-				<div class="clndr-controls">
-					<div class="header-day"><%= month %>&nbsp;<%= year %></div>
-					<div class="clndr-previous-button">&lsaquo;</div>
-					<div class="clndr-next-button">&rsaquo;</div>
-				</div>
-				<div class="clndr-grid">
-					<div class="days-of-the-week">
-						<% _.each(daysOfTheWeek, function(day) { %>
-							<div class="header-day"><%= day %></div>
-							<% }); %>
-						<div class="days">
-							<% _.each(days, function(day) { %>
-								<div class="<%= day.classes %>"><%= day.day %></div>
-								<% }); %>
+				</div> <!-- cd-timeline-block -->
+				<?php $j++; endwhile; ?>
+			</section> <!-- cd-timeline -->
+		</div>
+		<div class="col-sm-3 fixed hidden-xs">
+			<h2>Calender</h2>
+			<div class="clndr-wrap side-wrap">
+				<script type="text/template" id="clndr">
+					<div class="clndr-transparent-block">
+						<div class="close-clndr-info" onclick="close_msg();">X</div>
+						<div class="content">
+							<h2 id="event-title">Event Title</h2>
+							<p id="event-date">2015-10-16</p>
+							<p id="event-link"><a href="gotto">View Project</a></p>
 						</div>
 					</div>
-				</div>
-			</script>
-		</div>
-		<div class="side-wrap last">
-			<?php include('social.php');?>
+					<div class="clndr-controls">
+						<div class="header-day"><%= month %><%= year %></div>
+						<div class="clndr-previous-button">&lsaquo;</div>
+						<div class="clndr-next-button">&rsaquo;</div>
+					</div>
+					<div class="clndr-grid">
+						<div class="days-of-the-week">
+							<% _.each(daysOfTheWeek, function(day) { %>
+								<div class="header-day"><%= day %></div>
+								<% }); %>
+							<div class="days">
+								<% _.each(days, function(day) { %>
+									<div class="<%= day.classes %>"><%= day.day %></div>
+									<% }); %>
+							</div>
+						</div>
+					</div>
+				</script>
+			</div>
+			<div class="side-wrap last">
+				<?php include('social.php');?>
+			</div>
 		</div>
 	</div>
-</div>
-<?php 
-get_footer('all');
-get_footer(); 
-?>
-<?php 
-$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
-$lang = 'en';
-if(strstr($current_page,'ne'))
-	$lang = 'ne';
-?>
-<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
-	var lang = '<?php echo $lang; ?>';</script>
-	<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
-	<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
-	<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
-	<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
-	<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
-	<script type="text/javascript">
-		jQuery(window).load(function() {
+	<?php 
+	get_footer('all');
+	get_footer(); 
+	?>
+	<?php 
+	$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+	$lang = 'en';
+	if(strstr($current_page,'ne'))
+		$lang = 'ne';
+	?>
+	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
+		var lang = '<?php echo $lang; ?>';
+		var location123="<?php echo $_GET['location'];?>";
+		
+		<?php if(isset($_GET['category'])){?>
+			jQuery('#custom_filters .postform:first').val(category123);
+			<?php }?>
+			<?php if(isset($_GET['location'])){?>
+				jQuery('#location_value_main').val(location123);
+				<?php }?>
+
+
+			</script>
+			<script src="<?php echo get_template_directory_uri();?>/js/mordenizer.js"></script> <!-- Modernizr -->
+			<script src="<?php echo get_template_directory_uri();?>/js/timeline.js"></script> <!-- Resource jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/moment.js"></script> <!-- Moment jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/underscore.js"></script> <!-- Underscore jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/withinviewport.js"></script> <!-- CLNDR jQuery -->
+			<script src="<?php echo get_template_directory_uri();?>/js/jquery.withinviewport.js"></script> <!-- CLNDR jQuery -->
+			
+			<script type="text/javascript">
+				jQuery(window).load(function() {
 		//Go to next project
 		
 		var winSize = (jQuery(window).height()) / 2;
@@ -297,6 +313,11 @@ if(strstr($current_page,'ne'))
 
 	//Fix Calender
 	jQuery(window).scroll( function() {
+		var bottomDate = jQuery('.time-to-event').withinviewport({sides:'top', bottom: 10});
+		if(bottomDate[0] != undefined) {
+			var curr = bottomDate[0].innerText.split(" ");
+			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+		}
 		if(jQuery(window).scrollTop() > 500) {
 			jQuery('.fixed').css('position','fixed');
 		}
@@ -307,5 +328,10 @@ if(strstr($current_page,'ne'))
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
-	jQuery()
+	jQuery(document).ready(function() {
+		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html()
+		var curr = bottomDate.split(" ");
+		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+	});
+
 </script>
