@@ -15,53 +15,22 @@ get_header('all'); ?>
 	</div>
 	<div class="row">
 		<div class="mid-nav">
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-					</div>
-					<div>
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Type
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Visual</a></li>
-									<li><a href="#">Performance</a></li>
-									<li><a href="#">Language</a></li>
-								</ul>
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallary
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Visual</a></li>
-									<li><a href="#">Performance</a></li>
-									<li><a href="#">Language</a></li>
-								</ul>
-							</li>
-
-							<li class="dropdown">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">Gallary
-									<span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Visual</a></li>
-									<li><a href="#">Performance</a></li>
-									<li><a href="#">Language</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
+			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
+			<div class="title col-xs-1">All News</div>
+			<div class="mid-nav-inner">
+				<ul>
+					<li class="subpageMenu first" ><a href="#!">Latest</a></li>
+					<li class="subpageMenu" ><a href="#!">Recommended</a></li>
+					<li class="subpageMenu" ><a href="#!">Most Popular</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 content-grid">
+		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 			<?php
-			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC'); 
+			$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC'); 
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
 			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
@@ -69,28 +38,12 @@ get_header('all'); ?>
 				$image = '';
 			else
 				$image = $imgsrc[0];
-			$cats = array();
-			$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'all');
-			$terms = wp_get_post_terms( get_the_id(), 'resource-taxonomy', $args );
-			foreach($terms as $c)
-			{
-				$cat = $c;
-				array_push($cats,$cat->name);
-			}
-
-			if(sizeOf($cats)>0)
-			{
-				$post_categories = implode(',',$cats);
-			} else {
-				$post_categories = "Not Assigned";
-			}
 			?>
 			<div class="col-sm-4 content">
 				<img src="<?php echo $image;?>" />
 				<h4><?php the_title(); ?></h4>
 				<p><?php echo types_render_field('short-description'); ?></p>
 				<a href="<?php echo get_the_permalink();?>">Read More</a>
-				<p><?php echo $post_categories; ?></p>
 			</div>
 			<?php
 			endwhile;

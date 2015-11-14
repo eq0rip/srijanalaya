@@ -13,23 +13,26 @@ wp_reset_query();
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-			<div class="title col-xs-1">Levels</div>
-			<?php            	
-			$content = auto_id_headings_resource(get_the_content());
-			?>
+			<div class="title col-xs-1">Other News</div>
+			<div class="mid-nav-inner"><ul>
+				<?php            	
+				$ids = get_the_id();
+				$args=array('posts_per_page'=>10, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC', 'post__not_in' => array($ids)); 
+				$postslist=new WP_Query($args);  
+				while($postslist->have_posts()) : $postslist->the_post();
+				echo '<li class="subpageMenu"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+				endwhile;
+				wp_reset_query();
+				?>
+			</ul></div>
 		</div>
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
-				<?php echo '<p>' . $content . '</p>'; ?>
+				<h2><?php echo get_the_title();?></h2>
+				<?php echo '<p>' . nl2br(get_the_content()) . '</p>'; ?>
 			</div>
 			<div class="col-sm-3">
 				<div class="col-sm-10 sidebar no-padding">
-					<div class="side-wrap">
-						<h2>Resources</h2>
-						<p><a href="#!">View Gallery</a></p>
-						<p><a href="#!">View Videos</a></p>
-						<p><a href="#!">View Related Project</a></p>
-					</div>
 					<div class="side-wrap last">
 						<?php include('social.php');?>
 					</div>
