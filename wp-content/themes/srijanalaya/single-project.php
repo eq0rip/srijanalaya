@@ -74,7 +74,7 @@ wp_reset_query();
 					<?php
 				}
 				echo '</div>'; 
-				echo '<p>' . auto_id_headings(get_the_content(), 'Project Details') . '</p>';
+				echo '<p class="text-content">' . auto_id_headings(get_the_content(), 'Project Details') . '</p>';
 				endwhile;
 				?>
 			</div>

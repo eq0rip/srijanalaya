@@ -4,7 +4,10 @@ wp_reset_query();
 ?>
 <div class="page-wrapper">
 	<div class="row">
-		<div class="col-sm-12 wrapper banner">
+		<?php 
+		$bigimg = types_render_field('big-banner-imager', array('raw' => true));
+		?>
+		<div class="col-sm-12 wrapper banner" style="background-image: url(<?php echo $bigimg;?>);">
 			<div class="banner-content">
 			</div>
 		</div>
@@ -33,6 +36,16 @@ wp_reset_query();
 			</div>
 			<div class="col-sm-3">
 				<div class="col-sm-10 sidebar no-padding">
+					<div class="side-wrap">
+						<h2>Recommended News</h2>
+						<?php 
+						$args=array('posts_per_page' => 5,'post_type' => 'news-post','meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')), 'orderby' => 'date', 'order' => 'DESC');
+						$postslist = new WP_Query($args);
+						while($postslist->have_posts()):$postslist->the_post();
+						echo '<p><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></p>';
+						endwhile;
+						?>
+					</div>
 					<div class="side-wrap last">
 						<?php include('social.php');?>
 					</div>

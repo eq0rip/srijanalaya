@@ -20,9 +20,9 @@ get_header('all'); ?>
 			<div class="title col-xs-1">All News</div>
 			<div class="mid-nav-inner">
 				<ul>
-					<li class="subpageMenu first" ><a href="#!">Latest</a></li>
-					<li class="subpageMenu" ><a href="#!">Recommended</a></li>
-					<li class="subpageMenu" ><a href="#!">Most Popular</a></li>
+					<li class="subpageMenu first" ><a href="<?php echo site_url();?>/news">Latest</a></li>
+					<li class="subpageMenu" ><a href="<?php echo site_url();?>/news?news_type=recommended">Recommended</a></li>
+					<li class="subpageMenu" ><a href="<?php echo site_url();?>/news?news_type=popular">Most Popular</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,7 +30,18 @@ get_header('all'); ?>
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 			<?php
-			$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC'); 
+			if(isset($_GET['news_type']) && $_GET['news_type'] != 'latest') {
+				$gid = mysql_real_escape_string($_GET['news_type']);
+				if( trim(strtolower($gid)) == 'recommended') {
+					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '='))); 
+				}
+				elseif( trim(strtolower($gid)) == 'popular') {
+					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC'); 
+				}
+			}
+			else {
+				$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC'); 
+			}
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
 			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
