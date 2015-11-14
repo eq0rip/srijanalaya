@@ -20,9 +20,9 @@ get_header('all'); ?>
 			<div class="title col-xs-1">All News</div>
 			<div class="mid-nav-inner">
 				<ul>
-					<li class="subpageMenu first" ><a href="<?php echo site_url();?>/news">Latest</a></li>
-					<li class="subpageMenu" ><a href="<?php echo site_url();?>/news?news_type=recommended">Recommended</a></li>
-					<li class="subpageMenu" ><a href="<?php echo site_url();?>/news?news_type=popular">Most Popular</a></li>
+					<li class="subpageMenu first <?php if(!isset($_GET['news_type']) ||  $_GET['news_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/news">Latest</a></li>
+					<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['news_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/news?news_type=recommended">Recommended</a></li>
+					<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['news_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/news?news_type=popular">Most Popular</a></li>
 				</ul>
 			</div>
 		</div>
