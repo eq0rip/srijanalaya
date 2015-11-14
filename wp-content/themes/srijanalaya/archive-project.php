@@ -77,7 +77,8 @@ wp_reset_query();?>
 			</ul>
 		</div>
 		<br/>
-		<ul class="fetch_tag">
+		<span class='tag-filter-title'>FILTER TAGS:</span>
+		<ul class="fetch_tag">			
 			<?php 
 			$tags = get_terms('project_tags');
 			foreach($tags as $tag) {
@@ -318,7 +319,7 @@ wp_reset_query();?>
 			var curr = bottomDate[0].innerText.split(" ");
 			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 		}
-		if(jQuery(window).scrollTop() > 500) {
+		if(jQuery(window).scrollTop() > 570) {
 			jQuery('.fixed').css('position','fixed');
 		}
 		else {
@@ -333,5 +334,10 @@ wp_reset_query();?>
 		var curr = bottomDate.split(" ");
 		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 	});
-
+	jQuery(".postform").transformSelect({
+        dropDownClass: "transformSelect transformSelect1",
+        });
+	jQuery("#location_value_main").transformSelect({
+        dropDownClass: "transformSelect transformSelect2",
+        });
 </script>

@@ -26,12 +26,7 @@
         }
       });
 
-      $(".postform").transformSelect({
-        dropDownClass: "transformSelect transformSelect1",
-        });
-      $("#location_value_main").transformSelect({
-        dropDownClass: "transformSelect transformSelect2",
-        });
+    
       $('.transformSelect li').addClass('open');
       $('.transformSelect').hover(function() {
         $(this).children('li').addClass('open');

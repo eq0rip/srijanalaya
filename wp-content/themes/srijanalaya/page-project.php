@@ -322,9 +322,12 @@ wp_reset_query();?>
 		}
 		if(jQuery(window).scrollTop() > 570) {
 			jQuery('.fixed').css('position','fixed');
+			jQuery('.current-date').fadeIn();
+			
 		}
 		else {
 			jQuery('.fixed').css('position','relative');
+			jQuery('.current-date').fadeOut();
 		}
 	});
 	function close_msg() {
@@ -335,5 +338,10 @@ wp_reset_query();?>
 		var curr = bottomDate.split(" ");
 		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 	});
-
+	jQuery(".postform").transformSelect({
+        dropDownClass: "transformSelect transformSelect1",
+        });
+	jQuery("#location_value_main").transformSelect({
+        dropDownClass: "transformSelect transformSelect2",
+        });
 </script>
