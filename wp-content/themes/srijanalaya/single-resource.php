@@ -20,7 +20,7 @@ wp_reset_query();
 		</div>
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
-				<?php echo '<p>' . $content . '</p>'; ?>
+				<?php echo '<p class="text-content">' . $content . '</p>'; ?>
 			</div>
 			<div class="col-sm-3">
 				<div class="col-sm-10 sidebar no-padding">

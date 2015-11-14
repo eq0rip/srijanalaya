@@ -29,7 +29,7 @@ wp_reset_query();
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
 				<h2><?php echo get_the_title();?></h2>
-				<?php echo '<p>' . nl2br(get_the_content()) . '</p>'; ?>
+				<?php echo '<p class="text-content">' . nl2br(get_the_content()) . '</p>'; ?>
 			</div>
 			<div class="col-sm-3">
 				<div class="col-sm-10 sidebar no-padding">

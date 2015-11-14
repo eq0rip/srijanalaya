@@ -110,75 +110,79 @@ wp_reset_query();
 				</div>
 			</div>
 		</div>
-		<?php
-		$connected = new WP_Query( array(
-			'connected_type' => 'maps_to_project',
-			'connected_items' => get_queried_object(),
-			'nopaging' => true,
-			) );
-		if ( $connected->post ) :
-			while ( $connected->post ) : $connected->the_post();
-		$latlng = get_field(  'maplatlng', $post->ID );
-		if($latlng['lat'] != null && $latlng['lat'] != '') {
-			echo '<script>var lat = ' .$latlng['lat'] . '</script>';
-			echo '<script>var lng = ' .$latlng['lng'] . '</script>';
-		}
-		endwhile;
-		endif;
-		wp_reset_query();
-		?>
-		<?php
-		get_footer();
-		get_footer('all');
-		?>
+	</div>
+</div>
+</div>
 
-		<script type="text/javascript">
-			var map = L.map('project-map', {
-				center: [lat,lng],
-				zoom: 13
-			});
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-				maxZoom: 24,
-				id: 'eq0rip.no3hg91b',
-				accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
-			}).addTo(map);
-			var iconurl = 'http://localhost/srijanalaya/wp-content/themes/srijanalaya/icon.png';
-			var greenIcon = L.icon({
-				iconUrl: iconurl,
+<?php
+$connected = new WP_Query( array(
+	'connected_type' => 'maps_to_project',
+	'connected_items' => get_queried_object(),
+	'nopaging' => true,
+	) );
+if ( $connected->post ) :
+	while ( $connected->post ) : $connected->the_post();
+$latlng = get_field(  'maplatlng', $post->ID );
+if($latlng['lat'] != null && $latlng['lat'] != '') {
+	echo '<script>var lat = ' .$latlng['lat'] . '</script>';
+	echo '<script>var lng = ' .$latlng['lng'] . '</script>';
+}
+endwhile;
+endif;
+wp_reset_query();
+?>
+<?php
+get_footer();
+get_footer('all');
+?>
+
+<script type="text/javascript">
+	var map = L.map('project-map', {
+		center: [lat,lng],
+		zoom: 13
+	});
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		maxZoom: 24,
+		id: 'eq0rip.no3hg91b',
+		accessToken: 'pk.eyJ1IjoiZXEwcmlwIiwiYSI6ImNpZncycDR4bTJpN3B1d2tyaGRwM3NrN3IifQ.xOe7qWLwCDbVr-edpprcdg'
+	}).addTo(map);
+	var iconurl = 'http://localhost/srijanalaya/wp-content/themes/srijanalaya/icon.png';
+	var greenIcon = L.icon({
+		iconUrl: iconurl,
     iconSize:     [32, 32], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-			L.marker([lat,lng], {icon: greenIcon}).addTo(map);
-			function close_msg() {
-				jQuery('.side-transparent-block').fadeOut(300);
+	L.marker([lat,lng], {icon: greenIcon}).addTo(map);
+	function close_msg() {
+		jQuery('.side-transparent-block').fadeOut(300);
+	}
+	jQuery(document).ready(function(){
+		jQuery("#submit").click(function(){
+			var p_id = jQuery("#p_id").val();
+			var email = jQuery("#email").val();
+			var dataString = 'p_id='+ p_id + '&email='+ email;
+			if(email=='')
+			{
+				alert("Please enter email");
 			}
-jQuery(document).ready(function(){
-jQuery("#submit").click(function(){
-var p_id = jQuery("#p_id").val();
-var email = jQuery("#email").val();
-var dataString = 'p_id='+ p_id + '&email='+ email;
-if(email=='')
-{
-alert("Please enter email");
-}
-else
-{
+			else
+			{
 // AJAX Code To Submit Form.
 jQuery.ajax({
-type: "POST",
-url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
-data: dataString,
-cache: false,
-success: function(result){
-alert(result);
-}
+	type: "POST",
+	url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
+	data: dataString,
+	cache: false,
+	success: function(result){
+		alert(result);
+	}
 });
 }
 return false;
 
 });
-});
-		</script>
+	});
+</script>
