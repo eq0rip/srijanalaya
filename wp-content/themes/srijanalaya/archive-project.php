@@ -321,9 +321,12 @@ wp_reset_query();?>
 		}
 		if(jQuery(window).scrollTop() > 570) {
 			jQuery('.fixed').css('position','fixed');
+			jQuery('.current-date').fadeIn();
+			
 		}
 		else {
 			jQuery('.fixed').css('position','relative');
+			jQuery('.current-date').fadeOut();
 		}
 	});
 	function close_msg() {

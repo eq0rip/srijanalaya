@@ -992,7 +992,7 @@ a:hover {
     width: 100%;
     background-image: url('../images/banner.png');
     background-size: cover;
-    height: 400px;
+    height: 500px;
 }
 
 .footer {
@@ -1133,11 +1133,32 @@ a:hover {
     }
 }
 .content-grid {
+    padding-left: 0;
+    margin-left: 7%;
     .content {
         margin-bottom: 50px;
+        .img-wrapper {
+            height: 225px;
+            overflow: hidden;   
+            img {
+                width: 100%;
+            }
+        }
     }
     p, a {
         font-size: 12px;
+    }
+    a {
+        color: #807f7f;
+        &:hover {
+            color: #e91f4a;
+        }
+    }
+    .category {
+        border-left: 2px solid #e91f4a;
+        padding-left: 10px;
+        line-height: 10px;
+        margin-top: 10px;
     }
 }
 
@@ -1170,7 +1191,9 @@ a:hover {
        }
    }
 }
-
+.filter_div-no-tag {
+    height: 35px;
+}
 #filter_div ul {
     display: block;
 

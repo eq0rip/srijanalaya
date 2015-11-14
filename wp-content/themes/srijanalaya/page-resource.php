@@ -19,32 +19,31 @@ get_header('all');
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
-		<form class="" action="<?php bloginfo('url'); ?>/" method="get">
-			<?php
-			$dropdown_args = array(
-				'hide_empty'       => 0,
-				'hide_if_empty'    => false,
-				'taxonomy'         => 'resource-taxonomy',
-				'name'             => 'resource-id',
-				'orderby'          => 'name',
-				'hierarchical'     => true,
-				'show_option_none' => 'Type',
-				);
-			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'resource-taxonomy', 'new' );
-			$select=wp_dropdown_categories( $dropdown_args );
-			$select = preg_replace("#<select([^>]*)>#", "<select$1 onchange='return this.form.submit()'>", $select);
-			echo $select;
-			?>
+			<form class="" action="<?php bloginfo('url'); ?>/" method="get">
+				<?php
+				$dropdown_args = array(
+					'hide_empty'       => 0,
+					'hide_if_empty'    => false,
+					'taxonomy'         => 'resource-taxonomy',
+					'name'             => 'resource-id',
+					'orderby'          => 'name',
+					'hierarchical'     => true,
+					'show_option_none' => 'Type',
+					);
+				$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'resource-taxonomy', 'new' );
+				$select=wp_dropdown_categories( $dropdown_args );
+				?>
 			</form>
 			
-			<select id="location_value_main">
-				<option selected value="Location">Location</option>
-				<?php $args=array('posts_per_page'=>-1,'post_type'=>'maps');
-				$postslist=new WP_Query($args);
-				while($postslist->have_posts()):$postslist->the_post();
-				?>
-				<option value="<?php the_title();?>"><?php the_title();?></option>
-			<?php endwhile; ?>
+			<select id="gallery">
+				<option selected value="Location">Gallery</option>
+				<?php 
+				global $nggdb;
+				$galleries = $nggdb->find_all_galleries();
+				foreach ($galleries as $gallery):
+					?>
+				<option value="<?php echo $gallery->gid;?>"><?php echo $gallery->title;?></option>
+			<?php endforeach; ?>
 		</select>
 
 		<ul class="transformSelect trans-element transformSelect3">
@@ -90,13 +89,18 @@ get_header('all');
 			</ul>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 content-grid">
+	<div class="row no-padding">
+		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 			<?php
 			if(isset($_GET['cat'])) {
 				$cate = mysql_real_escape_string($_GET['cat']);
-				$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC',array( 'category_name' => $cate )); 
-				print_r($args);
+				$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
+					array(
+						'taxonomy' => 'resource-taxonomy',
+						'field'    => 'slug',
+						'terms'    => $cate,
+						),
+					),); 
 			}
 			else {
 				$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC'); 
@@ -125,11 +129,13 @@ get_header('all');
 			}
 			?>
 			<div class="col-sm-4 content">
-				<img src="<?php echo $image;?>" />
+				<div class="img-wrapper">
+					<img src="<?php echo $image;?>" />
+				</div>
 				<h4><?php the_title(); ?></h4>
 				<p><?php echo types_render_field('short-description'); ?></p>
 				<a href="<?php echo get_the_permalink();?>">Read More</a>
-				<p><?php echo $post_categories; ?></p>
+				<p class='category'><?php echo $post_categories; ?></p>
 			</div>
 			<?php
 			endwhile;
@@ -142,15 +148,33 @@ get_footer('all');
 get_footer(); 
 ?>
 <script type="text/javascript">
-	var dropdown = document.getElementById("resource-id");
+	var resourceDropdown = document.getElementById("resource-id");
+	var galleryDropdown = document.getElementById("gallery");
+	resourceDropdown.onchange = onCatChange;
+	galleryDropdown.onchange = onGalCatChange;
+
 	function onCatChange() {
-		alert(dropdown.options[dropdown.selectedIndex].value);
-		if ( dropdown.selectedIndex > 0 ) {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+dropdown.options[dropdown.selectedIndex].value;
+		if ( resourceDropdown.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
 		}
 	}
-	dropdown.onchange = onCatChange;
-	// jQuery('#resource-id').transformSelect({
-	// 	dropDownClass: "transformSelect transformSelect1",
-	// });
+	function onGalCatChange() {
+		if ( galleryDropdown.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
+		}
+	}
+
+	//Transform
+	jQuery('#resource-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect1",
+	});
+	jQuery('#gallery').transformSelect({
+		dropDownClass: "transformSelect transformSelect2",
+	});
 </script>
