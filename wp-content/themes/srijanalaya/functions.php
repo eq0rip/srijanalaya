@@ -527,6 +527,17 @@ function wpse34956_force_excerpt() {
 	$_REQUEST['mode'] = 'excerpt';
 }
 
+function get_the_slug( $id=null ){
+  if( empty($id) ):
+    global $post;
+    if( empty($post) )
+      return ''; // No global $post var available.
+    $id = $post->ID;
+  endif;
+
+  $slug = basename( get_permalink($id) );
+  return trim(strtolower($slug));
+}
 
 function get_gallery($galleries) {
 	foreach ($galleries as $image):

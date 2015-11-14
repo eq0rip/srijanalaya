@@ -3,6 +3,10 @@
     $('.loader').fadeOut(500);
   });
   $(document).ready(function($){
+
+      $('.topMenu').click(function() {
+        location.href = $(this).attr('href');
+      })
       //datepicker
       $('.dropdate').dropdate({
         dateFormat:'mm/dd/yyyy'

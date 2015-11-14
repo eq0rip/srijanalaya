@@ -4,6 +4,7 @@ Template Name: Resource
  */
 
 get_header('all'); 
+wp_reset_query();
 ?>
 <div class="row">
 
@@ -16,97 +17,26 @@ get_header('all');
 	</div>
 </div>
 <div class="row" >
-
-	<div style="width:100%:" id="filter_div">
-		<div id="custom_filters">
-			<form class="" action="<?php bloginfo('url'); ?>/" method="get">
-				<?php
-				$dropdown_args = array(
-					'hide_empty'       => 0,
-					'hide_if_empty'    => false,
-					'taxonomy'         => 'resource-taxonomy',
-					'name'             => 'resource-id',
-					'orderby'          => 'name',
-					'hierarchical'     => true,
-					'show_option_none' => 'Type',
-					);
-				$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'resource-taxonomy', 'new' );
-				$select=wp_dropdown_categories( $dropdown_args );
-				?>
-			</form>
-			
-			<select id="gallery">
-				<option selected value="Location">Gallery</option>
-				<?php 
-				global $nggdb;
-				$galleries = $nggdb->find_all_galleries();
-				foreach ($galleries as $gallery):
-					?>
-				<option value="<?php echo $gallery->gid;?>"><?php echo $gallery->title;?></option>
-			<?php endforeach; ?>
-		</select>
-
-		<ul class="transformSelect trans-element transformSelect3">
-			<li class="">
-				<span id='date_value_main'>
-					<?php if(isset($_GET['from'])){
-						echo $_GET['from'].' to '.$_GET['to'];
-					}
-					else {
-						echo 'By Date';
-					}
-					?>
-
-				</span>
-				<ul style="display: none;" class="transformSelectDropdown">
-					<li data-settings="" class="selected open"><span><a href="javascript:void(0)" onclick="apply_date_filter('week')">This Week</a></span></li>
-					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('Lweek')">Last Week</a></span></li>
-					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a></span></li>
-					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a></span></li>
-					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a></span></li>
-					<li data-settings="" class="open"><span><span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
-						<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
-						<button onclick="apply_date_filter('custom')" class="btn">Apply</button></span></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<div class="col-sm-8" id="tag_filter_div">
-			<span class="active-tags">ACTIVE TAGS: </span>
-			<ul>
-
-			</ul>
-		</div>
-		<br/>
-		<span class='tag-filter-title'>FILTER TAGS:</span>
-		<ul class="fetch_tag">			
-			<?php 
-			$tags = get_terms('resource_tags');
-			foreach($tags as $tag) {
-				?>
-				<li class="col-sm-1"><a href="javascript:void(0)" onclick="resource_filter( '<?php echo $tag->slug ?>','tag_filter_div', 0)"><?php echo $tag->name;?></a></li>
-				<?php }?>
-			</ul>
-		</div>
-	</div>
-	<div class="row no-padding">
-		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
-			<?php
-			if(isset($_GET['cat'])) {
-				$cate = mysql_real_escape_string($_GET['cat']);
-				$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
-					array(
-						'taxonomy' => 'resource-taxonomy',
-						'field'    => 'slug',
-						'terms'    => $cate,
-						),
-					),); 
-			}
-			else {
-				$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC'); 
-			}
-			$postslist=new WP_Query($args);  
-			while($postslist->have_posts()) : $postslist->the_post();
+ <?php include('gallery-filters.php');?>
+</div>
+<div class="row no-padding">
+	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
+		<?php
+		if(isset($_GET['cat'])) {
+			$cate = mysql_real_escape_string($_GET['cat']);
+			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
+				array(
+					'taxonomy' => 'resource-taxonomy',
+					'field'    => 'slug',
+					'terms'    => $cate,
+					),
+				),); 
+		}
+		else {
+			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC'); 
+		}
+		$postslist=new WP_Query($args);  
+		while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'resource_tags');//tag array
 
 			$tag='';//tag string
@@ -158,8 +88,10 @@ get_footer();
 <script type="text/javascript">
 	var resourceDropdown = document.getElementById("resource-id");
 	var galleryDropdown = document.getElementById("gallery");
+	var videoDropdown = document.getElementById("video-id");
 	resourceDropdown.onchange = onCatChange;
 	galleryDropdown.onchange = onGalCatChange;
+	videoDropdown.onchange = onVidCatChange;
 
 	function onCatChange() {
 		if ( resourceDropdown.selectedIndex > 0 ) {
@@ -177,6 +109,14 @@ get_footer();
 			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
 		}
 	}
+	function onVidCatChange() {
+		if ( videoDropdown.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
+		}
+	}
 
 	//Transform
 	jQuery('#resource-id').transformSelect({
@@ -184,6 +124,9 @@ get_footer();
 	});
 	jQuery('#gallery').transformSelect({
 		dropDownClass: "transformSelect transformSelect2",
+	});
+	jQuery('#video-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect3",
 	});
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){

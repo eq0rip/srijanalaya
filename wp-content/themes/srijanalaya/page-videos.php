@@ -1,9 +1,9 @@
 <?php
 /**
-Template Name: Gallery 
+Template Name: Video 
  */
 
-get_header('all');
+get_header('all'); 
 ?>
 <div class="row">
 
@@ -16,57 +16,50 @@ get_header('all');
 	</div>
 </div>
 <div class="row" >
-
 	<?php include('gallery-filters.php');?>
 </div>
 <div class="row no-padding">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
-		<div class="ngg-galleryoverview" id="ngg-gallery-316-1">
-			<div class="ng-wrap hidden">
-				<?php
-				while ( have_posts() ) : the_post();
-				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . the_content() . '</p>';
-				endwhile;
-				?>
+		<?php
+		if(isset($_GET['cat'])) {
+			$cate = mysql_real_escape_string($_GET['cat']);
+			$args=array('posts_per_page'=>20, 'post_type'=>'video', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
+				array(
+					'taxonomy' => 'videos_categories',
+					'field'    => 'slug',
+					'terms'    => $cate,
+					),
+				),); 
+		}
+		else {
+			$args=array('posts_per_page'=>20, 'post_type'=>'video', 'orderby' => 'date', 'order' => 'DESC'); 
+		}
+		$postslist=new WP_Query($args);  
+		while($postslist->have_posts()) : $postslist->the_post();
+		$urlvid = types_render_field('video-url',array('raw' => 'true'));
+		$title = get_the_title();
+		$title = str_replace('#', ' ', $title);
+		$description = get_the_content();
+		?>
+		<div class="col-sm-4 content">
+			<div class="img-wrapper">
+				<iframe src="https://player.vimeo.com/video/<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 			</div>
-			<?php 
-			global $nggdb;
-			if(isset($_GET['gallery_id'])) {
-				$gid = mysql_real_escape_string($_GET['gallery_id']);
-				$galleries = $nggdb->get_gallery($gid);
-				if(count($galleries) == 0) {
-					$galleryColl = $nggdb->find_all_galleries();
-					foreach ($galleryColl as $galleries) {
-						$galleries = $nggdb->get_gallery($galleries->gid);
-						get_gallery($galleries);
-					}
-				}
-				else {
-					get_gallery($galleries);
-				}
-			}
-			else {
-				$galleryColl = $nggdb->find_all_galleries();
-				foreach ($galleryColl as $galleries) {
-					$galleries = $nggdb->get_gallery($galleries->gid);
-					get_gallery($galleries);
-				}
-			}
-
-			?>
-
-			<?php
-			?>
-			<!-- Pagination -->
-			<div class="ngg-clear"></div>	</div>
+			<h4><?php echo $title; ?></h4>
+			<p><?php echo $description; ?></p>
+			<a href="https://vimeo.com/<?php echo $urlvid;?>" target="_blank">Watch Video</a>
 		</div>
+		<?php
+		endwhile;
+		?>
 	</div>
-	<?php 
-	get_footer('all');
-	get_footer(); 
-	?>
-	<script type="text/javascript">
+</div>
+</div>
+<?php 
+get_footer('all');
+get_footer(); 
+?>
+<script type="text/javascript">
 		var resourceDropdown = document.getElementById("resource-id");
 		var galleryDropdown = document.getElementById("gallery");
 		var videoDropdown = document.getElementById("video-id");
@@ -91,8 +84,8 @@ get_header('all');
 			}
 		}
 		function onVidCatChange() {
-			if ( galleryDropdown.selectedIndex > 0 ) {
-				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+			if ( videoDropdown.selectedIndex > 0 ) {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
 			}
 			else {
 				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";

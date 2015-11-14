@@ -76,7 +76,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
 				</span>
 
 			</div>
@@ -95,7 +95,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Resource</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">Resource</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Resource</button>
 				</span>
 			</div>
 		</div>
@@ -121,7 +121,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');">Project</button>
 				</span>
 			</div>
 		</div>
@@ -137,7 +137,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
 				</span>
 			</div>
 		</div>
@@ -155,7 +155,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
 				</span>
 			</div>
 		</div>
@@ -171,7 +171,7 @@ get_header(); ?>
 				<button type="button" class="btn btn-default btn-lg">View Projects</button>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('http://facebook.com/art');">Art</button>
 				</span>
 			</div>
 		</div>
@@ -201,7 +201,7 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe src="<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe src="https://player.vimeo.com/video/<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 	</div>
 	<?php
 	endwhile;
@@ -258,3 +258,19 @@ get_header(); ?>
 
 
 <?php get_footer(); ?>
+<script type="text/javascript">
+	function goTo(page) {
+		if(!ValidURL(page))
+			location.href = '<?php echo site_url();?>/' + page;
+		else
+			location.href = page;
+	}
+	function ValidURL(str) {
+		var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+		if(!regex .test(str)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>

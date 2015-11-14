@@ -12,6 +12,17 @@ register_taxonomy(
   )
 );
 
+register_taxonomy(
+  'videos_categories',
+  'video',
+  array(
+    'label'        => __( 'Categories' ),
+    'rewrite'      => false,
+    'hierarchical' => true,
+    'capabilities' => array( 'edit_terms' => 'manage_categories' )
+  )
+);
+
 // tags
 register_taxonomy(
   'project_tags',
