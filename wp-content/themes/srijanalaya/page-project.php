@@ -333,15 +333,38 @@ wp_reset_query();?>
 	function close_msg() {
 		jQuery('.clndr-transparent-block').fadeOut(300);
 	}
+
+
+	jQuery("#tag_filter_div ul").on("click",'li', function(){
+		jQuery(this).remove();
+		var hide_project=jQuery(this).text().replace(" x","");
+		hide_project='.'+hide_project;
+		jQuery(hide_project).hide('fade',500);
+		if(jQuery('#tag_filter_div ul').children().length == 0) {
+			jQuery('.cd-timeline-block').show('fast');
+		}
+		else {
+			var choosen_tags=[];
+			var query='#tag_filter_div' +' ul li';
+			jQuery(query).each(function () {
+				var toPush=jQuery(this).text().replace(" x","");
+				choosen_tags.push(toPush);
+				apply_filter(choosen_tags,'.cd-timeline-block');
+			});
+		}
+	});
+
+
+
 	jQuery(document).ready(function() {
 		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html()
 		var curr = bottomDate.split(" ");
 		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 	});
 	jQuery(".postform").transformSelect({
-        dropDownClass: "transformSelect transformSelect1",
-        });
+		dropDownClass: "transformSelect transformSelect1",
+	});
 	jQuery("#location_value_main").transformSelect({
-        dropDownClass: "transformSelect transformSelect2",
-        });
+		dropDownClass: "transformSelect transformSelect2",
+	});
 </script>

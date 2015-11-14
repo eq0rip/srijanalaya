@@ -81,10 +81,10 @@ get_header('all');
 		<span class='tag-filter-title'>FILTER TAGS:</span>
 		<ul class="fetch_tag">			
 			<?php 
-			$tags = get_terms('project_tags');
+			$tags = get_terms('resource_tags');
 			foreach($tags as $tag) {
 				?>
-				<li class="col-sm-1"><a href="javascript:void(0)" onclick="add_filter( '<?php echo $tag->slug ?>' ,'tag_filter_div',0 )"><?php echo $tag->name;?></a></li>
+				<li class="col-sm-1"><a href="javascript:void(0)" onclick="resource_filter( '<?php echo $tag->slug ?>','tag_filter_div', 0)"><?php echo $tag->name;?></a></li>
 				<?php }?>
 			</ul>
 		</div>
@@ -107,6 +107,14 @@ get_header('all');
 			}
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
+			$tags=get_the_terms( $post->id, 'resource_tags');//tag array
+
+			$tag='';//tag string
+			if(!empty($tags)) {
+				foreach ($tags as $key=>$values){
+					$tag.=' '.$values->slug;
+				}
+			}
 			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
 			if($imgsrc[0] == null || $imgsrc[0] == '')
 				$image = '';
@@ -128,7 +136,7 @@ get_header('all');
 				$post_categories = "Not Assigned";
 			}
 			?>
-			<div class="col-sm-4 content">
+			<div class="col-sm-4 content <?php echo $tag;?>">
 				<div class="img-wrapper">
 					<img src="<?php echo $image;?>" />
 				</div>
@@ -176,5 +184,24 @@ get_footer();
 	});
 	jQuery('#gallery').transformSelect({
 		dropDownClass: "transformSelect transformSelect2",
+	});
+
+	jQuery("#tag_filter_div ul").on("click",'li', function(){
+		jQuery(this).remove();
+		var hide_project=jQuery(this).text().replace(" x","");
+		hide_project='.'+hide_project;
+		jQuery(hide_project).hide('fast');
+		if(jQuery('#tag_filter_div ul').children().length == 0) {
+			jQuery('.ccontent').show('fast');
+		}
+		else {
+			var choosen_tags=[];
+			var query='#tag_filter_div' +' ul li';
+			jQuery(query).each(function () {
+				var toPush=jQuery(this).text().replace(" x","");
+				choosen_tags.push(toPush);
+				apply_filter(choosen_tags,'.content');
+			});
+		}
 	});
 </script>
