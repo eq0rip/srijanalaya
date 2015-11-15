@@ -42,7 +42,7 @@
         <option  <?php if($lang == 'en') echo 'selected';?> value="en" >English</option>
         <option <?php if($lang == 'ne') echo 'selected';?> value="ne">Nepali</option>
       </select>
-    </div><!-- Top buttons--> -->
+    </div>-->
   </div>
 
   <nav class="navbar yamm hidden-xs"><!--navbar-->
