@@ -40,6 +40,7 @@
 						</div>
 					</div>
 				</div>
+				<p class='copyrite'>© Srijanalaya  | NGO Nepal 2015. All Rights Reserved.</p>
 			</div>
 
 		</div> <!--full page end-->

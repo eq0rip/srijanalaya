@@ -29,7 +29,7 @@
 </div>
 <div style""><!--head div sart-->    
   <div class="container-fluid"><!--top buttons-->
-    <img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="">
+    <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
     <div class="btn-group top-btn">
       <button type="button" class="btn btn-icon">Donate</button>
       <?php 
