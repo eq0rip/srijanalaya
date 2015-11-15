@@ -357,9 +357,11 @@ wp_reset_query();?>
 
 
 	jQuery(document).ready(function() {
-		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html()
-		var curr = bottomDate.split(" ");
-		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html();
+		if(bottomDate != undefined) {
+			var curr = bottomDate.split(" ");
+			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+		}
 	});
 	jQuery(".postform").transformSelect({
 		dropDownClass: "transformSelect transformSelect1",
