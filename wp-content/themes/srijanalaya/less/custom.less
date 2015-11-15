@@ -176,7 +176,11 @@ a:hover {
 .menubutton {
     border: 1px Solid @fontColor;
 }
-
+.yamm-content {
+    li {
+        padding-bottom: 30px;
+    }
+}
 .loader {
     height:100%;
     width:100%;
@@ -206,19 +210,18 @@ a:hover {
 }
 .dropdown-menu {
     background-color: #8cc344 !important;
+    padding-top: 25px !important;
     a {
      color: #FFF !important;
  }  
 }
 #myNavbar {
-    background: rgba(33,33,33,1);
-    background: -moz-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(33,33,33,1)), color-stop(12%, rgba(38,38,38,1)), color-stop(25%, rgba(43,43,43,1)), color-stop(39%, rgba(31,31,31,1)), color-stop(50%, rgba(18,18,18,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(60%, rgba(8,8,8,1)), color-stop(76%, rgba(18,18,18,1)), color-stop(91%, rgba(13,13,13,1)), color-stop(100%, rgba(8,8,8,1)));
-    background: -webkit-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
-    background: -o-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
-    background: -ms-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
-    background: linear-gradient(to bottom, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#080808', GradientType=0 );
+    background: rgb(39, 36, 37);
+    background: -moz-linear-gradient(0deg, #231F20 35%, #46464A 100%);
+    background: -webkit-linear-gradient(0deg, #231F20 35%, #46464A 100%);
+    background: -o-linear-gradient(0deg, #231F20 35%, #46464A 100%);
+    background: -ms-linear-gradient(0deg, #231F20 35%, #46464A 100%);
+    background: linear-gradient(0deg, #231F20 35%, #46464A 100%);
     max-height: 35px;
     width: 100%;
     position: absolute;
@@ -231,7 +234,7 @@ a:hover {
           padding: 0 0 2% 8%;
           margin-top: -3px !important;
           ul {
-            border-right: 1px Solid #6d6d6d;
+            border-right: 1px Solid rgba(255, 255, 255, 0.21);
             padding-left: 30px;
             &:last-child {
                 border-right: none;
@@ -240,26 +243,46 @@ a:hover {
                 padding-left: 5px;
                 font-size: 9px;
             }
+            li {
+                &:last-child {
+                    border-right: none;
+                }
+            }
         }
     }
     li {
         max-height: 35px;
         overflow: hidden;
+        width: 120px;
         a {
             color: @fontColor;
             margin: 0;
             padding-top: 8px; 
             font-family: 'allerregular';
-
+            font-size: 12px;
+            letter-spacing: 0;
+            .caret {
+                position: absolute;
+                right: 8px;
+                top: 15px;
+            }
         }
         &:hover {
             .dropdown-menu {
                 background-color: #8cc344;
+                li {
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
             }
             a {
                 background-color: #8cc344;
                 color:#FFF;
             }
+        }
+        &:last-child {
+            border-right: 1px Solid #6d6d6d;
         }
 
     }
@@ -268,7 +291,7 @@ a:hover {
         margin-left: 30px;
     }
     .first {
-        border-left: 1px Solid #6d6d6d;
+        border-left: 1px Solid #484848;
     }
 }
 }
@@ -279,17 +302,20 @@ a:hover {
         height: 35px;
         display: inline-flex;
         width: 100px;
-        border-right: 1px Solid #6d6d6d;
+        border-right: 1px Solid #484848;
         a {
             color: #cecece;
             margin: 0;
             padding-top: 8px;
             font-family: 'allerregular';
             display: flex;
-            font-size: 14px;
+            font-size: 13px;
+            letter-spacing: 0;
         }
         .languageSelector {
-            font-size: 14px;
+            font-size: 13px;
+            letter-spacing: 0;
+            font-family: 'allerregular';
             height: 35px;
             position: absolute;
             top: 0;
@@ -1100,7 +1126,7 @@ a:hover {
     width:100%;
     margin-top:-35px;
     .header-text{
-        margin:2% 2%;
+        margin:3% 3%;
 
     }
 }
@@ -1222,7 +1248,7 @@ a:hover {
     .mid-nav-inner { 
         overflow: hidden;
         height: 35px;
-        padding-left: 20px;
+        padding-left: 65px;
         ul {
             height: 100%;
             li {
@@ -1232,10 +1258,10 @@ a:hover {
     }
     .title {
         position: relative;
-        left: 70px;
+        left: 115px;
         margin-right: 50px;
         color: #807f7f;
-        padding: 7px 0;
+        padding: 8px 0;
         height: 100%;
         min-width: 140px;
         font-size: 14px;
