@@ -316,7 +316,7 @@ wp_reset_query();?>
 	jQuery(window).scroll( function() {
 		var bottomDate = jQuery('.time-to-event').withinviewport({sides:'top', bottom: 10});
 		if(bottomDate[0] != undefined) {
-			var curr = bottomDate[0].innerText.split(" ");
+			var curr = bottomDate[0].innerHTML.split(" ");
 			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 		}
 		if(jQuery(window).scrollTop() > 570) {
