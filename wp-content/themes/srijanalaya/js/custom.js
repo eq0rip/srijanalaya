@@ -7,7 +7,8 @@
       // $('.topMenu').click(function() {
       //   location.href = $(this).attr('href');
       // })
-
+$('#left-col-first').height($(window).height() - 125);
+$('#right-col-first').height($(window).height() - 125);
 $('.lang-select').transformSelect({
   dropDownClass: "transformSelect languageSelector",
 });
