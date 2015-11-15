@@ -17,6 +17,7 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
+   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
 </head>
 <body class="home">
@@ -29,7 +30,7 @@
   <div style""><!--head div sart-->    
     <div class="container-fluid"><!--top buttons-->
       <img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="">
-      <div class="btn-group top-btn">
+      <!-- <div class="btn-group top-btn">
         <button type="button" class="btn btn-icon">Donate</button>
         <?php 
         $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
@@ -41,7 +42,7 @@
           <option  <?php if($lang == 'en') echo 'selected';?> value="en" >English</option>
           <option <?php if($lang == 'ne') echo 'selected';?> value="ne">Nepali</option>
         </select>
-      </div><!-- Top buttons-->
+      </div>-->
     </div>
 
     <nav class="navbar yamm hidden-xs"><!--navbar-->

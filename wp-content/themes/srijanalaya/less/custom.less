@@ -211,7 +211,14 @@ a:hover {
    }  
 }
 #myNavbar {
-    background-color: @backgroundGrey;
+    background: rgba(33,33,33,1);
+    background: -moz-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(33,33,33,1)), color-stop(12%, rgba(38,38,38,1)), color-stop(25%, rgba(43,43,43,1)), color-stop(39%, rgba(31,31,31,1)), color-stop(50%, rgba(18,18,18,1)), color-stop(51%, rgba(0,0,0,1)), color-stop(60%, rgba(8,8,8,1)), color-stop(76%, rgba(18,18,18,1)), color-stop(91%, rgba(13,13,13,1)), color-stop(100%, rgba(8,8,8,1)));
+    background: -webkit-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
+    background: -o-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
+    background: -ms-linear-gradient(top, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
+    background: linear-gradient(to bottom, rgba(33,33,33,1) 0%, rgba(38,38,38,1) 12%, rgba(43,43,43,1) 25%, rgba(31,31,31,1) 39%, rgba(18,18,18,1) 50%, rgba(0,0,0,1) 51%, rgba(8,8,8,1) 60%, rgba(18,18,18,1) 76%, rgba(13,13,13,1) 91%, rgba(8,8,8,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#080808', GradientType=0 );
     max-height: 35px;
     width: 100%;
     position: absolute;
@@ -242,6 +249,7 @@ a:hover {
             color: @fontColor;
             margin: 0;
             padding-top: 8px; 
+            font-family: 'allerregular';
 
         }
         &:hover {
@@ -263,6 +271,110 @@ a:hover {
         border-left: 1px Solid #6d6d6d;
     }
 }
+}
+.right-menu {
+    color: #cecece;
+    height: 35px;
+    .nav-right {
+        height: 35px;
+        display: inline-flex;
+        width: 100px;
+        border-right: 1px Solid #6d6d6d;
+        a {
+            color: #cecece;
+            margin: 0;
+            padding-top: 8px;
+            font-family: 'allerregular';
+            display: flex;
+            font-size: 14px;
+        }
+        .languageSelector {
+            font-size: 14px;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 109px;
+            padding-left: 12px;
+            li {
+                height: 100%;
+                width: 109px;
+                margin-left: -7px;
+                span {
+                    background: none;
+                    color: #cecece;
+                    width: 109px;
+                    padding-top: 7px;
+                    border: none;
+                    border-bottom-left-radius: 0 !important;
+                    border-bottom-right-radius: 0 !important;
+                    border-top-left-radius: 0 !important;
+                    border-top-right-radius: 0 !important;
+                    border-radius: 0;
+                    height: 100%;
+                    padding-left: 10px;
+                    border-right: 10px solid transparent;
+                    background: transparent url('../images/arrow.png') no-repeat center right;
+                    &:hover {
+                        background: #8cc344 url('../images/arrow-hover.png') no-repeat center right;
+                        color: #FFF;
+                    }
+                }
+                ul {
+                    width: 110px;
+                    border-bottom-left-radius: 0 !important;
+                    border-bottom-right-radius: 0 !important;
+                    border: none;
+                    li {
+                        margin-left: 0;
+                        width: 94px;
+                        border: none;
+                        span {  
+                            color: #FFF;
+                            border: none;
+                            border-radius: 0;
+                            border-bottom-left-radius: 0 !important;
+                            border-bottom-right-radius: 0 !important;
+                            border-top-left-radius: 0 !important;
+                            border-top-right-radius: 0 !important;
+                            background: #8cc344;
+                            &:hover {
+                                background: none;
+                                color: #FFF;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.tmenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-right: none !important;
+    width: 110px !important;
+    padding-left: 7px;
+    padding-top: 2px;
+}
+.smenu {
+    position: absolute;
+    top: 0;
+    right: 105px;
+    padding-left: 20px;
+    &:hover {
+        background: #8cc344;
+        a {
+            color: #FFF;
+        }
+    }
+}
+.fmenu {
+    position: absolute;
+    top: 0;
+    right: 200px;
+    width: 60px !important;
 }
 .wrapper {
     margin-top: -35px;

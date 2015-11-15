@@ -4,9 +4,13 @@
   });
   $(document).ready(function($){
 
-      $('.topMenu').click(function() {
-        location.href = $(this).attr('href');
-      })
+      // $('.topMenu').click(function() {
+      //   location.href = $(this).attr('href');
+      // })
+
+$('.lang-select').transformSelect({
+  dropDownClass: "transformSelect languageSelector",
+});
       //datepicker
       $('.dropdate').dropdate({
         dateFormat:'mm/dd/yyyy'
