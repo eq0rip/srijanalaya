@@ -362,11 +362,11 @@ function wpse34956_force_excerpt() {
 }
 
 function get_the_slug( $id=null ){
-  if( empty($id) ):
-    global $post;
-    if( empty($post) )
+	if( empty($id) ):
+		global $post;
+	if( empty($post) )
       return ''; // No global $post var available.
-    $id = $post->ID;
+  $id = $post->ID;
   endif;
 
   $slug = basename( get_permalink($id) );
@@ -375,12 +375,25 @@ function get_the_slug( $id=null ){
 
 function get_gallery($galleries) {
 	foreach ($galleries as $image):
-	echo '<div id="ngg-image-0 col-sm-4" class="ngg-gallery-thumbnail-box">
-		<div class="ngg-gallery-thumbnail">
-			<a href="' . $image->imageURL . '" title="" data-src="' . $image->imageURL . '" data-thumbnail="' . $image->thumbnailURL . '" data-image-id="1" data-title="Print" data-description="" class="ngg-fancybox" rel="316">
-				<img title="Print" alt="Print" src="' . $image->thumbnailURL . '" width="380" height="225" style="max-width:none;">
-			</a>
-		</div>
-	</div> ';
-	endforeach;
+		echo '<div id="ngg-image-0 col-sm-4" class="ngg-gallery-thumbnail-box">
+	<div class="ngg-gallery-thumbnail">
+		<a href="' . $image->imageURL . '" title="" data-src="' . $image->imageURL . '" data-thumbnail="' . $image->thumbnailURL . '" data-image-id="1" data-title="Print" data-description="" class="ngg-fancybox" rel="316">
+			<img title="Print" alt="Print" src="' . $image->thumbnailURL . '" width="380" height="225" style="max-width:none;">
+		</a>
+	</div>
+</div> ';
+endforeach;
+}
+function lowertrim($strr) {
+	return trim(strtolower($strr));
+}
+function get_menu_post($post_type){
+	$args=array('posts_per_page'=>15,'post_type'=>$post_type);
+	$postslist=new WP_Query($args);
+	while( $postslist->have_posts() ) : $postslist->the_post();
+	$temptitle=get_the_title();
+	$tempperma=get_permalink();
+	$tempmenu[]='<a href="'.$tempperma.'" >'.$temptitle.'</a>';
+	endwhile;
+	return $tempmenu;
 }
