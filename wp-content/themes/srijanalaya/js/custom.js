@@ -64,7 +64,9 @@ $owl1
   items: 1,
   margin: 0,
   autoplay:true,
-  autoplayTimeout:3000,
+  autoplayTimeout:2000,
+    animateOut:'fadeOut',
+  animateIn: 'slideInLeft',
   loop:true
 })
 .on('changed.owl.carousel', function (e) {
@@ -88,7 +90,8 @@ $owl2
   margin: 0,
   items: 1,
   loop:true,
-  animateOut: 'fadeOut',
+  animateOut:'fadeOut',
+  animateIn: 'slideInRight',
 })
 .on('changed.owl.carousel', function (e) {
   if (!flag) {
@@ -133,10 +136,10 @@ $("#right-col-first").hover(
 
 //Homepage hover 3rd section
 $('.even, .odd').hover(function() {
-  $(this).children('.img-wrap').fadeIn(200);
+  $(this).children('.img-wrap').fadeIn(1);
 },
 function() {
-  $(this).children('.img-wrap').fadeOut(100);
+  $(this).children('.img-wrap').fadeOut(1);
 });
 
 var current = 'item0';
