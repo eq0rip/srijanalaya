@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
-		<div class="progressbar">
+		<div class="progressbar hidden-md">
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar1"></div></div>
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar2"></div></div>
 			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar3"></div></div>	
