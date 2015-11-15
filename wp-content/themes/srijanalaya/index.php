@@ -201,7 +201,11 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe src="https://player.vimeo.com/video/<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<div class="video-wrap">
+			<img src="<?php echo get_template_directory_uri();?>/images/sharareh.jpg">
+			<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
+		</div>
 	</div>
 	<?php
 	endwhile;
@@ -258,6 +262,7 @@ get_header(); ?>
 
 
 <?php get_footer(); ?>
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script type="text/javascript">
 	function goTo(page) {
 		if(!ValidURL(page))
@@ -273,4 +278,9 @@ get_header(); ?>
 			return true;
 		}
 	}
+	var player = $f(document.getElementById('player'));
+				jQuery('.video-wrap').click(function() { 
+				player.api('play');
+				console.log(player);
+				});
 </script>

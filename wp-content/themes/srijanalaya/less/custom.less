@@ -786,11 +786,11 @@ a:hover {
             }
         }
     }
-
-
-
-
-
+    &:hover {
+        .post-navigate {
+            bottom: 0;
+        }
+    }
 }
 .small-text {
     font-size: 14px;
@@ -844,6 +844,7 @@ a:hover {
     top:0;
     left:0;
     color: #FFF;
+    overflow: hidden;
 }
 .bottom-container {
     background-color: #4c4b4c;
@@ -868,9 +869,23 @@ a:hover {
             }
         }
     }
+    &:hover {
+        .post-navigate {
+            bottom: 0px;
+        }
+    }
 }
 .bottom-container2 {
     left:50%;
+    z-index: 9;
+    iframe {
+        display: none;
+    }
+    .video-icon {
+        position: absolute;
+        top: 35%;
+        left: 42%;
+    }
 }
 .htext {
     color:#e9214b;
@@ -883,6 +898,7 @@ a:hover {
     width: 100%;
     position: absolute;
     left: 0;
+    z-index: 9;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARklEQVQYV4XQ2wkAIAwDQB1D91/NOkakguKjbfJ9JJAMAImkd0mZQUWl1BgupINu44lc+CITWuiDHrpghDZkaEKRBv2JZQDpyUKXo4UsOAAAAABJRU5ErkJggg==) repeat;
     .inner-wrap {
         height: 50%;
@@ -1135,6 +1151,7 @@ a:hover {
     &:hover {
         background:#E9204A;
         color:#ffffff;
+        border: none;
     }
     @media (min-width :700px) and (max-width: 1199px) ,(max-width:700px){
 
