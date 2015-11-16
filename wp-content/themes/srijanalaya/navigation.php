@@ -1,6 +1,6 @@
-<?php //if(( is_mobile() )) { 
+<?php if(( is_mobile() )) { 
   $menu_icons=get_menu_icons();
-  print_r($menu_icons);
+ 
   ?> 
   <nav class="nav-icons">
 
@@ -39,7 +39,7 @@ var test=jQuery('.nav-icons .nav-links li').hover(function() {
 
 </script>
   <?php 
-//}
+}
   ?>
 
 
