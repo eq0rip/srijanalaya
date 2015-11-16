@@ -43,14 +43,14 @@ wp_reset_query();
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
 				<?php
-
+				$location_addresss='ssss';
 				while ( have_posts() ) : the_post();
 				
 				echo '<h2>' . get_the_title() . '</h2>';
 				?>
 				<div class="info-wrap">
-					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt="">Date: <span class="col2"><?php echo parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
-					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt="">Time: <span class="col2"><?php echo date('h:i A',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt="">Date: <span class="col2"><?php $project_date=parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));echo $project_date;?></span></p>
+					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt="">Time: <span class="col2"><?php $project_time=date('h:i A',types_render_field('project-date', array('raw' => 'true')));echo $project_time;?></span></p>
 					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/loc.png" class="outimg" alt="">Location: 
 						<span class="col2"><?php 
 							$connected = new WP_Query( array(
@@ -61,7 +61,8 @@ wp_reset_query();
 							if ( $connected->post ) :
 								while ( $connected->post ) : $connected->the_post();
 							$location =  get_field(  'maplatlng', $post->id );
-							echo $location['address'];
+							$location_address=$location['address'];
+							echo $location_address;
 							endwhile;
 							endif;
 							wp_reset_query();?>
@@ -82,35 +83,44 @@ wp_reset_query();
 				<div class="col-sm-10 sidebar no-padding">
 					<div class="side-wrap no-padding">
 						<h2>Get updates</h2>
-						<p><a href="#!">Add to Calendar Sync with iCal, <br/>outlook, google calendar</a></p>
+						<p><a id="add_to_cal_submit" href="javascript:void(0)">Add to Calendar Sync with iCal, <br/>outlook, google calendar</a></p>
 						<p class="subscribe-inner"><a href="#!">Alert for any updates</a></p>
-						<div class="side-transparent-block">
-							<div class="close-info" onclick="close_msg();">X</div>
-							<div class="content">
-								<form action="" method="POST">
-									<input id="p_id" type="hidden" name="post_id" value="<?php echo $ids;?>" />
-									<input id="email" type="email" name="subscriber_email" placeholder="Enter your Email" />
-									<input type="button" id="submit" class="btn" name="subscribe" value="Subscribe" />
-								</form>
-							</div>
+						<form class="hidden" action="" method="GET">
+							<input id="start_date" type="text" name="start" value="<?php echo $project_date.' '.$project_time;?>"/>
+							<input id="end_date" type="text" name="end" value="<?php echo $project_date.' '.'6:00 PM';?>" />
+							<input id="project_title" type="text" name="title" value="<?php echo get_the_title();?>" />
+							<input id="project_description" type="text"  name="description" value="<?php echo types_render_field('summary');?>"/>
+							<input id="project_location" type="text" name="venue" value="<?php echo $location_addresss; ?>" />
+							
+						</form>
+					</div>
+					<div class="side-transparent-block">
+						<div class="close-info" onclick="close_msg();">X</div>
+						<div class="content">
+							<form action="" method="POST">
+								<input id="p_id" type="hidden" name="post_id" value="<?php echo $ids;?>" />
+								<input id="email" type="email" name="subscriber_email" placeholder="Enter your Email" />
+								<input type="button" id="submit" class="btn" name="subscribe" value="Subscribe" />
+							</form>
 						</div>
 					</div>
-					<div class="side-wrap">
-						<h2>Resources</h2>
-						<p><a href="#!">View Gallery</a></p>
-						<p><a href="#!">View Videos</a></p>
-					</div>
-					<div class="side-wrap">
-						<h2>Find Us</h2>
-						<div id="project-map"></div>
-					</div>
-					<div class="side-wrap last">
-						<?php include('social.php');?>
-					</div>
+				</div>
+				<div class="side-wrap">
+					<h2>Resources</h2>
+					<p><a href="#!">View Gallery</a></p>
+					<p><a href="#!">View Videos</a></p>
+				</div>
+				<div class="side-wrap">
+					<h2>Find Us</h2>
+					<div id="project-map"></div>
+				</div>
+				<div class="side-wrap last">
+					<?php include('social.php');?>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 
@@ -171,18 +181,36 @@ get_footer('all');
 			else
 			{
 
-jQuery.ajax({
-	type: "POST",
-	url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
-	data: dataString,
-	cache: false,
-	success: function(result){
-		alert(result);
-	}
-});
-}
-return false;
+				jQuery.ajax({
+					type: "POST",
+					url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
+					data: dataString,
+					cache: false,
+					success: function(result){
+						alert(result);
+					}
+				});
+			}
+			return false;
 
-});
+		});
+		jQuery("#add_to_cal_submit").click(function(){
+			var start=jQuery('#start_date').val();
+			var end=jQuery('#end_date').val();
+			var title=jQuery('#project_title').val();
+			var description =jQuery('#project_description').val();
+			var venue=jQuery('#project_location').val();
+			var dataString = 'start='+start+'&end='+end+'&title='+title+'&description='+description+'&venue='+venue;
+			jQuery.ajax({
+				type: "GET",
+				url: "<?php echo get_template_directory_uri();?>/add_to_cal.php",
+				data: dataString,
+				cache: false,
+				success: function(result){
+					window.location.href="<?php echo get_template_directory_uri();?>/add_to_cal.php?"+dataString;
+				}
+			});
+			return false;
+		});
 	});
 </script>
