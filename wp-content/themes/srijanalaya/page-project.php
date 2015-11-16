@@ -195,7 +195,18 @@ wp_reset_query();?>
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
-					<a href="<?php echo get_the_permalink();?>"><div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div></a>
+					<a href="<?php echo get_the_permalink();?>">
+						<?php
+						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+						if($imgsrc[0] == null || $imgsrc[0] == '')
+							$image = '';
+						else
+							$image = $imgsrc[0];
+						?>
+						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
+						</div>
+						<div class="alert-icon" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png"></div>
+					</a>
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
 						<p>
@@ -262,7 +273,7 @@ wp_reset_query();?>
 	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
 		var lang = '<?php echo $lang; ?>';
 		var location123="<?php echo $_GET['location'];?>";
-		
+
 		<?php if(isset($_GET['category'])){?>
 			jQuery('#custom_filters .postform:first').val(category123);
 			<?php }?>
@@ -279,7 +290,7 @@ wp_reset_query();?>
 			<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/withinviewport.js"></script> <!-- CLNDR jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/jquery.withinviewport.js"></script> <!-- CLNDR jQuery -->
-			
+
 			<script type="text/javascript">
 				jQuery(window).load(function() {
 		//Go to next project

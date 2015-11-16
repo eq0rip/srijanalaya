@@ -83,7 +83,7 @@ wp_reset_query();?>
 			$tags = get_terms('project_tags');
 			foreach($tags as $tag) {
 				?>
-				<li class="col-sm-1"><a href="javascript:void(0)" onclick="add_filter( '<?php echo $tag->slug ?>' ,'tag_filter_div',0 )"><?php echo $tag->name;?></a></li>
+				<li class="col-sm-1"><a href="javascript:void(0)" onclick="add_filter( '<?php echo $tag->slug ?>' ,'tag_filter_div','0' )"><?php echo $tag->name;?></a></li>
 				<?php }?>
 			</ul>
 		</div>
@@ -194,7 +194,18 @@ wp_reset_query();?>
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
 				<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
-					<a href="<?php echo get_the_permalink();?>"><div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(http://localhost/srijanalaya/wp-content/uploads/2015/10/Srijanalaya_projects_2.png);'";?>></div></a>
+					<a href="<?php echo get_the_permalink();?>">
+						<?php
+						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+						if($imgsrc[0] == null || $imgsrc[0] == '')
+							$image = '';
+						else
+							$image = $imgsrc[0];
+						?>
+						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
+						</div>
+						<div class="alert-icon" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png"></div>
+					</a>
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
 						<p>
@@ -261,7 +272,7 @@ wp_reset_query();?>
 	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
 		var lang = '<?php echo $lang; ?>';
 		var location123="<?php echo $_GET['location'];?>";
-		
+
 		<?php if(isset($_GET['category'])){?>
 			jQuery('#custom_filters .postform:first').val(category123);
 			<?php }?>
@@ -278,7 +289,7 @@ wp_reset_query();?>
 			<script src="<?php echo get_template_directory_uri();?>/js/calender.js"></script> <!-- CLNDR jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/withinviewport.js"></script> <!-- CLNDR jQuery -->
 			<script src="<?php echo get_template_directory_uri();?>/js/jquery.withinviewport.js"></script> <!-- CLNDR jQuery -->
-			
+
 			<script type="text/javascript">
 				jQuery(window).load(function() {
 		//Go to next project
@@ -335,22 +346,31 @@ wp_reset_query();?>
 
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){
+		
 		jQuery(this).remove();
+
 		var hide_project=jQuery(this).text().replace(" x","");
 		hide_project='.'+hide_project;
-		jQuery(hide_project).hide('fade',500);
-		if(jQuery('#tag_filter_div ul').children().length == 0) {
-			jQuery('.cd-timeline-block').show('fast');
-		}
-		else {
-			var choosen_tags=[];
-			var query='#tag_filter_div' +' ul li';
-			jQuery(query).each(function () {
-				var toPush=jQuery(this).text().replace(" x","");
-				choosen_tags.push(toPush);
+		jQuery(hide_project).filter(':visible').hide(function (){
+			if(jQuery('#tag_filter_div ul').children().length == 0) {
+				jQuery('.cd-timeline-block').show(function (){
+					
+					filter_timeline();
+				});
+			}
+			else {
+				var choosen_tags=[];
+				var query='#tag_filter_div' +' ul li';
+				jQuery(query).each(function () {
+					var toPush=jQuery(this).text().replace(" x","");
+					choosen_tags.push(toPush);
+
+				});
 				apply_filter(choosen_tags,'.cd-timeline-block');
-			});
-		}
+			}
+
+		});
+
 	});
 
 
