@@ -69,8 +69,8 @@ $owl1
   margin: 0,
   autoplay:true,
   autoplayTimeout:2000,
-  animateOut:'fadeOut',
-  animateIn: 'slideInLeft',
+  animateOut:'fadeOutLeftBig',
+  //animateIn: 'fadeIn',
   loop:true
 })
 .on('changed.owl.carousel', function (e) {
@@ -94,7 +94,7 @@ $owl2
   margin: 0,
   items: 1,
   loop:true,
-  animateOut:'fadeOut',
+  animateOut:'slideOutLeft',
   animateIn: 'slideInRight',
 })
 .on('changed.owl.carousel', function (e) {
