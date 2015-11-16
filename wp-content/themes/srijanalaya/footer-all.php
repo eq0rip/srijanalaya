@@ -34,7 +34,7 @@
 							</ul>
 						</div>
 						<div class="col-xs-12 col-sm-3 footer-elements social-block">
-							<h4 class='col-xs-3'>f</h4><h4 class='col-xs-3'>tw</h4><h4 class='col-xs-3'>g+</h4><h4 class='col-xs-3'>p</h4>
+							<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
 							<p class='newsletter'>Sign up for Newsletter</p>
 							<p>Donate</p>
 						</div>

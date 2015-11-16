@@ -201,7 +201,11 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe src="https://player.vimeo.com/video/<?php  echo $urlvid;?>" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<div class="video-wrap">
+			<img src="<?php echo get_template_directory_uri();?>/images/sharareh.jpg">
+			<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
+		</div>
 	</div>
 	<?php
 	endwhile;
@@ -241,7 +245,7 @@ get_header(); ?>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-3 footer-elements social-block">
-						<h4 class='col-xs-3'>f</h4><h4 class='col-xs-3'>tw</h4><h4 class='col-xs-3'>g+</h4><h4 class='col-xs-3'>p</h4>
+						<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
 						<p class='newsletter'>Sign up for Newsletter</p>
 						<p>Donate</p>
 					</div>
@@ -258,6 +262,7 @@ get_header(); ?>
 
 
 <?php get_footer(); ?>
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script type="text/javascript">
 	function goTo(page) {
 		if(!ValidURL(page))
@@ -273,4 +278,9 @@ get_header(); ?>
 			return true;
 		}
 	}
+	var player = $f(document.getElementById('player'));
+	jQuery('.video-wrap').click(function() { 
+		player.api('play');
+		console.log(player);
+	});
 </script>

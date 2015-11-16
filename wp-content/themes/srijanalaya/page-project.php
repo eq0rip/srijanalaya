@@ -213,7 +213,7 @@ wp_reset_query();?>
 				<?php $j++; endwhile; ?>
 			</section> <!-- cd-timeline -->
 		</div>
-		<div class="col-sm-3 fixed hidden-xs">
+		<div class="col-sm-3 fixed hidden-xs sidediv">
 			<h2>Calender</h2>
 			<div class="clndr-wrap side-wrap">
 				<script type="text/template" id="clndr">

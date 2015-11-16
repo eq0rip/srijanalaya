@@ -9,6 +9,10 @@
       // })
 $('#left-col-first').height($(window).height() - 125);
 $('#right-col-first').height($(window).height() - 125);
+$('.video-wrap').click(function() {
+  $('.bottom-container2 iframe').show();
+  $(this).hide();
+});
 $('.lang-select').transformSelect({
   dropDownClass: "transformSelect languageSelector",
 });
