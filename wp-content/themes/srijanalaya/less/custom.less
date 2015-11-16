@@ -999,8 +999,9 @@ a:hover {
     list-style-type:none;
     position: fixed;
     right: 40px;
-    bottom: 20px;
+    bottom: 0px;
     z-index: 100;
+    //display:none;
     ul {
         list-style-type:none;
         margin-bottom: 0;
@@ -1043,68 +1044,8 @@ a:hover {
                     }
                 }
             }
-            &.plus {
-                a {
-                    background: @theme-black;
-                    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-                    img {
-                        .transition(0.2s all ease);
-                    }
-                }
-            }
-            &.bulb {
-                a {
-                    background-image: url(../images/icon-bulb.png);
-                }
-                &:hover {
-                    a {
-                        background-image: url(../images/icon-bulb-hover.png);
-                    }
-                }
-            }
-            &.person {
-                a {
-                    background-image: url(../images/icon-person.png);
-                }
-                &:hover {
-                    a {
-                        background-image: url(../images/icon-person-hover.png);
-                    }
-                }
-            }           
+            
 
-            &.bag {
-                a {
-                    background-image: url(../images/icon-bag.png);
-                }
-                &:hover {
-                    a {
-                        background-image: url(../images/icon-bag-hover.png);
-                    }
-                }
-            }
-
-            &.message {
-                a {
-                    background-image: url(../images/icon-message.png);
-                }
-                &:hover {
-                    a {
-                        background-image: url(../images/icon-message-hover.png);
-                    }
-                }
-            }
-
-            &.pencil {
-                a {
-                    background-image: url(../images/icon-pencil.png);
-                }
-                &:hover {
-                    a {
-                        background-image: url(../images/icon-pencil-hover.png);
-                    }
-                }
-            }
         }
     }
     &:hover {

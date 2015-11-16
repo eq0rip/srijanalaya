@@ -397,3 +397,18 @@ function get_menu_post($post_type){
 	endwhile;
 	return $tempmenu;
 }
+
+function get_menu_icons(){
+	$args=array('posts_per_page'=>15,'post_type'=>'sri-menu');
+	$postslist=new WP_Query($args);
+	while( $postslist->have_posts() ) : $postslist->the_post();
+
+	$menu_name=trim( strtolower( get_the_title() ) );
+	if($menu_name=='projects'){
+		$menu_name='project';
+	}
+	$tempicon[$menu_name]=types_render_field('icon_for_mobile',array('raw'=>true) ).'##'.types_render_field('hover_icon_for_mobile',array('raw'=>true ) );
+	endwhile;
+	return $tempicon;
+
+}
