@@ -170,7 +170,7 @@ get_footer('all');
 			}
 			else
 			{
-// AJAX Code To Submit Form.
+
 jQuery.ajax({
 	type: "POST",
 	url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
