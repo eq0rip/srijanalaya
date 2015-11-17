@@ -96,6 +96,63 @@ header h1 {
     font-weight: bold;
     font-family: 'Helvetica';
   }
+
+}
+.popup {
+ height:100%;
+ width:100%;
+ position:fixed;
+ display:none;
+ //background:blue;
+ z-index:10000;
+ align-items:center;
+ justify-content:center;
+ .content {
+   height: 200px;
+   width: 280px;
+   background-color: rgba(244, 244, 244, 0.5);
+  // background: red
+   //position: absolute;
+  // display: flex !important;
+   //justify-content: center;
+   //align-items: center;
+   //text-align: center;
+   //top: 0;
+   //left: 0;
+   text-align: center;
+   z-index: 10001;
+   .close-info {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    width:20px;
+    height:20px;
+    font-weight: bold;
+    margin-top:5px;
+    margin-right:5px;
+    &:hover {
+      color:red;
+    }
+  }
+  input {
+    width:200px;
+    margin:20px 40px;
+    text-align: center;
+    height:40px;
+  }
+}
+}
+.transbg_popup {
+  display:none;
+  height:100%;
+  width:100%;
+  background:black;
+  opacity:0.5;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 100;
+
 }
 .cd-timeline-block:after {
   content: "";
