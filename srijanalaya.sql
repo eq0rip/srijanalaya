@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 19, 2015 at 09:35 AM
+-- Generation Time: Nov 19, 2015 at 09:42 AM
 -- Server version: 5.6.22
 -- PHP Version: 5.5.29
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `project_subscriber`
 --
 
+DROP TABLE IF EXISTS `project_subscriber`;
 CREATE TABLE IF NOT EXISTS `project_subscriber` (
   `id` int(3) unsigned NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -51,6 +52,7 @@ INSERT INTO `project_subscriber` (`id`, `email`, `project_id`) VALUES
 -- Table structure for table `wp_commentmeta`
 --
 
+DROP TABLE IF EXISTS `wp_commentmeta`;
 CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -64,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
 -- Table structure for table `wp_comments`
 --
 
+DROP TABLE IF EXISTS `wp_comments`;
 CREATE TABLE IF NOT EXISTS `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL,
   `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -88,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
 -- Table structure for table `wp_links`
 --
 
+DROP TABLE IF EXISTS `wp_links`;
 CREATE TABLE IF NOT EXISTS `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -110,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Table structure for table `wp_ngg_album`
 --
 
+DROP TABLE IF EXISTS `wp_ngg_album`;
 CREATE TABLE IF NOT EXISTS `wp_ngg_album` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -134,6 +139,7 @@ INSERT INTO `wp_ngg_album` (`id`, `name`, `slug`, `previewpic`, `albumdesc`, `so
 -- Table structure for table `wp_ngg_gallery`
 --
 
+DROP TABLE IF EXISTS `wp_ngg_gallery`;
 CREATE TABLE IF NOT EXISTS `wp_ngg_gallery` (
   `gid` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -161,6 +167,7 @@ INSERT INTO `wp_ngg_gallery` (`gid`, `name`, `slug`, `path`, `title`, `galdesc`,
 -- Table structure for table `wp_ngg_pictures`
 --
 
+DROP TABLE IF EXISTS `wp_ngg_pictures`;
 CREATE TABLE IF NOT EXISTS `wp_ngg_pictures` (
   `pid` bigint(20) NOT NULL,
   `image_slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -192,12 +199,13 @@ INSERT INTO `wp_ngg_pictures` (`pid`, `image_slug`, `post_id`, `galleryid`, `fil
 -- Table structure for table `wp_options`
 --
 
+DROP TABLE IF EXISTS `wp_options`;
 CREATE TABLE IF NOT EXISTS `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL,
   `option_name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `autoload` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=5634 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5666 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wp_options`
@@ -300,7 +308,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (94, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'widget_meta', 'a:2:{i:2;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (96, 'sidebars_widgets', 'a:3:{s:19:"wp_inactive_widgets";a:0:{}s:18:"orphaned_widgets_1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:13:"array_version";i:3;}', 'yes'),
-(99, 'cron', 'a:12:{i:1447925801;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1447926080;a:1:{s:29:"ngg_delete_expired_transients";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"ngg_custom";s:4:"args";a:0:{}s:8:"interval";i:900;}}}i:1447926419;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1447942025;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447942050;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447960020;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447966019;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1448005511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448009219;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448229600;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
+(99, 'cron', 'a:12:{i:1447926419;a:1:{s:32:"woocommerce_cancel_unpaid_orders";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:2:{s:8:"schedule";b:0;s:4:"args";a:0:{}}}}i:1447926980;a:1:{s:29:"ngg_delete_expired_transients";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"ngg_custom";s:4:"args";a:0:{}s:8:"interval";i:900;}}}i:1447929401;a:1:{s:20:"jetpack_clean_nonces";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:6:"hourly";s:4:"args";a:0:{}s:8:"interval";i:3600;}}}i:1447942025;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447942050;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1447960020;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1447966019;a:1:{s:28:"woocommerce_cleanup_sessions";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1448005511;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448009219;a:1:{s:30:"woocommerce_tracker_send_event";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448229600;a:1:{s:27:"woocommerce_scheduled_sales";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1448928000;a:1:{s:25:"woocommerce_geoip_updater";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:7:"monthly";s:4:"args";a:0:{}s:8:"interval";i:2635200;}}}s:7:"version";i:2;}', 'yes'),
 (112, 'can_compress_scripts', '0', 'yes'),
 (120, 'recently_activated', 'a:1:{s:41:"wp-jquery-lightbox/wp-jquery-lightbox.php";i:1447485543;}', 'yes'),
 (126, 'wpcf7', 'a:1:{s:7:"version";s:3:"4.3";}', 'yes'),
@@ -462,7 +470,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (917, 'woocommerce_meta_box_errors', 'a:0:{}', 'yes'),
 (919, 'wysija_schedules', 'a:5:{s:5:"queue";a:3:{s:13:"next_schedule";i:1447929260;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:6:"bounce";a:3:{s:13:"next_schedule";i:1447238207;s:13:"prev_schedule";i:0;s:7:"running";b:0;}s:5:"daily";a:3:{s:13:"next_schedule";i:1447995469;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:6:"weekly";a:3:{s:13:"next_schedule";i:1448365670;s:13:"prev_schedule";b:0;s:7:"running";b:0;}s:7:"monthly";a:3:{s:13:"next_schedule";i:1449571007;s:13:"prev_schedule";i:0;s:7:"running";b:0;}}', 'yes'),
 (922, 'scporder_options', 'a:2:{s:7:"objects";a:12:{i:0;s:4:"post";i:1;s:4:"page";i:2;s:7:"product";i:3;s:10:"shop_order";i:4;s:11:"shop_coupon";i:5;s:8:"sri-menu";i:6;s:5:"video";i:7;s:5:"quote";i:8;s:6:"slider";i:9;s:7:"project";i:10;s:8:"resource";i:11;s:4:"maps";}s:4:"tags";s:0:"";}', 'yes'),
-(933, 'wysija_last_php_cron_call', '1447925660', 'yes'),
+(933, 'wysija_last_php_cron_call', '1447925994', 'yes'),
 (934, 'wysija_check_pn', '1447925660.9206', 'yes'),
 (935, 'wysija_last_scheduled_check', '1447925660', 'yes'),
 (960, '_site_transient_timeout_browser_b10ea858e287322be96ef3a56d4aafea', '1447772944', 'yes'),
@@ -560,20 +568,24 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (5609, 'woocommerce_admin_notices', 'a:0:{}', 'yes'),
 (5619, '_site_transient_timeout_security_report_performed_recently', '1447926561', 'yes'),
 (5620, '_site_transient_security_report_performed_recently', '1', 'yes'),
-(5621, '_transient_timeout_2__536483053', '1447927537', 'no'),
-(5622, '_transient_2__536483053', '{"photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/browserplus-2.4.21.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/moxie.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/moxie.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/plupload.dev.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/plupload.dev.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.min.css","photocrati-nextgen_addgallery_page#styles.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/styles.min.css","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.js","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.css","photocrati-nextgen_addgallery_page#media-library-import.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.js","photocrati-nextgen_addgallery_page#media-library-import.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.css","photocrati-ajax#ajax.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/ajax\\/static\\/ajax.min.js","photocrati-nextgen_admin#gritter\\/gritter.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/gritter.min.js","photocrati-nextgen_admin#gritter\\/css\\/gritter.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/css\\/gritter.min.css","photocrati-nextgen_admin#ngg_progressbar.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.js","photocrati-nextgen_admin#ngg_progressbar.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.css","photocrati-nextgen_admin#select2\\/select2.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.min.css","photocrati-nextgen_admin#select2\\/select2.modded.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.modded.min.js","photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery.nextgen_radio_toggle.min.js","photocrati-nextgen_admin#jquery-ui\\/jquery-ui-1.10.4.custom.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery-ui\\/jquery-ui-1.10.4.custom.min.css","photocrati-frame_communication#frame_event_publisher.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/frame_communication\\/static\\/frame_event_publisher.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.css","photocrati-nextgen_gallery_display#nextgen_gallery_related_images.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_related_images.min.css","photocrati-nextgen_gallery_display#common.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/common.min.js","photocrati-nextgen_gallery_display#trigger_buttons.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/trigger_buttons.min.css"}', 'no'),
-(5623, '_transient_woocommerce_cache_excluded_uris', 'a:4:{i:0;s:5:"p=378";i:1;s:6:"/cart/";i:2;s:5:"p=380";i:3;s:10:"/checkout/";}', 'yes'),
-(5624, '_transient_woocommerce_webhook_ids', 'a:0:{}', 'yes'),
-(5625, '_transient_wc_attribute_taxonomies', 'a:0:{}', 'yes'),
-(5626, '_transient_timeout_2__974818834', '1447927540', 'no');
+(5649, '_transient_woocommerce_cache_excluded_uris', 'a:4:{i:0;s:5:"p=378";i:1;s:6:"/cart/";i:2;s:5:"p=380";i:3;s:10:"/checkout/";}', 'yes'),
+(5650, '_transient_woocommerce_webhook_ids', 'a:0:{}', 'yes'),
+(5651, '_transient_wc_attribute_taxonomies', 'a:0:{}', 'yes'),
+(5652, '_transient_timeout_2__974818834', '1447927960', 'no');
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(5627, '_transient_2__974818834', '{"photocrati-ajax#ajax.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/ajax\\/static\\/ajax.min.js","photocrati-nextgen_admin#gritter\\/gritter.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/gritter.min.js","photocrati-nextgen_admin#gritter\\/css\\/gritter.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/css\\/gritter.min.css","photocrati-nextgen_admin#ngg_progressbar.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.js","photocrati-nextgen_admin#ngg_progressbar.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.css","photocrati-nextgen_admin#select2\\/select2.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.min.css","photocrati-nextgen_admin#select2\\/select2.modded.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.modded.min.js","photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery.nextgen_radio_toggle.min.js","photocrati-nextgen_admin#jquery-ui\\/jquery-ui-1.10.4.custom.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery-ui\\/jquery-ui-1.10.4.custom.min.css","photocrati-frame_communication#frame_event_publisher.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/frame_communication\\/static\\/frame_event_publisher.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.css","photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/browserplus-2.4.21.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/moxie.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/moxie.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/plupload.dev.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/plupload.dev.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.min.css","photocrati-nextgen_addgallery_page#styles.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/styles.min.css","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.js","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.css","photocrati-nextgen_addgallery_page#media-library-import.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.js","photocrati-nextgen_addgallery_page#media-library-import.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.css","photocrati-nextgen_gallery_display#nextgen_gallery_related_images.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_related_images.min.css","photocrati-nextgen_gallery_display#common.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/common.min.js","photocrati-nextgen_gallery_display#trigger_buttons.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/trigger_buttons.min.css"}', 'no'),
-(5628, '_transient_timeout_geoip_::1', '1448530534', 'no'),
-(5629, '_transient_geoip_::1', '', 'no'),
-(5630, '_transient_timeout_external_ip_address_::1', '1448530536', 'no'),
-(5631, '_transient_external_ip_address_::1', '43.245.86.155', 'no'),
-(5632, '_transient_timeout_geoip_43.245.86.155', '1448530537', 'no'),
-(5633, '_transient_geoip_43.245.86.155', 'NP', 'no');
+(5653, '_transient_2__974818834', '{"photocrati-ajax#ajax.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/ajax\\/static\\/ajax.min.js","photocrati-nextgen_admin#gritter\\/gritter.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/gritter.min.js","photocrati-nextgen_admin#gritter\\/css\\/gritter.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/css\\/gritter.min.css","photocrati-nextgen_admin#ngg_progressbar.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.js","photocrati-nextgen_admin#ngg_progressbar.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.css","photocrati-nextgen_admin#select2\\/select2.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.min.css","photocrati-nextgen_admin#select2\\/select2.modded.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.modded.min.js","photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery.nextgen_radio_toggle.min.js","photocrati-nextgen_admin#jquery-ui\\/jquery-ui-1.10.4.custom.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery-ui\\/jquery-ui-1.10.4.custom.min.css","photocrati-frame_communication#frame_event_publisher.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/frame_communication\\/static\\/frame_event_publisher.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.css","photocrati-nextgen_gallery_display#nextgen_gallery_related_images.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_related_images.min.css","photocrati-nextgen_gallery_display#common.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/common.min.js","photocrati-nextgen_gallery_display#trigger_buttons.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/trigger_buttons.min.css","photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/browserplus-2.4.21.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/moxie.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/moxie.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/plupload.dev.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/plupload.dev.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.min.css","photocrati-nextgen_addgallery_page#styles.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/styles.min.css","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.js","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.css","photocrati-nextgen_addgallery_page#media-library-import.js||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.js","photocrati-nextgen_addgallery_page#media-library-import.css||http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/mu-plugins|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya|http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/themes\\/srijanalaya":"http:\\/\\/localhost\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.css"}', 'no'),
+(5654, '_transient_timeout_2__536483053', '1447927900', 'no'),
+(5655, '_transient_2__536483053', '{"photocrati-ajax#ajax.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/ajax\\/static\\/ajax.min.js","photocrati-nextgen_admin#gritter\\/gritter.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/gritter.min.js","photocrati-nextgen_admin#gritter\\/css\\/gritter.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/gritter\\/css\\/gritter.min.css","photocrati-nextgen_admin#ngg_progressbar.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.js","photocrati-nextgen_admin#ngg_progressbar.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/ngg_progressbar.min.css","photocrati-nextgen_admin#select2\\/select2.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.min.css","photocrati-nextgen_admin#select2\\/select2.modded.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/select2\\/select2.modded.min.js","photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery.nextgen_radio_toggle.min.js","photocrati-nextgen_admin#jquery-ui\\/jquery-ui-1.10.4.custom.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_admin\\/static\\/jquery-ui\\/jquery-ui-1.10.4.custom.min.css","photocrati-frame_communication#frame_event_publisher.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/frame_communication\\/static\\/frame_event_publisher.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.js","photocrati-nextgen_gallery_display#nextgen_gallery_display_settings.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_display_settings.min.css","photocrati-nextgen_gallery_display#nextgen_gallery_related_images.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/nextgen_gallery_related_images.min.css","photocrati-nextgen_gallery_display#common.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/common.min.js","photocrati-nextgen_gallery_display#trigger_buttons.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_gallery_display\\/static\\/trigger_buttons.min.css","photocrati-nextgen_addgallery_page#browserplus-2.4.21.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/browserplus-2.4.21.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/moxie.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/moxie.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/plupload.dev.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/plupload.dev.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/jquery.plupload.queue.min.js","photocrati-nextgen_addgallery_page#plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/plupload-2.1.1\\/jquery.plupload.queue\\/css\\/jquery.plupload.queue.min.css","photocrati-nextgen_addgallery_page#styles.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/styles.min.css","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.js","photocrati-nextgen_addgallery_page#jquery.filetree\\/jquery.filetree.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/jquery.filetree\\/jquery.filetree.min.css","photocrati-nextgen_addgallery_page#media-library-import.js|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.js","photocrati-nextgen_addgallery_page#media-library-import.css|0":"\\/Library\\/WebServer\\/http\\/srijanalaya\\/wp-content\\/plugins\\/nextgen-gallery\\/products\\/photocrati_nextgen\\/modules\\/nextgen_addgallery_page\\/static\\/media-library-import.min.css"}', 'no'),
+(5656, '_transient_product_query-transient-version', '1447926089', 'yes'),
+(5657, '_transient_timeout_wc_uf_pid_ec82e60377d8b9e185652e869aaf8886', '1450518089', 'no'),
+(5658, '_transient_wc_uf_pid_ec82e60377d8b9e185652e869aaf8886', 'a:11:{i:0;i:366;i:1;i:376;i:2;i:360;i:3;i:364;i:4;i:365;i:5;i:377;i:6;i:367;i:7;i:375;i:8;i:369;i:9;i:373;i:10;i:374;}', 'no'),
+(5659, '_transient_timeout_wc_uf_pid_c2e054af34eb33fb82ce38645e322648', '1450518093', 'no'),
+(5660, '_transient_wc_uf_pid_c2e054af34eb33fb82ce38645e322648', 'a:11:{i:0;i:366;i:1;i:376;i:2;i:360;i:3;i:364;i:4;i:365;i:5;i:377;i:6;i:367;i:7;i:375;i:8;i:369;i:9;i:373;i:10;i:374;}', 'no'),
+(5661, '_transient_product-transient-version', '1447926120', 'yes'),
+(5662, '_transient_timeout_wc_review_count_3601447926120', '1450518120', 'no'),
+(5663, '_transient_wc_review_count_3601447926120', '0', 'no'),
+(5664, '_transient_timeout_wc_related_4_3601447926120', '1450518120', 'no'),
+(5665, '_transient_wc_related_4_3601447926120', 'a:2:{i:0;s:3:"369";i:1;s:3:"373";}', 'no');
 
 -- --------------------------------------------------------
 
@@ -581,6 +593,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_p2p`
 --
 
+DROP TABLE IF EXISTS `wp_p2p`;
 CREATE TABLE IF NOT EXISTS `wp_p2p` (
   `p2p_id` bigint(20) unsigned NOT NULL,
   `p2p_from` bigint(20) unsigned NOT NULL,
@@ -605,6 +618,7 @@ INSERT INTO `wp_p2p` (`p2p_id`, `p2p_from`, `p2p_to`, `p2p_type`) VALUES
 -- Table structure for table `wp_p2pmeta`
 --
 
+DROP TABLE IF EXISTS `wp_p2pmeta`;
 CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `p2p_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -618,6 +632,7 @@ CREATE TABLE IF NOT EXISTS `wp_p2pmeta` (
 -- Table structure for table `wp_postmeta`
 --
 
+DROP TABLE IF EXISTS `wp_postmeta`;
 CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL,
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -907,7 +922,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (801, 217, '_edit_last', '1'),
 (802, 217, '_edit_lock', '1447319852:1'),
 (803, 50, 'wpb_post_views_count', '6'),
-(804, 52, 'wpb_post_views_count', '2'),
+(804, 52, 'wpb_post_views_count', '5'),
 (805, 48, 'wpb_post_views_count', '0'),
 (806, 49, 'wpb_post_views_count', '5'),
 (807, 113, 'wpb_post_views_count', '10'),
@@ -1779,6 +1794,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
+DROP TABLE IF EXISTS `wp_posts`;
 CREATE TABLE IF NOT EXISTS `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL,
   `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2056,6 +2072,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_terms`
 --
 
+DROP TABLE IF EXISTS `wp_terms`;
 CREATE TABLE IF NOT EXISTS `wp_terms` (
   `term_id` bigint(20) unsigned NOT NULL,
   `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -2101,6 +2118,7 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) V
 -- Table structure for table `wp_term_relationships`
 --
 
+DROP TABLE IF EXISTS `wp_term_relationships`;
 CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2185,6 +2203,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
 CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2231,6 +2250,7 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- Table structure for table `wp_usermeta`
 --
 
+DROP TABLE IF EXISTS `wp_usermeta`;
 CREATE TABLE IF NOT EXISTS `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -2300,6 +2320,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
+DROP TABLE IF EXISTS `wp_users`;
 CREATE TABLE IF NOT EXISTS `wp_users` (
   `ID` bigint(20) unsigned NOT NULL,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -2326,6 +2347,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 -- Table structure for table `wp_woocommerce_api_keys`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_api_keys`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
   `key_id` bigint(20) NOT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -2344,6 +2366,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_api_keys` (
 -- Table structure for table `wp_woocommerce_attribute_taxonomies`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_attribute_taxonomies`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
   `attribute_id` bigint(20) NOT NULL,
   `attribute_name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2359,6 +2382,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_attribute_taxonomies` (
 -- Table structure for table `wp_woocommerce_downloadable_product_permissions`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_downloadable_product_permissions`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
   `permission_id` bigint(20) NOT NULL,
   `download_id` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2379,6 +2403,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_downloadable_product_permissions` (
 -- Table structure for table `wp_woocommerce_order_itemmeta`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_order_itemmeta`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
   `meta_id` bigint(20) NOT NULL,
   `order_item_id` bigint(20) NOT NULL,
@@ -2392,6 +2417,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_itemmeta` (
 -- Table structure for table `wp_woocommerce_order_items`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_order_items`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
   `order_item_id` bigint(20) NOT NULL,
   `order_item_name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2405,6 +2431,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_order_items` (
 -- Table structure for table `wp_woocommerce_tax_rates`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_tax_rates`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
   `tax_rate_id` bigint(20) NOT NULL,
   `tax_rate_country` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
@@ -2424,6 +2451,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rates` (
 -- Table structure for table `wp_woocommerce_tax_rate_locations`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_tax_rate_locations`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
   `location_id` bigint(20) NOT NULL,
   `location_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2437,6 +2465,7 @@ CREATE TABLE IF NOT EXISTS `wp_woocommerce_tax_rate_locations` (
 -- Table structure for table `wp_woocommerce_termmeta`
 --
 
+DROP TABLE IF EXISTS `wp_woocommerce_termmeta`;
 CREATE TABLE IF NOT EXISTS `wp_woocommerce_termmeta` (
   `meta_id` bigint(20) NOT NULL,
   `woocommerce_term_id` bigint(20) NOT NULL,
@@ -2460,6 +2489,7 @@ INSERT INTO `wp_woocommerce_termmeta` (`meta_id`, `woocommerce_term_id`, `meta_k
 -- Table structure for table `wp_wysija_campaign`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_campaign`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_campaign` (
   `campaign_id` int(10) unsigned NOT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -2479,6 +2509,7 @@ INSERT INTO `wp_wysija_campaign` (`campaign_id`, `name`, `description`) VALUES
 -- Table structure for table `wp_wysija_campaign_list`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_campaign_list`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_campaign_list` (
   `list_id` int(10) unsigned NOT NULL,
   `campaign_id` int(10) unsigned NOT NULL,
@@ -2491,6 +2522,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_campaign_list` (
 -- Table structure for table `wp_wysija_custom_field`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_custom_field`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_custom_field` (
   `id` mediumint(9) NOT NULL,
   `name` tinytext NOT NULL,
@@ -2505,6 +2537,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_custom_field` (
 -- Table structure for table `wp_wysija_email`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_email`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_email` (
   `email_id` int(10) unsigned NOT NULL,
   `campaign_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2545,6 +2578,7 @@ INSERT INTO `wp_wysija_email` (`email_id`, `campaign_id`, `subject`, `body`, `cr
 -- Table structure for table `wp_wysija_email_user_stat`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_email_user_stat`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_stat` (
   `user_id` int(10) unsigned NOT NULL,
   `email_id` int(10) unsigned NOT NULL,
@@ -2559,6 +2593,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_stat` (
 -- Table structure for table `wp_wysija_email_user_url`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_email_user_url`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_url` (
   `email_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -2573,6 +2608,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_email_user_url` (
 -- Table structure for table `wp_wysija_form`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_form`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_form` (
   `form_id` int(10) unsigned NOT NULL,
   `name` tinytext CHARACTER SET utf8 COLLATE utf8_bin,
@@ -2594,6 +2630,7 @@ INSERT INTO `wp_wysija_form` (`form_id`, `name`, `data`, `styles`, `subscribed`)
 -- Table structure for table `wp_wysija_list`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_list`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_list` (
   `list_id` int(10) unsigned NOT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -2621,6 +2658,7 @@ INSERT INTO `wp_wysija_list` (`list_id`, `name`, `namekey`, `description`, `unsu
 -- Table structure for table `wp_wysija_queue`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_queue`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_queue` (
   `user_id` int(10) unsigned NOT NULL,
   `email_id` int(10) unsigned NOT NULL,
@@ -2635,6 +2673,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_queue` (
 -- Table structure for table `wp_wysija_url`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_url`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_url` (
   `url_id` int(10) unsigned NOT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -2647,6 +2686,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_url` (
 -- Table structure for table `wp_wysija_url_mail`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_url_mail`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_url_mail` (
   `email_id` int(11) NOT NULL,
   `url_id` int(10) unsigned NOT NULL,
@@ -2660,6 +2700,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_url_mail` (
 -- Table structure for table `wp_wysija_user`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_user`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_user` (
   `user_id` int(10) unsigned NOT NULL,
   `wpuser_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2690,6 +2731,7 @@ INSERT INTO `wp_wysija_user` (`user_id`, `wpuser_id`, `email`, `firstname`, `las
 -- Table structure for table `wp_wysija_user_field`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_user_field`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_user_field` (
   `field_id` int(10) unsigned NOT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -2715,6 +2757,7 @@ INSERT INTO `wp_wysija_user_field` (`field_id`, `name`, `column_name`, `type`, `
 -- Table structure for table `wp_wysija_user_history`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_user_history`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_user_history` (
   `history_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -2732,6 +2775,7 @@ CREATE TABLE IF NOT EXISTS `wp_wysija_user_history` (
 -- Table structure for table `wp_wysija_user_list`
 --
 
+DROP TABLE IF EXISTS `wp_wysija_user_list`;
 CREATE TABLE IF NOT EXISTS `wp_wysija_user_list` (
   `list_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
@@ -3034,7 +3078,7 @@ ALTER TABLE `wp_ngg_pictures`
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5634;
+  MODIFY `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5666;
 --
 -- AUTO_INCREMENT for table `wp_p2p`
 --

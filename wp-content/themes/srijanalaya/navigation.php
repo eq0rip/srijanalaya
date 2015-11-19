@@ -1,7 +1,24 @@
-<?php if(( is_mobile() )) { 
-  $menu_icons=get_menu_icons();
+<?php 
+if(( is_mobile() )) {
+  
  
+  $menu_icons=get_menu_icons();
+
   ?> 
+  <?php 
+  $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+  $lang = 'en';
+  $change_to='ne';
+  $language='English';
+  $change_language='Nepali';
+  if(strstr($current_page,'ne')){
+    $lang = 'ne';
+
+    $language='Nepali';
+    $change_language='English';
+    $change_to='en';
+  }
+  ?>
   <nav class="nav-icons">
 
 
@@ -17,27 +34,44 @@
         $pagelocation='';
       }
       ?>
-      <li hoverimage="<?php echo $hover_icons;?>" class="<?php echo $key.'-menu-icon';?>"><a style="background-image:url(<?php echo $default_icon;?>);" href="<?php echo site_url();?>/<?php echo $pagelocation;?>"><span><?php echo $key;?></span></a></li>
+      <li class="<?php echo $key.'-menu-icon';?> subs">
+        <a style="" href="<?php echo site_url();?>/<?php echo $pagelocation;?>">
+          <span>
+            <?php echo $key;?>
+          </span>
+        </a>
+      </li>
       <?php } ?>
+      <li class="subs" id="donate_btn">
+        <a style="" href="#!">
+          <span>
+            Donate
+          </span>
+        </a>
+      </li>
+      <li class="subs" id="language_btn">
+
+        <a style="" href="javascript:void(0)" onclick="change_language('<?php echo $change_to;?>','<?php echo $current_page;?>');" >
+          <span>
+            <?php echo $change_language;?>
+          </span>
+        </a>
+      </li>
     </ul>
+
     <ul>
-      <li class="plus"><a href="#"><img src="<?php echo get_template_directory_uri();?>/images/icon-plus.png"><span></span></a></li>
+      <li class="plus"><a href="#"><span>
+        <i class="fa fa-bars"></i>
+      </span></a></li>
     </ul>
   </nav>
-<script>
-var temp1, temp2;
-var test=jQuery('.nav-icons .nav-links li').hover(function() {
-  temp1="url("+jQuery(this).attr('hoverimage')+")";
-  temp2= jQuery(this).find('a').css('background-image');
-  jQuery(this).find('a').css({'background-image':temp1});
-  //console.log();
-},
-  function() {
- jQuery(this).find('a').css({'background-image':temp2});
-  });
+  <script>
+    jQuery('.nav-icons').click(function (){
+      jQuery('.nav-links').toggle();
+    });
 
 
-</script>
+  </script>
   <?php 
 }
   ?>
