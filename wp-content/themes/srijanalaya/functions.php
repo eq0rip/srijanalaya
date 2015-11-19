@@ -30,6 +30,7 @@ if ( ! function_exists( 'nirmal_setup' ) ) :
 include('inc/custom-functions.php');
 include('inc/mobile-functions.php');
 include('inc/admin-modifier.php');
+include('inc/ajax-add-to-cart.php');
 function nirmal_setup() {
 	/*
 	 * Make theme available for translation.

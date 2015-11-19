@@ -88,6 +88,7 @@ get_header('all');
 								echo "<div class='content col-sm-12'>";
 								echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
 								echo "<span class='description'>" . the_excerpt() . "</span>";
+								echo apply_filters( 'woocommerce_loop_add_to_cart_link', sprintf('<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" class="%s button product_type_%s">%s</a>', esc_url( $link['url'] ), esc_attr( $product->id ), esc_attr( $product->get_sku() ), esc_attr( $link['class'] ), esc_attr( $product->product_type ), esc_html( $link['label'] ) ), $product, $link );
 								echo "<span class='price'>" . $product->get_price_html() . "</span>";
 								echo "</div>";
 								?>
