@@ -193,7 +193,7 @@ function change_language(x,y) {
   //alert('ne not found');
   if(x=='ne')
   {
-    link=y.replace('/srijanalaya/','/srijanalaya/ne');
+    link=y.replace('/srijanalaya/','/srijanalaya/ne/');
   }
   else
   {

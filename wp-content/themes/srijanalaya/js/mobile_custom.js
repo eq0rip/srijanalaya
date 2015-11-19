@@ -79,5 +79,37 @@ $('.video-icon').click(function (){
 
 
 });
+
 });// ready end
 })(jQuery);
+function change_language(x,y) {
+	alert(x);
+  var n = y.search("/srijanalaya/ne"); 
+  if(n<0)
+  {
+  //alert('ne not found');
+  if(x=='ne')
+  {
+    link=y.replace('/srijanalaya/','/srijanalaya/ne/');
+  }
+  else
+  {
+    link=y;
+  }
+}
+else {
+ // alert('ne found');
+ if(x=='ne')
+ {
+  link=y;
+}
+else
+{
+  link=y.replace('/ne/','/en/');
+}
+}
+
+window.location=link;
+}
+//var prev_class = '';
+

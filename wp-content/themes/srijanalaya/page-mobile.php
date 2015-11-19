@@ -2,7 +2,12 @@
 /**
 Template Name: mobile 
  */
+
 get_header('mobile');
+if(( !is_mobile() )) {
+ // wp_redirect(home_url());
+} 
+
 ?>
 
 <div class="slider1-wrapper">
@@ -258,17 +263,13 @@ get_header('mobile');
 
 
 <?php 
+get_template_part('navigation');
 get_footer('mobile');
 ?>
 
 
 
 
-<div class="col-xs-6 section-container bottom-container">
 
-</div>
-<div class="col-xs-6 section-container bottom-container2">
-	
-</div>
 
 
