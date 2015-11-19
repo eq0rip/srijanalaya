@@ -69,7 +69,7 @@ wp_reset_query();
 
 											<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
 
-											<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+											<button type="submit" class="single_add_to_cart_button button alt"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" width="15px" height="15px"/> Add to my Shopping Bag</button>
 
 											<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 										</form>
