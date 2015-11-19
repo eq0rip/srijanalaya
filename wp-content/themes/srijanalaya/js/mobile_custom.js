@@ -1,6 +1,7 @@
 (function($) {
 
 	$(document).ready(function(){
+
 		var $owl1 = $("#slider-1"),
 		$owl2 = $("#slider-2"),
 		flag = false,
@@ -50,6 +51,33 @@
 			}
 		});
 //====owl sync end
+$('#slider-3').owlCarousel({
+	margin:0,
+	items:1,
+	dots:true,
+	nav:false,
+	loop:true
+});//slider3 end
+$('#slider-4').owlCarousel({
+	margin:0,
+	items:1,
+	dots:true,
+	loop:true
+});// slider4 end
+$('#slider-5').owlCarousel({
+	margin:0,
+	items:1,
+	dots:true,
+	loop:true
+});// slider5 end
+$('.video-icon').click(function (){
+	$(this).fadeOut(function(){
+		$('#featured_video_wrapper iframe').show();
+		$('#featured_video_wrapper video-wrap').show();
+	});
+	
+
 
 });
+});// ready end
 })(jQuery);

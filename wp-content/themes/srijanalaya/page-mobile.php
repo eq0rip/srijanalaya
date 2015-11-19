@@ -56,10 +56,219 @@ get_header('mobile');
 </div><!--section wrapper end -->
 
 </div><!--section1 end -->
-<div class="section">sssss</div>
+<div class="section" id="section-2">
+	<div class="single_slider owl-carousel" id="slider-3">
+
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">View Project</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
+			</span>
+		</div>
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+				
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">View Project</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
+			</span>
+		</div>
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+				
+				<h1>Upcoming <span class="key">Project</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">View Project</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
+			</span>
+		</div>
+
+	</div>
+
+	
+</div>
+<div class="section" id="section-3">
+	<div class="single_slider owl-carousel" id="slider-5">
+		
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+
+				<h1>Art <span class="key">Exposure</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">Read More</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+			</span>
+		</div>
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+				
+				<h1>Art <span class="key">Exposure</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">Read More</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+			</span>
+		</div>
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+				
+				<h1>Art <span class="key">Exposure</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">Read More</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+			</span>
+		</div>
+	</div>
+
+</div>
+<div class="section" id="section-4">
+	<?php
+	$args=array('posts_per_page' => 1,'post_type' => 'video','meta_query' => array(array('key' => 'wpcf-featured-video', 'value' => '1', 'compare' => '=')), 'orderby' => 'date', 'order' => 'DESC');
+	$postslist = new WP_Query($args);
+	while($postslist->have_posts()):$postslist->the_post();
+	$title = get_the_title();
+	$title = explode('#',$title);
+	$description = get_the_content();
+	$urlvid = types_render_field('video-url',array('raw' => 'true'));
+	?>	
+	<div id="featured_text_wrapper">
+		<div class="section-inner">
+			<div class="cover-wrap">
+
+				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
+				<button type="button" class="btn btn-default btn-lg vid-btn">Shop to Support</button>
+
+			</div>
+		</div>
+	</div>
+<?php endwhile;?>
+<div id="featured_video_wrapper">
+	<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<div class="video-wrap">
+		<img src="<?php echo get_template_directory_uri();?>/images/sharareh.jpg">
+		<span class='video-icon' ><img src="<?php echo get_template_directory_uri();?>/images/video-icon.png"></span>
+	</div>
+</div>
+</div>
+<div class="section" id="section-5">
+	<div class="quote_wrapper">
+		<?php
+		$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
+		$postslist = new WP_Query( $args );
+		while ( $postslist->have_posts() ) : $postslist->the_post();
+		$content = get_the_content();
+		$content = explode( '#',$content );
+		?>
+		<div class="inner-wrap">	
+			<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
+		</div>
+	</div>
+	<div class="who_we">
+		<div class="col-xs-10 col-xs-offset-1 check_us" style="">
+			<h1>Check us out</h1>
+			<ul class="list-unstyled">
+				<li><a href="!#">Who we are</a></li>
+				<li><a href="!#">Artworks</a></li>
+				<li><a href="!#">Our Projects</a></li>
+				<li><a href="!#">Legal Disclaimer</a></li>
+
+
+			</ul>
+		</div>
+		<div class="foot_wrapper">
+			<div class="social">
+				<h4>
+					<li>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i>
+						</a>
+					</li>
+				</h4>
+				<h4>
+					<li>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i>
+						</a>
+					</li>
+				</h4>
+				<h4>
+					<li>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i>
+						</a>
+					</li>
+				</h4>
+				<h4 class='last'>
+					<li>
+						<a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it">
+							<i class="fa fa-pinterest"></i>
+						</a>
+					</li>
+				</h4>
+			</div>
+			<div class="newsletter">
+				<p>Sign up for Newsletter</p>
+			</div>
+			<div class="donate">
+				<p>Donate</p>
+			</div>
+		</div>
+
+		<p class='copyrite'>© Srijanalaya  | NGO Nepal 2015. All Rights Reserved.</p>
+	</div>
+	
+</div>
 </div><!---fullpage  wrapper end -->
 
 
 <?php 
 get_footer('mobile');
 ?>
+
+
+
+
+<div class="col-xs-6 section-container bottom-container">
+
+</div>
+<div class="col-xs-6 section-container bottom-container2">
+	
+</div>
+
+
