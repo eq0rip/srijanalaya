@@ -13,6 +13,12 @@ $('.video-wrap').click(function() {
   $('.bottom-container2 iframe').show();
   $(this).hide();
 });
+$('.social-expand-buttons').hover(function() {
+  $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
+},
+function() {
+  $('.social-expand-buttons .share-buttons').animate(1000).css('display','none');
+});
 $('.lang-select').transformSelect({
   dropDownClass: "transformSelect languageSelector",
 });
