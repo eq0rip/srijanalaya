@@ -67,3 +67,5 @@ if ( $order ) : ?>
 	<p><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), null ); ?></p>
 
 <?php endif; ?>
+
+<button class="button" onclick="Javascript:window.print();">Print</button>

@@ -25,13 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				$ship_to_different_address = $checkout->get_value( 'ship_to_different_address' );
 
-			}
+				}
 		?>
 
-		<h3 id="ship-to-different-address">
-			<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Ship to a different address?', 'woocommerce' ); ?></label>
+		<p id="ship-to-different-address">
 			<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( $ship_to_different_address, 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
-		</h3>
+			<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Ship to a different address?', 'woocommerce' ); ?></label>
+		</p>
 
 		<div class="shipping_address">
 

@@ -196,12 +196,23 @@
 			opacity: 0.7;
 		}
 	}
+	.shipping {
+		display: none;
+	}
 }
 .woocommerce-page .cart-collaterals .cart_totals {
 	width: auto !important; 
 	text-align: right;
 }
-.woocommerce-billing-fields {
+
+//Checkout
+.woocommerce-checkout-review-order-table {
+	img {
+		width: 80px;
+		height: 80px;
+	}
+}
+.woocommerce-billing-fields, .woocommerce-shipping-fields {
 	input {
 		height: 25px;
 		border: 1px solid #ccc;
@@ -217,6 +228,108 @@
 			.select2-arrow {
 				border-radius: 0;
 			}
+		}
+	}
+}
+#ship-to-different-address {
+	input, label {
+		display: inline;
+		margin: 0;
+		vertical-align: middle;
+	}
+}
+#shipping_method {
+	input {
+		margin-right: 25px;
+	}
+	input[type="radio"]:checked {
+		background-color: #e91f4a;
+	}
+}
+.page-content {
+	.woocommerce-checkout #payment {
+		a {
+			color: #e91f4a !important;
+		}
+		background: none;
+		border:  1px solid #CCC;
+		border-radius: 0;
+		div.payment_box {
+			&:before {
+				border: none;
+			}
+			box-sizing: border-box;
+			padding: 1em;
+			margin: 1em 0;
+			font-size: .92em;
+			color: #515151;
+			background: none;
+			width: auto;
+			position: static;
+			display: inline-block;
+		}
+		.payment_method_paypal {
+			img, .about_paypal {
+				display: none;
+			}
+		}
+		.button {
+			background-color: #e91f4a !important;
+			color: #FFF !important;
+			border-radius: 0 !important; 
+			padding: 8px;
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+		div.form-row {
+			padding: 5px;
+			padding-top: 10px;
+		}
+		ul.payment_methods {
+			padding: 5px 20px;
+		}
+		.payment_box {
+			display: none !important;
+		}
+	}
+	.woocommerce table.shop_table {
+		border-radius: 0;
+	}
+}
+
+//Thank You
+.woocommerce {
+	header {
+		height: auto;
+		background: #e91f4a;
+		color: #FFF;
+		h2, h3 {
+			font-size: 16px;
+			padding: 5px;
+			line-height: 20px;
+		}
+	}
+	.order_details {
+		li {
+			font-size: 13px !important;
+			font-weight: bold;
+		}
+		a {
+			color: #e91f4a !important;
+		}
+		strong, td {
+			font-weight: normal !important;
+			font-size: 12px  !important;
+		}
+	}
+	.button {
+		background-color: #e91f4a !important;
+		color: #FFF !important;
+		border-radius: 0 !important; 
+		padding: 8px;
+		&:hover {
+			opacity: 0.7;
 		}
 	}
 }
