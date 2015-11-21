@@ -484,6 +484,7 @@ a:hover {
    position: relative;
    top: 100px;
    width: 50%;
+   height:100%;
    margin-left: 100px;
    @media(max-width:769px) {
     top:30px;
@@ -1390,7 +1391,7 @@ a:hover {
 
     margin-bottom: 5px;
     font-family: "bree serif";
-
+    
     ul > li {
         float: left;
         margin-left: 30px;
@@ -1406,7 +1407,12 @@ a:hover {
         text-transform: uppercase;
         text-align: center;
         cursor: pointer;
-
+    }
+    ul {
+        .inactive {
+            background:@gray;
+            color:#f0f0f0;
+        }
     }
 }
 .tag_select_wrapper {
