@@ -1,6 +1,5 @@
 <?php
 /**
-Template Name: mobile 
  */
 
 get_header('mobile');
@@ -266,7 +265,30 @@ if(( !is_mobile() )) {
 get_template_part('navigation');
 get_footer('mobile');
 ?>
-
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<script type="text/javascript">
+	function goTo(page) {
+		if(!ValidURL(page))
+			location.href = '<?php echo site_url();?>/' + page;
+		else
+			location.href = page;
+	}
+	function ValidURL(str) {
+		var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+		if(!regex .test(str)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	var player = $f(document.getElementById('player'));
+	jQuery('.video-wrap').click(function() { 
+		jQuery('.video-icon').hide();
+		jQuery('#featured_video_wrapper iframe').show();
+		jQuery('#featured_video_wrapper video-wrap').show();
+		player.api('play');
+	});
+</script>
 
 
 
