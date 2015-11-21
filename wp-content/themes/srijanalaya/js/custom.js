@@ -51,8 +51,6 @@ $('.lang-select').transformSelect({
         $(this).children('li').addClass('open');
         $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
-      }, function() {
-        $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
         $(this).children('li').removeClass('open');
       });
@@ -245,10 +243,8 @@ function add_filter(x,div,r) {
   var choosen_tags=[];
   if((jQuery(query).length)>0)
   {
-    //alert(jQuery(query).length);
     return;
   }
-  //alert(jQuery(query).length);
   div='#'+div+' ul';
   jQuery(div).append('<li class="remove-tag">'+x+'  x</li>');
 
@@ -262,13 +258,11 @@ function add_filter(x,div,r) {
     return choosen_tags;
   }
   else {
-    //alert('apply 0');
     apply_filter(choosen_tags,'.cd-timeline-block');
   }
 }
 function apply_filter(choosen_tags,units){
   jQuery(units).filter(':visible').hide("clip",function (){
-    //alert('hidden all');
     for(var i=0;i<choosen_tags.length;i++)
     {
       x='.'+choosen_tags[i];
@@ -330,7 +324,6 @@ function filter_timeline() {
   if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
     jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
   }
-   // alert('just aligned'+jQuery(this).find('h2 a').text() + 'to right' );
    sort=1;
    if(first == 0) {
      jQuery(this).find('.cd-timeline-content').addClass('first');
@@ -344,7 +337,6 @@ function filter_timeline() {
     {
       jQuery(this).find('.cd-timeline-content').removeClass('first');
       jQuery(this).removeClass('first');
-     // alert('removed class=first from'+jQuery(this).find('h2 a').text())
    }
  }
 }
@@ -361,7 +353,6 @@ else {
   if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
     jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
   }
- //alert('just aligned'+jQuery(this).find('h2 a').text() + 'to left' );
  sort=0;
 }
 });

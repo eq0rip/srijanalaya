@@ -1,0 +1,67 @@
+/*
+Theme Name: Promo - green with purple
+Description: Always fresh news.
+Author: Gifky
+Author URI: http://themeforest.net/user/Gifky
+Author Email: gifky@gifky.com
+Tags: blue
+
+Note: the plugin won't recognize any additional styles if you add them. The styles below offer all the possibilities of Wysija.
+
+List of email client compatible fonts:
+
+Arial
+Arial Black
+Comic Sans MS
+Courier New
+Georgia
+Impact
+Tahoma
+Times New Roman
+Trebuchet MS
+Verdana
+
+*/
+html {
+    background-color: #dbdbdb; /* cannot be transparent and will default to white */
+}
+
+header {
+    background-color: transparent; /* can be transparent */
+}
+body {
+    color:#666666;
+    font-family: "Arial";
+    font-size: 12px;
+    background-color: #ffffff; /* can be transparent */
+}
+footer {
+    background-color: transparent; /* can be transparent */
+}
+h1 {
+    color: #3a5a7a;
+    font-family: Arial;
+    font-size: 28px;
+}
+h2 {
+    color: #3a5a7a;
+    font-family: Arial;
+    font-size: 18px;
+}
+h3 {
+    color: #3a5a7a;
+    font-family: Arial;
+    font-size: 16px;
+}
+a {
+    color: #ff6d02;
+    text-decoration:none;
+}
+unsubscribe {
+    color:#666666;
+}
+viewbrowser {
+	font-family: "Arial";
+	font-size:12px;
+	color:#666666;
+}

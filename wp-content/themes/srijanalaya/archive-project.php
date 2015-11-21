@@ -364,7 +364,6 @@ Template Name: Timeline
 
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){
-		//alert('righ');
 		jQuery(this).remove();
 
 		var hide_project=jQuery(this).text().replace(" x","");
