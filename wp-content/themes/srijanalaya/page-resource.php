@@ -17,7 +17,7 @@ wp_reset_query();
 	</div>
 </div>
 <div class="row" >
- <?php include('gallery-filters.php');?>
+	<?php include('gallery-filters.php');?>
 </div>
 <div class="row no-padding">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
@@ -130,21 +130,48 @@ get_footer();
 	});
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){
-		jQuery(this).remove();
-		var hide_project=jQuery(this).text().replace(" x","");
-		hide_project='.'+hide_project;
-		jQuery(hide_project).hide('fast');
-		if(jQuery('#tag_filter_div ul').children().length == 0) {
-			jQuery('.ccontent').show('fast');
-		}
-		else {
-			var choosen_tags=[];
-			var query='#tag_filter_div' +' ul li';
-			jQuery(query).each(function () {
-				var toPush=jQuery(this).text().replace(" x","");
-				choosen_tags.push(toPush);
-				apply_filter(choosen_tags,'.content');
+		if(jQuery(this).hasClass('inactive'))
+		{
+			jQuery(this).removeClass("inactive");
+			jQuery(this).addClass("active");
+			var chooosen_tags=[];
+			var query='#tag_filter_div' + ' ul li';
+			jQuery(query).each(function(){
+				if(jQuery(this).hasClass('active'))
+				{	
+					var tooPush=jQuery(this).text().replace(" x","");
+					chooosen_tags.push(tooPush);
+				}
+				else {
+				
+				}
 			});
+			apply_filter(chooosen_tags,'.content');
 		}
-	});
+		else{
+			jQuery(this).addClass('inactive');
+			jQuery(this).removeClass('active');
+			if(jQuery('#tag_filter_div').find('.active').length==0) {
+				jQuery('.content').show(function (){
+
+					//filter_timeline();
+				});
+			}
+			else {
+
+				var choosen_tags=[];
+				var query='#tag_filter_div' +' ul li';
+				jQuery(query).each(function () {
+					if(jQuery(this).hasClass('active'))
+					{
+						var toPush=jQuery(this).text().replace(" x","");
+						choosen_tags.push(toPush);
+					}
+
+				});
+				apply_filter(choosen_tags,'.content');
+			}
+		}
+	});// click end
+
 </script>

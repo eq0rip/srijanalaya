@@ -394,11 +394,10 @@
 			// hide_project='.'+hide_project;
 			// jQuery(hide_project).filter(':visible').hide("clip",function (){
 				if(jQuery('#tag_filter_div').find('.active').length==0) {
-					alert('ji');
-					// jQuery('.cd-timeline-block').show(function (){
+					jQuery('.cd-timeline-block').show(function (){
 
-					// 	filter_timeline();
-					// });
+						filter_timeline();
+					});
 				}
 				else {
 
@@ -413,7 +412,6 @@
 
 					});
 					console.log(choosen_tags);
-					//alert('there');
 					apply_filter(choosen_tags,'.cd-timeline-block');
 				}
 
