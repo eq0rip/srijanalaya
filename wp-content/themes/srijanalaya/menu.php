@@ -10,20 +10,25 @@
   $menu_head=get_the_title();
   $ownUrl = types_render_field('url-slug');
   $ownUrl = (trim(strtolower($ownUrl)) == 'home') ? site_url() : site_url() . '/' . $ownUrl;
-  if(lowertrim(get_the_title())=='projects')
+  if(lowertrim(types_render_field('url-slug'))=='project')
   {
+   $menu_head=get_the_title();
    $contents=get_menu_post('project');
-   $menu_head='PROJECTS';
  }
- if(lowertrim(get_the_title())=='resources')
+ elseif(lowertrim(types_render_field('url-slug'))=='resources')
  {
+   $menu_head=get_the_title();
    $contents=get_menu_post('resource');
-   $menu_head='RESOURCES';
  }
- if(lowertrim(get_the_title())=='news')
+ elseif(lowertrim(types_render_field('url-slug'))=='news')
  {
+   $menu_head=get_the_title();
    $contents=get_menu_post('news-post');
-   $menu_head='NEWS';
+ } 
+ elseif(lowertrim(types_render_field('url-slug'))=='shop')
+ {
+   $menu_head=get_the_title();
+   $contents=get_menu_post('product');
  } 
 
  $j = 0;
@@ -31,9 +36,9 @@
 
  ?>
 
- <li class="dropdown yamm-fw first"><a class="dropdown-toggle topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head?>
-  <?php if(strlen(trim($content)) > 0) {?><span class="caret" ></span><?php } ?></a>
-  <?php if(strlen(trim($content)) > 0) { ?>
+ <li class="dropdown yamm-fw first"><a class="dropdown-toggle topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
+  <?php if(count($contents) > 1) {?><span class="caret" ></span><?php } ?></a>
+  <?php if(count($contents) > 1) { ?>
   <ul class="dropdown-menu">
     <div class="yamm-content">
       <?php for ($i = 0; $i < count($contents); $i++) { 
@@ -64,7 +69,7 @@ if(strstr($current_page,'ne'))
 ?>
 </ul>
 <div class="right-menu pull-right">
-<div class="nav-right fmenu"><a href="<?php echo WC()->cart->get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" class="shop-icon-menu" width="20px" height="20px"/>&nbsp;<span class="item-count">(<?php echo sprintf (_n( '%d', '%d', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>)</span></a></div>
+  <div class="nav-right fmenu"><a href="<?php echo WC()->cart->get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" class="shop-icon-menu" width="20px" height="20px"/>&nbsp;<span class="item-count">(<?php echo sprintf (_n( '%d', '%d', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>)</span></a></div>
   <div class="nav-right smenu"><a href="#!">Donate</a></div>
   <div class="nav-right tmenu">
     <select class="btn-icon lang-select" id="language-btn" onchange="change_language(this.value,'<?php echo $current_page;?>');">

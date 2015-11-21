@@ -34,21 +34,6 @@ wp_reset_query();
 								<div class="lower-description-wrap">
 									<h4>Description</h4>
 									<p><?php echo get_the_excerpt();?></p>
-									<?php
-
-									if ( ! $product->is_purchasable() ) {
-										return;
-									}
-
-									?>
-
-									<?php
-								// Availability
-									$availability      = $product->get_availability();
-									$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
-
-									echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
-									?>
 
 									<?php if ( $product->is_in_stock() ) : ?>
 
@@ -77,6 +62,12 @@ wp_reset_query();
 										<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 
 									<?php endif; ?>
+									<?php
+									$availability      = $product->get_availability();
+									$availability_html = empty( $availability['availability'] ) ? '' : '<p class="stock ' . esc_attr( $availability['class'] ) . '">' . esc_html( $availability['availability'] ) . '</p>';
+
+									echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
+									?>
 
 									<?php include('social-expand.php');?>
 								</div>
@@ -92,19 +83,19 @@ wp_reset_query();
 					{
 						$class1 = ($j == 1) ? 'col-sm-8' : 'col-sm-4';
 						$image = wp_get_attachment_url( $attachment_id );
-							echo '<div class="' . $class1 . ' no-padding">';
+						echo '<div class="' . $class1 . ' no-padding">';
 						?>
 						<div class="<?php echo $j; if ($j == 2) {echo 'col-sm-11';}?> product-img" style="background:url(<?php echo $image;?>);<?php if ($j == 2) {echo 'margin-left:12px';} ?>">
 						</div>
 						<?php
-							echo '</div>';
+						echo '</div>';
 						$j = ($j == 2) ? 1 : ++$j;
 					}
 					?>
 					
 				</div>
 				<div class="row related-products">
-				<h5>Shop More Products</h5>
+					<h5>Shop More Products</h5>
 					<?php
 					$related = $product->get_related( 3 );
 

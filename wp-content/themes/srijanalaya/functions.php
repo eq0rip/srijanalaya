@@ -389,11 +389,11 @@ function lowertrim($strr) {
 	return trim(strtolower($strr));
 }
 function get_menu_post($post_type){
-	$args=array('posts_per_page'=>15,'post_type'=>$post_type);
+	$args=array('posts_per_page'=>15,'post_type'=>$post_type, 'order' => 'DESC');
 	$postslist=new WP_Query($args);
 	while( $postslist->have_posts() ) : $postslist->the_post();
 	$temptitle=get_the_title();
-	$tempperma=get_permalink();
+	$tempperma=get_the_permalink();
 	$tempmenu[]='<a href="'.$tempperma.'" >'.$temptitle.'</a>';
 	endwhile;
 	return $tempmenu;

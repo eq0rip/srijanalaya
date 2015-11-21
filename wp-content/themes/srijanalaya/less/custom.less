@@ -400,8 +400,15 @@ a:hover {
 .fmenu {
     position: absolute;
     top: 0;
-    right: 200px;
+    right: 200px; 
     width: 60px !important;
+    padding-left: 10px;
+    &:hover {
+        background-color: #8cc344 !important;
+        a {
+            color: #FFF !important;
+        }
+    }
 }
 .wrapper {
     margin-top: -35px;
@@ -1794,7 +1801,6 @@ form .btn {
 
 
 
-
 @media(max-width:991px) {
     #myNavbar .nav {
         font-size: 10px;
@@ -1810,6 +1816,9 @@ form .btn {
     }
 }
 @media(max-width:769px) {
+    .page-wrapper {
+        padding: 10px;
+    }
     .subhead {
         border-bottom: 1px solid #f6f6f6;
         padding-bottom: 50px;
