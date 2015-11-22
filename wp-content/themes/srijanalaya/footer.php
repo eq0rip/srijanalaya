@@ -48,7 +48,6 @@
       jQuery(window).scroll(function() { 
            if(jQuery(window).scrollTop() > 570) {
             jQuery('.drop').show();
-            console.log('test');
       }
       else {
             jQuery('.drop').hide();

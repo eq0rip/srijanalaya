@@ -21,6 +21,7 @@ get_header('all');
 <div class="row no-padding">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 		<?php
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if(isset($_GET['cat'])) {
 			$cate = mysql_real_escape_string($_GET['cat']);
 			$args=array('posts_per_page'=>20, 'post_type'=>'video', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
@@ -29,10 +30,10 @@ get_header('all');
 					'field'    => 'slug',
 					'terms'    => $cate,
 					),
-				),); 
+				),'paged' => $paged,); 
 		}
 		else {
-			$args=array('posts_per_page'=>20, 'post_type'=>'video', 'orderby' => 'date', 'order' => 'DESC'); 
+			$args=array('posts_per_page'=>20, 'post_type'=>'video', 'orderby' => 'date', 'order' => 'DESC','paged' => $paged,); 
 		}
 		$postslist=new WP_Query($args);  
 		while($postslist->have_posts()) : $postslist->the_post();
@@ -53,6 +54,7 @@ get_header('all');
 		endwhile;
 		?>
 	</div>
+	<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
 </div>
 </div>
 <?php 

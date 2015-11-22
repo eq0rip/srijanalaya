@@ -59,6 +59,7 @@ get_header('all');
 			<?php
 			?>
 			<!-- Pagination -->
+			<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
 			<div class="ngg-clear"></div>	</div>
 		</div>
 	</div>

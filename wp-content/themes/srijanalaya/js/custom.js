@@ -4,27 +4,52 @@
   });
   $(document).ready(function($){
 
-      // $('.topMenu').click(function() {
-      //   location.href = $(this).attr('href');
-      // })
+      
+
 $('#left-col-first').height($(window).height() - 125);
 $('#right-col-first').height($(window).height() - 125);
+
 $('.video-wrap').click(function() {
   $('.bottom-container2 iframe').show();
   $(this).hide();
 });
+
 $('.back-to-top').click(function() {
   $('html,body').animate({
    scrollTop: $('body').offset().top
  }, 1500);
 }
 );
+
 $('.go-down').click(function() {
   $('html,body').animate({
    scrollTop: $('#section2').offset().top
  }, 1000);
 }
 );
+
+
+var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
+  if(last != undefined || last != null) {
+    last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
+    jQuery('.page-content').infinitescroll({
+      navSelector  : ".navigation",            
+                   // selector for the paged navigation (it will be hidden)
+                   nextSelector : ".next",    
+                   // selector for the NEXT link (to page 2)
+                   itemSelector : ".content",      
+                   // selector for all items you'll retrieve
+                   loadingText  : "Loading more...", 
+                   donetext     : "I think this is the end... :/" ,
+                   animate      : true,      
+                   bufferPx     : 40,
+                   padding    : 0,
+                   maxPage: last
+               });
+  }
+
+
+
 $('.drop').click(function() {
   if($('.navbar').hasClass( "nav-bar-fixed" )) {
     $('.navbar').removeClass('nav-bar-fixed');
@@ -478,6 +503,7 @@ if(jQuery('#custom_filters select:first-child').val()=='By Type')
 
 window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
+
 
 
 
