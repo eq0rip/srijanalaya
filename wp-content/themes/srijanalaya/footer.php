@@ -11,7 +11,7 @@
 
 ?>
 
-	
+
 
 <?php wp_footer(); ?>
 <?php get_template_part('navigation');?>
@@ -24,16 +24,18 @@
 
 <script>
 	jQuery('#fullpage').fullpage({
-      scrollBar:true,
-      fitToSection:false,
-      onLeave:function(index,nextIndex,direction){
-      
-      	// if(nextIndex==1)
-      	// 	jQuery('.nav-icons').hide(10);
-      	// else {
-      	// 	jQuery('.nav-icons').show(10);
-      	// }
-      }
+            scrollBar:true,
+            fitToSection:false,
+            onLeave:function(index,nextIndex,direction){
+                  console.log(index);
+                  if(index==1 || (index == 2 && direction == 'up')) {
+                      jQuery('.drop').hide();
+                      console.log(direction);
+                }
+                else {
+                      jQuery('.drop').show();
+                }
+          }
     });
 </script>
 <?php } ?>
@@ -42,5 +44,15 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancyform.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.infinitescroll.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
-
+<script type="text/javascript">
+      jQuery(window).scroll(function() { 
+           if(jQuery(window).scrollTop() > 570) {
+            jQuery('.drop').show();
+            console.log('test');
+      }
+      else {
+            jQuery('.drop').hide();
+      }
+});
+</script>
 </html>
