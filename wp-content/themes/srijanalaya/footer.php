@@ -27,14 +27,14 @@
             scrollBar:true,
             fitToSection:false,
             onLeave:function(index,nextIndex,direction){
-                  console.log(index);
-                  if(index==1 || (index == 2 && direction == 'up')) {
-                      jQuery('.drop').hide();
-                      console.log(direction);
-                }
-                else {
-                      jQuery('.drop').show();
-                }
+                //   console.log(index);
+                //   if(index==1 || (index == 2 && direction == 'up')) {
+                //       jQuery('.drop').hide();
+                //       console.log(direction);
+                // }
+                // else {
+                //       jQuery('.drop').show();
+                // }
           }
     });
 </script>
