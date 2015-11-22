@@ -34,11 +34,9 @@ wp_reset_query();
 								<div class="lower-description-wrap">
 									<h4>Description</h4>
 									<p><?php echo get_the_excerpt();?></p>
-
 									<?php if ( $product->is_in_stock() ) : ?>
 
 										<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
-
 										<form class="cart" method="post" enctype='multipart/form-data'>
 											<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
@@ -92,7 +90,7 @@ wp_reset_query();
 						$j = ($j == 2) ? 1 : ++$j;
 					}
 					?>
-					
+
 				</div>
 				<div class="row related-products">
 					<h5>Shop More Products</h5>
@@ -126,24 +124,40 @@ wp_reset_query();
 								echo "<div class='content col-sm-12'>";
 								echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
 								echo "<span class='description'>" . the_excerpt() . "</span>";
-								echo apply_filters( 'woocommerce_loop_add_to_cart_link', sprintf('<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" class="%s button product_type_%s">%s</a>', esc_url( $link['url'] ), esc_attr( $product->id ), esc_attr( $product->get_sku() ), esc_attr( $link['class'] ), esc_attr( $product->product_type ), esc_html( $link['label'] ) ), $product, $link );
 								echo "<span class='price'>" . $product->get_price_html() . "</span>";
-								echo "</div>";
-								?>
-							</div>
+								if ( $product->is_in_stock() ) : ?>
+
+								<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+
+								<form class="cart" method="post" enctype='multipart/form-data'>
+									<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+
+									<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+
+									<button type="submit" class="single_add_to_cart_button button alt"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" width="25px" height="25px"/></button>
+
+									<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+								</form>
+
+								<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+
+							<?php endif;
+							echo "</div>";
+							?>
 						</div>
-						<?php
-						$i++;
-						endwhile;
-					} else {
-						echo __( 'No products found' );
-					}
-					?>
-					
-				</div>
+					</div>
+					<?php
+					$i++;
+					endwhile;
+				} else {
+					echo __( 'No products found' );
+				}
+				?>
+
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 <?php 

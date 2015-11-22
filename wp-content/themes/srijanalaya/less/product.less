@@ -5,7 +5,7 @@
 	@media (max-width:769px) {
 		height: auto;
 	}
-	form {
+	form.cart-form {
 		position: absolute;
 		bottom: 0;
 		right: 1px;
@@ -15,6 +15,7 @@
 			padding: 2px 3px 1px 3px;
 			&:hover {
 				background-color: #e91f4a !important;
+				opacity: 1;
 			}
 		}
 	}
@@ -70,8 +71,8 @@
 		}
 	}
 	.img-cov {
-			margin-left: -5px;
-		}
+		margin-left: -5px;
+	}
 	.inner-wrapper {
 		height: 320px;
 		background-size: cover !important;
@@ -129,6 +130,19 @@
 	margin-top: 25px;
 	position: relative;
 	height: 350px;
+	form {
+		position: absolute;
+		bottom: 0;
+		right: 1px;
+		button.single_add_to_cart_button {
+			background-color: #3f3e40 !important;
+			border-radius: 0 !important; 
+			padding: 2px 3px 1px 3px;
+			&:hover {
+				background-color: #e91f4a !important;
+			}
+		}
+	}
 	h5 {
 		font-weight: bold;
 		margin-left: 100px;

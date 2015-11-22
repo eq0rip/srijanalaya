@@ -55,7 +55,7 @@ get_header('all');
 
 						<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-						<form class="cart" method="post" enctype='multipart/form-data'>
+						<form class="cart cart-form" method="post" enctype='multipart/form-data'>
 							<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 							<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
