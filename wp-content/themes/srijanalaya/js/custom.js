@@ -13,6 +13,18 @@ $('.video-wrap').click(function() {
   $('.bottom-container2 iframe').show();
   $(this).hide();
 });
+$('.back-to-top').click(function() {
+  $('html,body').animate({
+                 scrollTop: $('body').offset().top
+            }, 1500);
+}
+);
+$('.go-down').click(function() {
+  $('html,body').animate({
+                 scrollTop: $('#section2').offset().top
+            }, 1000);
+}
+);
 $('.social-expand-buttons').hover(function() {
   $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
 },

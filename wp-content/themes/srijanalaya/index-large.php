@@ -53,6 +53,9 @@ get_header();
 		</div>
 
 		<div class="col-sm-6" id="right-col-first">
+			<div class="go-down">
+				<i class="fa fa-angle-down"></i>
+			</div>
 			<div id="slider-2" class="owl-carousel">
 				<?php for($i=0;$i<3;$i++){ ?>
 				<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
@@ -231,6 +234,9 @@ get_header();
 
 			<div class="inner-wrap">	
 				<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
+				<div class="back-to-top">
+					<i class="fa fa-angle-up"></i>
+				</div>
 			</div>
 			<div class="inner-wrap footer-bar">	
 				<div class="col-md-8 col-md-offset-3 covers">
@@ -262,7 +268,7 @@ get_header();
 			<p class='copyrite'>© Srijanalaya  | NGO Nepal 2015. All Rights Reserved.</p>
 		</div>
 	</div> <!--full page end-->
-<?php include('newsletter.php');?>
+	<?php include('newsletter.php');?>
 
 </body>
 
