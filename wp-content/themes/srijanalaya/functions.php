@@ -413,3 +413,9 @@ function get_menu_icons(){
 	return $tempicon;
 
 }
+
+function current_page_url($filter) {
+	if($filter == 0) {
+		return "http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+	}
+}

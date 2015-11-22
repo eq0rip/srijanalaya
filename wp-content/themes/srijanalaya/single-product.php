@@ -8,7 +8,33 @@ wp_reset_query();
 ?>
 <div class="page-wrapper wrapper">
 	<div class="row">
-		<div class="bar"></div>
+		<div class="bar">
+			<div id="custom_filters" class="mid-nav">
+				<form class="" action="<?php bloginfo('url'); ?>/" method="get">
+					<?php
+					$dropdown_args = array(
+						'hide_empty'       => 0,
+						'hide_if_empty'    => false,
+						'taxonomy'         => 'product_cat',
+						'name'             => 'product-id',
+						'orderby'          => 'name',
+						'hierarchical'     => true,
+						'show_option_none' => 'Type',
+						);
+					$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'product_cat', 'new' );
+					$select=wp_dropdown_categories( $dropdown_args );
+					$cat = (isset($_GET['cat'])) ? '&cat=' . str_replace(' ','-',strtolower($_GET['cat'])) : '';
+					?>
+				</form>
+				<div class="mid-nav-inner">
+					<ul>
+						<li class="subpageMenu first <?php if(!isset($_GET['product_type']) ||  $_GET['product_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=latest<?php echo $cat;?>">Latest</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=recommended<?php echo $cat;?>">Recommended</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=popular<?php echo $cat;?>">Most Popular</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="page-content">
 			<div class="col-sm-12 no-padding">
 				<div class="product row">
@@ -164,3 +190,15 @@ wp_reset_query();
 get_footer('all');
 get_footer(); 
 ?>
+<script type="text/javascript">
+	var productDd = document.getElementById("product-id");
+	productDd.onchange = onProductCatChange;
+	function onProductCatChange() {
+		if ( productDd.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop/?cat="+productDd.options[productDd.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop";
+		}
+	}
+</script>

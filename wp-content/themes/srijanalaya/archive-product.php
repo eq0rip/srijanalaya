@@ -1,13 +1,38 @@
 <?php
 /**
-Template Name: Shop
  */
-
 get_header('all');
+wp_reset_query();
 ?>
 <div class="page-wrapper wrapper">
 	<div class="row">
-		<div class="bar"></div>
+		<div class="bar">
+			<div id="custom_filters" class="mid-nav">
+				<form class="" action="<?php bloginfo('url'); ?>/" method="get">
+					<?php
+					$dropdown_args = array(
+						'hide_empty'       => 0,
+						'hide_if_empty'    => false,
+						'taxonomy'         => 'product_cat',
+						'name'             => 'product-id',
+						'orderby'          => 'name',
+						'hierarchical'     => true,
+						'show_option_none' => 'Type',
+						);
+					$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'product_cat', 'new' );
+					$select=wp_dropdown_categories( $dropdown_args );
+					$cat = (isset($_GET['cat'])) ? '&cat=' . str_replace(' ','-',strtolower($_GET['cat'])) : '';
+					?>
+				</form>
+				<div class="mid-nav-inner">
+					<ul>
+						<li class="subpageMenu first <?php if(!isset($_GET['product_type']) ||  $_GET['product_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=latest<?php echo $cat;?>">Latest</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=recommended<?php echo $cat;?>">Recommended</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=popular<?php echo $cat;?>">Most Popular</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="page-content">
 			<div class="col-sm-12 no-padding">
 				<div class="featured row">
@@ -82,12 +107,35 @@ get_header('all');
 
 				<?php
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-				$args = array(
-					'post_type' => 'product',
-					'posts_per_page' => 5,
-					'order' => 'DESC',
-					'paged' => $paged
-					);
+				$cat = (isset($_GET['cat'])) ? str_replace(' ','-',strtolower($_GET['cat'])) : '';
+				if(isset($_GET['product_type']) && $_GET['product_type'] != 'latest') {
+					$gid = mysql_real_escape_string($_GET['product_type']);
+					if( trim(strtolower($gid)) == 'recommended') {
+						$args=array('posts_per_page'=>5, 'post_type'=>'product', 'orderby' => 'date', 'order' => 'DESC', 	'meta_query' => array(
+							array(
+								'key' 		=> '_visibility',
+								'value' 	=> array('catalog', 'visible'),
+								'compare' 	=> 'IN'
+								),
+							array(
+								'key' 	=> '_featured',
+								'value' => 'yes'
+								)
+							),'paged' => $paged, 'product_cat' => $cat); 
+					}
+					elseif( trim(strtolower($gid)) == 'popular') {
+						$args=array('posts_per_page'=>5, 'post_type'=>'product', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC','paged' => $paged,'product_cat' => $cat); 
+					}
+				}
+				else {
+					$args = array(
+						'post_type' => 'product',
+						'posts_per_page' => 5,
+						'order' => 'DESC',
+						'paged' => $paged,
+						'product_cat' => $cat
+						);
+				}
 				$i = 1;
 				$loop = new WP_Query( $args );
 				if ( $loop->have_posts() ) {
@@ -147,6 +195,9 @@ get_footer('all');
 get_footer(); 
 ?>
 <script type="text/javascript">
+	jQuery('#product-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect1",
+	});
 	var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
 	if(last != undefined || last != null) {
 		last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
@@ -164,5 +215,15 @@ get_footer();
                    padding		: 0,
                    maxPage: last
                });
+	}
+	var productDd = document.getElementById("product-id");
+	productDd.onchange = onProductCatChange;
+	function onProductCatChange() {
+		if ( productDd.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop/?cat="+productDd.options[productDd.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop";
+		}
 	}
 </script>
