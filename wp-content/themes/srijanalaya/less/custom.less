@@ -1847,8 +1847,24 @@ form .btn {
         }
     }
 }
-
-
+.wpcf7-form {
+    textarea {
+        float: none;
+    }
+    input {
+        padding: 5px;
+    }
+    .wpcf7-submit {
+        background-color: #e91f4a !important;
+        color: #FFF !important;
+        border-radius: 0 !important; 
+        padding: 8px;
+        border: none;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
 @media(max-width:991px) {
     #myNavbar .nav {
         font-size: 10px;
