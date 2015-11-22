@@ -44,5 +44,6 @@
 			</div>
 
 		</div> <!--full page end-->
+		<?php include('newsletter.php');?>
 	</div>
 </div>

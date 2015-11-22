@@ -173,6 +173,11 @@ if(( !is_mobile() )) {
 	$title = explode('#',$title);
 	$description = get_the_content();
 	$urlvid = types_render_field('video-url',array('raw' => 'true'));
+	$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+	if($imgsrc[0] == null || $imgsrc[0] == '')
+		$image = '';
+	else
+		$image = $imgsrc[0];
 	?>	
 	<div id="featured_text_wrapper">
 		<div class="section-inner">
@@ -187,10 +192,12 @@ if(( !is_mobile() )) {
 <?php endwhile;?>
 <div id="featured_video_wrapper">
 	<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	<?php if($image != '') { ?>
 	<div class="video-wrap">
 		<img src="<?php echo get_template_directory_uri();?>/images/sharareh.jpg">
-		<span class='video-icon' ><img src="<?php echo get_template_directory_uri();?>/images/video-icon.png"></span>
+		<img class='video-icon' src="<?php echo $image; ?>">
 	</div>
+	<?php } ?>
 </div>
 </div>
 <div class="section" id="section-5">
@@ -259,6 +266,7 @@ if(( !is_mobile() )) {
 	
 </div>
 </div><!---fullpage  wrapper end -->
+<?php include('newsletter.php');?>
 
 
 <?php 

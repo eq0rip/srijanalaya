@@ -22,6 +22,12 @@ function() {
 $('.lang-select').transformSelect({
   dropDownClass: "transformSelect languageSelector",
 });
+$('.newsletter').click(function() {
+  $('.newsletter-popup').animate(1000).css('display','flex');
+});
+$('.close-newsletter').click(function() {
+  $('.newsletter-popup').fadeOut();
+});
       //datepicker
       $('.dropdate').dropdate({
         dateFormat:'mm/dd/yyyy'
