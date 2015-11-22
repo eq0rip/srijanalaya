@@ -45,7 +45,7 @@ get_header('all');
 							$i++;
 						}
 						elseif($i == 2){
-							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:20px;background:url(' . $image . ')">';
+							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:28px;background:url(' . $image . ')">';
 						}
 						echo "<div class='content col-sm-12'>";
 						echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
@@ -99,7 +99,7 @@ get_header('all');
 						$image = $imgsrc[0];
 					$class = ($i == 5) ? "col-sm-8" : "col-sm-4";
 					?>
-					<div class="<?php echo $class;?>">
+					<div class="<?php echo $class;?> img-cov">
 						<div class="col-sm-12 inner-wrapper" style="background:url(<?php echo $image;?>)">
 							<?php
 							echo "<div class='content col-sm-12'>";
@@ -155,7 +155,7 @@ get_footer();
                    // selector for the paged navigation (it will be hidden)
                    nextSelector : ".next",    
                    // selector for the NEXT link (to page 2)
-                   itemSelector : ".contd-products",      
+                   itemSelector : ".img-cov",      
                    // selector for all items you'll retrieve
                    loadingText  : "Loading more...", 
                    donetext     : "I think this is the end... :/" ,
