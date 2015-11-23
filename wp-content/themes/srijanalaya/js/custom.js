@@ -59,12 +59,19 @@ $('.drop').click(function() {
   }
   else {
     $('.navbar').addClass('nav-bar-fixed');
+    $('.navbar').css({'z-index':'11'});
     $(this).css({'top':'35px'});
     $('.fa-caret-up').show();
     $('.fa-caret-down').hide();
   }
 }
 );
+$(window).scroll(function() {
+   $('.navbar').removeClass('nav-bar-fixed');
+    $('.drop').css({'top':'0'});
+    $('.fa-caret-up').hide();
+    $('.fa-caret-down').show();
+});
 $('.social-expand-buttons').hover(function() {
   $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
 },
