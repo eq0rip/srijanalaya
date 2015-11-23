@@ -4,15 +4,67 @@
   });
   $(document).ready(function($){
 
-      // $('.topMenu').click(function() {
-      //   location.href = $(this).attr('href');
-      // })
+      
+
 $('#left-col-first').height($(window).height() - 125);
 $('#right-col-first').height($(window).height() - 125);
+
 $('.video-wrap').click(function() {
   $('.bottom-container2 iframe').show();
   $(this).hide();
 });
+
+$('.back-to-top').click(function() {
+  $('html,body').animate({
+   scrollTop: $('body').offset().top
+ }, 1500);
+}
+);
+
+$('.go-down').click(function() {
+  $('html,body').animate({
+   scrollTop: $('#section2').offset().top
+ }, 1000);
+}
+);
+
+
+var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
+  if(last != undefined || last != null) {
+    last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
+    jQuery('.page-content').infinitescroll({
+      navSelector  : ".navigation",            
+                   // selector for the paged navigation (it will be hidden)
+                   nextSelector : ".next",    
+                   // selector for the NEXT link (to page 2)
+                   itemSelector : ".content",      
+                   // selector for all items you'll retrieve
+                   loadingText  : "Loading more...", 
+                   donetext     : "I think this is the end... :/" ,
+                   animate      : true,      
+                   bufferPx     : 40,
+                   padding    : 0,
+                   maxPage: last
+               });
+  }
+
+
+
+$('.drop').click(function() {
+  if($('.navbar').hasClass( "nav-bar-fixed" )) {
+    $('.navbar').removeClass('nav-bar-fixed');
+    $(this).css({'top':'0'});
+    $('.fa-caret-up').hide();
+    $('.fa-caret-down').show();
+  }
+  else {
+    $('.navbar').addClass('nav-bar-fixed');
+    $(this).css({'top':'35px'});
+    $('.fa-caret-up').show();
+    $('.fa-caret-down').hide();
+  }
+}
+);
 $('.social-expand-buttons').hover(function() {
   $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
 },
@@ -21,6 +73,12 @@ function() {
 });
 $('.lang-select').transformSelect({
   dropDownClass: "transformSelect languageSelector",
+});
+$('.newsletter').click(function() {
+  $('.newsletter-popup').animate(1000).css('display','flex');
+});
+$('.close-newsletter').click(function() {
+  $('.newsletter-popup').fadeOut();
 });
       //datepicker
       $('.dropdate').dropdate({
@@ -51,8 +109,6 @@ $('.lang-select').transformSelect({
         $(this).children('li').addClass('open');
         $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
-      }, function() {
-        $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
         $(this).children('li').removeClass('open');
       });
@@ -82,13 +138,13 @@ $owl1
  //animateOut: 'slideOutRight',
 
 // animateIn: 'bounceInDown',
- 
+
   //animateOut:'hinge',
 
 // animateIn:'swing',
 //animateIn:'fadeIn', //==2nd
 //animateIn:'flip',
-  loop:true
+loop:true
 })
 .on('changed.owl.carousel', function (e) {
   $(car).css({'width':'0px','height':'0px'});
@@ -113,7 +169,7 @@ $owl2
   loop:true,
  // animateOut:'slideOutLeft',
  // animateIn: 'slideInRight',
-  animateIn: 'slideInRight',
+ animateIn: 'slideInRight',
  animateOut: 'slideOutLeft',
 
 })
@@ -151,7 +207,7 @@ $("#right-col-first").hover(
    $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': 'black','opacity': '0.5'});
  },
  function() {
-   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});		   
+   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});                   
 
 
  });
@@ -245,10 +301,8 @@ function add_filter(x,div,r) {
   var choosen_tags=[];
   if((jQuery(query).length)>0)
   {
-    //alert(jQuery(query).length);
     return;
   }
-  //alert(jQuery(query).length);
   div='#'+div+' ul';
   jQuery(div).append('<li class="remove-tag">'+x+'  x</li>');
 
@@ -262,17 +316,15 @@ function add_filter(x,div,r) {
     return choosen_tags;
   }
   else {
-    //alert('apply 0');
     apply_filter(choosen_tags,'.cd-timeline-block');
   }
 }
 function apply_filter(choosen_tags,units){
-  jQuery(units).filter(':visible').hide("clip",function (){
-    //alert('hidden all');
+  jQuery(units).filter(':visible').hide("fade",function (){
     for(var i=0;i<choosen_tags.length;i++)
     {
       x='.'+choosen_tags[i];
-      jQuery(x).show("clip",function (){
+      jQuery(x).show("fade",function (){
         if(units == '.cd-timeline-block') {
           filter_timeline();
         }
@@ -284,7 +336,7 @@ function apply_filter(choosen_tags,units){
     for(var i=0;i<choosen_tags.length;i++)
     {
       x='.'+choosen_tags[i];
-      jQuery(x).show("clip",function (){
+      jQuery(x).show("fade",function (){
         if(units == '.cd-timeline-block') {
           filter_timeline();
         }
@@ -323,16 +375,15 @@ function filter_timeline() {
 
   jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
    if(sort==0){
-  jQuery(this).find('.alert-icon').css{('float':'right')};
-  if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
-    jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
-  }
-  if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
-    jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
-  }
-   // alert('just aligned'+jQuery(this).find('h2 a').text() + 'to right' );
-   sort=1;
-   if(first == 0) {
+    jQuery(this).find('.alert-icon').css({'float':'right'}, {'left':'auto'});
+    if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
+      jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
+    }
+    if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-left')){
+      jQuery(this).find('.project-wrapper').removeClass('project-wrapper-left').addClass('project-wrapper-right');
+    }
+    sort=1;
+    if(first == 0) {
      jQuery(this).find('.cd-timeline-content').addClass('first');
      jQuery(this).addClass('first');
      first = 1;
@@ -344,12 +395,11 @@ function filter_timeline() {
     {
       jQuery(this).find('.cd-timeline-content').removeClass('first');
       jQuery(this).removeClass('first');
-     // alert('removed class=first from'+jQuery(this).find('h2 a').text())
-   }
- }
+    }
+  }
 }
 else {
-  jQuery(this).find('.alert-icon').css({'float':'left !important','left':'19px !important'});
+  jQuery(this).find('.alert-icon').css({'left':'19px'});
   if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
   {
     jQuery(this).find('.cd-timeline-content').removeClass('first');
@@ -361,8 +411,7 @@ else {
   if(jQuery(this).find('.project-wrapper').hasClass('project-wrapper-right')){
     jQuery(this).find('.project-wrapper').removeClass('project-wrapper-right').addClass('project-wrapper-left');
   }
- //alert('just aligned'+jQuery(this).find('h2 a').text() + 'to left' );
- sort=0;
+  sort=0;
 }
 });
 jQuery(window).scrollTop(jQuery(window).scrollTop() + 1);
@@ -459,4 +508,11 @@ window.location.href='http://localhost/srijanalaya/events'+'?category='+category
 
 
 
+
+
+Welcome to Etherpad!
+
+This pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!
+
+Get involved with Etherpad at http://etherpad.org
 
