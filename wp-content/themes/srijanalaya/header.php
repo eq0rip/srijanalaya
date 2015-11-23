@@ -15,7 +15,7 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
-   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
+  <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
 </head>
 <body class="home">
@@ -27,7 +27,41 @@
  <div class="section" id="section1" style="">
   <div style""><!--head div sart-->    
     <div class="container-fluid"><!--top buttons-->
-      <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
+
+
+      <div id="sliderEffects" style="">
+        <div>
+          Sider 1:<select id="slider1effect">
+          <option value="slideInLeft">slideFromLeft</option>
+          <option value="fadeIn">fadeIn</option>
+          <option value="slideInRight">slideFromRight</option>
+        </select>
+      </div>
+
+      <div >
+        slider 2:<select id="slider2effect">
+        <option value="slideInLeft">slideFromLeft</option>
+        <option value="fadeIn">fadeIn</option>
+        <option value="slideInRight">slideFromRight</option>
+      </select>
+    </div>
+    <div class="duration_div" style="">
+     Slide Change Interval:
+     <input id="interval" type="text" value=0 />
+     <button class="btn interval_up" type="button">+</button>
+     <button class="btn interval_down" type="button">-</button>
+     <br/>
+     Animation Duration:
+     <input id="duration" type="text" value=0 />
+     <button type="button" class="btn duration_up" type="button">+</button>
+     <button class="btn duration_down" type="button">-</button>
+   </div>
+
+   <button class="btn" style="float:right;margin-top:5px;width:100%" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
+ </div>
+
+
+ <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
       <!-- <div class="btn-group top-btn">
         <button type="button" class="btn btn-icon">Donate</button>
         <?php 
@@ -57,10 +91,10 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar" >
             <?php include('menu.php');?>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
-<div class="drop"><i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i></div>
-</div><!--head div end -->    
-<?php wp_head();?>
+    </nav>
+    <div class="drop"><i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i></div>
+  </div><!--head div end -->    
+  <?php wp_head();?>

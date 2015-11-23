@@ -118,7 +118,6 @@ $('.close-newsletter').click(function() {
         $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
       });
 
-
 //owl sync
 var $owl1 = $("#slider-1"),
 $owl2 = $("#slider-2"),
@@ -182,7 +181,6 @@ $owl2
     flag = false;
   }
 });
-//====owl sync end
 
 //nav icons
 $('.nav-icons').hover(function() {
@@ -209,7 +207,7 @@ $("#right-col-first").hover(
    $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': 'black','opacity': '0.5'});
  },
  function() {
-   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});		   
+   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});                   
 
 
  });
@@ -505,10 +503,3 @@ if(jQuery('#custom_filters select:first-child').val()=='By Type')
 
 window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
-
-
-
-
-
-
-
