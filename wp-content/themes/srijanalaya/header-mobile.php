@@ -28,6 +28,7 @@
 </head>
 <body <?php body_class();?>>
   <?php wp_head();?>
+  <?php flush(); ?>
 <div id="fullpage" style="">
   <div class="section" id="section1">  
     <div class="section-wrapper fullheight"> 

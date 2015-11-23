@@ -270,7 +270,7 @@ $('a[href*=#]').on('click', function(event){
 
 })(jQuery);
 function change_language(x,y) {
-  var n = y.search("/srijanalaya/ne"); 
+  var n = y.search("/srijanalaya/ne/"); 
   if(n<0)
   {
   //alert('ne not found');

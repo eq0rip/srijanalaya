@@ -110,3 +110,4 @@
     <div class="drop"><i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i></div>
   </div><!--head div end -->    
   <?php wp_head();?>
+  <?php flush(); ?>

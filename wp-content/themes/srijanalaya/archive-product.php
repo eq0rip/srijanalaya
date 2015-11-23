@@ -200,7 +200,7 @@ get_footer();
 	jQuery('#product-id').transformSelect({
 		dropDownClass: "transformSelect transformSelect1",
 	});
-	if(cat != undefined) {
+	if(cat != undefined || cat != '') {
 		jQuery('.transformSelect1 li span').html(cat);
 	}
 	var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
