@@ -196,11 +196,10 @@ get_footer();
 ?>
 <script type="text/javascript">
 	var cat = "<?php echo $_GET['cat']; ?>";
-
 	jQuery('#product-id').transformSelect({
 		dropDownClass: "transformSelect transformSelect1",
 	});
-	if(cat != undefined || cat != '') {
+	if(cat != undefined && cat.trim() != '') {
 		jQuery('.transformSelect1 li span').html(cat);
 	}
 	var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
