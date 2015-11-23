@@ -213,8 +213,8 @@ get_header();
 		<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		<?php if($image != '') { ?>
 		<div class="video-wrap">
-			<img src="<?php echo get_template_directory_uri();?>/images/sharareh.jpg">
-			<img class='video-icon' src="<?php echo $image; ?>">
+			<img src="<?php echo $image; ?>">
+			<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
 		</div>
 		<?php } ?>
 	</div>
