@@ -30,22 +30,30 @@
 
 
       <div id="sliderEffects" style="">
-      <div style="position:absolute;right:25%;">
-        <div>
-          Sider 1:<select id="slider1effect">
+        <div style="position:absolute;right:25%;">
+          <div>
+            Sider 1:<select id="slider1effect">
+            <option value="slideInLeft">slideFromLeft</option>
+            <option value="fadeIn">fadeIn</option>
+            <option value="slideInRight">slideFromRight</option>
+            <option value="fadeOut">fadeOut</option>
+            <option value="flipInX">flipIn</option>
+            <option value="lightSpeedIn">lightSpeedIn</option>
+            <option value="rollIn">rotateIn</option>
+          </select>
+        </div>
+
+        <div >
+          slider 2:<select id="slider2effect">
           <option value="slideInLeft">slideFromLeft</option>
           <option value="fadeIn">fadeIn</option>
           <option value="slideInRight">slideFromRight</option>
+          <option value="fadeOut">fadeOut</option>
+          <option value="flipInX">flipIn</option>
+          <option value="lightSpeedIn">lightSpeedIn</option>
+          <option value="rollIn">rotateIn</option>
         </select>
       </div>
-
-      <div >
-        slider 2:<select id="slider2effect">
-        <option value="slideInLeft">slideFromLeft</option>
-        <option value="fadeIn">fadeIn</option>
-        <option value="slideInRight">slideFromRight</option>
-      </select>
-    </div>
 
     </div>
     <div class="duration_div" style="">
@@ -61,7 +69,7 @@
    </div>
 
  </div>
-        <button class="btn" style="position:absolute;top:20px;right:15%;background-color:#E91F4A !important;color:#ffffff;" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
+ <button class="btn" style="position:absolute;top:20px;right:15%;background-color:#E91F4A !important;color:#ffffff;" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
 
 
 
