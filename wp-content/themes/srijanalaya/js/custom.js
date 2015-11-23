@@ -103,7 +103,6 @@ $('.close-newsletter').click(function() {
         }
       });
 
-
       $('.transformSelect li').addClass('open');
       $('.transformSelect').hover(function() {
         $(this).children('li').addClass('open');

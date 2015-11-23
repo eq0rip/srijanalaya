@@ -363,6 +363,7 @@
 			}
 			else {
 				jQuery('.fixed').css('position','absolute');
+				jQuery('.current-date').fadeOut();
 			}
 		});
 	});
@@ -412,7 +413,6 @@
 					}
 
 				});
-				console.log(choosen_tags);
 				apply_filter(choosen_tags,'.cd-timeline-block');
 			}
 
@@ -429,7 +429,7 @@ jQuery(document).ready(function() {
 	jQuery('.alert-icon').click(function(){
 		jQuery('.transbg_popup').fadeIn(200,function(){
 			jQuery('.popup').css({'display':'flex'}).fadeIn(200);				
-		})
+		});
 	});
 	jQuery("#submit").click(function(){
 		var p_id = jQuery("#p_id").val();
@@ -468,6 +468,8 @@ jQuery(document).ready(function() {
 jQuery(".postform").transformSelect({
 	dropDownClass: "transformSelect transformSelect1",
 });
+
+
 jQuery("#location_value_main").transformSelect({
 	dropDownClass: "transformSelect transformSelect2",
 });
