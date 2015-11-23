@@ -130,11 +130,11 @@ $owl1
   items: 1,
   margin: 0,
   autoplay:true,
-  autoplayTimeout:2500,
-  //animateOut:'fadeOutLeftBig',
-  //animateIn: 'fadeIn',
+  autoplayTimeout:3500,
+  // animateOut:'fadeOutLeftBig',
+  animateIn: 'fadeIn',
 
-    animateIn: 'slideInLeft',//===one
+    // animateIn: 'slideInLeft',//===one
  //animateOut: 'slideOutRight',
 
 // animateIn: 'bounceInDown',
@@ -169,8 +169,8 @@ $owl2
   loop:true,
  // animateOut:'slideOutLeft',
  // animateIn: 'slideInRight',
- animateIn: 'slideInRight',
- animateOut: 'slideOutLeft',
+ animateIn: 'fadeIn',
+ animateOut: 'fadeOut',
 
 })
 .on('changed.owl.carousel', function (e) {
@@ -184,9 +184,9 @@ $owl2
 
 //nav icons
 $('.nav-icons').hover(function() {
-  $('.nav-links').stop(true,true).slideDown(100);
+  $('.nav-links').stop(true,true).slideDown(500);
 }, function() {
-  $('.nav-links').stop(true,true).slideUp(100);
+  $('.nav-links').stop(true,true).slideUp(500);
 }
 );
 
@@ -375,7 +375,7 @@ function filter_timeline() {
 
   jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
    if(sort==0){
-    jQuery(this).find('.alert-icon').css({'float':'right'}, {'left':'auto'});
+    // jQuery(this).find('.alert-icon').css({'float':'right'}, {'left':'auto'});
     if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
       jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
     }
@@ -399,7 +399,7 @@ function filter_timeline() {
   }
 }
 else {
-  jQuery(this).find('.alert-icon').css({'left':'19px'});
+  // jQuery(this).find('.alert-icon').css({'left':'19px'});
   if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
   {
     jQuery(this).find('.cd-timeline-content').removeClass('first');

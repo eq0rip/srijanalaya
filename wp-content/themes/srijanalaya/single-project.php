@@ -45,7 +45,7 @@ wp_reset_query();
 			<div class="col-sm-7 col-sm-offset-1">
 			<div class="resource-logo hidden-sm"><img src="<?php echo get_template_directory_uri();?>/images/Performance Icon.png" alt=""></div>
 				<?php
-				$location_addresss='ssss';
+				$location_addresss='';
 				while ( have_posts() ) : the_post();
 				$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'all');
 				$terms = wp_get_post_terms( get_the_id(), 'project_categories', $args );
