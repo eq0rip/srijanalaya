@@ -30,6 +30,7 @@
 
 
       <div id="sliderEffects" style="">
+      <div style="position:absolute;right:25%;">
         <div>
           Sider 1:<select id="slider1effect">
           <option value="slideInLeft">slideFromLeft</option>
@@ -45,20 +46,23 @@
         <option value="slideInRight">slideFromRight</option>
       </select>
     </div>
+
+    </div>
     <div class="duration_div" style="">
      Slide Change Interval:
-     <input id="interval" type="text" value=0 />
+     <input id="interval" type="text" value='<?php if(isset($_GET['slider1In'])){echo $_GET['interval'];}else {echo 3;}?>' />
      <button class="btn interval_up" type="button">+</button>
      <button class="btn interval_down" type="button">-</button>
      <br/>
      Animation Duration:
-     <input id="duration" type="text" value=0 />
+     <input id="duration" type="text" value='<?php if(isset($_GET['slider1In'])){echo $_GET['duration'];}else {echo 2.5;}?>' />
      <button type="button" class="btn duration_up" type="button">+</button>
      <button class="btn duration_down" type="button">-</button>
    </div>
 
-   <button class="btn" style="float:right;margin-top:5px;width:100%" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
  </div>
+        <button class="btn" style="position:absolute;top:20px;right:15%;background-color:#E91F4A !important;color:#ffffff;" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
+
 
 
  <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>

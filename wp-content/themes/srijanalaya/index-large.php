@@ -38,11 +38,53 @@ else { ?>
 <script>
 	duration=1.5;
 	interval=2;
+	effect1In='fadeInRight';
+	effect2In='fadeIn';
 </script>
 <?php }?>
 <script>
-	// alert(duration);
-	// alert(interval);
+	if(effect1In.search('In')>0)
+	{
+		effect1Out=effect1In.replace('In','Out');
+	}
+	else {
+		if(effect1In.search("Out")>0)
+		{
+			effect1Out=effect1In.replace('Out','In');	
+		}
+	}
+	if(effect1In.search("Left")>0)
+	{
+		effect1Out=effect1Out.replace('Left','Right');
+	}
+	else {
+		if(effect1In.search("Right")>0)
+		{
+			effect1Out=effect1Out.replace('Right','Left');	
+		}
+	}
+	//////////
+
+	if(effect2In.search('In')>0)
+	{
+		effect2Out=effect2In.replace('In','Out');
+	}
+	else {
+		if(effect2In.search("Out")>0)
+		{
+			effect2Out=effect2In.replace('Out','In');	
+		}
+	}
+	if(effect2In.search("Left")>0)
+	{
+		effect2Out=effect2Out.replace('Left','Right');
+	}
+	else {
+		if(effect2In.search("Right")>0)
+		{
+			effect2Out=effect2Out.replace('Right','Left');	
+		}
+	}		
 </script>
 
 <div class="wrapper section fullheight" id="section1">
@@ -349,6 +391,7 @@ else { ?>
   //animateIn: 'fadeIn',
 
     animateIn: effect1In,//===one
+  //  animateOut:effect1Out,
  //animateOut: 'slideOutRight',
 
 // animateIn: 'bounceInDown',
@@ -384,7 +427,8 @@ loop:true
  // animateOut:'slideOutLeft',
  // animateIn: 'slideInRight',
  animateIn: effect2In,
- animateOut:'slideOutRight',
+ animateOut:effect2Out,
+ //animateOut:'slideOutRight',
  //animateOut: 'slideOutLeft',
 
 })
@@ -402,8 +446,33 @@ function animationChange(one,two,dura,interv){
 	window.location.href=site_url+'?slider1In='+one+'&slider2In='+two+'&duration='+dura+'&interval='+interv;
 }
 jQuery('.duration_up').click(function (){
+	//alert('sss');
 	var values=parseFloat(jQuery('#duration').val());
-	alert(values);
-})
+	values=0.5+values;
+	jQuery('#duration').val(values)
+
+});
+jQuery('.duration_down').click(function (){
+	//alert('sss');
+	var values=parseFloat(jQuery('#duration').val());
+	values=-0.5+values;
+	jQuery('#duration').val(values)
+
+});
+jQuery('.interval_up').click(function (){
+	//alert('sss');
+	var values=parseFloat(jQuery('#interval').val());
+	values=0.5+values;
+	jQuery('#interval').val(values)
+
+});
+jQuery('.interval_down').click(function (){
+	//alert('sss');
+	var values=parseFloat(jQuery('#interval').val());
+	values=-0.5+values;
+	jQuery('#interval').val(values)
+
+});
+
 
 </script>
