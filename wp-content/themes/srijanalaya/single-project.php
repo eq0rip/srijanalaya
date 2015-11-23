@@ -3,6 +3,7 @@ get_header('all');
 get_header('mapbox');
 wp_reset_query();
 ?>
+
 <div class="page-wrapper">
 	<div class="row">
 		<div class="col-sm-12 wrapper banner">
@@ -42,10 +43,14 @@ wp_reset_query();
 		</div>
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
+			<div class="resource-logo hidden-sm"><img src="<?php echo get_template_directory_uri();?>/images/Performance Icon.png" alt=""></div>
 				<?php
 				$location_addresss='ssss';
 				while ( have_posts() ) : the_post();
-				
+				$args = array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'all');
+				$terms = wp_get_post_terms( get_the_id(), 'project_categories', $args );
+				// print_r($terms); 
+				// echo z_taxonomy_image_url() . "A";die();
 				echo '<h2>' . get_the_title() . '</h2>';
 				?>
 				<div class="info-wrap">

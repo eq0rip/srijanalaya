@@ -1,5 +1,5 @@
 <?php 
-if(( is_mobile() )) {
+// if(( is_mobile() )) {
   
  
   $menu_icons=get_menu_icons();
@@ -19,7 +19,7 @@ if(( is_mobile() )) {
     $change_to='en';
   }
   ?>
-  <nav class="nav-icons">
+  <nav class="nav-icons mobile-nav">
 
 
     <ul class="nav-links" style="display:none;">
@@ -73,7 +73,7 @@ if(( is_mobile() )) {
 
   </script>
   <?php 
-}
+// }
   ?>
 
 
