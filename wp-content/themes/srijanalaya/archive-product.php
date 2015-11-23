@@ -195,9 +195,14 @@ get_footer('all');
 get_footer(); 
 ?>
 <script type="text/javascript">
+	var cat = "<?php echo $_GET['cat']; ?>";
+
 	jQuery('#product-id').transformSelect({
 		dropDownClass: "transformSelect transformSelect1",
 	});
+	if(cat != undefined) {
+		jQuery('.transformSelect1 li span').html(cat);
+	}
 	var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
 	if(last != undefined || last != null) {
 		last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));

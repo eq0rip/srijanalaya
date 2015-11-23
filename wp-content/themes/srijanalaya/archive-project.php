@@ -242,6 +242,7 @@
 
 				</div> <!-- cd-timeline-block -->
 				<?php $j++; endwhile; ?>
+				<div class="circle bottom"></div>
 			</section> <!-- cd-timeline -->
 			<div class="timeline-clear"></div>
 		</div>
