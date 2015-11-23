@@ -4,15 +4,21 @@ Template Name: News
  */
 
 get_header('all'); ?>
+
 <div class="page-wrapper wrapper">
-	<div class="topbanner banner">
+	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
+	$postslist=new WP_Query($args);
+	while($postslist->have_posts() ) : $postslist->the_post();
+	if(strtolower(trim(get_the_title()))=='news') :
+		?>
+	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
 		<div class="col-xs-3 header-text">
-			<h1>Featured Resource</h1>
-			<h2>Promotion Phare</h2>
-			<p>Title Autde Juesl Image Promotion Pharetra helusn Suspendisse ultricies</p>
-			<a href="#" class="btn btn-default btn-lg">View project</a>
+			<h2><?php echo types_render_field('banner-title')?></h2>
+			<p><?php  echo get_the_content();?></p>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
 		</div>
 	</div>
+<?php endif;endwhile;?>
 	<div class="row">
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
@@ -35,16 +41,16 @@ get_header('all'); ?>
 				$gid = mysql_real_escape_string($_GET['news_type']);
 				if( trim(strtolower($gid)) == 'recommended') {
 					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
-			'paged' => $paged,); 
+						'paged' => $paged,); 
 				}
 				elseif( trim(strtolower($gid)) == 'popular') {
 					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
-			'paged' => $paged,); 
+						'paged' => $paged,); 
 				}
 			}
 			else {
 				$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC',
-			'paged' => $paged,); 
+					'paged' => $paged,); 
 			}
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
@@ -65,9 +71,9 @@ get_header('all'); ?>
 			?>
 		</div>
 		<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
+		</div>
 	</div>
-</div>
-<?php 
-get_footer('all');
-get_footer(); 
-?>
+	<?php 
+	get_footer('all');
+	get_footer(); 
+	?>

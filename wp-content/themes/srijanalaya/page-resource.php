@@ -7,14 +7,19 @@ get_header('all');
 wp_reset_query();
 ?>
 <div class="row">
-
-	<div class="col-sm-12 wrapper banner">
+	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
+	$postslist=new WP_Query($args);
+	while($postslist->have_posts() ) : $postslist->the_post();
+	if(strtolower(trim(get_the_title()))=='resource') :
+		?>
+	<div class="col-sm-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
 		<div class="banner-content">
-			<h2>Current Event Promotion Phare</h2>
-			<p>Suspendisse ultricies vel liberoisporta.Ut pharetra endisse ultricies vel libre</p>
-			<button type="button" class="btn btn-default btn-lg vid-btn">View Project</button>
-		</div>
+			<h2><?php echo types_render_field('banner-title')?></h2>
+			<p><?php  echo get_the_content();?></p>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
+		<?php endif;endwhile;?>
 	</div>
+</div>
 </div>
 <div class="row" >
 	<?php include('gallery-filters.php');?>
@@ -82,44 +87,44 @@ wp_reset_query();
 			?>
 		</div>
 		<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
+		</div>
 	</div>
-</div>
-<?php 
-get_footer('all');
-get_footer(); 
-?>
-<script type="text/javascript">
-	var resourceDropdown = document.getElementById("resource-id");
-	var galleryDropdown = document.getElementById("gallery");
-	var videoDropdown = document.getElementById("video-id");
-	resourceDropdown.onchange = onCatChange;
-	galleryDropdown.onchange = onGalCatChange;
-	videoDropdown.onchange = onVidCatChange;
+	<?php 
+	get_footer('all');
+	get_footer(); 
+	?>
+	<script type="text/javascript">
+		var resourceDropdown = document.getElementById("resource-id");
+		var galleryDropdown = document.getElementById("gallery");
+		var videoDropdown = document.getElementById("video-id");
+		resourceDropdown.onchange = onCatChange;
+		galleryDropdown.onchange = onGalCatChange;
+		videoDropdown.onchange = onVidCatChange;
 
-	function onCatChange() {
-		if ( resourceDropdown.selectedIndex > 0 ) {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
+		function onCatChange() {
+			if ( resourceDropdown.selectedIndex > 0 ) {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
+			}
+			else {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
+			}
 		}
-		else {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
+		function onGalCatChange() {
+			if ( galleryDropdown.selectedIndex > 0 ) {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+			}
+			else {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
+			}
 		}
-	}
-	function onGalCatChange() {
-		if ( galleryDropdown.selectedIndex > 0 ) {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+		function onVidCatChange() {
+			if ( videoDropdown.selectedIndex > 0 ) {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
+			}
+			else {
+				location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
+			}
 		}
-		else {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
-		}
-	}
-	function onVidCatChange() {
-		if ( videoDropdown.selectedIndex > 0 ) {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
-		}
-		else {
-			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
-		}
-	}
 
 	//Transform
 	jQuery('#resource-id').transformSelect({
@@ -146,7 +151,7 @@ get_footer();
 					chooosen_tags.push(tooPush);
 				}
 				else {
-				
+
 				}
 			});
 			apply_filter(chooosen_tags,'.content');

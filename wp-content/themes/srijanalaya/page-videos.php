@@ -6,16 +6,20 @@ Template Name: Video
 get_header('all'); 
 ?>
 <div class="row">
-
-	<div class="col-sm-12 wrapper banner">
-		<div class="banner-content">
-			<h2>Current Event Promotion Phare</h2>
-			<p>Suspendisse ultricies vel liberoisporta.Ut pharetra endisse ultricies vel libre</p>
-			<button type="button" class="btn btn-default btn-lg vid-btn">View Project</button>
-		</div>
-	</div>
-</div>
-<div class="row" >
+ 	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
+ 	$postslist=new WP_Query($args);
+ 	while($postslist->have_posts() ) : $postslist->the_post();
+ 	if(strtolower(trim(get_the_title()))=='videos') :
+ 		?>
+ 	<div class="col-sm-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+ 		<div class="banner-content">
+ 			<h2><?php echo types_render_field('banner-title')?></h2>
+ 			<p><?php  echo get_the_content();?></p>
+ 			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
+ 		<?php endif;endwhile;?>
+ 	</div>
+ </div>
+</div><div class="row" >
 	<?php include('gallery-filters.php');?>
 </div>
 <div class="row no-padding">
