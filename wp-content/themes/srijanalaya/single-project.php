@@ -59,7 +59,7 @@ wp_reset_query();
 					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt="">Date: <span class="col2"><?php $project_date=parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));echo $project_date;?></span></p>
 					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt="">Time: <span class="col2"><?php $project_time=date('h:i A',types_render_field('project-date', array('raw' => 'true')));echo $project_time;?></span></p>
 					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/loc.png" class="outimg" alt="">Location: 
-						<span class="col2"><?php 
+						<span class="col2" id="locAdd"><?php 
 							$connected = new WP_Query( array(
 								'connected_type' => 'maps_to_project',
 								'connected_items' => get_queried_object(),
@@ -177,6 +177,7 @@ get_footer('all');
 		jQuery('.side-transparent-block').fadeOut(300);
 	}
 	jQuery(document).ready(function(){
+		jQuery('#project_location').val(jQuery('#locAdd').html());
 		jQuery("#submit").click(function(){
 			var p_id = jQuery("#p_id").val();
 			var email = jQuery("#email").val();
