@@ -45,20 +45,16 @@
 </div>
 <?php if(get_the_slug() == 'resources') { ?>
 <div class="col-sm-8" id="tag_filter_div">
-	<span class="active-tags">ACTIVE TAGS: </span>
-	<ul>
-
-	</ul>
-</div>
-<br/>
-<span class='tag-filter-title'>FILTER TAGS:</span>
-<ul class="fetch_tag">			
+<span class="active-tags">ACTIVE TAGS: </span>
+<ul>
 	<?php 
 	$tags = get_terms('resource_tags');
-	foreach($tags as $tag) {
+	foreach($tags as $tag){
 		?>
-		<li class="col-sm-1"><a href="javascript:void(0)" onclick="resource_filter( '<?php echo $tag->slug ?>','tag_filter_div', 0)"><?php echo $tag->name;?></a></li>
-		<?php }?>
+
+		<li class="remove-tag active"><?php echo $tag->slug; ?>  x</li>
+
+		<?php } ?>
 	</ul>
 	<?php } ?>
 </div>

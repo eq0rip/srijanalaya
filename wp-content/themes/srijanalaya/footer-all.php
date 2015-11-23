@@ -12,6 +12,9 @@
 
 				<div class="inner-wrap">	
 					<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
+					<div class="back-to-top">
+						<i class="fa fa-angle-up"></i>
+					</div>
 				</div>
 				<div class="inner-wrap footer-bar">	
 					<div class="col-md-8 col-md-offset-3 covers">
@@ -44,5 +47,6 @@
 			</div>
 
 		</div> <!--full page end-->
+		<?php include('newsletter.php');?>
 	</div>
 </div>

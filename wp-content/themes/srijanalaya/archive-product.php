@@ -1,13 +1,38 @@
 <?php
 /**
-Template Name: Shop
  */
-
 get_header('all');
+wp_reset_query();
 ?>
 <div class="page-wrapper wrapper">
 	<div class="row">
-		<div class="bar"></div>
+		<div class="bar">
+			<div id="custom_filters" class="mid-nav">
+				<form class="" action="<?php bloginfo('url'); ?>/" method="get">
+					<?php
+					$dropdown_args = array(
+						'hide_empty'       => 0,
+						'hide_if_empty'    => false,
+						'taxonomy'         => 'product_cat',
+						'name'             => 'product-id',
+						'orderby'          => 'name',
+						'hierarchical'     => true,
+						'show_option_none' => 'Type',
+						);
+					$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'product_cat', 'new' );
+					$select=wp_dropdown_categories( $dropdown_args );
+					$cat = (isset($_GET['cat'])) ? '&cat=' . str_replace(' ','-',strtolower($_GET['cat'])) : '';
+					?>
+				</form>
+				<div class="mid-nav-inner">
+					<ul>
+						<li class="subpageMenu first <?php if(!isset($_GET['product_type']) ||  $_GET['product_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=latest<?php echo $cat;?>">Latest</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=recommended<?php echo $cat;?>">Recommended</a></li>
+						<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['product_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/shop?product_type=popular<?php echo $cat;?>">Most Popular</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="page-content">
 			<div class="col-sm-12 no-padding">
 				<div class="featured row">
@@ -45,68 +70,124 @@ get_header('all');
 							$i++;
 						}
 						elseif($i == 2){
-							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:20px;background:url(' . $image . ')">';
+							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:28px;background:url(' . $image . ')">';
 						}
 						echo "<div class='content col-sm-12'>";
 						echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
 						echo "<span class='description'>" . the_excerpt() . "</span>";
 						echo "<span class='price'>" . $product->get_price_html() . "</span>";
-						echo "</div>";
-						echo "</div>";
-						echo "</div>";
-						endwhile;
-					} else {
-						echo __( 'No products found' );
+						if ( $product->is_in_stock() ) : ?>
+
+						<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+
+						<form class="cart cart-form" method="post" enctype='multipart/form-data'>
+							<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+
+							<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+
+							<button type="submit" class="single_add_to_cart_button button alt"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" width="25px" height="25px"/></button>
+
+							<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+						</form>
+
+						<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+
+					<?php endif;
+					echo "</div>";
+					echo "</div>";
+					echo "</div>";
+					endwhile;
+				} else {
+					echo __( 'No products found' );
+				}
+				wp_reset_postdata();
+				?>
+			</div>
+			<div class="row contd-products">
+
+				<?php
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				$cat = (isset($_GET['cat'])) ? str_replace(' ','-',strtolower($_GET['cat'])) : '';
+				if(isset($_GET['product_type']) && $_GET['product_type'] != 'latest') {
+					$gid = mysql_real_escape_string($_GET['product_type']);
+					if( trim(strtolower($gid)) == 'recommended') {
+						$args=array('posts_per_page'=>5, 'post_type'=>'product', 'orderby' => 'date', 'order' => 'DESC', 	'meta_query' => array(
+							array(
+								'key' 		=> '_visibility',
+								'value' 	=> array('catalog', 'visible'),
+								'compare' 	=> 'IN'
+								),
+							array(
+								'key' 	=> '_featured',
+								'value' => 'yes'
+								)
+							),'paged' => $paged, 'product_cat' => $cat); 
 					}
-					wp_reset_postdata();
-					?>
-				</div>
-				<div class="row contd-products">
-					
-					<?php
-					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+					elseif( trim(strtolower($gid)) == 'popular') {
+						$args=array('posts_per_page'=>5, 'post_type'=>'product', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC','paged' => $paged,'product_cat' => $cat); 
+					}
+				}
+				else {
 					$args = array(
 						'post_type' => 'product',
 						'posts_per_page' => 5,
 						'order' => 'DESC',
-						'paged' => $paged
+						'paged' => $paged,
+						'product_cat' => $cat
 						);
-					$i = 1;
-					$loop = new WP_Query( $args );
-					if ( $loop->have_posts() ) {
-						while ( $loop->have_posts() ) : $loop->the_post();
-						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
-						if($imgsrc[0] == null || $imgsrc[0] == '')
-							$image = '';
-						else
-							$image = $imgsrc[0];
-						$class = ($i == 5) ? "col-sm-8" : "col-sm-4";
-						?>
-						<div class="<?php echo $class;?>">
-							<div class="col-sm-12 inner-wrapper" style="background:url(<?php echo $image;?>)">
-								<?php
-								echo "<div class='content col-sm-12'>";
-								echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
-								echo "<span class='description'>" . the_excerpt() . "</span>";
-								echo apply_filters( 'woocommerce_loop_add_to_cart_link', sprintf('<a href="%s" rel="nofollow" data-product_id="%s" data-product_sku="%s" class="%s button product_type_%s">%s</a>', esc_url( $link['url'] ), esc_attr( $product->id ), esc_attr( $product->get_sku() ), esc_attr( $link['class'] ), esc_attr( $product->product_type ), esc_html( $link['label'] ) ), $product, $link );
-								echo "<span class='price'>" . $product->get_price_html() . "</span>";
-								echo "</div>";
-								?>
-							</div>
-						</div>
-						<?php
-						$i++;
-						endwhile;
-					} else {
-						echo __( 'No products found' );
-					}
-					wp_reset_postdata();
+				}
+				$i = 1;
+				$loop = new WP_Query( $args );
+				if ( $loop->have_posts() ) {
+					while ( $loop->have_posts() ) : $loop->the_post();
+					$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+					if($imgsrc[0] == null || $imgsrc[0] == '')
+						$image = '';
+					else
+						$image = $imgsrc[0];
+					$class = ($i == 5) ? "col-sm-8" : "col-sm-4";
 					?>
+					<div class="<?php echo $class;?> img-cov">
+						<div class="col-sm-12 inner-wrapper" style="background:url(<?php echo $image;?>)">
+							<?php
+							echo "<div class='content col-sm-12'>";
+							echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
+							echo "<span class='description'>" . the_excerpt() . "</span>";
+							echo "<span class='price'>" . $product->get_price_html() . "</span>";
+							if ( $product->is_in_stock() ) : ?>
+
+							<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+
+							<form class="cart" method="post" enctype='multipart/form-data'>
+								<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+
+								<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+
+								<button type="submit" class="single_add_to_cart_button button alt"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" width="25px" height="25px"/></button>
+
+								<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+							</form>
+
+							<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+
+						<?php endif;
+						echo "</div>";
+						?>
+					</div>
 				</div>
-				<div class="row navigation"><?php echo easy_wp_pagenavigation( $loop ); ?>
-			</div>
+				<?php
+				$i++;
+				endwhile;
+			} else {
+				echo __( 'No products found' );
+			}
+			wp_reset_postdata();
+			?>
+		</div>
+		<div class="row navigation"><?php echo easy_wp_pagenavigation( $loop ); ?>
 		</div>
 	</div>
+</div>
 </div>
 </div>
 <?php 
@@ -114,6 +195,9 @@ get_footer('all');
 get_footer(); 
 ?>
 <script type="text/javascript">
+	jQuery('#product-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect1",
+	});
 	var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
 	if(last != undefined || last != null) {
 		last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
@@ -122,7 +206,7 @@ get_footer();
                    // selector for the paged navigation (it will be hidden)
                    nextSelector : ".next",    
                    // selector for the NEXT link (to page 2)
-                   itemSelector : ".contd-products",      
+                   itemSelector : ".img-cov",      
                    // selector for all items you'll retrieve
                    loadingText  : "Loading more...", 
                    donetext     : "I think this is the end... :/" ,
@@ -131,5 +215,15 @@ get_footer();
                    padding		: 0,
                    maxPage: last
                });
+	}
+	var productDd = document.getElementById("product-id");
+	productDd.onchange = onProductCatChange;
+	function onProductCatChange() {
+		if ( productDd.selectedIndex > 0 ) {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop/?cat="+productDd.options[productDd.selectedIndex].value;
+		}
+		else {
+			location.href = "<?php echo esc_url( home_url( '/' ) ); ?>shop";
+		}
 	}
 </script>

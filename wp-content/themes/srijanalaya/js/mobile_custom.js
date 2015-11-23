@@ -70,15 +70,12 @@ $('#slider-5').owlCarousel({
 	dots:true,
 	loop:true
 });// slider5 end
-$('.video-icon').click(function (){
-	$(this).fadeOut(function(){
-		$('#featured_video_wrapper iframe').show();
-		$('#featured_video_wrapper video-wrap').show();
-	});
-	
-
-
-});
+// $('.video-icon').click(function (){
+// 	$(this).fadeOut(function(){
+// 		$('#featured_video_wrapper iframe').show();
+// 		$('#featured_video_wrapper video-wrap').show();
+// 	});
+	// });
 
 });// ready end
 })(jQuery);

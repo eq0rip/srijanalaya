@@ -17,11 +17,12 @@ wp_reset_query();
 	</div>
 </div>
 <div class="row" >
- <?php include('gallery-filters.php');?>
+	<?php include('gallery-filters.php');?>
 </div>
 <div class="row no-padding">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 		<?php
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if(isset($_GET['cat'])) {
 			$cate = mysql_real_escape_string($_GET['cat']);
 			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC','tax_query' => array(
@@ -30,10 +31,11 @@ wp_reset_query();
 					'field'    => 'slug',
 					'terms'    => $cate,
 					),
-				),); 
+				),
+			'paged' => $paged, ); 
 		}
 		else {
-			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC'); 
+			$args=array('posts_per_page'=>20, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC','paged' => $paged, ); 
 		}
 		$postslist=new WP_Query($args);  
 		while($postslist->have_posts()) : $postslist->the_post();
@@ -79,6 +81,7 @@ wp_reset_query();
 			endwhile;
 			?>
 		</div>
+		<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
 	</div>
 </div>
 <?php 
@@ -130,21 +133,48 @@ get_footer();
 	});
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){
-		jQuery(this).remove();
-		var hide_project=jQuery(this).text().replace(" x","");
-		hide_project='.'+hide_project;
-		jQuery(hide_project).hide('fast');
-		if(jQuery('#tag_filter_div ul').children().length == 0) {
-			jQuery('.ccontent').show('fast');
-		}
-		else {
-			var choosen_tags=[];
-			var query='#tag_filter_div' +' ul li';
-			jQuery(query).each(function () {
-				var toPush=jQuery(this).text().replace(" x","");
-				choosen_tags.push(toPush);
-				apply_filter(choosen_tags,'.content');
+		if(jQuery(this).hasClass('inactive'))
+		{
+			jQuery(this).removeClass("inactive");
+			jQuery(this).addClass("active");
+			var chooosen_tags=[];
+			var query='#tag_filter_div' + ' ul li';
+			jQuery(query).each(function(){
+				if(jQuery(this).hasClass('active'))
+				{	
+					var tooPush=jQuery(this).text().replace(" x","");
+					chooosen_tags.push(tooPush);
+				}
+				else {
+				
+				}
 			});
+			apply_filter(chooosen_tags,'.content');
 		}
-	});
+		else{
+			jQuery(this).addClass('inactive');
+			jQuery(this).removeClass('active');
+			if(jQuery('#tag_filter_div').find('.active').length==0) {
+				jQuery('.content').show(function (){
+
+					//filter_timeline();
+				});
+			}
+			else {
+
+				var choosen_tags=[];
+				var query='#tag_filter_div' +' ul li';
+				jQuery(query).each(function () {
+					if(jQuery(this).hasClass('active'))
+					{
+						var toPush=jQuery(this).text().replace(" x","");
+						choosen_tags.push(toPush);
+					}
+
+				});
+				apply_filter(choosen_tags,'.content');
+			}
+		}
+	});// click end
+
 </script>

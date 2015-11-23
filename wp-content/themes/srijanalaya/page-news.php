@@ -30,17 +30,21 @@ get_header('all'); ?>
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 			<?php
+			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 			if(isset($_GET['news_type']) && $_GET['news_type'] != 'latest') {
 				$gid = mysql_real_escape_string($_GET['news_type']);
 				if( trim(strtolower($gid)) == 'recommended') {
-					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '='))); 
+					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
+			'paged' => $paged,); 
 				}
 				elseif( trim(strtolower($gid)) == 'popular') {
-					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC'); 
+					$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
+			'paged' => $paged,); 
 				}
 			}
 			else {
-				$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC'); 
+				$args=array('posts_per_page'=>20, 'post_type'=>'news-post', 'orderby' => 'date', 'order' => 'DESC',
+			'paged' => $paged,); 
 			}
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
@@ -60,6 +64,7 @@ get_header('all'); ?>
 			endwhile;
 			?>
 		</div>
+		<div class="row navigation"><?php echo easy_wp_pagenavigation( $postslist ); ?>
 	</div>
 </div>
 <?php 

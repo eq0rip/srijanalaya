@@ -3,6 +3,10 @@
 /**
 * start the customisation
 */
+
+add_action( 'woocommerce_before_shop_loop', 'wc_print_notices', 10 );
+add_action( 'woocommerce_before_single_product', 'wc_print_notices', 10 );
+
 function custom_woo_before_shop_link() {
     add_filter('woocommerce_loop_add_to_cart_link', 'custom_woo_loop_add_to_cart_link', 10, 2);
     add_action('woocommerce_after_shop_loop', 'custom_woo_after_shop_loop');

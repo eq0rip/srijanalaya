@@ -1,6 +1,5 @@
 <?php
 /**
-Template Name: Timeline
  */?>
  <div class="popup" style="display:none">
 
@@ -90,66 +89,65 @@ Template Name: Timeline
  		<div class="col-sm-8" id="tag_filter_div">
  			<span class="active-tags">ACTIVE TAGS: </span>
  			<ul>
+ 				<?php 
+ 				$tags = get_terms('project_tags');
+ 				foreach($tags as $tag){
+ 					?>
 
- 			</ul>
+ 					<li class="remove-tag active"><?php echo $tag->slug; ?>  x</li>
+
+ 					<?php } ?>
+ 				</ul>
+ 			</div>
+ 			<br/>
+ 	
+ 			</div>
  		</div>
- 		<br/>
- 		<span class='tag-filter-title'>FILTER TAGS:</span>
- 		<ul class="fetch_tag">			
- 			<?php 
- 			$tags = get_terms('project_tags');
- 			foreach($tags as $tag) {
- 				?>
- 				<li class="col-sm-1"><a href="javascript:void(0)" onclick="add_filter( '<?php echo $tag->slug ?>' ,'tag_filter_div','0' )"><?php echo $tag->name;?></a></li>
- 				<?php }?>
- 			</ul>
- 		</div>
- 	</div>
- 	<div class="col-sm-9 timeline-wrapper">
- 		<div class="current-date">2015<br/><span class='cur-month'>Oct</span></div>
- 		<section id="cd-timeline" class="cd-container">
- 			<div class="circle"></div>
- 			<?php
- 			$nextEvent = '';
- 			$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
- 				'meta_query' => array(
- 					array(
- 						'key' => 'wpcf-project-date'
- 						),
- 					array(
- 						'key' => 'wpcf-project-date',
- 						'value' => strtotime('today'),
- 						'compare' => '>='
- 						)
- 					),
- 				'orderby' => 'meta_value',
- 				'order' => 'ASC'
- 				); 
- 			$postslist=new WP_Query($args);
- 			while($postslist->have_posts()) : $postslist->the_post();
- 			$nextEvent = $post->ID;
- 			endwhile;
- 			if(!isset($_GET['category']) ){
-
- 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
- 			}
- 			else {
-
- 				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
- 					'tax_query' => array(
+ 		<div class="col-sm-9 timeline-wrapper">
+ 			<div class="current-date">2015<br/><span class='cur-month'>Oct</span></div>
+ 			<section id="cd-timeline" class="cd-container">
+ 				<div class="circle"></div>
+ 				<?php
+ 				$nextEvent = '';
+ 				$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+ 					'meta_query' => array(
  						array(
- 							'taxonomy' => 'project_categories',
- 							'field'    => 'slug',
- 							'terms'    => $_GET['category'],
+ 							'key' => 'wpcf-project-date'
  							),
+ 						array(
+ 							'key' => 'wpcf-project-date',
+ 							'value' => strtotime('today'),
+ 							'compare' => '>='
+ 							)
  						),
- 					'orderby' => 'meta_value', 'order' => 'DESC'); 
- 			}
- 			$postslist=new WP_Query($args);              
- 			$curDate = date('now');
- 			$i = 1;$j=0;
- 			$events = "";
- 			while($postslist->have_posts()) : $postslist->the_post();
+ 					'orderby' => 'meta_value',
+ 					'order' => 'ASC'
+ 					); 
+ 				$postslist=new WP_Query($args);
+ 				while($postslist->have_posts()) : $postslist->the_post();
+ 				$nextEvent = $post->ID;
+ 				endwhile;
+ 				if(!isset($_GET['category']) ){
+
+ 					$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
+ 				}
+ 				else {
+
+ 					$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
+ 						'tax_query' => array(
+ 							array(
+ 								'taxonomy' => 'project_categories',
+ 								'field'    => 'slug',
+ 								'terms'    => $_GET['category'],
+ 								),
+ 							),
+ 						'orderby' => 'meta_value', 'order' => 'DESC'); 
+ 				}
+ 				$postslist=new WP_Query($args);              
+ 				$curDate = date('now');
+ 				$i = 1;$j=0;
+ 				$events = "";
+ 				while($postslist->have_posts()) : $postslist->the_post();
 			$tags=get_the_terms( $post->id, 'project_tags');//tag array
 
 			$tag='';//tag string
@@ -365,74 +363,108 @@ Template Name: Timeline
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){
 		//alert('righ');
-		jQuery(this).remove();
-
-		var hide_project=jQuery(this).text().replace(" x","");
-		hide_project='.'+hide_project;
-		jQuery(hide_project).filter(':visible').hide(function (){
-			if(jQuery('#tag_filter_div ul').children().length == 0) {
-				jQuery('.cd-timeline-block').show(function (){
-					
-					filter_timeline();
-				});
-			}
-			else {
-				var choosen_tags=[];
-				var query='#tag_filter_div' +' ul li';
-				jQuery(query).each(function () {
-					var toPush=jQuery(this).text().replace(" x","");
-					choosen_tags.push(toPush);
-
-				});
-				apply_filter(choosen_tags,'.cd-timeline-block');
-			}
-
-		});
-
-	});
-
-
-
-	jQuery(document).ready(function() {
-		jQuery('.alert-icon').click(function(){
-			jQuery('.transbg_popup').fadeIn(200,function(){
-				jQuery('.popup').css({'display':'flex'}).fadeIn(200);				
-			})
-		});
-		jQuery("#submit").click(function(){
-			var p_id = jQuery("#p_id").val();
-			var email = jQuery("#email").val();
-			var dataString = 'p_id='+ p_id + '&email='+ email;
-			if(email=='')
-			{
-				alert("Please enter email");
-			}
-			else
-			{
-
-				jQuery.ajax({
-					type: "POST",
-					url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
-					data: dataString,
-					cache: false,
-					success: function(result){
-						alert(result);
-						jQuery('.popup').fadeOut(300,function(){
-							jQuery('.transbg_popup').fadeOut(200);
-						});
-
-					}
-				});
-			}
-			return false;
-
-		});
-		var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html();
-		if(bottomDate != undefined) {
-			var curr = bottomDate.split(" ");
-			jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+		if(jQuery(this).hasClass('inactive'))
+		{
+			//alert('has inactive');
+			jQuery(this).removeClass("inactive");
+			jQuery(this).addClass("active");
+			var chooosen_tags=[];
+			var query='#tag_filter_div' + ' ul li';
+			jQuery(query).each(function(){
+				if(jQuery(this).hasClass('active'))
+				{	
+					//alert(jQuery(this).text());
+					var tooPush=jQuery(this).text().replace(" x","");
+					chooosen_tags.push(tooPush);
+					console.log(chooosen_tags);
+					//alert(tooPush);
+				}
+				else {
+					//alert('chaina');
+				}
+			});
+			
+			//alert('here');
+			apply_filter(chooosen_tags,'.cd-timeline-block');
 		}
+		else{
+			jQuery(this).addClass('inactive');
+			jQuery(this).removeClass('active');
+			// var hide_project=jQuery(this).text().replace(" x","");
+			// hide_project='.'+hide_project;
+			// jQuery(hide_project).filter(':visible').hide("clip",function (){
+				if(jQuery('#tag_filter_div').find('.active').length==0) {
+					jQuery('.cd-timeline-block').show(function (){
+
+						filter_timeline();
+					});
+				}
+				else {
+
+					var choosen_tags=[];
+					var query='#tag_filter_div' +' ul li';
+					jQuery(query).each(function () {
+						if(jQuery(this).hasClass('active'))
+						{
+							var toPush=jQuery(this).text().replace(" x","");
+							choosen_tags.push(toPush);
+						}
+
+					});
+					console.log(choosen_tags);
+					apply_filter(choosen_tags,'.cd-timeline-block');
+				}
+
+			//}); //hide end
+		}
+
+
+
+
+	});// click end
+
+
+
+jQuery(document).ready(function() {
+	jQuery('.alert-icon').click(function(){
+		jQuery('.transbg_popup').fadeIn(200,function(){
+			jQuery('.popup').css({'display':'flex'}).fadeIn(200);				
+		})
 	});
+	jQuery("#submit").click(function(){
+		var p_id = jQuery("#p_id").val();
+		var email = jQuery("#email").val();
+		var dataString = 'p_id='+ p_id + '&email='+ email;
+		if(email=='')
+		{
+			alert("Please enter email");
+		}
+		else
+		{
+
+			jQuery.ajax({
+				type: "POST",
+				url: "<?php echo get_template_directory_uri();?>/subscribe_user.php",
+				data: dataString,
+				cache: false,
+				success: function(result){
+					alert(result);
+					jQuery('.popup').fadeOut(300,function(){
+						jQuery('.transbg_popup').fadeOut(200);
+					});
+
+				}
+			});
+		}
+		return false;
+
+	});
+	var bottomDate = jQuery('.first').children('.cd-timeline-content').children('.content').children('.small-text').children('.time-to-event').html();
+	if(bottomDate != undefined) {
+		var curr = bottomDate.split(" ");
+		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
+	}
+});
 jQuery(".postform").transformSelect({
 	dropDownClass: "transformSelect transformSelect1",
 });
