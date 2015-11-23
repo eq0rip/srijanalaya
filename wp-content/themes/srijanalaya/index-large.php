@@ -12,8 +12,38 @@
  * @package nirmal
  */
 
-get_header(); 
-?>
+get_header();?>
+<script>
+	var site_url='<?php echo site_url();?>'
+	var duration;var interval;
+</script>
+
+<?php 
+if(isset($_GET['slider1In'])){
+	?>
+
+	<script>
+//alert('yes');
+
+var effect1In='<?php echo $_GET["slider1In"]?>';
+var effect2In='<?php echo $_GET["slider2In"]?>';
+duration='<?php echo $_GET["duration"]?>';
+interval='<?php echo $_GET["interval"]?>';
+//alert(effect2In);
+//alert(effect1In);
+
+</script>
+<?php }
+else { ?>
+<script>
+	duration=1.5;
+	interval=2;
+</script>
+<?php }?>
+<script>
+	// alert(duration);
+	// alert(interval);
+</script>
 
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
@@ -296,4 +326,84 @@ get_header();
 	jQuery('.video-wrap').click(function() { 
 		player.api('play');
 	});
+</script>
+<script>
+	//owl sync
+	var query=duration+'s';
+	jQuery('<style>.animated {animation-duration:'+query+' !important;}</style>').appendTo('head'); 
+	interval=interval*1000;
+	var jQueryowl1 = jQuery("#slider-1"),
+	jQueryowl2 = jQuery("#slider-2"),
+	flag = false,
+	duration_sync = 300;
+	var bar=2;
+	var car ='#bar1';
+	jQuery('#bar1').css({'width':'100%','height':'100%'});
+	jQueryowl1
+	.owlCarousel({
+		items: 1,
+		margin: 0,
+		autoplay:true,
+		autoplayTimeout:interval,
+  //animateOut:'fadeOutLeftBig',
+  //animateIn: 'fadeIn',
+
+    animateIn: effect1In,//===one
+ //animateOut: 'slideOutRight',
+
+// animateIn: 'bounceInDown',
+
+  //animateOut:'hinge',
+
+// animateIn:'swing',
+//animateIn:'fadeIn', //==2nd
+//animateIn:'flip',
+loop:true
+})
+	.on('changed.owl.carousel', function (e) {
+		jQuery(car).css({'width':'0px','height':'0px'});
+		if(bar==4)
+			bar=1;
+		car='#bar'+bar;
+		jQuery(car).css({'width':'100%','height':'100%'});
+		bar++;
+		if (!flag) {
+			flag = true;
+
+			jQueryowl2.trigger('to.owl.carousel', [e.page.index, duration_sync, true]);
+
+			flag = false;
+		}
+	});
+
+	jQueryowl2
+	.owlCarousel({
+		margin: 0,
+		items: 1,
+		loop:true,
+ // animateOut:'slideOutLeft',
+ // animateIn: 'slideInRight',
+ animateIn: effect2In,
+ animateOut:'slideOutRight',
+ //animateOut: 'slideOutLeft',
+
+})
+	.on('changed.owl.carousel', function (e) {
+		if (!flag) {
+			flag = true;    
+			jQueryowl1.trigger('to.owl.carousel', [e.page.index, duration_sync, true]);
+			flag = false;
+		}
+	});
+//====owl sync end
+
+function animationChange(one,two,dura,interv){
+	//alert(z);
+	window.location.href=site_url+'?slider1In='+one+'&slider2In='+two+'&duration='+dura+'&interval='+interv;
+}
+jQuery('.duration_up').click(function (){
+	var values=parseFloat(jQuery('#duration').val());
+	alert(values);
+})
+
 </script>
