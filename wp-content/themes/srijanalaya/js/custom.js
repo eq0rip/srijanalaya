@@ -109,6 +109,9 @@ $('.close-newsletter').click(function() {
         $(this).children('li').addClass('open');
         $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
+      },
+      function() {
+        $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
         $(this).children('li').removeClass('open');
       });
