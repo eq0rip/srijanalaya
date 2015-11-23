@@ -323,7 +323,7 @@ function filter_timeline() {
 
   jQuery('#cd-timeline').find('.cd-timeline-block').filter(':visible').each(function (){
    if(sort==0){
-  // jQuery(this).find('.alert-icon').css{('float':'right')};
+  jQuery(this).find('.alert-icon').css{('float':'right')};
   if(jQuery(this).find('.cd-timeline-content').hasClass('project-wrapper-left-wrap')){
     jQuery(this).find('.cd-timeline-content').removeClass('project-wrapper-left-wrap').addClass('project-wrapper-right-wrap');
   }
@@ -349,7 +349,7 @@ function filter_timeline() {
  }
 }
 else {
-  jQuery(this).find('.alert-icon').css({'left':'19px'});
+  jQuery(this).find('.alert-icon').css({'float':'left !important','left':'19px !important'});
   if(jQuery(this).find('.cd-timeline-content').hasClass('first'))
   {
     jQuery(this).find('.cd-timeline-content').removeClass('first');
