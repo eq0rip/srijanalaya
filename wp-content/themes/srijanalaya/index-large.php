@@ -149,7 +149,7 @@ else { ?>
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+				<button type="button" class="btn btn-default btn-lg">View News</button>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
@@ -210,7 +210,7 @@ else { ?>
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+				<button type="button" class="btn btn-default btn-lg">View News</button>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
@@ -228,7 +228,7 @@ else { ?>
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+				<button type="button" class="btn btn-default btn-lg">View Product</button>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
@@ -244,7 +244,7 @@ else { ?>
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+				<button type="button" class="btn btn-default btn-lg">View Art</button>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('http://facebook.com/art');">Art</button>

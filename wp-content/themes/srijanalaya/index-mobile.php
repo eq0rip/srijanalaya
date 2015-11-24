@@ -67,15 +67,30 @@ if(( !is_mobile() )) {
 			<div class="overlay"></div>
 			<div class="item-wrapper">
 
-				<h1>Upcoming <span class="key">Project</span></h1>
+				<h1>Upcoming <span class="key">News</span></h1>
 				<h2> Icies Veil Liberois Pharetra</h2>
 				
-				<button type="button" class="btn btn-default btn-lg">View Project</button>
+				<button type="button" class="btn btn-default btn-lg">View News</button>
 
 			</div>
 
 			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
+			</span>
+		</div>
+		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
+			<div class="overlay"></div>
+			<div class="item-wrapper">
+				
+				<h1>Upcoming <span class="key">Resource</span></h1>
+				<h2> Icies Veil Liberois Pharetra</h2>
+				
+				<button type="button" class="btn btn-default btn-lg">View Resource</button>
+
+			</div>
+
+			<span class="post-navigate">
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resource');">Resource</button>
 			</span>
 		</div>
 		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
@@ -90,22 +105,7 @@ if(( !is_mobile() )) {
 			</div>
 
 			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
-			</span>
-		</div>
-		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
-			<div class="overlay"></div>
-			<div class="item-wrapper">
-				
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				
-				<button type="button" class="btn btn-default btn-lg">View Project</button>
-
-			</div>
-
-			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">News</button>
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');">Project</button>
 			</span>
 		</div>
 
@@ -128,7 +128,7 @@ if(( !is_mobile() )) {
 			</div>
 
 			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
 			</span>
 		</div>
 		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
@@ -143,7 +143,7 @@ if(( !is_mobile() )) {
 			</div>
 
 			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
 			</span>
 		</div>
 		<div class="item" style="background:url(<?php echo get_template_directory_uri();?>/images/lboy.png);background-size:cover;">
@@ -158,7 +158,7 @@ if(( !is_mobile() )) {
 			</div>
 
 			<span class="post-navigate">
-				<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Art</button>
+				<button class="btn btn-default btn-lg semicircle" onclick="goTo('http://facebook.com/art');">Art</button>
 			</span>
 		</div>
 	</div>

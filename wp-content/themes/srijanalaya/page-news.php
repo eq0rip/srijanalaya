@@ -15,7 +15,7 @@ get_header('all'); ?>
 		<div class="col-xs-3 header-text">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
-			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>
 		</div>
 	</div>
 <?php endif;endwhile;?>

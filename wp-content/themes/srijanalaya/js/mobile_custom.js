@@ -1,6 +1,12 @@
 (function($) {
 
 	$(document).ready(function(){
+		$('.newsletter').click(function() {
+			$('.newsletter-popup').animate(1000).css('display','flex');
+		});
+		$('.close-newsletter').click(function() {
+			$('.newsletter-popup').fadeOut();
+		});
 
 		var $owl1 = $("#slider-1"),
 		$owl2 = $("#slider-2"),
@@ -81,29 +87,29 @@ $('#slider-5').owlCarousel({
 })(jQuery);
 function change_language(x,y) {
 	alert(x);
-  var n = y.search("/srijanalaya/ne"); 
-  if(n<0)
-  {
+	var n = y.search("/srijanalaya/ne"); 
+	if(n<0)
+	{
   //alert('ne not found');
   if(x=='ne')
   {
-    link=y.replace('/srijanalaya/','/srijanalaya/ne/');
+  	link=y.replace('/srijanalaya/','/srijanalaya/ne/');
   }
   else
   {
-    link=y;
+  	link=y;
   }
 }
 else {
  // alert('ne found');
  if(x=='ne')
  {
-  link=y;
-}
-else
-{
-  link=y.replace('/ne/','/en/');
-}
+ 	link=y;
+ }
+ else
+ {
+ 	link=y.replace('/ne/','/en/');
+ }
 }
 
 window.location=link;

@@ -6,11 +6,13 @@ wp_reset_query();
 	<div class="row">
 		<?php 
 		$bigimg = types_render_field('big-banner-imager', array('raw' => true));
+		if($bigimg != '') {
 		?>
 		<div class="col-sm-12 wrapper banner" style="background-image: url(<?php echo $bigimg;?>);">
 			<div class="banner-content">
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 	<div class="row">
 		<div class="mid-nav">
