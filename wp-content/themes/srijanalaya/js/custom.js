@@ -28,7 +28,7 @@ $('.go-down').click(function() {
 }
 );
 
-
+if(!$('#shopwrap')) {
 var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
   if(last != undefined || last != null) {
     last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
@@ -48,7 +48,7 @@ var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
                });
   }
 
-
+}
 
 $('.drop').click(function() {
   if($('.navbar').hasClass( "nav-bar-fixed" )) {

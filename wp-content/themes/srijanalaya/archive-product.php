@@ -33,7 +33,7 @@ wp_reset_query();
 				</div>
 			</div>
 		</div>
-		<div class="page-content">
+		<div class="page-content" id="shopwrap">
 			<div class="col-sm-12 no-padding">
 				<div class="featured row">
 					<?php
