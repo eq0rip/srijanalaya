@@ -46,15 +46,12 @@ register_taxonomy(
     )
   );
 function load_locale() {
-
-  $file = get_template_directory_uri().'/localize.json';
-
-  $json = json_decode(file_get_contents($file),true);
-
- // echo $json['read_more']['np'];
-//print_r($json);
-  //file_put_contents($file, json_encode($json));
-  return $json;
+  global $wpdb;
+$data = $wpdb->get_results("SELECT *  FROM localize");
+foreach ($data as $key => $value) {
+  $temp_locale[$value->locale_key]=array('en'=>$value->en,'ne'=>$value->ne);
+}
+return $temp_locale;
 }
 $sri_locale = load_locale();
 $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];

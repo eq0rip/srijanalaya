@@ -53,7 +53,7 @@ get_header();
 
 				<?php 
 				$data = $wpdb->get_results("SELECT *  FROM localize");
-
+//print_r($data);
 				foreach ($data as $key => $value) { ?>
 				<tr>
 					<td><?php echo $value->locale_key;?></td>
@@ -61,6 +61,7 @@ get_header();
 					<td><?php echo $value->en;?></td>
 				</tr>
 				<?php }?>
+
 
 			</table>
 		</div>
