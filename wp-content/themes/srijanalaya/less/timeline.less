@@ -97,6 +97,7 @@ header h1 {
     font-family: 'Helvetica';
   }
 
+
 }
 .popup {
  height:100%;
@@ -200,6 +201,7 @@ header h1 {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAO0lEQVQYlY3KuREAIAwEMfff4sau44hgePwQKJMB6ri77CcBdZypjHtK453CGKUnZumIVVqxS4DsJwEaNVZlfKeJOMkAAAAASUVORK5CYII=) repeat;
   display: flex;
   justify-content: center;
+
   span {
     position: relative;
     top: 32%;
@@ -212,6 +214,7 @@ header h1 {
       font-size: 13px;
     }
   }
+
 }
 .cd-timeline-img.cd-movie {
   background: #c03b44;
@@ -313,6 +316,9 @@ header h1 {
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
   font-size: 13px;
+  color: #929292 !important;
+  font-family: 'Helvetica' !important;
+  font-weight: normal;
   // font-size: 0.8125rem;
 }
 .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
@@ -641,6 +647,12 @@ header h1 {
 }
 .cd-timeline-block {
   height: 180px;
+  &:hover {
+    .cd-timeline-img {
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQ0lEQVQYlY3KOREAIAwEwDiJEBxEBu5TI+CoYHjyFdstKQsyo3VQJSlLHFcK45nc+CYzWumLXrpilHbMkrKAKklZMAFmv+oRMko1WAAAAABJRU5ErkJggg==) repeat !important;
+
+    }
+  }
 }
 .cd-picture {
   margin-top: 50px;

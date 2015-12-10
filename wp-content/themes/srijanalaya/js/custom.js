@@ -1,39 +1,43 @@
 (function($) {
   $(window).load(function(){
     $('.loader').fadeOut(500);
+    
   });
   $(document).ready(function($){
+    
 
-      
+    $('[data-toggle="tooltip"]').tooltip();   
+    
 
-$('#left-col-first').height($(window).height() - 125);
-$('#right-col-first').height($(window).height() - 125);
 
-$('.video-wrap').click(function() {
-  $('.bottom-container2 iframe').show();
-  $(this).hide();
-});
+    $('#left-col-first').height($(window).height() - 125);
+    $('#right-col-first').height($(window).height() - 125);
 
-$('.back-to-top').click(function() {
-  $('html,body').animate({
-   scrollTop: $('body').offset().top
- }, 1500);
-}
-);
+    $('.video-wrap').click(function() {
+      $('.bottom-container2 iframe').show();
+      $(this).hide();
+    });
 
-$('.go-down').click(function() {
-  $('html,body').animate({
-   scrollTop: $('#section2').offset().top
- }, 1000);
-}
-);
+    $('.back-to-top').click(function() {
+      $('html,body').animate({
+       scrollTop: $('body').offset().top
+     }, 1500);
+    }
+    );
 
-if(!$('#shopwrap')) {
-var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
-  if(last != undefined || last != null) {
-    last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
-    jQuery('.page-content').infinitescroll({
-      navSelector  : ".navigation",            
+    $('.go-down').click(function() {
+      $('html,body').animate({
+       scrollTop: $('#section2').offset().top
+     }, 1000);
+    }
+    );
+
+    if(!$('#shopwrap')) {
+      var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
+      if(last != undefined || last != null) {
+        last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
+        jQuery('.page-content').infinitescroll({
+          navSelector  : ".navigation",            
                    // selector for the paged navigation (it will be hidden)
                    nextSelector : ".next",    
                    // selector for the NEXT link (to page 2)
@@ -45,56 +49,69 @@ var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
                    bufferPx     : 40,
                    padding    : 0,
                    maxPage: last
-               });
-  }
+                 });
+      }
 
-}
+    }
 
-$('.drop').click(function() {
-  if($('.navbar').hasClass( "nav-bar-fixed" )) {
-    $('.navbar').removeClass('nav-bar-fixed');
-    $(this).css({'top':'0'});
-    $('.fa-caret-up').hide();
-    $('.fa-caret-down').show();
-  }
-  else {
-    $('.navbar').addClass('nav-bar-fixed');
-    $('.navbar').css({'z-index':'11'});
-    $(this).css({'top':'35px'});
-    $('.fa-caret-up').show();
-    $('.fa-caret-down').hide();
-  }
-}
-);
-$(window).scroll(function() {
-   $('.navbar').removeClass('nav-bar-fixed');
-    $('.drop').css({'top':'0'});
-    $('.fa-caret-up').hide();
-    $('.fa-caret-down').show();
-});
-$('.social-expand-buttons').hover(function() {
-  $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
-},
-function() {
-  $('.social-expand-buttons .share-buttons').animate(1000).css('display','none');
-});
-$('.lang-select').transformSelect({
-  dropDownClass: "transformSelect languageSelector",
-});
-$('.newsletter').click(function() {
-  $('.newsletter-popup').animate(1000).css('display','flex');
-});
-$('.close-newsletter').click(function() {
-  $('.newsletter-popup').fadeOut();
-});
-      //datepicker
-      $('.dropdate').dropdate({
-        dateFormat:'mm/dd/yyyy'
-      });
+    $('.drop').click(function() {
+      if($('.navbar').hasClass( "nav-bar-fixed" )) {
+        $('.navbar').removeClass('nav-bar-fixed');
+        $(this).css({'top':'0'});
+        $('.fa-caret-up').hide();
+        $('.fa-caret-down').show();
+      }
+      else {
+        $('.navbar').addClass('nav-bar-fixed');
+        $('.navbar').css({'z-index':'11'});
+        $(this).css({'top':'35px'});
+        $('.fa-caret-up').show();
+        $('.fa-caret-down').hide();
+      }
+    }
+    );
+    $(window).scroll(function() {
+     $('.navbar').removeClass('nav-bar-fixed');
+     $('.drop').css({'top':'0'});
+     $('.fa-caret-up').hide();
+     $('.fa-caret-down').show();
+   });
+    $('.social-expand-buttons').hover(function() {
+      $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
+    },
+    function() {
+      $('.social-expand-buttons .share-buttons').animate(1000).css('display','none');
+    });
+    $('.lang-select').transformSelect({
+      dropDownClass: "transformSelect languageSelector",
+    });
+    $('.newsletter').click(function() {
+      $('.newsletter-popup').animate(1000).css('display','flex');
+    });
+    $('.close-newsletter').click(function() {
+      $('.newsletter-popup').fadeOut();
+    });
+      //  $('.dropdate').dropdate({
+      //   dateFormat:'mm/dd/yyyy'
+      // });
+var yesterdayDate = new Date();  
 
-      $(document).on('click', '.yamm .dropdown-menu', function(e) {
-        e.stopPropagation()
-      });
+$( ".datepicker11" ).datepicker();
+$(".datepicker11").datepicker("setDate",yesterdayDate);
+$( ".datepicker11" ).datepicker("option", "dateFormat", 'yy/mm/dd');
+var today=new Date();
+var tempdate=today.getDate();
+tempdate--;
+today.setDate(tempdate);
+$( ".datepicker12" ).datepicker();
+$(".datepicker12").datepicker("setDate",today);
+$( ".datepicker12" ).datepicker("option", "dateFormat", 'yy/mm/dd');
+
+
+
+$(document).on('click', '.yamm .dropdown-menu', function(e) {
+  e.stopPropagation()
+});
 
       //category dropdown timeline page change
       var temp=1;
@@ -112,24 +129,35 @@ $('.close-newsletter').click(function() {
 
       $('.transformSelect li').addClass('open');
       $('.transformSelect').hover(function() {
+        if($(this).hasClass('transformSelect3')){return;}
         $(this).children('li').addClass('open');
         $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
       },
       function() {
+        if($(this).hasClass('transformSelect3')){return;}
+
         $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
         $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
         $(this).children('li').removeClass('open');
+
+        //alert('ssss');
       });
       $('.subscribe-inner').click(function() {
         $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
+      });
+      $('.transformSelect3').hover(function(){
+        $(this).find('.transformSelectDropdown').addClass('drop-on').removeClass('drop-off');
+      },
+      function(){
+
       });
 
 //owl sync
 var $owl1 = $("#slider-1"),
 $owl2 = $("#slider-2"),
 flag = false,
-duration = 300;
+duration = 50;
 var bar=2;
 var car ='#bar1';
 $('#bar1').css({'width':'100%','height':'100%'});
@@ -145,7 +173,7 @@ $owl1
     // animateIn: 'slideInLeft',//===one
  //animateOut: 'slideOutRight',
 
-// animateIn: 'bounceInDown',
+//animateIn: 'bounceInDown',
 
   //animateOut:'hinge',
 
@@ -268,6 +296,7 @@ $('a[href*=#]').on('click', function(event){
   }
 });
 
+
 })(jQuery);
 function change_language(x,y) {
   var n = y.search("/srijanalaya/ne/"); 
@@ -311,11 +340,11 @@ function add_filter(x,div,r) {
     return;
   }
   div='#'+div+' ul';
-  jQuery(div).append('<li class="remove-tag">'+x+'  x</li>');
+  jQuery(div).append('<li class="remove-tag">'+x+'</li>');
 
   var query=div+' li';
   jQuery(query).each(function () {
-    var toPush=jQuery(this).text().replace(" x","");
+    var toPush=jQuery(this).text().replace("","");
     choosen_tags.push(toPush );
   });
 
@@ -425,9 +454,7 @@ jQuery(window).scrollTop(jQuery(window).scrollTop() + 1);
 }
 
 
-jQuery('.date_value').on("click", function() {
-  jQuery('.date_value_dropdown').slideToggle(300);
-});
+
 
 
 function apply_date_filter(x) {
@@ -478,7 +505,8 @@ if(x=='custom'){
 
 }
 jQuery('#date_value_main').text(from_Date+' to '+to_Date);
-jQuery('.date_value_dropdown').hide();
+//jQuery('.date_value_dropdown').hide();
+jQuery('.drop-on').addClass('drop-off').removeClass('drop-on');
 
 }
 function filter_projects () {

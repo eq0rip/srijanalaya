@@ -12,7 +12,7 @@ get_header('all'); ?>
 	if(strtolower(trim(get_the_title()))=='news') :
 		?>
 	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
-		<div class="col-xs-3 header-text">
+		<div class="col-xs-6 col-md-3 header-text">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
 			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>

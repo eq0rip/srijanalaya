@@ -15,77 +15,9 @@
 get_header();?>
 <script>
 	var site_url='<?php echo site_url();?>'
-	var duration;var interval;
+	
 </script>
 
-<?php 
-if(isset($_GET['slider1In'])){
-	?>
-
-	<script>
-//alert('yes');
-
-var effect1In='<?php echo $_GET["slider1In"]?>';
-var effect2In='<?php echo $_GET["slider2In"]?>';
-duration='<?php echo $_GET["duration"]?>';
-interval='<?php echo $_GET["interval"]?>';
-//alert(effect2In);
-//alert(effect1In);
-
-</script>
-<?php }
-else { ?>
-<script>
-	duration=1.5;
-	interval=2;
-	effect1In='fadeInRight';
-	effect2In='fadeIn';
-</script>
-<?php }?>
-<script>
-	if(effect1In.search('In')>0)
-	{
-		effect1Out=effect1In.replace('In','Out');
-	}
-	else {
-		if(effect1In.search("Out")>0)
-		{
-			effect1Out=effect1In.replace('Out','In');	
-		}
-	}
-	if(effect1In.search("Left")>0)
-	{
-		effect1Out=effect1Out.replace('Left','Right');
-	}
-	else {
-		if(effect1In.search("Right")>0)
-		{
-			effect1Out=effect1Out.replace('Right','Left');	
-		}
-	}
-	//////////
-
-	if(effect2In.search('In')>0)
-	{
-		effect2Out=effect2In.replace('In','Out');
-	}
-	else {
-		if(effect2In.search("Out")>0)
-		{
-			effect2Out=effect2In.replace('Out','In');	
-		}
-	}
-	if(effect2In.search("Left")>0)
-	{
-		effect2Out=effect2Out.replace('Left','Right');
-	}
-	else {
-		if(effect2In.search("Right")>0)
-		{
-			effect2Out=effect2Out.replace('Right','Left');	
-		}
-	}		
-</script>
 
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
@@ -117,7 +49,7 @@ else { ?>
 					<h1><?php echo $titles[0];?></h1>
 					<h2><?php echo $titles[1];?></h2>
 					<p><?php echo $shortdesc[$i]; ?></p>
-					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg">Read more</a>
+					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg"><?php echo $sri_locale['read_more'][$lang];?></a>
 				</div>
 				<?php } ?>
 
@@ -131,10 +63,7 @@ else { ?>
 			<div id="slider-2" class="owl-carousel">
 				<?php for($i=0;$i<3;$i++){ ?>
 				<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
-					<span class="overlay11">
-
-					</span>
-
+					
 				</div>
 				<?php } ?>	
 			</div>
@@ -146,10 +75,42 @@ else { ?>
 	<div class="col-sm-6 quarter">
 		<div class="col-xs-6 fullheight section-container">
 			<div class="section-inner">
+				<?php
+				$args=array('posts_per_page' => 1, 'post_type'=>'project', 'orderby' => 'date', 'order' => 'DESC');
+				$postslist=new WP_Query($args);
+				while($postslist->have_posts() ) :$postslist->the_post();
+				
+				
+				$nextEvent=$post->ID;
+				
+				endwhile;
+
+				wp_reset_query();
+				$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+					'meta_query' => array(
+						array(
+							'key' => 'wpcf-project-date'
+							),
+						array(
+							'key' => 'wpcf-project-date',
+							'value' => strtotime('today'),
+							'compare' => '>='
+							)
+						),
+					'orderby' => 'meta_value',
+					'order' => 'ASC'
+					); 
+				$postslist=new WP_Query($args);
+				while($postslist->have_posts()) : $postslist->the_post();
+				$nextEvent = $post->ID;
+				
+				endwhile;
+				
+				?>
 				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View News</button>
+				<h2> <?php echo get_the_title($nextEvent);?></h2>
+				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
+				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo $sri_locale['view_project'][$lang];?></a>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
@@ -158,17 +119,29 @@ else { ?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container img-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/lboy.png" class="outimg" alt="">
+			<img src="<?php echo get_post_meta($nextEvent,'wpcf-long',true);?>" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
+
 	</div>
 	<div class="col-sm-6 quarter2">
 		<div class="col-xs-6 fullheight section-container">
 			<div class="section-inner">
+				<?php
+				wp_reset_query();
+				$args=array('posts_per_page' => 1, 'post_type'=>'resource', 'orderby' => 'date', 'order' => 'DESC');
+				$postslist=new WP_Query($args);
+				while($postslist->have_posts() ) :$postslist->the_post();
+				
+				
+				$nextEvent=$post->ID;
+				
+				endwhile;
+				?>
 				<h1>Upcoming <span class="key">Resource</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Resource</button>
+				<h2> <?php echo get_the_title($nextEvent);?></h2>
+				<p><?php echo get_post_meta( $nextEvent,'wpcf-short-description' , true );?></p>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>">View Resource</a>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');">Resource</button>
@@ -176,7 +149,7 @@ else { ?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container img-container">
-			<img src="<?php echo get_template_directory_uri();?>/images/rboy.png" class="outimg" alt="">
+			<img src="<?php echo get_post_meta($nextEvent,'wpcf-long',true);?>" class="outimg" alt="">
 			<span class="overlay"></span>
 		</div>
 	</div>
@@ -185,16 +158,53 @@ else { ?>
 <div class="section fullheight" id="section3">
 	<div class="transparent"></div>
 	<div class="col-sm-6 quarter3">
+		<?php
+		wp_reset_query();
+		$args=array('posts_per_page' => 1, 'post_type'=>'project','orderby' => 'date', 'order' => 'DESC');
+		$postslist=new WP_Query($args);
+		while($postslist->have_posts() ) :$postslist->the_post();
+
+
+		$nextEvent=$post->ID;
+
+		endwhile;
+
+		wp_reset_query();
+		$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+			'meta_query' => array(
+				array(
+					'key' => 'wpcf-project-date'
+					),
+				array(
+					'key' => 'wpcf-project-date',
+					'value' => strtotime('today'),
+					'compare' => '<='
+					)
+				),
+			'orderby' => 'meta_value',
+			'order' => 'ASC'
+			); 
+		$postslist=new WP_Query($args);
+		while($postslist->have_posts()) : $postslist->the_post();
+		$nextEvent = $post->ID;
+
+		endwhile;
+		wp_reset_query();
+
+		?>
+
 		<div class="col-xs-6 fullheight section-container odd">
 			<div class="img-wrap">
-				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<img src="<?php echo get_post_meta($nextEvent,'wpcf-long',true);?>" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Projects</button>
+				<h1>Recent <span class="key">Project</span></h1>
+				<h2> <?php echo get_the_title($nextEvent);?></h2>
+				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>">View Project</a>
+
+				
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');">Project</button>
@@ -202,15 +212,28 @@ else { ?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container even">
+			<?php
+			wp_reset_query();
+			$args=array('posts_per_page' => 1, 'post_type'=>'news-post','orderby' => 'date', 'order' => 'DESC');
+			$postslist=new WP_Query($args);
+			while($postslist->have_posts() ) :$postslist->the_post();
+
+
+			$nextEvent=$post->ID;
+
+
+			endwhile;
+			?>
 			<div class="img-wrap">
-				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<img src="<?php echo get_post_meta($nextEvent,'wpcf-home-image',true);?>" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
+
+				<h1>Recent <span class="key">News</span></h1>
+				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View News</button>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>">View News</a>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
@@ -220,15 +243,28 @@ else { ?>
 	</div>
 	<div class="col-sm-6 quarter4">
 		<div class="col-xs-6 fullheight section-container odd">
+			<?php
+			wp_reset_query();
+			$args=array('posts_per_page' => 1, 'post_type'=>'product','orderby' => 'date', 'order' => 'DESC');
+			$postslist=new WP_Query($args);
+			while($postslist->have_posts() ) :$postslist->the_post();
+
+
+			$nextEvent=$post->ID;
+
+
+			endwhile;
+			?>
 			<div class="img-wrap">
-				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+
+				<img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($nextEvent) );?>" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Product</button>
+				<h1>Product <span class="key">Showcase</span></h1>
+				<h2> <?php echo get_the_title($nextEvent);?></h2>
+				<p><?php echo the_excerpt();?></p>
+				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg">View Product</a>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
@@ -368,111 +404,9 @@ else { ?>
 	jQuery('.video-wrap').click(function() { 
 		player.api('play');
 	});
-</script>
-<script>
-	//owl sync
-	var query=duration+'s';
-	jQuery('<style>.animated {animation-duration:'+query+' !important;}</style>').appendTo('head'); 
-	interval=interval*1000;
-	var jQueryowl1 = jQuery("#slider-1"),
-	jQueryowl2 = jQuery("#slider-2"),
-	flag = false,
-	duration_sync = 300;
-	var bar=2;
-	var car ='#bar1';
-	jQuery('#bar1').css({'width':'100%','height':'100%'});
-	jQueryowl1
-	.owlCarousel({
-		items: 1,
-		margin: 0,
-		autoplay:true,
-		autoplayTimeout:interval,
-  //animateOut:'fadeOutLeftBig',
-  //animateIn: 'fadeIn',
 
-    animateIn: effect1In,//===one
-  //  animateOut:effect1Out,
- //animateOut: 'slideOutRight',
 
-// animateIn: 'bounceInDown',
 
-  //animateOut:'hinge',
-
-// animateIn:'swing',
-//animateIn:'fadeIn', //==2nd
-//animateIn:'flip',
-loop:true
-})
-	.on('changed.owl.carousel', function (e) {
-		jQuery(car).css({'width':'0px','height':'0px'});
-		if(bar==4)
-			bar=1;
-		car='#bar'+bar;
-		jQuery(car).css({'width':'100%','height':'100%'});
-		bar++;
-		if (!flag) {
-			flag = true;
-
-			jQueryowl2.trigger('to.owl.carousel', [e.page.index, duration_sync, true]);
-
-			flag = false;
-		}
-	});
-
-	jQueryowl2
-	.owlCarousel({
-		margin: 0,
-		items: 1,
-		loop:true,
- // animateOut:'slideOutLeft',
- // animateIn: 'slideInRight',
- animateIn: effect2In,
- animateOut:effect2Out,
- //animateOut:'slideOutRight',
- //animateOut: 'slideOutLeft',
-
-})
-	.on('changed.owl.carousel', function (e) {
-		if (!flag) {
-			flag = true;    
-			jQueryowl1.trigger('to.owl.carousel', [e.page.index, duration_sync, true]);
-			flag = false;
-		}
-	});
-//====owl sync end
-
-function animationChange(one,two,dura,interv){
-	//alert(z);
-	window.location.href=site_url+'?slider1In='+one+'&slider2In='+two+'&duration='+dura+'&interval='+interv;
-}
-jQuery('.duration_up').click(function (){
-	//alert('sss');
-	var values=parseFloat(jQuery('#duration').val());
-	values=0.5+values;
-	jQuery('#duration').val(values)
-
-});
-jQuery('.duration_down').click(function (){
-	//alert('sss');
-	var values=parseFloat(jQuery('#duration').val());
-	values=-0.5+values;
-	jQuery('#duration').val(values)
-
-});
-jQuery('.interval_up').click(function (){
-	//alert('sss');
-	var values=parseFloat(jQuery('#interval').val());
-	values=0.5+values;
-	jQuery('#interval').val(values)
-
-});
-jQuery('.interval_down').click(function (){
-	//alert('sss');
-	var values=parseFloat(jQuery('#interval').val());
-	values=-0.5+values;
-	jQuery('#interval').val(values)
-
-});
 
 
 </script>

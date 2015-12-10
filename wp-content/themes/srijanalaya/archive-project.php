@@ -82,8 +82,8 @@
 					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('month')">This month</a></span></li>
 					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('Lmonth')">Last Month</a></span></li>
 					<li data-settings="" class="open"><span><a href="javascript:void(0)" onclick="apply_date_filter('year')">This year</a></span></li>
-					<li data-settings="" class="open"><span><span>From:</span><input type="text" id="fromDate" value="" class="dropdate"><br/>
-						<span>To:</span><input type="text" id="toDate" value="" class="dropdate"><br/>
+					<li data-settings="" class="open"><span><span>From:</span><input type="text" id="fromDate" value="" class="datepicker11"><br/>
+						<span>To:</span><input type="text" id="toDate" value="" class="datepicker12"><br/>
 						<button onclick="apply_date_filter('custom')" class="btn">Apply</button></span></li>
 					</ul>
 				</li>
@@ -99,7 +99,7 @@
 				foreach($tags as $tag){
 					?>
 
-					<li class="remove-tag active"><?php echo $tag->slug; ?>  x</li>
+					<li class="remove-tag inactive"><?php echo $tag->slug; ?></li>
 
 					<?php } ?>
 				</ul>
@@ -225,7 +225,7 @@
 						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
 						</div>
 					</a>
-					<div class="alert-icon" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png"></div>
+					<div class="alert-icon" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top"></div>
 
 					<div class="content">
 						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>

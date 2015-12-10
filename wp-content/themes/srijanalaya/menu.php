@@ -1,53 +1,55 @@
+
 <ul class="nav navbar-nav">
-  <?php
 
-  $args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
-  $postslist = new WP_Query( $args );
-  while ( $postslist->have_posts() ) : $postslist->the_post();
+<?php
 
-  $content=get_the_content();
-  $contents=explode("\n",$content);
-  $menu_head=get_the_title();
-  $ownUrl = types_render_field('url-slug');
-  $ownUrl = (trim(strtolower($ownUrl)) == 'home') ? site_url() : site_url() . '/' . $ownUrl;
-  if(lowertrim(types_render_field('url-slug'))=='project')
-  {
-   $menu_head=get_the_title();
-   $contents=get_menu_post('project');
- }
- elseif(lowertrim(types_render_field('url-slug'))=='resources')
- {
-   $menu_head=get_the_title();
-   $contents=get_menu_post('resource');
- }
- elseif(lowertrim(types_render_field('url-slug'))=='news')
- {
-   $menu_head=get_the_title();
-   $contents=get_menu_post('news-post');
- } 
- elseif(lowertrim(types_render_field('url-slug'))=='shop')
- {
-   $menu_head=get_the_title();
-   $contents=get_menu_post('product');
- } 
+$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
+$postslist = new WP_Query( $args );
+while ( $postslist->have_posts() ) : $postslist->the_post();
 
- $j = 0;
+$content=get_the_content();
+$contents=explode("\n",$content);
+$menu_head=get_the_title();
+$ownUrl = types_render_field('url-slug');
+$ownUrl = (trim(strtolower($ownUrl)) == 'home') ? site_url() : site_url() . '/' . $ownUrl;
+if(lowertrim(types_render_field('url-slug'))=='project')
+{
+ $menu_head=get_the_title();
+ $contents=get_menu_post('project');
+}
+elseif(lowertrim(types_render_field('url-slug'))=='resources')
+{
+ $menu_head=get_the_title();
+ $contents=get_menu_post('resource');
+}
+elseif(lowertrim(types_render_field('url-slug'))=='news')
+{
+ $menu_head=get_the_title();
+ $contents=get_menu_post('news-post');
+} 
+elseif(lowertrim(types_render_field('url-slug'))=='shop')
+{
+ $menu_head=get_the_title();
+ $contents=get_menu_post('product');
+} 
+
+$j = 0;
 
 
- ?>
+?>
 
- <li class="dropdown yamm-fw first"><a class="dropdown-toggle topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
+<li class="dropdown yamm-fw first"><a class="dropdown-toggle topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
   <?php if(count($contents) > 1) {?><span class="caret" ></span><?php } ?></a>
   <?php if(count($contents) > 1) { ?>
   <ul class="dropdown-menu">
     <div class="yamm-content">
       <?php for ($i = 0; $i < count($contents); $i++) { 
         if(strlen($contents[$i]) > 1) {
-          if($j % 3 == 0) {
+          if($j % 2 == 0) {
             echo '<ul class="col-sm-2 col-xs-4 list-unstyled">';
           }
           echo '<li>' . $contents[$i] . '</li>';
-          if($j % 3 == 2) { 
+          if($j % 2 == 1) { 
             echo '</ul>';
           }
           $j++;
@@ -74,7 +76,7 @@ if(strstr($current_page,'ne'))
   <div class="nav-right tmenu">
     <select class="btn-icon lang-select" id="language-btn" onchange="change_language(this.value,'<?php echo $current_page;?>');">
       <option  <?php if($lang == 'en') echo 'selected';?> value="en" >English</option>
-      <option <?php if($lang == 'ne') echo 'selected';?> value="ne">Nepali</option>
+      <option <?php if($lang == 'ne') echo 'selected';?> value="ne">नेपाली</option>
     </select>
   </div>
 </div>

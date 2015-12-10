@@ -7,10 +7,22 @@ get_header('all');
 get_header('mapbox'); 
 wp_reset_query();
 ?>
+
+
 <div class="page-wrapper wrapper">
-	<div class="row map-wrap">
-		<div id="map"></div>
+		<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
+	$postslist=new WP_Query($args);
+	while($postslist->have_posts() ) : $postslist->the_post();
+	if(strtolower(trim(get_the_title()))=='news') :
+		?>
+	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+		<div class="col-xs-6 col-md-3 header-text">
+			<h2><?php echo types_render_field('banner-title')?></h2>
+			<p><?php  echo get_the_content();?></p>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>
+		</div>
 	</div>
+<?php endif;endwhile;?>
 	<div class="row">
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
@@ -76,9 +88,12 @@ $desc = get_the_content();
 $url = types_render_field('url');
 $lat = $location['lat'];
 $long = $location['lng'];
-$icon = get_template_directory_uri()."/icon.png";
+$icon = get_template_directory_uri()."/images/map_marker.png";
 $map[] = array(get_the_title(),$lat,$long,$url,$desc,$icon);
-endwhile;
+endwhile;?>
+<div class="row map-wrap">
+	<div class="col-sm-10 col-sm-offset-1"><div id="map" ></div></div>
+</div><?php
 get_footer('all');
 get_footer(); 
 ?>

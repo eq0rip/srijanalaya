@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes();?>>
 <head>
 
   <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -12,6 +12,7 @@
   <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
   <link href="<?php echo get_template_directory_uri();?>/less/custom.less" rel="stylesheet/less">
   <script src="<?php echo get_template_directory_uri();?>/js/less-1.7.5.js"></script>
+  
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
@@ -29,47 +30,6 @@
     <div class="container-fluid"><!--top buttons-->
 
 
-      <div id="sliderEffects" style="">
-        <div style="position:absolute;right:25%;">
-          <div>
-            Sider 1:<select id="slider1effect">
-            <option value="slideInLeft">slideFromLeft</option>
-            <option value="fadeIn">fadeIn</option>
-            <option value="slideInRight">slideFromRight</option>
-            <option value="fadeOut">fadeOut</option>
-            <option value="flipInX">flipIn</option>
-            <option value="lightSpeedIn">lightSpeedIn</option>
-            <option value="rollIn">rotateIn</option>
-          </select>
-        </div>
-
-        <div >
-          slider 2:<select id="slider2effect">
-          <option value="slideInLeft">slideFromLeft</option>
-          <option value="fadeIn">fadeIn</option>
-          <option value="slideInRight">slideFromRight</option>
-          <option value="fadeOut">fadeOut</option>
-          <option value="flipInX">flipIn</option>
-          <option value="lightSpeedIn">lightSpeedIn</option>
-          <option value="rollIn">rotateIn</option>
-        </select>
-      </div>
-
-    </div>
-    <div class="duration_div" style="">
-     Slide Change Interval:
-     <input id="interval" type="text" value='<?php if(isset($_GET['slider1In'])){echo $_GET['interval'];}else {echo 3;}?>' />
-     <button class="btn interval_up" type="button">+</button>
-     <button class="btn interval_down" type="button">-</button>
-     <br/>
-     Animation Duration:
-     <input id="duration" type="text" value='<?php if(isset($_GET['slider1In'])){echo $_GET['duration'];}else {echo 2.5;}?>' />
-     <button type="button" class="btn duration_up" type="button">+</button>
-     <button class="btn duration_down" type="button">-</button>
-   </div>
-
- </div>
- <button class="btn" style="position:absolute;top:20px;right:15%;background-color:#E91F4A !important;color:#ffffff;" type="button" onclick="animationChange(document.getElementById('slider1effect').value,document.getElementById('slider2effect').value,document.getElementById('duration').value,document.getElementById('interval').value)">Apply</button>
 
 
 
@@ -107,7 +67,7 @@
         </div>
       </div>
     </nav>
-    <div class="drop"><i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i></div>
+    <div class="drop"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
   </div><!--head div end -->    
   <?php wp_head();?>
   <?php flush(); ?>
