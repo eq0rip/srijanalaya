@@ -49,7 +49,7 @@ get_header();?>
 					<h1><?php echo $titles[0];?></h1>
 					<h2><?php echo $titles[1];?></h2>
 					<p><?php echo $shortdesc[$i]; ?></p>
-					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg"><?php echo $sri_locale['view project'][$lang];?></a>
+					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 				</div>
 				<?php } ?>
 
@@ -110,10 +110,10 @@ get_header();?>
 				<h1>Upcoming <span class="key">Project</span></h1>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
-				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo $sri_locale['view project'][$lang];?></a>
+				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo $sri_locale['NEWS'][$lang];?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['NEWS'][$lang]);?></button>
 				</span>
 
 			</div>
@@ -141,10 +141,10 @@ get_header();?>
 				<h1>Upcoming <span class="key">Resource</span></h1>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p><?php echo get_post_meta( $nextEvent,'wpcf-short-description' , true );?></p>
-				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo $sri_locale['view resources'][$lang];?></a>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view resource'][$lang]);?></a>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');"><?php echo $sri_locale['resources'][$lang];?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('resources');"><?php echo ucwords($sri_locale['resource'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
@@ -202,12 +202,12 @@ get_header();?>
 				<h1>Recent <span class="key">Project</span></h1>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
-				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"> <?php echo $sri_locale['view project'][$lang];?></a>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"> <?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 
 				
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');"><?php echo $sri_locale['project'][$lang];?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');"><?php echo ucwords($sri_locale['project'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
@@ -233,10 +233,10 @@ get_header();?>
 				<h1>Recent <span class="key">News</span></h1>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>">View News</a>
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view news'][$lang]);?></a>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');">News</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
