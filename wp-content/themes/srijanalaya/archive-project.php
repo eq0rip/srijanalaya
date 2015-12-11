@@ -40,6 +40,7 @@
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
+			<span class="filter_by">Filter By:</span>
 			<?php
 			$dropdown_args = array(
 				'hide_empty'       => 0,

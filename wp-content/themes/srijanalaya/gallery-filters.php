@@ -1,5 +1,7 @@
 <div style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
 	<div id="custom_filters">
+	<span class="filter_by">Filter By:</span>
+
 		<form class="" action="<?php bloginfo('url'); ?>/" method="get">
 			<?php
 			$dropdown_args = array(

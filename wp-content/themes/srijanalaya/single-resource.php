@@ -18,7 +18,7 @@ wp_reset_query();
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-			<div class="title col-xs-1">Levels</div>
+			<div class="title col-xs-1"><?php echo ucwords($sri_locale['get updates'][$lang]);?></div>
 			<?php            	
 			$content = auto_id_headings_resource(get_the_content());
 			?>
@@ -30,10 +30,10 @@ wp_reset_query();
 			<div class="col-sm-3">
 				<div class="col-sm-10 sidebar no-padding">
 					<div class="side-wrap">
-						<h2>Resources</h2>
-						<p><a href="#!">View Gallery</a></p>
-						<p><a href="#!">View Videos</a></p>
-						<p><a href="#!">View Related Project</a></p>
+						<h2><?php echo ucwords($sri_locale['resources'][$lang]);?></h2>
+						<p><a href="<?php echo get_template_directory_uri();?>/gallery"><?php echo ucwords($sri_locale['view gallery'][$lang]);?></a></p>
+						<p><a href="<?php echo get_template_directory_uri();?>/videos"><?php echo ucwords($sri_locale['view videos'][$lang]);?></a></p>
+						<p><a href="#!"><?php echo ucwords($sri_locale['view related projects'][$lang]);?></a></p>
 					</div>
 					<div class="side-wrap last">
 						<?php include('social.php');?>
