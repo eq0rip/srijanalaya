@@ -65,5 +65,5 @@
   </nav>
 </div><!--head div end -->    
 <?php flush(); ?>
-<div class="drop"><i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i></div>
+    <div class="drop"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
 <div class="page-wrap">
