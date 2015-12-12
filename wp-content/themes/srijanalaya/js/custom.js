@@ -55,19 +55,14 @@
     }
 
     $('.drop').click(function() {
-      if($('.navbar').hasClass( "nav-bar-fixed" )) {
-        $('.navbar').removeClass('nav-bar-fixed');
-        $(this).css({'top':'0'});
-        $('.fa-caret-up').hide();
-        $('.fa-caret-down').show();
-      }
-      else {
+ 
         $('.navbar').addClass('nav-bar-fixed');
         $('.navbar').css({'z-index':'11'});
         $(this).css({'top':'35px'});
+         $(this).hide();
         $('.fa-caret-up').show();
         $('.fa-caret-down').hide();
-      }
+      
     }
     );
     $(window).scroll(function() {
