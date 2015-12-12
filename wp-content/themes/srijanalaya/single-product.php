@@ -54,6 +54,7 @@ wp_reset_query();
 								<div class="description-wrap">
 									<h2><?php echo get_the_title();?></h2>
 									<p>Code: <?php echo $product->get_sku();?></p>
+									<h4><?php echo $product->get_price_html();?></h4>
 									<h4>Product Story</h4>
 									<p><?php echo get_the_content();?></p>
 								</div>
@@ -123,7 +124,6 @@ wp_reset_query();
 					<?php
 					$related = $product->get_related( 3 );
 
-					if ( sizeof( $related ) == 0 ) return;
 
 					$args = apply_filters( 'woocommerce_related_products_args', array(
 						'post_type'            => 'product',

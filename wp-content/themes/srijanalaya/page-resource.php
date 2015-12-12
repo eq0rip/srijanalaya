@@ -134,7 +134,7 @@ wp_reset_query();
 		dropDownClass: "transformSelect transformSelect2",
 	});
 	jQuery('#video-id').transformSelect({
-		dropDownClass: "transformSelect transformSelect3",
+		dropDownClass: "transformSelect transformSelect33",
 	});
 
 	jQuery("#tag_filter_div ul").on("click",'li', function(){

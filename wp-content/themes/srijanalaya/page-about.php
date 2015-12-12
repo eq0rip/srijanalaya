@@ -13,13 +13,13 @@ wp_reset_query();
 		<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
-	if(strtolower(trim(get_the_title()))=='news') :
+	if(strtolower(trim(get_the_title()))=='about') :
 		?>
 	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
 		<div class="col-xs-6 col-md-3 header-text">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
-			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Page</a>
 		</div>
 	</div>
 <?php endif;endwhile;?>

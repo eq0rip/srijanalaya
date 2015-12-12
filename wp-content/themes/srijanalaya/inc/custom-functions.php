@@ -56,5 +56,5 @@ return $temp_locale;
 $sri_locale = load_locale();
 $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
 $lang = 'en';
-if(strstr($current_page,'ne'))
+if(strstr($current_page,'/ne/'))
   $lang = 'ne';

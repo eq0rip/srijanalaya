@@ -299,30 +299,7 @@ $('a[href*=#]').on('click', function(event){
 
 })(jQuery);
 function change_language(x,y) {
-  var n = y.search("/srijanalaya/ne/"); 
-  if(n<0)
-  {
-  //alert('ne not found');
-  if(x=='ne')
-  {
-    link=y.replace('/srijanalaya/','/srijanalaya/ne/');
-  }
-  else
-  {
-    link=y;
-  }
-}
-else {
- // alert('ne found');
- if(x=='ne')
- {
-  link=y;
-}
-else
-{
-  link=y.replace('/ne/','/en/');
-}
-}
+var link=y+'?lang='+x;
 
 window.location=link;
 }
