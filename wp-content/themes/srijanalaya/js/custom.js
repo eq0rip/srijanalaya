@@ -224,11 +224,13 @@ $('.nav-icons').hover(function() {
 $(".dropdown").hover(            
   function() {
     if($(window).width() > 769)
-      $(this).children('ul').slideDown(200);       
+      
+      $(this).children('ul').stop(true,true).slideDown();          
   },
   function() {
     if($(window).width() > 769)
-      $(this).children('ul').fadeOut(100);               
+      
+      $(this).children('ul').stop(true,true).fadeOut(300);                
   });
 
 

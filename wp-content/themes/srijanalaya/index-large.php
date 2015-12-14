@@ -113,7 +113,7 @@ get_header();?>
 				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['NEWS'][$lang]);?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
 				</span>
 
 			</div>
