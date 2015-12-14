@@ -19,9 +19,9 @@
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
 </head>
 <body class="home">
-<!--<div class="loader">
+<div class="loader">
   <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
-  <div class="transbg"></div>-->
+  <div class="transbg"></div>
 </div>
 <div id="fullpage" style="">
  <div class="section" id="section1" style="">

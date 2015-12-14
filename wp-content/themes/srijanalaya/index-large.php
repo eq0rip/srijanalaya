@@ -423,6 +423,7 @@ get_header();?>
 	jQuery('.video-wrap').click(function() { 
 		player.api('play');
 	});
+	
 
 
 
