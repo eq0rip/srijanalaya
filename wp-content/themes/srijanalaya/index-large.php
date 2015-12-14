@@ -199,9 +199,11 @@ get_header();?>
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
+			<div class="height_bound">
 				<h1>Recent <span class="key">Project</span></h1>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
+				</div>
 				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"> <?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 
 				
@@ -229,10 +231,11 @@ get_header();?>
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-
-				<h1>Recent <span class="key">News</span></h1>
-				<h2> <?php echo get_the_title($nextEvent);?></h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				<div class="height_bound">
+					<h1>Recent <span class="key">News</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
+				</div>
 				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view news'][$lang]);?></a>
 
 				<span class="post-navigate">
@@ -261,10 +264,12 @@ get_header();?>
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-				<h1>Product <span class="key">Showcase</span></h1>
-				<h2> <?php echo get_the_title($nextEvent);?></h2>
-				<p><?php echo the_excerpt();?></p>
-				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg">View Product</a>
+				<div class="height_bound">
+					<h1>Product <span class="key">Showcase</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p><?php echo strip_tags(get_the_excerpt());?></p>
+				</div>
+				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
@@ -272,18 +277,32 @@ get_header();?>
 			</div>
 		</div>
 		<div class="col-xs-6 fullheight section-container even">
+			<?php
+			wp_reset_query();
+			$args=array('posts_per_page' => 1, 'post_type'=>'srijanalaya-artist','orderby' => 'date', 'order' => 'DESC');
+			$postslist=new WP_Query($args);
+			while($postslist->have_posts() ) :$postslist->the_post();
+
+
+			$nextEvent=$post->ID;
+
+
+			endwhile;
+			?>
 			<div class="img-wrap">
 				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> Icies Veil Liberois Pharetra</h2>
-				<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
-				<button type="button" class="btn btn-default btn-lg">View Art</button>
+				<div class="height_bound">
+					<h1>Art <span class="key">Exposure</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p><?php echo get_post_meta($nextEvent,'wpcf-short-description',true);;?></p>
+				</div>
+				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a>
 
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('http://facebook.com/art');">Art</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Art</button>
 				</span>
 			</div>
 		</div>
@@ -310,9 +329,9 @@ get_header();?>
 
 				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
 				<p><?php echo get_the_content();?></p>
-				<button type="button" class="btn btn-default btn-lg vid-btn">Shop to Support</button>
+				<button type="button" class="btn btn-default btn-lg vid-btn"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle">News</button>
+					<button class="btn btn-default btn-lg semicircle"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
@@ -349,7 +368,7 @@ get_header();?>
 			<div class="inner-wrap footer-bar">	
 				<div class="col-md-8 col-md-offset-3 covers">
 					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
-						<h4>Check us out</h4>
+						<h4><?php echo ucwords($sri_locale['check us out '][$lang]);?></h4>
 						<ul class="list-unstyled">
 							<li><a href="!#">Who we are</a></li>
 							<li><a href="!#">Who we are</a></li>
@@ -368,12 +387,12 @@ get_header();?>
 					</div>
 					<div class="col-xs-12 col-sm-3 footer-elements social-block">
 						<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
-						<p class='newsletter'>Sign up for Newsletter</p>
-						<p>Donate</p>
+						<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
+						<p><?php echo ucwords($sri_locale['donate'][$lang]);?></p>
 					</div>
 				</div>
 			</div>
-			<p class='copyrite'>© Srijanalaya  | NGO Nepal 2015. All Rights Reserved.</p>
+			<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
 		</div>
 	</div> <!--full page end-->
 	<?php include('newsletter.php');?>

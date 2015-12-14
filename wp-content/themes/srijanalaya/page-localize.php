@@ -23,6 +23,7 @@ get_header();
 			echo "done";
 		}
 	}
+
 	else {
 		echo "<p>fail</p>";
 
@@ -50,6 +51,8 @@ get_header();
 					<th>Locale_key</th>
 					<th>Nepali</th>
 					<th>English</th>
+					<th>.</i></th>
+					<th>.</th>
 				</tr>
 
 				<?php 
@@ -60,6 +63,8 @@ get_header();
 					<td><?php echo $value->locale_key;?></td>
 					<td><?php echo $value->ne;?></td>
 					<td><?php echo $value->en;?></td>
+					<td><i class="fa fa-pencil-square-o"></td>
+					<td><i class="fa fa-trash"></td>
 				</tr>
 				<?php }?>
 

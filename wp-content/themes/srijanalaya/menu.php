@@ -74,9 +74,7 @@ if(strstr($current_page,'/ne/'))
   <div class="nav-right fmenu"><a href="<?php echo WC()->cart->get_cart_url(); ?>"><img src="<?php echo get_template_directory_uri();?>/images/shop-icon.png" class="shop-icon-menu" width="20px" height="20px"/>&nbsp;<span class="item-count">(<?php echo sprintf (_n( '%d', '%d', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>)</span></a></div>
   <div class="nav-right smenu"><a href="#!">Donate</a></div>
   <div class="nav-right tmenu">
-    <select class="btn-icon lang-select" id="language-btn" onchange="change_language(this.value,'<?php echo $current_page;?>');">
-      <option  <?php if($lang == 'en') echo 'selected';?> value="en" >English</option>
-      <option <?php if($lang == 'ne') echo 'selected';?> value="ne">नेपाली</option>
-    </select>
+  
+  <li onclick="change_language('<?php if($lang=='ne'){echo 'en';}else {echo 'ne';}?>','<?php echo $current_page;?>')" class="language_li"><?php if($lang=='en'){echo 'नेपाली';}else echo 'English';?></li>
   </div>
 </div>
