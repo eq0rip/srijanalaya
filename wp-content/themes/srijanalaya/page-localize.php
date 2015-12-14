@@ -34,7 +34,7 @@ get_header();
 	?>
 
 	<div class="col-sm-6">
-		<form method="POST" action= "<?php echo htmlspecialchars(site_url().'/'.$lang.'/localize');?>">
+		<form method="POST" action= "<?php if($lang=='ne'){echo htmlspecialchars(site_url().'/'.$lang.'/localize');}else echo htmlspecialchars(site_url().'/localize');?>">
 			<label for="locale_key">Locale_key</label><input type="text"  name="locale_key">
 			<label for="nepali">Nepali</label><input type="text"  name="nepali">
 			<label for="english">English</label><input type="text"  name="english"><br/>

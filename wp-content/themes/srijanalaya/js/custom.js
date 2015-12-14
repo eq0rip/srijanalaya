@@ -1,13 +1,13 @@
 (function($) {
   $(window).load(function(){
     $('.loader').fadeOut(500);
-    
+
   });
   $(document).ready(function($){
-    
 
-    $('[data-toggle="tooltip"]').tooltip();   
-    
+
+    $('[data-toggle="tooltip"]').tooltip();
+
 
 
     $('#left-col-first').height($(window).height() - 125);
@@ -37,15 +37,15 @@
       if(last != undefined || last != null) {
         last = last.substring(last.lastIndexOf('/page/') + 6, last.lastIndexOf('/'));
         jQuery('.page-content').infinitescroll({
-          navSelector  : ".navigation",            
+          navSelector  : ".navigation",
                    // selector for the paged navigation (it will be hidden)
-                   nextSelector : ".next",    
+                   nextSelector : ".next",
                    // selector for the NEXT link (to page 2)
-                   itemSelector : ".content",      
+                   itemSelector : ".content",
                    // selector for all items you'll retrieve
-                   loadingText  : "Loading more...", 
+                   loadingText  : "Loading more...",
                    donetext     : "I think this is the end... :/" ,
-                   animate      : true,      
+                   animate      : true,
                    bufferPx     : 40,
                    padding    : 0,
                    maxPage: last
@@ -55,14 +55,14 @@
     }
 
     $('.drop').click(function() {
- 
+
         $('.navbar').addClass('nav-bar-fixed');
         $('.navbar').css({'z-index':'11'});
         $(this).css({'top':'35px'});
          $(this).hide();
         $('.fa-caret-up').show();
         $('.fa-caret-down').hide();
-      
+
     }
     );
     $(window).scroll(function() {
@@ -89,7 +89,7 @@
       //  $('.dropdate').dropdate({
       //   dateFormat:'mm/dd/yyyy'
       // });
-var yesterdayDate = new Date();  
+var yesterdayDate = new Date();
 
 $( ".datepicker11" ).datepicker();
 $(".datepicker11").datepicker("setDate",yesterdayDate);
@@ -206,7 +206,7 @@ $owl2
 })
 .on('changed.owl.carousel', function (e) {
   if (!flag) {
-    flag = true;    
+    flag = true;
     $owl1.trigger('to.owl.carousel', [e.page.index, duration, true]);
     flag = false;
   }
@@ -221,14 +221,10 @@ $('.nav-icons').hover(function() {
 );
 
 
-$(".dropdown").hover(            
+$(".dropdown").hover(
   function() {
     if($(window).width() > 769)
-      $(this).children('ul').stop(true,true).slideDown(500);       
-  },
-  function() {
-    if($(window).width() > 769)
-      $(this).children('ul').stop(true,true).fadeOut(300);               
+      $(this).children('ul').stop(true,true).fadeOut(300);
   });
 
 
@@ -237,7 +233,7 @@ $("#right-col-first").hover(
    $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': 'black','opacity': '0.5'});
  },
  function() {
-   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});                   
+   $('.overlay11').css({ 'position': 'absolute','top': '0px','left': '0px','height': '100%','width': '100%','background-color': '','opacity': ''});
 
 
  });
@@ -263,7 +259,7 @@ $('.marquee-left').click(function() {
     }, 200, function() {
       $('#' + current).removeClass('first');
       current = $('#' + current).next().attr('id');
-      $('#' + current).addClass('first'); 
+      $('#' + current).addClass('first');
     });
   }
 });
@@ -275,12 +271,12 @@ $('.marquee-right').click(function() {
       opacity: 1,
       width: "toggle"
     }, 200, function() {
-      $('#' + current).addClass('first'); 
+      $('#' + current).addClass('first');
     });
   }
 });
 var prev_ids = '';
-$('a[href*=#]').on('click', function(event){     
+$('a[href*=#]').on('click', function(event){
   event.preventDefault();
   var ids = $(this).attr('href');
   if(prev_ids != ids) {
