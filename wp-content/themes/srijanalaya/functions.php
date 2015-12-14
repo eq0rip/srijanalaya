@@ -419,3 +419,4 @@ function current_page_url($filter) {
 		return "http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
 	}
 }
+
