@@ -208,23 +208,22 @@ function parseDate($date)
 	}
 
 
-	switch ($day) {
+	switch ($day % 10) {
 		case 1:
-		$day = '1st';
+		$day = $day . 'st';
 		break;
 		case 2:
-		$day = '2nd';
+		$day = $day . 'nd';
 		break;
 		case 3:
-		$day = '3rd';
+		$day = $day . 'rd';
 		break;
 		default:
 		$day = $day.'th';
 		break;
 	}
-	return $day;
+	return $day . ' ' . $month . ' ' . $year;
 }
-
 
 
 
