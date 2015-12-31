@@ -20,7 +20,7 @@
 </head>
 <body class="home">
 <div class="loader">
-  <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
+  <img src="<?php echo get_template_directory_uri()?>/images/loader_balls.gif">
   <div class="transbg"></div>
 </div>
 <div id="fullpage" style="">
