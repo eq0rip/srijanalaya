@@ -162,19 +162,7 @@ $owl1
   margin: 0,
   autoplay:true,
   autoplayTimeout:3500,
-  // animateOut:'fadeOutLeftBig',
   animateIn: 'fadeIn',
-
-    // animateIn: 'slideInLeft',//===one
- //animateOut: 'slideOutRight',
-
-//animateIn: 'bounceInDown',
-
-  //animateOut:'hinge',
-
-// animateIn:'swing',
-//animateIn:'fadeIn', //==2nd
-//animateIn:'flip',
 loop:true
 })
 .on('changed.owl.carousel', function (e) {
@@ -198,8 +186,6 @@ $owl2
   margin: 0,
   items: 1,
   loop:true,
- // animateOut:'slideOutLeft',
- // animateIn: 'slideInRight',
  animateIn: 'fadeIn',
  animateOut: 'fadeOut',
 
