@@ -284,10 +284,15 @@
 		</div>
 	</div>
 	<?php 
-	get_footer('all');
-	get_footer(); 
-	?>
-	<?php 
+	include('newsletter.php'); 
+	get_template_part('navigation');
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+	}
 	$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
 	$lang = 'en';
 	if(strstr($current_page,'ne'))

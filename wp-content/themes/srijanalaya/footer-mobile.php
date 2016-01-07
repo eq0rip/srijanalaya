@@ -20,21 +20,10 @@
 
 <script src="<?php echo get_template_directory_uri();?>/js/jquery-ui.min.js"></script>
 <?php //if((( is_home() || is_front_page()) )) { //not working on desktop ?>
-<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
+ <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
 
 <script>
-	jQuery('#fullpage').fullpage({
-      scrollBar:true,
-      fitToSection:false,
-      onLeave:function(index,nextIndex,direction){
-      
-      	// if(nextIndex==1)
-      	// 	jQuery('.nav-icons').hide(10);
-      	// else {
-      	// 	jQuery('.nav-icons').show(10);
-      	// }
-      }
-    });
+
 </script>
 <?php //} ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/date.format.js"></script>

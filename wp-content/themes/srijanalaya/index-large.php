@@ -58,12 +58,12 @@ get_header();?>
 
 		<div class="col-sm-6" id="right-col-first">
 			<div class="go-down">
-				<i class="fa fa-angle-down"></i>
+				<i class="fa fa-angle-down bounce-arrow-down"></i>
 			</div>
 			<div id="slider-2" class="owl-carousel">
 				<?php for($i=0;$i<3;$i++){ ?>
 				<div class="item"><img class="img-responsive" src="<?php echo $image[$i];?>" alt="1">
-					
+					<span class="overlay"></span>
 				</div>
 				<?php } ?>	
 			</div>
@@ -111,6 +111,7 @@ get_header();?>
 				<h2> <?php echo get_the_title($nextEvent);?></h2>
 				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
 				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo get_post_meta($nextEvent,'wpcf-participants',true);?> participants </p>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
@@ -199,15 +200,13 @@ get_header();?>
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
-			<div class="height_bound">
-				<h1>Recent <span class="key">Project</span></h1>
-				<h2> <?php echo get_the_title($nextEvent);?></h2>
-				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
+				<div class="height_bound">
+					<h1>Recent <br/><span class="key">Project</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
 				</div>
-				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"> <?php echo ucwords($sri_locale['view project'][$lang]);?></a>
-
-				
-
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"> <?php echo ucwords($sri_locale['view project'][$lang]);?></a><br/><br/>
+				<?php include('social-expand.php');?>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('project');"><?php echo ucwords($sri_locale['project'][$lang]);?></button>
 				</span>
@@ -232,12 +231,12 @@ get_header();?>
 			</div>
 			<div class="section-inner">
 				<div class="height_bound">
-					<h1>Recent <span class="key">News</span></h1>
+					<h1>Recent <br/><span class="key">News</span></h1>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
 					<p>Suspendisse Ultricies Vel Liberoisporta. Ut Pharetra</p>
 				</div>
-				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view news'][$lang]);?></a>
-
+				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view news'][$lang]);?></a><br/><br/>
+				<?php include('social-expand.php');?>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
 				</span>
@@ -265,14 +264,14 @@ get_header();?>
 			</div>
 			<div class="section-inner">
 				<div class="height_bound">
-					<h1>Product <span class="key">Showcase</span></h1>
+					<h1>Product <br/><span class="key">Showcase</span></h1>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
 					<p><?php echo strip_tags(get_the_excerpt());?></p>
 				</div>
-				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a>
-
+				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a><br/><br/>
+				<?php include('social-expand.php');?>
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Shop</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['shop'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
@@ -290,19 +289,19 @@ get_header();?>
 			endwhile;
 			?>
 			<div class="img-wrap">
-				<img src="<?php echo get_template_directory_uri();?>/images/artwork.png" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
+				<img src="<?php echo get_post_meta($nextEvent,'wpcf-home-image',true)?>" style="position:absolute;top:0;left:0;width:100%;z-index:-1;">
 				<div class="wrap" style="background:#000;opacity:0.7;"></div>
 			</div>
 			<div class="section-inner">
 				<div class="height_bound">
-					<h1>Art <span class="key">Exposure</span></h1>
+					<h1>Art <br/><span class="key">Exposure</span></h1>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
 					<p><?php echo get_post_meta($nextEvent,'wpcf-short-description',true);;?></p>
 				</div>
-				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a>
-
+				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a><br/><br/>
+				<?php include('social-expand.php');?>
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');">Art</button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['art'][$lang]);?></button>
 				</span>
 			</div>
 		</div>
@@ -327,7 +326,7 @@ get_header();?>
 		<div class="section-inner">
 			<div class="cover-wrap">
 
-				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
+				<h1><?php echo $title[0];?><br/><span class="key"><?php echo $title[1];?></span><br/><?php echo $title[2];?></h1>
 				<p><?php echo get_the_content();?></p>
 				<button type="button" class="btn btn-default btn-lg vid-btn"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
 				<span class="post-navigate">
@@ -362,7 +361,7 @@ get_header();?>
 			<div class="inner-wrap">	
 				<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
 				<div class="back-to-top">
-					<i class="fa fa-angle-up"></i>
+					<i class="fa fa-angle-up bounce-arrow-down"></i>
 				</div>
 			</div>
 			<div class="inner-wrap footer-bar">	
@@ -370,19 +369,26 @@ get_header();?>
 					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
 						<h4><?php echo ucwords($sri_locale['check us out '][$lang]);?></h4>
 						<ul class="list-unstyled">
-							<li><a href="!#">Who we are</a></li>
-							<li><a href="!#">Who we are</a></li>
-							<li><a href="!#">Who we are</a></li>
-							<li><a href="!#">Who we are</a></li>
+							<li><a href="<?php echo site_url().'/about'?>"><?php echo ucwords($sri_locale['who we are'][$lang]);?></a></li>
+							<li><a href="<?php echo site_url().'/srijanalaya-artist/'?>"><?php echo ucwords($sri_locale['artworks'][$lang]);?></a></li>
+							<li><a href="<?php echo site_url().'/project/'?>"><?php echo ucwords($sri_locale['our projects'][$lang]);?></a></li>
+							<li><a href="#!"><?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?></a></li>
 						</ul>
 					</div>
 					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection2">
 						<h4>Project</h4>
 						<ul class="list-unstyled">
-							<li><a href="!#">Project Title</a></li>
-							<li><a href="!#">Project Title</a></li>
-							<li><a href="!#">Project Title</a></li>
-							<li><a href="!#">Project Title</a></li>
+							<?php
+							wp_reset_query(); 
+							$args=array('posts_per_page' => 4, 'post_type'=>'project', 'orderby' => 'date', 'order' => 'DESC');
+							$postslist=new WP_Query($args);
+							while($postslist->have_posts() ) :$postslist->the_post();
+							?>
+							<li><a href="<?php echo get_the_permalink();?>"><?php echo get_the_title();?></a></li>
+							<?php 
+							endwhile;
+							?>
+							
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-3 footer-elements social-block">
@@ -423,7 +429,7 @@ get_header();?>
 	jQuery('.video-wrap').click(function() { 
 		player.api('play');
 	});
-	
+
 
 
 

@@ -1,8 +1,14 @@
 (function($) {
 
 	$(document).ready(function(){
+		//mobile dropdown
+		$('.mobile-filter-active').click(function(){
+			$('.mobile-filter-dropdown').slideToggle();
+		});
 		$('.newsletter').click(function() {
 			$('.newsletter-popup').animate(1000).css('display','flex');
+			$('#form-wysija-html56507e429e40d-1').show();
+			$('#msg-form-wysija-html56507e429e40d-1').find('ul').hide();
 		});
 		$('.close-newsletter').click(function() {
 			$('.newsletter-popup').fadeOut();

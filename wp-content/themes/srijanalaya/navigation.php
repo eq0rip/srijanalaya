@@ -60,7 +60,7 @@
     </ul>
 
     <ul>
-      <li class="plus"><a href="#"><span>
+      <li class="plus"><a href="#!"><span>
         <i class="fa fa-bars"></i>
       </span></a></li>
     </ul>

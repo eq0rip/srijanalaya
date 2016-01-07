@@ -4,8 +4,19 @@
     
   });
   $(document).ready(function($){
-    
-
+    //hover slider-2
+    $('#slider-2').mouseover(function(){
+      $('#slider-2 .overlay').show();
+    });
+    $('#slider-2').mouseout(function(){
+      $('#slider-2 .overlay').hide();
+    });
+    $('.go-down').mouseover(function(){
+      $('#slider-2 .overlay').show();
+    });
+    $('.go-down').mouseout(function(){
+      $('#slider-2 .overlay').hide();
+    });
     $('[data-toggle="tooltip"]').tooltip();   
     
 
@@ -55,21 +66,25 @@
     }
 
     $('.drop').click(function() {
- 
-        $('.navbar').addClass('nav-bar-fixed');
-        $('.navbar').css({'z-index':'11'});
-        $(this).css({'top':'35px'});
-         $(this).hide();
-        $('.fa-caret-up').show();
-        $('.fa-caret-down').hide();
+
+      $('.navbar').addClass('nav-bar-fixed');
+      $('.navbar').css({'z-index':'11'});
+      $(this).css({'top':'35px'});
+      $(this).hide();
+      setTimeout(
+        function() {
+         $('.navbar').removeClass('nav-bar-fixed');
+         $('.drop').css({'top':'0'});
+         $('.drop').show();
+
+       },
+       5000);
       
     }
     );
     $(window).scroll(function() {
      $('.navbar').removeClass('nav-bar-fixed');
      $('.drop').css({'top':'0'});
-     $('.fa-caret-up').hide();
-     $('.fa-caret-down').show();
    });
     $('.social-expand-buttons').hover(function() {
       $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
@@ -82,6 +97,8 @@
     });
     $('.newsletter').click(function() {
       $('.newsletter-popup').animate(1000).css('display','flex');
+      $('#form-wysija-html56507e429e40d-1').show();
+      $('#msg-form-wysija-html56507e429e40d-1').find('ul').hide();
     });
     $('.close-newsletter').click(function() {
       $('.newsletter-popup').fadeOut();
@@ -161,7 +178,7 @@ $owl1
   items: 1,
   margin: 0,
   autoplay:true,
-  autoplayTimeout:3500,
+  autoplayTimeout:3000,
   // animateOut:'fadeOutLeftBig',
   animateIn: 'fadeIn',
 
@@ -224,12 +241,12 @@ $('.nav-icons').hover(function() {
 $(".dropdown").hover(            
   function() {
     if($(window).width() > 769)
-      
+
       $(this).children('ul').stop(true,true).slideDown();          
   },
   function() {
     if($(window).width() > 769)
-      
+
       $(this).children('ul').stop(true,true).fadeOut(300);                
   });
 
@@ -296,9 +313,9 @@ $('a[href*=#]').on('click', function(event){
 
 })(jQuery);
 function change_language(x,y) {
-var link=y+'?lang='+x;
+  var link=y+'?lang='+x;
 
-window.location=link;
+  window.location=link;
 }
 //var prev_class = '';
 

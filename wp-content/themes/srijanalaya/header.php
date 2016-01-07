@@ -26,7 +26,7 @@
 <div id="fullpage" style="">
  <div class="section" id="section1" style="">
   <div style""><!--head div sart-->    
-    <div class="container-fluid"><!--top buttons-->
+    <div class="container-fluid head_div"><!--top buttons-->
 
 
 

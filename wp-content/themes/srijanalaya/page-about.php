@@ -9,14 +9,14 @@ wp_reset_query();
 ?>
 
 
-<div class="page-wrapper wrapper">
+<div class="page-wrapper wrapper mobile-no-padding">
 		<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
 	if(strtolower(trim(get_the_title()))=='about') :
 		?>
 	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
-		<div class="col-xs-6 col-md-3 header-text">
+		<div class="col-md-12 col-lg-3 header-text">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
 			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Page</a>
@@ -24,7 +24,7 @@ wp_reset_query();
 	</div>
 <?php endif;endwhile;?>
 	<div class="row">
-		<div class="mid-nav">
+		<div class="mid-nav hidden-sm hidden-md hidden-xs">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 			<?php
@@ -39,7 +39,7 @@ wp_reset_query();
 			$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
 			$postslist = new WP_Query( $args );
 			while ( $postslist->have_posts() ) : $postslist->the_post();
-			if(strtolower(get_the_title()) == strtolower($pageTitle )) {
+			if(strtolower(get_the_title()) == strtolower('about')) {
 				echo '<div class="title col-xs-1">' . get_the_title() . '</div>';
 				$content=get_the_content();
 				$contents=explode("\n",$content);
@@ -57,8 +57,41 @@ wp_reset_query();
 			endwhile;
 			?>
 		</div>
+		<div class="mobile-mid-nav hidden-lg">
+			<?php
+			wp_reset_query();
+			$pageTitle = get_the_title();
+			if ($post->post_parent != 0){
+				$ids = $post->post_parent;
+			}
+			else {
+				$ids = get_the_id();
+			}
+			$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
+			$postslist = new WP_Query( $args );
+			while ( $postslist->have_posts() ) : $postslist->the_post();
+			if(strtolower(get_the_title()) == strtolower('about' )) {
+				
+				$content=get_the_content();
+				$contents=explode("\n",$content);
+				echo '<div class="mobile-mid-nav-inner mobile-text-center"><ul>';
+				$j = 0;
+				echo "<li class='mobile-filter-active'><span class='caret'></span>" . $pageTitle . "</li><ul class='mobile-filter-dropdown'>";
+				for ($i = 0; $i < count($contents); $i++) { 
+					if(strlen($contents[$i]) > 1) {
+						
+						echo '<li class="mobile-filter-item" id="item' . $j++ . '">' . $contents[$i] . '</li>';
+					}
+				}
+				echo '</ul></ul></div>';
+				break;
+			}
+			endwhile;
+			?>
+		</div>
+
 		<div class="page-content">
-			<div class="col-xs-7 col-xs-offset-1">
+			<div class="col-lg-7 col-lg-offset-1 mobile-text-center mobile-no-padding mobile-para-padding-child-p">
 				<?php
 				while ( have_posts() ) : the_post();
 				echo '<h2>' . get_the_title() . '</h2>';
@@ -66,10 +99,10 @@ wp_reset_query();
 				endwhile;
 				?>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-2 hidden-md hidden-sm hidden-xs">
 				<h2>Resources</h2>
-				<p><a href="#!">View Gallery</a></p>
-				<p><a href="#!">View Videos</a></p>
+				<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
+				<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
 				<?php include('social.php');?>
 			</div>
 		</div>
@@ -93,9 +126,51 @@ $map[] = array(get_the_title(),$lat,$long,$url,$desc,$icon);
 endwhile;?>
 <div class="row map-wrap">
 	<div class="col-sm-10 col-sm-offset-1"><div id="map" ></div></div>
-</div><?php
-get_footer('all');
-get_footer(); 
+</div>
+<?php ?>
+<?php include('newsletter.php');?>
+
+
+<?php 
+get_template_part('navigation');
+if(is_mobile()) {
+	include('quotewrap.php');
+	get_footer('mobile');
+}
+else {
+	get_footer('all');
+}
 ?>
+<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+<script type="text/javascript">
+	function goTo(page) {
+		if(!ValidURL(page))
+			location.href = '<?php echo site_url();?>/' + page;
+		else
+			location.href = page;
+	}
+	function ValidURL(str) {
+		var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+		if(!regex .test(str)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	var player = $f(document.getElementById('player'));
+	jQuery('.video-wrap').click(function() { 
+		jQuery('.video-icon').hide();
+		jQuery('#featured_video_wrapper iframe').show();
+		jQuery('#featured_video_wrapper video-wrap').show();
+		player.api('play');
+	});
+</script>
+
+
+
+
+
+
+
 <script>var mapdata=<?php echo json_encode($map); ?></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/js/map.js"></script>
