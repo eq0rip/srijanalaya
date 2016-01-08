@@ -17,6 +17,7 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
+  <?php wp_head();?>
 </head>
 <body class="home">
 <div class="loader">
@@ -68,5 +69,5 @@
     </nav>
     <div class="drop"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
   </div><!--head div end -->    
-  <?php wp_head();?>
+  
   <?php flush(); ?>

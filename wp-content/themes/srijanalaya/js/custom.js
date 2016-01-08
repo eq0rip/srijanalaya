@@ -4,6 +4,11 @@
 
   });
   $(document).ready(function($){
+    $('.drop-menu-wrap').show();
+    $('.dropdown-menu').unwrap();
+    // $('.dropdown-toggle').hover(function() {
+    //    $('.drop-menu-wrap').children('dropdown-menu').slideDown(100);
+    //   });
     //mobile dropdown
     $('.mobile-filter-active').click(function(){
       $('.mobile-filter-dropdown').slideToggle();
