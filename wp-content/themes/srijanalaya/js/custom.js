@@ -4,6 +4,39 @@
 
   });
   $(document).ready(function($){
+    //mobile dropdown
+    $('.mobile-filter-active').click(function(){
+      $('.mobile-filter-dropdown').slideToggle();
+    });
+    
+    //category filter timeline mobile
+    var temp=1;
+    $('#mobile_custom_filters select').children('option').each(function (){
+      if(temp==1){
+        $(this).text('Category');
+        $(this).val('category');
+        $(this).attr('disabled', 'disabled');
+        temp=2;
+      }
+      else{
+        $(this).val($(this).text());
+      }
+    });
+    $('#mobile_custom_filters select').change(function(){
+      window.location.href='http://localhost/srijanalaya/project/?category='+$(this).val();
+    });
+       //category dropdown timeline page change
+       temp=1;
+       $('#custom_filters select').first().children('option').each(function (){
+        if(temp==1){
+          $(this).text('By Type');
+          $(this).val('By Type');
+          temp=2;
+        }
+        else{
+          $(this).val($(this).text());
+        }
+      });
 
     //hover slider-2
     $('#slider-2').mouseover(function(){
@@ -121,45 +154,33 @@ $(document).on('click', '.yamm .dropdown-menu', function(e) {
   e.stopPropagation()
 });
 
-      //category dropdown timeline page change
-      var temp=1;
-      $('#custom_filters select:first-child option').each(function (){
 
-        if(temp==1){
-          $(this).text('By Type');
-          $(this).val('By Type');
-          temp=2;
-        }
-        else{
-          $(this).val($(this).text());
-        }
-      });
 
-      $('.transformSelect li').addClass('open');
-      $('.transformSelect').hover(function() {
-        if($(this).hasClass('transformSelect3')){return;}
-        $(this).children('li').addClass('open');
-        $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
-        $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
-      },
-      function() {
-        if($(this).hasClass('transformSelect3')){return;}
+$('.transformSelect li').addClass('open');
+$('.transformSelect').hover(function() {
+  if($(this).hasClass('transformSelect3')){return;}
+  $(this).children('li').addClass('open');
+  $(this).children('li').children('.transformSelectDropdown').slideDown('fast');
+  $(this).children('li').children('.transformSelectDropdown').css('zIndex','99');
+},
+function() {
+  if($(this).hasClass('transformSelect3')){return;}
 
-        $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
-        $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
-        $(this).children('li').removeClass('open');
+  $(this).children('li').children('.transformSelectDropdown').slideUp('fast');
+  $(this).children('li').children('.transformSelectDropdown').css('zIndex','1');
+  $(this).children('li').removeClass('open');
 
         //alert('ssss');
       });
-      $('.subscribe-inner').click(function() {
-        $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
-      });
-      $('.transformSelect3').hover(function(){
-        $(this).find('.transformSelectDropdown').addClass('drop-on').removeClass('drop-off');
-      },
-      function(){
+$('.subscribe-inner').click(function() {
+  $('.side-transparent-block').css("display", "flex").hide().fadeIn(300);
+});
+$('.transformSelect3').hover(function(){
+  $(this).find('.transformSelectDropdown').addClass('drop-on').removeClass('drop-off');
+},
+function(){
 
-      });
+});
 
 //owl sync
 var $owl1 = $("#slider-1"),
@@ -175,9 +196,9 @@ $owl1
   margin: 0,
   autoplay:true,
   autoplayTimeout:3000,
-   autoplayTimeout:3500,
+  autoplayTimeout:3500,
   animateIn: 'fadeIn',
-loop:true
+  loop:true
 })
 .on('changed.owl.carousel', function (e) {
   $(car).css({'width':'0px','height':'0px'});
@@ -200,8 +221,8 @@ $owl2
   margin: 0,
   items: 1,
   loop:true,
- animateIn: 'fadeIn',
- animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
+  animateOut: 'fadeOut',
 
 })
 .on('changed.owl.carousel', function (e) {
@@ -229,7 +250,8 @@ $(".dropdown").hover(
   function() {
     if($(window).width() > 769)
 
-      $(this).children('ul').stop(true,true).fadeOut(300);                
+      $(this).children('ul').stop(true,true).fadeOut(300);  
+  });              
 
 
 
@@ -488,7 +510,7 @@ function filter_projects () {
   var date=jQuery('#date_value_main').text().split(' to ');
   var from=date[0];
   var to=date[1];
-  var category=jQuery('#custom_filters select:first-child').val();
+  var category=jQuery('#custom_filters select').first().val();
   if(jQuery('#location_value_main').val()=='Location' && jQuery('#date_value_main').text().trim()=='By Date' && jQuery('#custom_filters select:first-child').val()=='By Type'){
     alert('all field cant be empty');
     return;
@@ -501,13 +523,13 @@ function filter_projects () {
   from='2010/1/1';
   to=jQuery.datepicker.formatDate('yy/mm/dd', new Date());
 }
-if(jQuery('#custom_filters select:first-child').val()=='By Type')
+if(jQuery('#custom_filters select').first().val()=='By Type')
 {
-  window.location.href='http://localhost/srijanalaya/events'+'?location='+location+'&from='+from+'&to='+to;
+  window.location.href='http://localhost/srijanalaya/project'+'?location='+location+'&from='+from+'&to='+to;
   return;
 }
 
 
 
-window.location.href='http://localhost/srijanalaya/events'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
+window.location.href='http://localhost/srijanalaya/project'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }

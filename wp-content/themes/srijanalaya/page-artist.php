@@ -19,7 +19,7 @@ get_header('all'); ?>
 		</div>
 	</div>
 <?php endif;endwhile;?>
-<!-- 	<div class="row">
+	<div class="row">
 		<div class="mid-nav">
 			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
@@ -32,7 +32,7 @@ get_header('all'); ?>
 				</ul>
 			</div>
 		</div>
-	</div> -->
+	</div>
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 			<?php
@@ -40,21 +40,21 @@ get_header('all'); ?>
 			if(isset($_GET['news_type']) && $_GET['artist_type'] != 'latest') {
 				$gid = mysql_real_escape_string($_GET['artist_type']);
 				if( trim(strtolower($gid)) == 'recommended') {
-					$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
+					$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
 						'paged' => $paged,); 
 				}
 				elseif( trim(strtolower($gid)) == 'popular') {
-					$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
+					$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
 						'paged' => $paged,); 
 				}
 			}
 			else {
-				$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'date', 'order' => 'DESC',
+				$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'date', 'order' => 'DESC',
 					'paged' => $paged,); 
 			}
 			$postslist=new WP_Query($args);  
 			while($postslist->have_posts()) : $postslist->the_post();
-			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'large');
 			if($imgsrc[0] == null || $imgsrc[0] == '')
 				$image = '';
 			else

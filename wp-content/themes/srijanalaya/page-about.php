@@ -10,7 +10,7 @@ wp_reset_query();
 
 
 <div class="page-wrapper wrapper mobile-no-padding">
-		<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
+	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
 	if(strtolower(trim(get_the_title()))=='about') :
@@ -23,90 +23,90 @@ wp_reset_query();
 		</div>
 	</div>
 <?php endif;endwhile;?>
-	<div class="row">
-		<div class="mid-nav hidden-sm hidden-md hidden-xs">
-			<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
-			<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-			<?php
-			wp_reset_query();
-			$pageTitle = get_the_title();
-			if ($post->post_parent != 0){
-				$ids = $post->post_parent;
-			}
-			else {
-				$ids = get_the_id();
-			}
-			$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
-			$postslist = new WP_Query( $args );
-			while ( $postslist->have_posts() ) : $postslist->the_post();
-			if(strtolower(get_the_title()) == strtolower('about')) {
-				echo '<div class="title col-xs-1">' . get_the_title() . '</div>';
-				$content=get_the_content();
-				$contents=explode("\n",$content);
-				echo '<div class="mid-nav-inner"><ul>';
-				$j = 0;
-				for ($i = 0; $i < count($contents); $i++) { 
-					if(strlen($contents[$i]) > 1) {
-						$class = ($j == 0) ? 'first' : '';
-						echo '<li class="subpageMenu ' . $class . '" id="item' . $j++ . '">' . $contents[$i] . '</li>';
-					}
+<div class="row">
+	<div class="mid-nav hidden-sm hidden-md hidden-xs">
+		<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
+		<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
+		<?php
+		wp_reset_query();
+		$pageTitle = get_the_title();
+		if ($post->post_parent != 0){
+			$ids = $post->post_parent;
+		}
+		else {
+			$ids = get_the_id();
+		}
+		$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
+		$postslist = new WP_Query( $args );
+		while ( $postslist->have_posts() ) : $postslist->the_post();
+		if(strtolower(get_the_title()) == strtolower('about')) {
+			echo '<div class="title col-xs-1">' . get_the_title() . '</div>';
+			$content=get_the_content();
+			$contents=explode("\n",$content);
+			echo '<div class="mid-nav-inner"><ul>';
+			$j = 0;
+			for ($i = 0; $i < count($contents); $i++) { 
+				if(strlen($contents[$i]) > 1) {
+					$class = ($j == 0) ? 'first' : '';
+					echo '<li class="subpageMenu ' . $class . '" id="item' . $j++ . '">' . $contents[$i] . '</li>';
 				}
-				echo '</ul></div>';
-				break;
 			}
-			endwhile;
-			?>
-		</div>
-		<div class="mobile-mid-nav hidden-lg">
-			<?php
-			wp_reset_query();
-			$pageTitle = get_the_title();
-			if ($post->post_parent != 0){
-				$ids = $post->post_parent;
-			}
-			else {
-				$ids = get_the_id();
-			}
-			$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
-			$postslist = new WP_Query( $args );
-			while ( $postslist->have_posts() ) : $postslist->the_post();
-			if(strtolower(get_the_title()) == strtolower('about' )) {
-				
-				$content=get_the_content();
-				$contents=explode("\n",$content);
-				echo '<div class="mobile-mid-nav-inner mobile-text-center"><ul>';
-				$j = 0;
-				echo "<li class='mobile-filter-active'><span class='caret'></span>" . $pageTitle . "</li><ul class='mobile-filter-dropdown'>";
-				for ($i = 0; $i < count($contents); $i++) { 
-					if(strlen($contents[$i]) > 1) {
-						
-						echo '<li class="mobile-filter-item" id="item' . $j++ . '">' . $contents[$i] . '</li>';
-					}
-				}
-				echo '</ul></ul></div>';
-				break;
-			}
-			endwhile;
-			?>
-		</div>
+			echo '</ul></div>';
+			break;
+		}
+		endwhile;
+		?>
+	</div>
+	<div class="mobile-mid-nav hidden-lg">
+		<?php
+		wp_reset_query();
+		$pageTitle = get_the_title();
+		if ($post->post_parent != 0){
+			$ids = $post->post_parent;
+		}
+		else {
+			$ids = get_the_id();
+		}
+		$args = array( 'posts_per_page' => 10, 'post_type' => 'sri-menu' );
+		$postslist = new WP_Query( $args );
+		while ( $postslist->have_posts() ) : $postslist->the_post();
+		if(strtolower(get_the_title()) == strtolower('about' )) {
 
-		<div class="page-content">
-			<div class="col-lg-7 col-lg-offset-1 mobile-text-center mobile-no-padding mobile-para-padding-child-p">
-				<?php
-				while ( have_posts() ) : the_post();
-				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . the_content() . '</p>';
-				endwhile;
-				?>
-			</div>
-			<div class="col-sm-2 hidden-md hidden-sm hidden-xs">
-				<h2>Resources</h2>
-				<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
-				<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
-				<?php include('social.php');?>
-			</div>
+			$content=get_the_content();
+			$contents=explode("\n",$content);
+			echo '<div class="mobile-mid-nav-inner mobile-text-center"><ul>';
+			$j = 0;
+			echo "<li class='mobile-filter-active'><span class='caret'></span>" . $pageTitle . "</li><ul class='mobile-filter-dropdown'>";
+			for ($i = 0; $i < count($contents); $i++) { 
+				if(strlen($contents[$i]) > 1) {
+
+					echo '<li class="mobile-filter-item" id="item' . $j++ . '">' . $contents[$i] . '</li>';
+				}
+			}
+			echo '</ul></ul></div>';
+			break;
+		}
+		endwhile;
+		?>
+	</div>
+
+	<div class="page-content">
+		<div class="col-lg-7 col-lg-offset-1 mobile-text-center mobile-no-padding mobile-para-padding-child-p">
+			<?php
+			while ( have_posts() ) : the_post();
+			echo '<h2>' . get_the_title() . '</h2>';
+			echo '<p>' . the_content() . '</p>';
+			endwhile;
+			?>
+		</div>
+		<div class="col-sm-2 hidden-md hidden-sm hidden-xs">
+			<h2>Resources</h2>
+			<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
+			<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
+			<?php include('social.php');?>
 		</div>
 	</div>
+</div>
 </div>
 <?php 
 //Get Map Data
@@ -127,12 +127,8 @@ endwhile;?>
 <div class="row map-wrap">
 	<div class="col-sm-10 col-sm-offset-1"><div id="map" ></div></div>
 </div>
-<?php ?>
-<?php include('newsletter.php');?>
-
-
 <?php 
-get_template_part('navigation');
+include('newsletter.php'); 
 if(is_mobile()) {
 	include('quotewrap.php');
 	get_footer('mobile');

@@ -19,6 +19,7 @@
 
  <?php
  get_header('all'); 
+
  wp_reset_query();?>
 
  <div class="row">
@@ -28,7 +29,7 @@
  	if(strtolower(trim(get_the_title()))=='project') :
  		?>
  	<div class="col-sm-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
- 		<div class="banner-content">
+ 		<div class="banner-content mobile-no-padding mobile-no-margin mobile-para-padding">
  			<h2><?php echo types_render_field('banner-title')?></h2>
  			<p><?php  echo get_the_content();?></p>
  			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
@@ -36,7 +37,7 @@
  	</div>
  </div>
 </div>
-<div class="row" >
+<div class="row hidden-sm hidden-xs hidden-md" >
 
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
@@ -109,10 +110,28 @@
 
 		</div>
 	</div>
-	<div class="col-sm-9 timeline-wrapper">
-		<div class="current-date">2015<br/><span class='cur-month'>Oct</span></div>
-		<section id="cd-timeline" class="cd-container">
-			<div class="circle"></div>
+	<div class="row hidden-lg" >
+		<div id="mobile_custom_filters mobile_project_filter">
+		<span class="filter_by">Filter By</span>
+			<?php
+			$dropdown_args = array(
+				'hide_empty'       => 0,
+				'hide_if_empty'    => false,
+				'taxonomy'         => 'project_categories',
+				'name'             => 'parent',
+				'orderby'          => 'name',
+				'hierarchical'     => true,
+				'show_option_none' => 'Type',
+				);
+			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
+			$tags=wp_dropdown_categories( $dropdown_args );
+			?>
+		</div>
+	</div>
+	<div class="col-sm-9 timeline-wrapper mobile-no-padding mobile-no-margin">
+		<div class="current-date hidden-sm hidden-md hidden-xs">2015<br/><span class='cur-month'>Oct</span></div>
+		<section id="cd-timeline" class="cd-container mobile-no-padding mobile-no-margin mobile-fullwidth">
+			<div class="circle hidden-sm hidden-md hidden-xs"></div>
 			<?php
 			$nextEvent = '';
 			$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
@@ -209,12 +228,11 @@
 				else {continue;}
 			}
 			?>
-
 			<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
-				<a href="<?php echo get_the_permalink();?>"><div class="cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
+				<a href="<?php echo get_the_permalink();?>"><div class="hidden-sm hidden-xs hidden-md cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
-				<div class="cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
+				<div class="  mobile-no-margin cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
 					<a href="<?php echo get_the_permalink();?>">
 						<?php
 						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
@@ -226,14 +244,14 @@
 						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
 						</div>
 					</a>
-					<div class="alert-icon" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top"></div>
+					<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top"></div>
 
 					<div class="content">
-						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
-						<p>
+						<h2 class=""><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
+						<p class="mobile-para-padding">
 							<?php echo $location['address']; ?>
 						</p>
-						<p><?php 
+						<p class="mobile-para-padding"><?php 
 							echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
 							<p><?php echo types_render_field('facilitators');?></p>
 							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
@@ -247,7 +265,7 @@
 			</section> <!-- cd-timeline -->
 			<div class="timeline-clear"></div>
 		</div>
-		<div class="col-sm-3 fixed hidden-xs sidediv">
+		<div class="col-sm-3 fixed hidden-xs hidden-sm hidden-md sidediv">
 			<h2>Calender</h2>
 			<div class="clndr-wrap side-wrap">
 				<script type="text/template" id="clndr">
@@ -284,20 +302,23 @@
 		</div>
 	</div>
 	<?php 
-	include('newsletter.php'); 
-	get_template_part('navigation');
-	if(is_mobile()) {
-		include('quotewrap.php');
-		get_footer('mobile');
-	}
-	else {
-		get_footer('all');
-	}
+
 	$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
 	$lang = 'en';
 	if(strstr($current_page,'ne'))
 		$lang = 'ne';
 	?>
+	<?php
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+		get_footer();
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}?>
 	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
 		var lang = '<?php echo $lang; ?>';
 		var location123="<?php echo $_GET['location'];?>";
@@ -477,9 +498,7 @@ jQuery(document).ready(function() {
 		jQuery('.current-date').html(curr[1] + '<br/><span class="cur-month">' + curr[0].substring(0,3) + '</span>');
 	}
 });
-jQuery(".postform").transformSelect({
-	dropDownClass: "transformSelect transformSelect1",
-});
+
 
 
 jQuery("#location_value_main").transformSelect({

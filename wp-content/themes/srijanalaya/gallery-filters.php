@@ -1,6 +1,6 @@
-<div style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
+<div class="hidden-sm hidden-xs hidden-xs" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
 	<div id="custom_filters">
-	<span class="filter_by">Filter By:</span>
+		<span class="filter_by">Filter By:</span>
 
 		<form class="" action="<?php bloginfo('url'); ?>/" method="get">
 			<?php
@@ -47,16 +47,27 @@
 </div>
 <?php if(get_the_slug() == 'resources') { ?>
 <div class="col-sm-8" id="tag_filter_div">
-<span class="active-tags">ACTIVE TAGS: </span>
-<ul>
-	<?php 
-	$tags = get_terms('resource_tags');
-	foreach($tags as $tag){
-		?>
+	<span class="active-tags">ACTIVE TAGS: </span>
+	<ul>
+		<?php 
+		$tags = get_terms('resource_tags');
+		foreach($tags as $tag){
+			?>
 
-		<li class="remove-tag active"><?php echo $tag->slug; ?>  x</li>
+			<li class="remove-tag active"><?php echo $tag->slug; ?>  x</li>
 
+			<?php } ?>
+		</ul>
 		<?php } ?>
-	</ul>
-	<?php } ?>
+	</div>
 </div>
+
+<!-- Filter for mobile-->
+<div class="hidden-lg" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
+	<div id="mobile_custom_filters">
+		<li class="gallery_filter_item"><a href="<?php echo site_url().'/resources';?>">Resources</a></li>
+		<li class="gallery_filter_item"><a href="<?php echo site_url().'/gallery';?>">Gallery</a></li>
+		<li class="gallery_filter_item"><a href="<?php echo site_url().'/videos';?>">Videos</a></li>
+	</div>
+</div>
+

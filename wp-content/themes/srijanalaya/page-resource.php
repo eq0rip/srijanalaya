@@ -6,14 +6,14 @@ Template Name: Resource
 get_header('all'); 
 wp_reset_query();
 ?>
-<div class="row">
+<div class="row mobile-no-padding">
 	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
 	if(strtolower(trim(get_the_title()))=='resource') :
 		?>
-	<div class="col-sm-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
-		<div class="banner-content">
+	<div class="col-lg-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+		<div class="banner-content mobile-no-margin">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
 			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Resource</a>
@@ -73,8 +73,8 @@ wp_reset_query();
 				$post_categories = "Not Assigned";
 			}
 			?>
-			<div class="col-sm-4 content <?php echo $tag;?>">
-				<div class="img-wrapper">
+			<div class="col-sm-4 content mobile-no-padding <?php echo $tag;?>">
+				<div class="img-wrapper mobile-height-auto">
 					<img src="<?php echo $image;?>" />
 				</div>
 				<h4><?php the_title(); ?></h4>
