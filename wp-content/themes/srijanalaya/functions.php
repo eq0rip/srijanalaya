@@ -210,16 +210,16 @@ function parseDate($date)
 
     switch ($day % 10) {
         case 1:
-        $day = $day . '<sub>st</sub>';
+        $day = $day . '<sup>st</sup>';
         break;
         case 2:
-        $day = $day . '<sub>nd</sub>';
+        $day = $day . '<sup>nd</sup>';
         break;
         case 3:
-        $day = $day . '<sub>rd</sub>';
+        $day = $day . '<sup>rd</sup>';
         break;
         default:
-        $day = $day.'<sub>th</sub>';
+        $day = $day.'<sup>th</sup>';
         break;
     }
     return $day;

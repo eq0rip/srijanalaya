@@ -73,7 +73,7 @@ wp_reset_query();
 				$post_categories = "Not Assigned";
 			}
 			?>
-			<div class="col-sm-4 content mobile-no-padding <?php echo $tag;?>">
+			<div class="col-sm-4 content mobile-no-padding mobile-para-padding-child-p <?php echo $tag;?>">
 				<div class="img-wrapper mobile-height-auto">
 					<img src="<?php echo $image;?>" />
 				</div>

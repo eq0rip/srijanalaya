@@ -112,7 +112,7 @@
 	</div>
 	<div class="row hidden-lg" >
 		<div id="mobile_custom_filters mobile_project_filter">
-		<span class="filter_by">Filter By</span>
+			<span class="filter_by">Filter By</span>
 			<?php
 			$dropdown_args = array(
 				'hide_empty'       => 0,
@@ -221,7 +221,9 @@
 			}
 
 			if(isset($_GET['location'])){
-
+				if($_GET['location']=='null'){
+					$_GET['location']='nepal';
+				}
 				if (stripos($location['address'],$_GET['location']) !== false) {
 					
 				}
@@ -345,8 +347,9 @@
 		//Go to next project
 		
 		var winSize = (jQuery(window).height()) / 2;
-		jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
-
+		if( jQuery('#next').length > 0 ){
+			jQuery("html, body").animate({scrollTop: (jQuery('#next').offset().top - winSize) }, 1000);
+		}
 		//{to change calender locale}
 		if(lang == 'ne') 
 			moment.locale('ne'); 
