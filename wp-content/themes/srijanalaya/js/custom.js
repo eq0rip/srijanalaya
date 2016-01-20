@@ -182,10 +182,14 @@ $('.transformSelect3').hover(function(){
   $(this).find('.transformSelectDropdown').addClass('drop-on').removeClass('drop-off');
 },
 function(){
-  if($('#ui-datepicker-div').css('display')!='none') {
-    return;
+  if($('#ui-datepicker-div').length!=0){
+    if($('#ui-datepicker-div').css('display')!='none') {
+      return;
+
+    }
   }
-$(this).find('.transformSelectDropdown').addClass('drop-off').removeClass('drop-on');
+
+  $(this).find('.transformSelectDropdown').addClass('drop-off').removeClass('drop-on');
 });
 
 //owl sync

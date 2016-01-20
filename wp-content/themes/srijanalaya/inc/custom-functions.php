@@ -45,7 +45,16 @@ register_taxonomy(
     'capabilities' => array( 'edit_terms' => 'manage_categories' )
     )
   );
-
+register_taxonomy(
+  'Gallery_categories',
+  'sri-gallery',
+  array(
+    'label'        => __( 'Categories' ),
+    'rewrite'      => false,
+    'hierarchical' => true,
+    'capabilities' => array( 'edit_terms' => 'manage_categories' )
+    )
+  );
 function load_locale() {
   global $wpdb;
 $data = $wpdb->get_results("SELECT *  FROM localize");
