@@ -45,6 +45,7 @@ register_taxonomy(
     'capabilities' => array( 'edit_terms' => 'manage_categories' )
     )
   );
+
 function load_locale() {
   global $wpdb;
 $data = $wpdb->get_results("SELECT *  FROM localize");

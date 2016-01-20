@@ -268,7 +268,7 @@ get_header();?>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
 					<p><?php echo strip_tags(get_the_excerpt());?></p>
 				</div>
-				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a><br/><br/>
+				<a  href="<?php echo get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a><br/><br/>
 				<?php include('social-expand.php');?>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['shop'][$lang]);?></button>
@@ -278,7 +278,7 @@ get_header();?>
 		<div class="col-xs-6 fullheight section-container even">
 			<?php
 			wp_reset_query();
-			$args=array('posts_per_page' => 1, 'post_type'=>'srijanalaya-artist','orderby' => 'date', 'order' => 'DESC');
+			$args=array('posts_per_page' => 1, 'post_type'=>'sri-artist','orderby' => 'date', 'order' => 'DESC');
 			$postslist=new WP_Query($args);
 			while($postslist->have_posts() ) :$postslist->the_post();
 
@@ -298,7 +298,7 @@ get_header();?>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
 					<p><?php echo get_post_meta($nextEvent,'wpcf-short-description',true);;?></p>
 				</div>
-				<a  href="<?php get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a><br/><br/>
+				<a  href="<?php echo get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a><br/><br/>
 				<?php include('social-expand.php');?>
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['art'][$lang]);?></button>
@@ -336,103 +336,134 @@ get_header();?>
 		</div>
 	</div>
 	<div class="col-xs-6 section-container bottom-container2">
-		<iframe id="player" src="https://player.vimeo.com/video/<?php  echo $urlvid;?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-		<?php if($image != '') { ?>
-		<div class="video-wrap">
-			<img src="<?php echo $image; ?>">
-			<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
-		</div>
-		<?php } ?>
-	</div>
-	<?php
-	endwhile;
-	?>
-	<div class="col-xs-12 halfheight footer">
-		<div class="quote-wrap">
-			<?php
-			$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
-			$postslist = new WP_Query( $args );
-			while ( $postslist->have_posts() ) : $postslist->the_post();
-			$content = get_the_content();
-			$content = explode( '#',$content );
+
+		<?php 
+		if(stristr($urlvid, 'youtube.com') === FALSE) {
 			?>
+			<iframe id="player" src="https://player.vimeo.com/video/<?php  echo parse_vimeo($urlvid);?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<?php } else {?>
+			<div id="playeryt"></div>
+			<script>
+				var tag = document.createElement('script');
+				var videourl="<?php echo parse_youtube($urlvid);?>";
+				tag.src = "https://www.youtube.com/iframe_api";
+				var firstScriptTag = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+				var playeryt;
+				function onYouTubeIframeAPIReady() {
+					playeryt = new YT.Player('playeryt', {
+						height: '100%',
+						width: '100%',
+						videoId: videourl,
+					});
+				}
 
+			</script>
 
-			<div class="inner-wrap">	
-				<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
-				<div class="back-to-top">
-					<i class="fa fa-angle-up bounce-arrow-down"></i>
-				</div>
+			<?php  } if($image != '') { ?>
+			<div class="video-wrap">
+				<img src="<?php echo $image; ?>">
+				<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
 			</div>
-			<div class="inner-wrap footer-bar">	
-				<div class="col-md-8 col-md-offset-3 covers">
-					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
-						<h4><?php echo ucwords($sri_locale['check us out '][$lang]);?></h4>
-						<ul class="list-unstyled">
-							<li><a href="<?php echo site_url().'/about'?>"><?php echo ucwords($sri_locale['who we are'][$lang]);?></a></li>
-							<li><a href="<?php echo site_url().'/srijanalaya-artist/'?>"><?php echo ucwords($sri_locale['artworks'][$lang]);?></a></li>
-							<li><a href="<?php echo site_url().'/project/'?>"><?php echo ucwords($sri_locale['our projects'][$lang]);?></a></li>
-							<li><a href="#!"><?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?></a></li>
-						</ul>
-					</div>
-					<div class="col-xs-6 col-sm-3 footer-elements" id="fsection2">
-						<h4>Project</h4>
-						<ul class="list-unstyled">
-							<?php
-							wp_reset_query(); 
-							$args=array('posts_per_page' => 4, 'post_type'=>'project', 'orderby' => 'date', 'order' => 'DESC');
-							$postslist=new WP_Query($args);
-							while($postslist->have_posts() ) :$postslist->the_post();
-							?>
-							<li><a href="<?php echo get_the_permalink();?>"><?php echo get_the_title();?></a></li>
-							<?php 
-							endwhile;
-							?>
-							
-						</ul>
-					</div>
-					<div class="col-xs-12 col-sm-3 footer-elements social-block">
-						<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
-						<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
-						<p><?php echo ucwords($sri_locale['donate'][$lang]);?></p>
-					</div>
-				</div>
-			</div>
-			<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+			<?php } ?>
 		</div>
-	</div> <!--full page end-->
-	<?php include('newsletter.php');?>
+		<?php
+		endwhile;
+		?>
+		<div class="col-xs-12 halfheight footer">
+			<div class="quote-wrap">
+				<?php
+				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
+				$postslist = new WP_Query( $args );
+				while ( $postslist->have_posts() ) : $postslist->the_post();
+				$content = get_the_content();
+				$content = explode( '#',$content );
+				?>
 
-</body>
 
-</html>
+				<div class="inner-wrap">	
+					<p><?php echo $content[0];?><span class="htext"><?php echo $content[1];?></span><?php echo $content[2];endwhile;?></p>
+					<div class="back-to-top">
+						<i class="fa fa-angle-up bounce-arrow-down"></i>
+					</div>
+				</div>
+				<div class="inner-wrap footer-bar">	
+					<div class="col-md-8 col-md-offset-3 covers">
+						<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
+							<h4><?php echo ucwords($sri_locale['check us out '][$lang]);?></h4>
+							<ul class="list-unstyled">
+								<li><a href="<?php echo site_url().'/about'?>"><?php echo ucwords($sri_locale['who we are'][$lang]);?></a></li>
+								<li><a href="<?php echo site_url().'/srijanalaya-artist/'?>"><?php echo ucwords($sri_locale['artworks'][$lang]);?></a></li>
+								<li><a href="<?php echo site_url().'/project/'?>"><?php echo ucwords($sri_locale['our projects'][$lang]);?></a></li>
+								<li><a href="#!"><?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?></a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-3 footer-elements" id="fsection2">
+							<h4>Project</h4>
+							<ul class="list-unstyled">
+								<?php
+								wp_reset_query(); 
+								$args=array('posts_per_page' => 4, 'post_type'=>'project', 'orderby' => 'date', 'order' => 'DESC');
+								$postslist=new WP_Query($args);
+								while($postslist->have_posts() ) :$postslist->the_post();
+								?>
+								<li><a href="<?php echo get_the_permalink();?>"><?php echo get_the_title();?></a></li>
+								<?php 
+								endwhile;
+								?>
+
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-3 footer-elements social-block">
+							<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
+							<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
+							<p><?php echo ucwords($sri_locale['donate'][$lang]);?></p>
+						</div>
+					</div>
+				</div>
+				<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+			</div>
+		</div> <!--full page end-->
+		<?php include('newsletter.php');?>
+
+	</body>
+
+	</html>
 
 
-<?php get_footer(); ?>
-<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
-<script type="text/javascript">
-	function goTo(page) {
-		if(!ValidURL(page))
-			location.href = '<?php echo site_url();?>/' + page;
-		else
-			location.href = page;
-	}
-	function ValidURL(str) {
-		var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-		if(!regex .test(str)) {
-			return false;
-		} else {
-			return true;
+	<?php get_footer(); ?>
+	<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+	<script type="text/javascript">
+		function goTo(page) {
+			if(!ValidURL(page))
+				location.href = '<?php echo site_url();?>/' + page;
+			else
+				location.href = page;
 		}
-	}
-	var player = $f(document.getElementById('player'));
-	jQuery('.video-wrap').click(function() { 
-		player.api('play');
-	});
+
+		function ValidURL(str) {
+			var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+			if(!regex .test(str)) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		<?php if(stristr($urlvid, 'youtube.com') === FALSE) {?>
+			var player = $f(document.getElementById('player'));
+			jQuery('.video-wrap').click(function() { 
+				player.api('play');
+			});
+			<?php } else {?>
+				jQuery('.video-wrap').click(function(){
+					playeryt.playVideo();
+				});
+				<?php } ?>
 
 
 
 
 
 
-</script>
+			</script>
+

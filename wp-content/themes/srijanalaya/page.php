@@ -21,6 +21,13 @@ get_header('all');
 	</div>
 </div>
 <?php 
-get_footer('all');
-get_footer(); 
+include('newsletter.php'); 
+if(is_mobile()) {
+	include('quotewrap.php');
+	get_footer('mobile');
+}
+else {
+	get_footer('all');
+	get_footer();
+}
 ?>

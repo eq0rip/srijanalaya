@@ -32,6 +32,12 @@
    $menu_head=get_the_title();
    $contents=get_menu_post('product');
  } 
+ elseif(lowertrim(types_render_field('url-slug'))=='about')
+ {
+   $menu_head=get_the_title();
+   $contents = get_menu_post('about');
+
+ } 
 
  $j = 0;
 
@@ -41,26 +47,24 @@
  <li class="dropdown yamm-fw first"><a class="dropdown-toggle topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
   <?php if(count($contents) > 1) {?><span class="caret" ></span><?php } ?></a>
   <?php if(count($contents) > 1) { ?>
-  <div class="drop-menu-wrap" style="display: none;">
-    <ul class="dropdown-menu">
-      <div class="yamm-content">
-        <?php for ($i = 0; $i < count($contents); $i++) { 
-          if(strlen($contents[$i]) > 1) {
-            if($j % 2 == 0) {
-              echo '<ul class="col-sm-2 col-xs-4 list-unstyled">';
-            }
-            echo '<li>' . $contents[$i] . '</li>';
-            if($j % 2 == 1) { 
-              echo '</ul>';
-            }
-            $j++;
+  <ul class="dropdown-menu">
+    <div class="yamm-content">
+      <?php for ($i = 0; $i < count($contents); $i++) { 
+        if(strlen($contents[$i]) > 1) {
+          if($j % 2 == 0) {
+            echo '<ul class="col-sm-2 col-xs-4 list-unstyled">';
           }
+          echo '<li>' . $contents[$i] . '</li>';
+          if($j % 2 == 1) { 
+            echo '</ul>';
+          }
+          $j++;
         }
-        ?>  
+      }
+      ?>  
 
-      </div>
-    </ul>
-  </div>
+    </div>
+  </ul>
   <?php } ?>
 </li>
 

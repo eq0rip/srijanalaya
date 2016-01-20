@@ -2,9 +2,10 @@
 	position: relative;
 	height: 450px;
 	overflow: hidden;
-	@media (max-width:769px) {
-		height: auto;
+	@media(max-width:992){
+
 	}
+	
 	form.cart-form {
 		position: absolute;
 		bottom: 0;
@@ -23,9 +24,21 @@
 		background-size: cover !important;
 		background-repeat: no-repeat;
 		height: 450px;
+		@media(max-width:992px){
+			float: none !important;
+			background-position: center !important;
+			width: 100% !important;
+			margin-top: 25px !important;
+
+		}
 	}
 	.content {
-		display: none;
+		display: block;
+		height:115px;
+		top: 100%;
+		@media(max-width:768px){
+			height:135px !important;
+		}
 		h2 {
 			color: #424243;
 			font-size: 16px;
@@ -35,20 +48,24 @@
 			padding-right: 0;
 			font-size: 11px !important;
 		}
+		form {
+			@media(max-width:992px){
+				right: 25px;
+				bottom: 25px;
+			}
+		}
 		position: absolute;
 		color: #807f7f;
 		left: 0;
 		bottom: 0;
-		background-color: #dfdedd;
 		padding: 20px 100px;
-		opacity: 0.7;
-		-webkit-transition-duration: 5s;
-		-moz-transition-duration: 5s;
-		-o-transition-duration: 5s;
+		background-color:rgba(255,255,255,0.8);
+		transition: top 0.5s;
+		-webkit-transition: top 0.5s;
 	}
 	&:hover {
 		.content {
-			display: block;
+			top: 74.5%;
 		}
 	}
 }
@@ -80,8 +97,11 @@
 		margin-bottom: 20px;
 		position: relative;
 		padding-right: 0;
+		overflow:hidden;
+		//overflow: hidden;
 		.content {
-			display: none;
+			display: block;
+			height: 115px;
 			h2 {
 				color: #424243;
 				font-size: 16px;
@@ -91,20 +111,26 @@
 				padding-right: 0;
 				font-size: 11px !important;
 			}
+			form {
+				@media(max-width:992px){
+					right:15px;
+				}
+			}
 			position: absolute;
 			color: #807f7f;
 			left: 0;
-			bottom: 0;
-			background-color: #dfdedd;
+			top:100%;
+			background-color:rgba(255,255,255,0.8);
 			padding: 20px 100px;
-			opacity: 0.7;
-			-webkit-transition-duration: 5s;
-			-moz-transition-duration: 5s;
-			-o-transition-duration: 5s;
+			// -webkit-transition-duration: 5s;
+			// -moz-transition-duration: 5s;
+			// -o-transition-duration: 5s;
+			transition: top 0.5s;
+			-webkit-transition: top 0.5s;
 		}
 		&:hover {
 			.content {
-				display: block;
+				top:64%;
 			}
 		}
 	}
@@ -370,4 +396,11 @@ form .transformSelect1 {
 }
 .woocommerce .page-content {
 	padding-top: 0;
+}
+
+//mobile_overwrite
+.post-type-archive-product {
+	.head_section {
+		margin: 10px !important;
+	}
 }

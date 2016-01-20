@@ -161,68 +161,68 @@ function sort_project_by_date($a,$b)
 
 function parseDate($date)
 {
-    $data = explode('-', $date);
-    $month = $data[1];
-    $year = $data[0];
-    $day = $data[2];
-    switch ($month) {
-        case 1:
-        $month = "January";
-        break;
-        case 2:
-        $month = "Feburary";
-        break;
-        case 3:
-        $month = "March";
-        break;
-        case 4:
-        $month = "April";
-        break;
-        case 5:
-        $month = "May";
-        break;
-        case 6:
-        $month = "June";
-        break;
-        case 7:
-        $month = "July";
-        break;
-        case 8:
-        $month = "August";
-        break;
-        case 9:
-        $month = "September";
-        break;
-        case 10:
-        $month = "October";
-        break;
-        case 11:
-        $month = "November";
-        break;
-        case 12:
-        $month = "December";
-        break;
-        default:
-        $month = "May'";
-        break;
-    }
+	$data = explode('-', $date);
+	$month = $data[1];
+	$year = $data[0];
+	$day = $data[2];
+	switch ($month) {
+		case 1:
+		$month = "January";
+		break;
+		case 2:
+		$month = "Feburary";
+		break;
+		case 3:
+		$month = "March";
+		break;
+		case 4:
+		$month = "April";
+		break;
+		case 5:
+		$month = "May";
+		break;
+		case 6:
+		$month = "June";
+		break;
+		case 7:
+		$month = "July";
+		break;
+		case 8:
+		$month = "August";
+		break;
+		case 9:
+		$month = "September";
+		break;
+		case 10:
+		$month = "October";
+		break;
+		case 11:
+		$month = "November";
+		break;
+		case 12:
+		$month = "December";
+		break;
+		default:
+		$month = "May'";
+		break;
+	}
 
 
-    switch ($day % 10) {
-        case 1:
-        $day = $day . '<sup>st</sup>';
-        break;
-        case 2:
-        $day = $day . '<sup>nd</sup>';
-        break;
-        case 3:
-        $day = $day . '<sup>rd</sup>';
-        break;
-        default:
-        $day = $day.'<sup>th</sup>';
-        break;
-    }
-    return $day;
+	switch ($day % 10) {
+		case 1:
+		$day = $day . '<sup>st</sup>';
+		break;
+		case 2:
+		$day = $day . '<sup>nd</sup>';
+		break;
+		case 3:
+		$day = $day . '<sup>rd</sup>';
+		break;
+		default:
+		$day = $day.'<sup>th</sup>';
+		break;
+	}
+	return $day;
 	$data = explode('-', $date);
 	$month = $data[1];
 	$year = $data[0];
@@ -289,7 +289,7 @@ function parseDate($date)
 
 
 function my_default_image_size () {
-     return 'large';
+	return 'large';
 }
 add_filter( 'pre_option_image_default_size', 'my_default_image_size' );
 
@@ -453,6 +453,25 @@ function lowertrim($strr) {
 	return trim(strtolower($strr));
 }
 function get_menu_post($post_type){
+
+	if($post_type=='about') {
+		
+		//$page=get_page_by_title( 'About','OBJECT','page' );
+		$args = array(
+			'post_type'      => 'page',
+			'posts_per_page' => -1,
+			'post_parent'    => 206,//$page->ID;
+			'order'          => 'ASC',
+			);
+		$postslist = new WP_Query($args);
+
+		while( $postslist->have_posts() ) : $postslist->the_post();
+		$temptitle=get_the_title();
+		$tempperma=get_the_permalink();
+		$tempmenu[]='<a href="'.$tempperma.'" >'.$temptitle.'</a>';
+		endwhile;
+		return $tempmenu;
+	}
 	$args=array('posts_per_page'=>15,'post_type'=>$post_type, 'order' => 'DESC');
 	$postslist=new WP_Query($args);
 	while( $postslist->have_posts() ) : $postslist->the_post();
@@ -482,5 +501,68 @@ function current_page_url($filter) {
 	if($filter == 0) {
 		return "http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
 	}
+}
+
+function parse_vimeo($link){
+
+	$regexstr = '~
+			# Match Vimeo link and embed code
+	(?:&lt;iframe [^&gt;]*src=")?		# If iframe match up to first quote of src
+	(?:							# Group vimeo url
+		https?:\/\/				# Either http or https
+		(?:[\w]+\.)*			# Optional subdomains
+		vimeo\.com				# Match vimeo.com
+		(?:[\/\w]*\/videos?)?	# Optional video sub directory this handles groups links also
+		\/						# Slash before Id
+		([0-9]+)				# $1: VIDEO_ID is numeric
+		[^\s]*					# Not a space
+		)							# End group
+"?							# Match end quote if part of src
+(?:[^&gt;]*&gt;&lt;/iframe&gt;)?		# Match the end of the iframe
+(?:&lt;p&gt;.*&lt;/p&gt;)?		        # Match any title information stuff
+~ix';
+
+preg_match($regexstr, $link, $matches);
+
+return $matches[1];
+
+}
+
+function parse_youtube($link){
+	
+	$regexstr = '~
+			# Match Youtube link and embed code
+	(?:				 				# Group to match embed codes
+		(?:&lt;iframe [^&gt;]*src=")?	 	# If iframe match up to first quote of src
+		|(?:				 		# Group to match if older embed
+			(?:&lt;object .*&gt;)?		# Match opening Object tag
+			(?:&lt;param .*&lt;/param&gt;)*  # Match all param tags
+			(?:&lt;embed [^&gt;]*src=")?  # Match embed tag to the first quote of src
+			)?				 			# End older embed code group
+)?				 				# End embed code groups
+(?:				 				# Group youtube url
+	https?:\/\/		         	# Either http or https
+	(?:[\w]+\.)*		        # Optional subdomains
+	(?:               	        # Group host alternatives.
+		youtu\.be/      	        # Either youtu.be,
+		| youtube\.com		 		# or youtube.com 
+		| youtube-nocookie\.com	 	# or youtube-nocookie.com
+		)				 			# End Host Group
+(?:\S*[^\w\-\s])?       	# Extra stuff up to VIDEO_ID
+([\w\-]{11})		        # $1: VIDEO_ID is numeric
+[^\s]*			 			# Not a space
+)				 				# End group
+"?				 				# Match end quote if part of src
+(?:[^&gt;]*&gt;)?			 			# Match any extra stuff up to close brace
+(?:				 				# Group to match last embed code
+	&lt;/iframe&gt;		         	# Match the end of the iframe	
+	|&lt;/embed&gt;&lt;/object&gt;	        # or Match the end of the older embed
+	)?				 				# End Group of last bit of embed code
+~ix';
+
+preg_match($regexstr, $link, $matches);
+
+return $matches[1];
+
 }
 

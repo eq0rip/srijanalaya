@@ -73,11 +73,11 @@ wp_reset_query();
 				$post_categories = "Not Assigned";
 			}
 			?>
-			<div class="col-sm-4 content mobile-no-padding mobile-para-padding-child-p <?php echo $tag;?>">
+			<div class="col-sm-4 content mobile-no-padding mp30 <?php echo $tag;?>">
 				<div class="img-wrapper mobile-height-auto">
 					<img src="<?php echo $image;?>" />
 				</div>
-				<h4><?php the_title(); ?></h4>
+				<h4><?php echo get_the_title(); ?></h4>
 				<p><?php echo types_render_field('short-description'); ?></p>
 				<a href="<?php echo get_the_permalink();?>">Read More</a>
 				<p class='category'><?php echo $post_categories; ?></p>

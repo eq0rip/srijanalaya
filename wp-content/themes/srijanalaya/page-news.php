@@ -94,5 +94,6 @@ if(is_mobile()) {
 }
 else {
 	get_footer('all');
+	get_footer();
 }
 ?>

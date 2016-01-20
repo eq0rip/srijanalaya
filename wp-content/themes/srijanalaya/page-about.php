@@ -135,6 +135,7 @@ if(is_mobile()) {
 }
 else {
 	get_footer('all');
+	get_footer();
 }
 ?>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>

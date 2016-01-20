@@ -28,7 +28,7 @@
   <div class="transbg"></div>
 </div>
 
-<div class="hidden-sm hidden-md hidden-xs" style""><!--head div sart-->    
+<div class="hidden-sm hidden-xs" style""><!--head div sart-->    
   <div class="container-fluid head_div"><!--top buttons-->
     <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
   </div>
@@ -53,8 +53,8 @@
   </nav>
 </div><!--head div end -->    
 <?php flush(); ?>
-<div class="drop hidden-sm hidden-md hidden-xs"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
- <div class="container-fluid head_section hidden-lg"><!--top buttons-->
+<div class="drop hidden-xs hidden-sm"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
+ <div class="container-fluid head_section hidden-lg hidden-md fl"><!--top buttons-->
     <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
   </div>
 <div class="page-wrap">

@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<div class="row hidden-lg" >
-		<div id="mobile_custom_filters mobile_project_filter">
+		<div id="mobile_custom_filters">
 			<span class="filter_by">Filter By</span>
 			<?php
 			$dropdown_args = array(

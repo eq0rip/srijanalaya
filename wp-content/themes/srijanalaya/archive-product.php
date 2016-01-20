@@ -6,7 +6,7 @@ wp_reset_query();
 ?>
 <div class="page-wrapper wrapper">
 	<div class="row">
-		<div class="bar">
+		<div class="bar hidden-sm hidden-xs">
 			<div id="custom_filters" class="mid-nav">
 				<form class="" action="<?php bloginfo('url'); ?>/" method="get">
 					<?php
@@ -33,7 +33,7 @@ wp_reset_query();
 				</div>
 			</div>
 		</div>
-		<div class="page-content" id="shopwrap">
+		<div class="page-content mobile-no-margin" id="shopwrap">
 			<div class="col-sm-12 no-padding">
 				<div class="featured row">
 					<?php
@@ -58,7 +58,7 @@ wp_reset_query();
 					if ( $loop->have_posts() ) {
 						while ( $loop->have_posts() ) : $loop->the_post();
 						$product = new WC_Product( get_the_ID() );
-						$class = ($i == 1) ? "col-sm-8" : "col-sm-4";
+						$class = ($i == 1) ? "col-md-8" : "col-md-4";
 						echo '<div class="product-item ' . $class . ' no-padding">';
 						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
 						if($imgsrc[0] == null || $imgsrc[0] == '')
@@ -72,9 +72,9 @@ wp_reset_query();
 						elseif($i == 2){
 							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:28px;background:url(' . $image . ')">';
 						}
-						echo "<div class='content col-sm-12'>";
+						echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 						echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
-						echo "<span class='description'>" . the_excerpt() . "</span>";
+						echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span>";
 						echo "<span class='price'>" . $product->get_price_html() . "</span>";
 						if ( $product->is_in_stock() ) : ?>
 
@@ -145,14 +145,14 @@ wp_reset_query();
 						$image = '';
 					else
 						$image = $imgsrc[0];
-					$class = ($i == 5) ? "col-sm-8" : "col-sm-4";
+					$class = ($i == 5) ? "col-md-8" : "col-md-4";
 					?>
 					<div class="<?php echo $class;?> img-cov">
 						<div class="col-sm-12 inner-wrapper" style="background:url(<?php echo $image;?>)">
 							<?php
-							echo "<div class='content col-sm-12'>";
+							echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 							echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
-							echo "<span class='description'>" . the_excerpt() . "</span>";
+							echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span>";
 							echo "<span class='price'>" . $product->get_price_html() . "</span>";
 							if ( $product->is_in_stock() ) : ?>
 
@@ -184,16 +184,24 @@ wp_reset_query();
 			wp_reset_postdata();
 			?>
 		</div>
-		<div class="row navigation"><?php echo easy_wp_pagenavigation( $loop ); ?>
+		<div class="row navigation mobile-height-0"><?php echo easy_wp_pagenavigation( $loop ); ?>
 		</div>
 	</div>
 </div>
 </div>
 </div>
 <?php 
-get_footer('all');
-get_footer(); 
+include('newsletter.php'); 
+if(is_mobile()) {
+	include('quotewrap.php');
+	get_footer('mobile');
+}
+else {
+	get_footer('all');
+	get_footer();
+}
 ?>
+
 <script type="text/javascript">
 	var cat = "<?php echo $_GET['cat']; ?>";
 	jQuery('#product-id').transformSelect({
