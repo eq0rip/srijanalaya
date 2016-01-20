@@ -46,7 +46,7 @@ register_taxonomy(
     )
   );
 register_taxonomy(
-  'Gallery_categories',
+  'gallery_categories',
   'sri-gallery',
   array(
     'label'        => __( 'Categories' ),
