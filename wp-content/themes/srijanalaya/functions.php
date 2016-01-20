@@ -452,15 +452,31 @@ endforeach;
 function lowertrim($strr) {
 	return trim(strtolower($strr));
 }
+function get_page_by_title_search($string){
+    global $wpdb;
+    $title = esc_sql($string);
+    if(!$title) return;
+    $page = $wpdb->get_results("
+        SELECT * 
+        FROM $wpdb->posts
+        WHERE post_title LIKE '%$title%'
+        AND post_type = 'page' 
+        AND post_status = 'publish'
+        LIMIT 1
+    ");
+    return $page;
+}
+
 function get_menu_post($post_type){
 
 	if($post_type=='about') {
 		
-		//$page=get_page_by_title( 'About','OBJECT','page' );
+		$page=get_page_by_title_search( 'About');
+		$id = $page[0]->ID;
 		$args = array(
 			'post_type'      => 'page',
 			'posts_per_page' => -1,
-			'post_parent'    => 206,//$page->ID;
+			'post_parent'    => $id,//$page->ID;
 			'order'          => 'ASC',
 			);
 		$postslist = new WP_Query($args);
