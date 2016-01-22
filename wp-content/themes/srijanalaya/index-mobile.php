@@ -252,7 +252,7 @@ if(( !is_mobile() )) {
 
 		<?php
 		wp_reset_query();
-		$args=array('posts_per_page' => 1, 'post_type'=>'srijanalaya-artist','orderby' => 'date', 'order' => 'DESC');
+		$args=array('posts_per_page' => 1, 'post_type'=>'sri-artist','orderby' => 'date', 'order' => 'DESC');
 		$postslist=new WP_Query($args);
 		while($postslist->have_posts() ) :$postslist->the_post();
 

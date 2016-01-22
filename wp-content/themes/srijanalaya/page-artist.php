@@ -40,16 +40,16 @@ get_header('all'); ?>
 		if(isset($_GET['news_type']) && $_GET['artist_type'] != 'latest') {
 			$gid = mysql_real_escape_string($_GET['artist_type']);
 			if( trim(strtolower($gid)) == 'recommended') {
-				$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
+				$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'date', 'order' => 'DESC', 'meta_query' => array(array('key' => 'wpcf-recommended-news', 'value' => 'yes', 'compare' => '=')),
 					'paged' => $paged,); 
 			}
 			elseif( trim(strtolower($gid)) == 'popular') {
-				$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
+				$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'meta_value_num','meta_key' => 'wpb_post_views_count', 'order' => 'DESC',
 					'paged' => $paged,); 
 			}
 		}
 		else {
-			$args=array('posts_per_page'=>20, 'post_type'=>'srijanalaya-artist', 'orderby' => 'date', 'order' => 'DESC',
+			$args=array('posts_per_page'=>20, 'post_type'=>'sri-artist', 'orderby' => 'date', 'order' => 'DESC',
 				'paged' => $paged,); 
 		}
 		$postslist=new WP_Query($args);  
