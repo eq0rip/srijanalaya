@@ -2,7 +2,7 @@
 		<div class="col-xs-12 fullheight">
 			<div class="quote-wrap">
 				<?php
-				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
+				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote','order'=>'rand' );
 				$postslist = new WP_Query( $args );
 				while ( $postslist->have_posts() ) : $postslist->the_post();
 				$content = get_the_content();
