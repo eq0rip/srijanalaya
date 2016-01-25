@@ -4,7 +4,7 @@
 
   });
   $(document).ready(function($){
-
+  
 
     $('.mobile-filter-active').click(function(){
       $('.mobile-filter-dropdown').slideToggle();
@@ -551,3 +551,5 @@ if(jQuery('#custom_filters select').first().val()=='By Type')
 
 window.location.href='http://localhost/srijanalaya/project'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
+
+

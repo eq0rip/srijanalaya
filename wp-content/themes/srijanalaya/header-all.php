@@ -12,11 +12,14 @@
 
 
   <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
+
   <link href="<?php echo get_template_directory_uri();?>/less/custom.less" rel="stylesheet/less">
   <script src="<?php echo get_template_directory_uri();?>/js/less-1.7.5.js"></script>
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
+  <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/swipebox.css">
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/jquery-ui.min.css" >
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">

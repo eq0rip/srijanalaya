@@ -41,7 +41,9 @@
 <?php } ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-dropdate.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/date.format.js"></script>
-<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.4/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.Photostack.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/wow.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancyform.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.infinitescroll.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
