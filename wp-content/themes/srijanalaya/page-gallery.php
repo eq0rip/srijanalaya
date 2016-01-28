@@ -22,7 +22,7 @@ get_header('all');
 </div>
 <div class="row" >
 
-	<?php include('gallery-filters.php');?>
+	<?php include('gallery-new-filter.php');?>
 </div>
 <div class="row no-padding">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
@@ -116,25 +116,20 @@ get_header('all');
 			</div>
 		</div>
 		<?php 
-		get_footer('all');
-		get_footer(); 
+		include('newsletter.php'); 
+		if(is_mobile()) {
+			include('quotewrap.php');
+			get_footer('mobile');
+		}
+		else {
+			get_footer('all');
+			get_footer();
+		}
 		?>
 		<script type="text/javascript">
-			var resourceDropdown = document.getElementById("resource-id");
 			var galleryDropdown = document.getElementById("gallery");
-			var videoDropdown = document.getElementById("video-id");
-			resourceDropdown.onchange = onCatChange;
 			galleryDropdown.onchange = onGalCatChange;
-			videoDropdown.onchange = onVidCatChange;
-
-			function onCatChange() {
-				if ( resourceDropdown.selectedIndex > 0 ) {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
-				}
-				else {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
-				}
-			}
+			
 			function onGalCatChange() {
 				if ( galleryDropdown.selectedIndex > 0 ) {
 					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
@@ -143,43 +138,9 @@ get_header('all');
 					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
 				}
 			}
-			function onVidCatChange() {
-				if ( galleryDropdown.selectedIndex > 0 ) {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
-				}
-				else {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
-				}
-			}
-
 	//Transform
-	jQuery('#resource-id').transformSelect({
-		dropDownClass: "transformSelect transformSelect1",
-	});
 	jQuery('#gallery').transformSelect({
 		dropDownClass: "transformSelect transformSelect2",
-	});
-	jQuery('#video-id').transformSelect({
-		dropDownClass: "transformSelect transformSelect3",
-	});
-
-	jQuery("#tag_filter_div ul").on("click",'li', function(){
-		jQuery(this).remove();
-		var hide_project=jQuery(this).text().replace(" x","");
-		hide_project='.'+hide_project;
-		jQuery(hide_project).hide('fast');
-		if(jQuery('#tag_filter_div ul').children().length == 0) {
-			jQuery('.ccontent').show('fast');
-		}
-		else {
-			var choosen_tags=[];
-			var query='#tag_filter_div' +' ul li';
-			jQuery(query).each(function () {
-				var toPush=jQuery(this).text().replace(" x","");
-				choosen_tags.push(toPush);
-				apply_filter(choosen_tags,'.content');
-			});
-		}
 	});
 	jQuery(document).ready(function(){
 		<?php for($j=1;$j<=$i;$j++){?>

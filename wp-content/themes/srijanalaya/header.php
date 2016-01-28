@@ -36,19 +36,7 @@
 
 
        <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
-      <!-- <div class="btn-group top-btn">
-        <button type="button" class="btn btn-icon">Donate</button>
-        <?php 
-        $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
-        $lang = 'en';
-        if(strstr($current_page,'ne'))
-          $lang = 'ne';
-        ?>
-        <select class="btn-icon custom-dropdown" id="language-btn" onchange="change_language(this.value,'<?php echo $current_page;?>');">
-          <option  <?php if($lang == 'en') echo 'selected';?> value="en" >English</option>
-          <option <?php if($lang == 'ne') echo 'selected';?> value="ne">Nepali</option>
-        </select>
-      </div>-->
+ 
     </div>
 
     <nav class="navbar yamm hidden-xs"><!--navbar-->
