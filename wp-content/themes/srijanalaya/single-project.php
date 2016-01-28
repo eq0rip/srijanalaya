@@ -94,7 +94,7 @@ wp_reset_query();
 				<div class="col-sm-3">
 					<div class="col-sm-10 sidebar no-padding">
 						<div class="side-wrap no-padding">
-						<h2><?php echo ucwords($sri_locale['get updates'][$lang]);?></h2>
+							<h2><?php echo ucwords($sri_locale['get updates'][$lang]);?></h2>
 							<p><a id="add_to_cal_submit" href="javascript:void(0)">Add to Calendar Sync with iCal, <br/>outlook, google calendar</a></p>
 							<p class="subscribe-inner"><a href="#!">Alert for any updates</a></p>
 							<form class="hidden" action="" method="GET">
@@ -119,7 +119,40 @@ wp_reset_query();
 					</div>
 					<div class="side-wrap">
 						<h2><?php echo ucwords($sri_locale['resources'][$lang]);?></h2>
-						<p><a href="<?php echo get_template_directory_uri();?>/gallery"><?php echo ucwords($sri_locale['view gallery'][$lang]);?></a></p>
+						<?php //view gallery
+						$connected = new WP_Query( array(
+							'connected_type' => 'gallery_to_project',
+							'connected_items' => get_queried_object(),
+							'nopaging' => true,
+							) );
+						if ( $connected->post ) :
+							while ( $connected->post ) : $connected->the_post();
+						$album_name =  get_the_title();
+						$album_id = get_the_ID();
+						echo '<p><a href="'.site_url().'/gallery/album/?id='.$album_id.'">'.ucwords($sri_locale['view gallery'][$lang]).'</a></p>';
+
+						if($album_id!=" ") 
+							break;
+						endwhile;
+						endif;
+						?>
+						<?php //view resource
+						$connected = new WP_Query( array(
+							'connected_type' => 'resource_to_project',
+							'connected_items' => get_queried_object(),
+							'nopaging' => true,
+							) );
+						if ( $connected->post ) :
+							while ( $connected->post ) : $connected->the_post();
+						$resource_link = get_the_permalink();
+						echo '<p><a href="'.$resource_link.'">'.ucwords($sri_locale['view resource'][$lang]).'</a></p>';
+
+						if($album_id!=" ") 
+							break;
+						endwhile;
+						endif;
+						?>
+
 						<p><a href="<?php echo get_template_directory_uri();?>/videos"><?php echo ucwords($sri_locale['view videos'][$lang]);?></a></p>
 					</div>
 					<div class="side-wrap">

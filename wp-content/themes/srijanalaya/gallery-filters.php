@@ -1,4 +1,4 @@
-<div class="hidden-sm hidden-xs hidden-xs" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
+<div class="hidden-sm hidden-xs hidden-md" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
 	<div id="custom_filters">
 		<span class="filter_by">Filter By:</span>
 
@@ -64,7 +64,7 @@
 	</div>
 
 	<!-- Filter for mobile-->
-	<div class="hidden-lg" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
+	<div class="hidden-lg hidden-md" style="width:100%:" id="filter_div<?php if(get_the_slug() != 'resources') {echo ' filter_div-no-tag';}?>">
 		<div id="mobile_custom_filters">
 			<li class="gallery_filter_item"><a href="<?php echo site_url().'/resources';?>">Resources</a></li>
 			<li class="gallery_filter_item"><a href="<?php echo site_url().'/gallery';?>">Gallery</a></li>

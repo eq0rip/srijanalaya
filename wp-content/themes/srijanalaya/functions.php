@@ -513,6 +513,7 @@ function get_menu_post($post_type){
 		endwhile;
 		return $tempmenu;
 	}
+	//wp_reset_query();
 	$args=array('posts_per_page'=>15,'post_type'=>$post_type, 'order' => 'DESC');
 	$postslist=new WP_Query($args);
 	while( $postslist->have_posts() ) : $postslist->the_post();

@@ -27,7 +27,7 @@ get_header('all');
 
 			$album=get_post_meta($aid,'Image-meta',true);
 			?>
-			<div id="grid-gallery-image-0 col-sm-4" class="grid-gallery-thumbnail-box">
+			<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box">
 				<div class="sri-album " data-albumId="<?php echo get_the_ID();?>">
 					<?php
 					$i=0;
@@ -49,7 +49,7 @@ get_header('all');
 							$i=0;
 						}
 						?>
-						<div class="col-sm-4 image_wrapper <?php echo $animation;?>" >
+						<div class="col-lg-4 col-md-6 image_wrapper <?php echo $animation;?>" >
 							<a href="<?php echo wp_get_attachment_url($imgId);?>"  title="<?php echo $albm['description'];?>" class="swipebox"><img src="<?php echo wp_get_attachment_url($imgId);?>" width="380" height="225" alt=""/></a>
 							<h2><?php echo $albm['title'];?></h2>
 						</div>

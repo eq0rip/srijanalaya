@@ -56,8 +56,8 @@ get_header('all');
 				//$imgsrc_thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'thumbnail');
 				//$imgsrc_large=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'large');
 				?>
-				<div id="grid-gallery-image-0 col-sm-4" class="grid-gallery-thumbnail-box">
-					<div class="col-sm-4 sri-album" data-albumId="<?php echo get_the_ID();?>">
+				<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
+					<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
 						<ul class="photostack<?php echo $i;?>">
 							<?php
 							foreach($album as $albm){
@@ -84,8 +84,8 @@ get_header('all');
 				$i++;
 				$album = get_post_meta(get_the_ID(),'Image-meta',true);
 				?>
-				<div id="grid-gallery-image-0 col-sm-4" class="grid-gallery-thumbnail-box">
-					<div class="col-sm-4 sri-album wow bounceInUp" data-albumId="<?php echo get_the_ID();?>">
+				<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
+					<div class="sri-album wow bounceInUp" data-albumId="<?php echo get_the_ID();?>">
 						
 						<ul class="photostack<?php echo $i;?>">
 							<?php
