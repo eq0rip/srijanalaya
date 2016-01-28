@@ -331,6 +331,31 @@ function postConnections() {
 }
 add_action( 'p2p_init', 'postConnections' );
 
+function resource_to_project() {
+	p2p_register_connection_type( array(
+		'name' => 'resource_to_project',
+		'from' => 'resource',
+		'to' => 'project',
+		'admin_box' => array(
+			'show' => 'to',
+			'context' => 'side'
+			)
+		) );
+}
+add_action( 'p2p_init', 'resource_to_project' );
+
+function gallery_to_project() {
+	p2p_register_connection_type( array(
+		'name' => 'gallery_to_project',
+		'from' => 'sri-gallery',
+		'to' => 'project',
+		'admin_box' => array(
+			'show' => 'to',
+			'context' => 'side'
+			)
+		) );
+}
+add_action( 'p2p_init', 'gallery_to_project' );
 
 function remove_footer_admin () 
 {
