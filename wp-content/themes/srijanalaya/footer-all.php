@@ -5,7 +5,7 @@
 				wp_reset_query();
 				global $sri_locale;
 				global $lang;
-				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote','order'=>'RAND' );
+				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote','orderby'=>'rand' );
 				$postslist = new WP_Query( $args );
 				while ( $postslist->have_posts() ) : $postslist->the_post();
 				$content = get_the_content();
