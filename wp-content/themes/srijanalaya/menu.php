@@ -24,8 +24,7 @@
  }
  elseif(lowertrim(types_render_field('url-slug'))=='news')
  {
-   $menu_head=get_the_title();
-   $contents=get_menu_post('news-post');
+
  } 
  elseif(lowertrim(types_render_field('url-slug'))=='shop')
  {

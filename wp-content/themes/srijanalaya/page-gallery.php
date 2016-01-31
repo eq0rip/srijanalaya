@@ -85,18 +85,9 @@ get_header('all');
 				$album = get_post_meta(get_the_ID(),'Image-meta',true);
 				?>
 				<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
-					<div class="sri-album wow bounceInUp" data-albumId="<?php echo get_the_ID();?>">
+					<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
 						
-						<ul class="photostack<?php echo $i;?>">
-							<?php
-							$j=0;
-							foreach($album as $albm){
-								if($j++==3){break;}
-								$imgId = $albm['image']; ?>
-								<li><img alt="" src="<?php echo wp_get_attachment_url($imgId);?>" width="380" height="225"></li>
-								<?php 
-							}?>
-						</ul>
+						<img alt="" src="<?php echo wp_get_attachment_url($album[0]['image']);?>" width="380" height="225">
 						<h2>
 							<?php echo get_the_title();?>
 						</h2>
@@ -143,21 +134,10 @@ get_header('all');
 		dropDownClass: "transformSelect transformSelect2",
 	});
 	jQuery(document).ready(function(){
-		<?php for($j=1;$j<=$i;$j++){?>
-			jQuery(".photostack<?php echo $j;?>").Photostack({
-				degFrom:-10,
-				degTo:10,
-				animation:"move",
-				animationSpeed:500,
-				timespan:0,
-				auto:false,
-				preventClick:true
-			});
-			<?php } ?>
-			jQuery('.sri-album').click(function(){
-				location.href="<?php echo site_url();?>/gallery/album/?id="+jQuery(this).attr('data-albumId');
-			});
+		jQuery('.sri-album').click(function(){
+			location.href="<?php echo site_url();?>/gallery/album/?id="+jQuery(this).attr('data-albumId');
 		});
+	});
 </script>
 <script>
 	new WOW().init();
