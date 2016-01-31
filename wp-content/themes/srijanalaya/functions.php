@@ -478,18 +478,18 @@ function lowertrim($strr) {
 	return trim(strtolower($strr));
 }
 function get_page_by_title_search($string){
-    global $wpdb;
-    $title = esc_sql($string);
-    if(!$title) return;
-    $page = $wpdb->get_results("
-        SELECT * 
-        FROM $wpdb->posts
-        WHERE post_title LIKE '%$title%'
-        AND post_type = 'page' 
-        AND post_status = 'publish'
-        LIMIT 1
-    ");
-    return $page;
+	global $wpdb;
+	$title = esc_sql($string);
+	if(!$title) return;
+	$page = $wpdb->get_results("
+		SELECT * 
+		FROM $wpdb->posts
+		WHERE post_title LIKE '%$title%'
+		AND post_type = 'page' 
+		AND post_status = 'publish'
+		LIMIT 1
+		");
+	return $page;
 }
 
 function get_menu_post($post_type){
@@ -517,48 +517,51 @@ function get_menu_post($post_type){
 	$args=array('posts_per_page'=>15,'post_type'=>$post_type, 'order' => 'DESC');
 	$postslist=new WP_Query($args);
 	while( $postslist->have_posts() ) : $postslist->the_post();
-	$temptitle=get_the_title();
-	$tempperma=get_the_permalink();
-	$tempmenu[]='<a href="'.$tempperma.'" >'.$temptitle.'</a>';
-	endwhile;
-	return $tempmenu;
-}
-
-function get_menu_icons(){
-	$args=array('posts_per_page'=>15,'post_type'=>'sri-menu');
-	$postslist=new WP_Query($args);
-	while( $postslist->have_posts() ) : $postslist->the_post();
-
-	$menu_name=trim( strtolower( get_the_title() ) );
-	if($menu_name=='projects'){
-		$menu_name='project';
+	if (strlen(get_the_title()) > 15) {
+		$temptitle=substr(get_the_title($before = '', $after = '', FALSE), 0, 15) . '...'; } else {
+			$temptitle=get_the_title();
+		}
+		$tempperma=get_the_permalink();
+		$tempmenu[]='<a title="'.get_the_title().'" href="'.$tempperma.'" >'.$temptitle.'</a>';
+		endwhile;
+		return $tempmenu;
 	}
-	$tempicon[$menu_name]=types_render_field('icon_for_mobile',array('raw'=>true) ).'##'.types_render_field('hover_icon_for_mobile',array('raw'=>true ) );
-	endwhile;
-	return $tempicon;
 
-}
+	function get_menu_icons(){
+		$args=array('posts_per_page'=>15,'post_type'=>'sri-menu');
+		$postslist=new WP_Query($args);
+		while( $postslist->have_posts() ) : $postslist->the_post();
 
-function current_page_url($filter) {
-	if($filter == 0) {
-		return "http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+		$menu_name=trim( strtolower( get_the_title() ) );
+		if($menu_name=='projects'){
+			$menu_name='project';
+		}
+		$tempicon[$menu_name]=types_render_field('icon_for_mobile',array('raw'=>true) ).'##'.types_render_field('hover_icon_for_mobile',array('raw'=>true ) );
+		endwhile;
+		return $tempicon;
+
 	}
-}
 
-function parse_vimeo($link){
+	function current_page_url($filter) {
+		if($filter == 0) {
+			return "http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+		}
+	}
 
-	$regexstr = '~
+	function parse_vimeo($link){
+
+		$regexstr = '~
 			# Match Vimeo link and embed code
-	(?:&lt;iframe [^&gt;]*src=")?		# If iframe match up to first quote of src
-	(?:							# Group vimeo url
-		https?:\/\/				# Either http or https
-		(?:[\w]+\.)*			# Optional subdomains
-		vimeo\.com				# Match vimeo.com
-		(?:[\/\w]*\/videos?)?	# Optional video sub directory this handles groups links also
-		\/						# Slash before Id
-		([0-9]+)				# $1: VIDEO_ID is numeric
-		[^\s]*					# Not a space
-		)							# End group
+		(?:&lt;iframe [^&gt;]*src=")?		# If iframe match up to first quote of src
+		(?:							# Group vimeo url
+			https?:\/\/				# Either http or https
+			(?:[\w]+\.)*			# Optional subdomains
+			vimeo\.com				# Match vimeo.com
+			(?:[\/\w]*\/videos?)?	# Optional video sub directory this handles groups links also
+			\/						# Slash before Id
+			([0-9]+)				# $1: VIDEO_ID is numeric
+			[^\s]*					# Not a space
+			)							# End group
 "?							# Match end quote if part of src
 (?:[^&gt;]*&gt;&lt;/iframe&gt;)?		# Match the end of the iframe
 (?:&lt;p&gt;.*&lt;/p&gt;)?		        # Match any title information stuff
