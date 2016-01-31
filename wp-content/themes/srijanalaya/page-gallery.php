@@ -88,6 +88,7 @@ get_header('all');
 					<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
 						
 						<img alt="" src="<?php echo wp_get_attachment_url($album[0]['image']);?>" width="380" height="225">
+
 						<h2>
 							<?php echo get_the_title();?>
 						</h2>
@@ -118,20 +119,36 @@ get_header('all');
 		}
 		?>
 		<script type="text/javascript">
+			var resourceDropdown = document.getElementById("resource-id");
 			var galleryDropdown = document.getElementById("gallery");
-			galleryDropdown.onchange = onGalCatChange;
-			
-			function onGalCatChange() {
-				if ( galleryDropdown.selectedIndex > 0 ) {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+			var videoDropdown = document.getElementById("video-id");
+			resourceDropdown.onchange = onCatChange;
+			videoDropdown.onchange = onVidCatChange;
+
+			function onCatChange() {
+				if ( resourceDropdown.selectedIndex > 0 ) {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
 				}
 				else {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
+				}
+			}
+
+			function onVidCatChange() {
+				if ( videoDropdown.selectedIndex > 0 ) {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
+				}
+				else {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
 				}
 			}
 	//Transform
-	jQuery('#gallery').transformSelect({
-		dropDownClass: "transformSelect transformSelect2",
+	jQuery('#resource-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect1",
+	});
+	
+	jQuery('#video-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect33",
 	});
 	jQuery(document).ready(function(){
 		jQuery('.sri-album').click(function(){

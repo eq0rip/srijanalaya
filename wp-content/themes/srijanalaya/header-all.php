@@ -26,10 +26,7 @@
 </head>
 <body <?php body_class();?>>
   <?php wp_head();?>
-<div class="loader hidden-sm hidden-xs hidden-md">
-  <img src="<?php echo get_template_directory_uri()?>/images/logo_c.png">
-  <div class="transbg"></div>
-</div>
+
 
 <div class="hidden-sm hidden-xs" style""><!--head div sart-->    
   <div class="container-fluid head_div"><!--top buttons-->

@@ -266,10 +266,16 @@ a:hover {
 .navbar {
     border: none;
 }
-.dropdown-menu {
+.dropdown-menu {    
     background-color: rgba(0,0,0,0.9) !important;
     padding-top: 15px !important;
     border: none !important;
+    ul {
+        width: 250px;
+        li {
+           width: 250px; 
+        }
+    }
     a {
      color: #FFF !important;
  }  
@@ -2978,6 +2984,7 @@ form .btn {
 .grid-gallery-thumbnail-box {
     text-align: center;
     margin-bottom: 40px;
+    overflow: hidden;
     .image_wrapper {
         margin-bottom: 40px;
     }

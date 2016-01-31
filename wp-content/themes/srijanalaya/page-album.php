@@ -91,26 +91,37 @@ get_header('all');
 			new WOW().init();
 		</script>
 		<script type="text/javascript">
+				var resourceDropdown = document.getElementById("resource-id");
 			var galleryDropdown = document.getElementById("gallery");
-			galleryDropdown.onchange = onGalCatChange;
+			var videoDropdown = document.getElementById("video-id");
+			resourceDropdown.onchange = onCatChange;
+			videoDropdown.onchange = onVidCatChange;
 
-
-			function onGalCatChange() {
-				if ( galleryDropdown.selectedIndex > 0 ) {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery/?gallery_id="+galleryDropdown.options[galleryDropdown.selectedIndex].value;
+			function onCatChange() {
+				if ( resourceDropdown.selectedIndex > 0 ) {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources?cat="+resourceDropdown.options[resourceDropdown.selectedIndex].value;
 				}
 				else {
-					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>gallery";
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>resources";
 				}
 			}
-
-
+		
+			function onVidCatChange() {
+				if ( videoDropdown.selectedIndex > 0 ) {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos/?cat="+videoDropdown.options[videoDropdown.selectedIndex].value;
+				}
+				else {
+					location.href = "<?php echo esc_url( home_url( '/' ) ); ?>videos";
+				}
+			}
 	//Transform
-
-	jQuery('#gallery').transformSelect({
-		dropDownClass: "transformSelect transformSelect2",
+	jQuery('#resource-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect1",
 	});
-
+	
+	jQuery('#video-id').transformSelect({
+		dropDownClass: "transformSelect transformSelect33",
+	});
 	jQuery(document).ready(function(){
 		jQuery( '.swipebox' ).swipebox({
 			useCSS : true, // false will force the use of jQuery for animations
