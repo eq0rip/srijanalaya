@@ -11,18 +11,25 @@
 if ( ! defined( 'ABSPATH' ) )
 	exit;
 
-if ( ! function_exists( 'easy_wp_pagenavigation' ) )
-{
-	function easy_wp_pagenavigation( $custom_query = false )
-	{
+if ( ! function_exists( 'easy_wp_pagenavigation' ) ) {
+	function easy_wp_pagenavigation( $custom_query = false ) {
 		global $wp_query;
 		// Get your options
 		$options         = get_option( EWPN_ST );
-		$text_first_page = ! empty ( $options['first_text'] ) ? esc_html( $options['first_text'] ) : '';
-		$text_last_page  = ! empty ( $options['last_text'] ) ? esc_html( $options['last_text'] ) : '';
-		$text_prev_page  = ! empty ( $options['prev_text'] ) ? esc_html( $options['prev_text'] ) : '&laquo;';
-		$text_next_page  = ! empty ( $options['next_text'] ) ? esc_html( $options['next_text'] ) : '&raquo;';
+		$text_first_page = ! empty ( $options['first_text'] ) ? $options['first_text'] : '';
+		$text_last_page  = ! empty ( $options['last_text'] ) ? $options['last_text'] : '';
+		$text_prev_page  = ! empty ( $options['prev_text'] ) ? $options['prev_text'] : '&laquo;';
+		$text_next_page  = ! empty ( $options['next_text'] ) ? $options['next_text'] : '&raquo;';
+		$style           = isset( $options['style'] ) ? ' style-' . esc_html( $options['style'] ) : ' style-default';
 		$align           = ! empty ( $options['align'] ) ? $options['align'] : 'left';
+
+		$before_page_number = '';
+		$after_page_number = '';
+
+		if ( ' style-diamond-square' == $style  ):
+			$before_page_number = '<span>';
+			$after_page_number = '</span>';
+		endif;
 
 		$current_page = get_query_var( 'paged' );
 
@@ -38,20 +45,20 @@ if ( ! function_exists( 'easy_wp_pagenavigation' ) )
 			'type'      => 'array',
 			'prev_text' => $text_prev_page,
 			'next_text' => $text_next_page,
+			'before_page_number' => $before_page_number,
+			'after_page_number'  => $after_page_number
 		) );
 
-		if ( $paginations )
-		{
+		if ( $paginations ) {
 			$return = '';
-			$return .= '<div class="easy-wp-page-navigation align-' . $align . '"><ul class="easy-wp-page-nav">';
+			$return .= '<div class="easy-wp-page-navigation align-' . $align . $style . '"><ul class="easy-wp-page-nav">';
 			if ( $current_page > 1 && ! empty( $text_first_page ) )
-				$return .= '<li><a class="page-numbers" href="' . esc_url( get_pagenum_link( 1 ) ) . '">' . $text_first_page . '</a></li>';
-			foreach ( $paginations as $nav )
-			{
+				$return .= '<li class="first-page"><a class="page-numbers first-page-link" href="' . esc_url( get_pagenum_link( 1 ) ) . '">' . $text_first_page . '</a></li>';
+			foreach ( $paginations as $nav ) {
 				$return .= '<li>' . $nav . '</li>';
 			}
 			if ( $current_page != $custom_query->max_num_pages && ! empty( $text_last_page ) )
-				$return .= '<li><a class="page-numbers" href="' . esc_url( get_pagenum_link( $custom_query->max_num_pages ) ) . '">' . $text_last_page . '</a></li>';
+				$return .= '<li class="last-page"><a class="page-numbers last-page-link" href="' . esc_url( get_pagenum_link( $custom_query->max_num_pages ) ) . '">' . $text_last_page . '</a></li>';
 			$return .= '</ul></div>';
 
 			return $return;
@@ -68,11 +75,9 @@ if ( ! function_exists( 'easy_wp_pagenavigation' ) )
  * @since  1.0
  */
 
-if ( ! function_exists( 'easy_wp_pagenavigation_set_posts_per_page' ) )
-{
+if ( ! function_exists( 'easy_wp_pagenavigation_set_posts_per_page' ) ) {
 	add_filter( 'pre_get_posts', 'easy_wp_pagenavigation_set_posts_per_page' );
-	function easy_wp_pagenavigation_set_posts_per_page( $query )
-	{
+	function easy_wp_pagenavigation_set_posts_per_page( $query ) {
 		if ( is_admin() )
 			return;
 
@@ -85,24 +90,18 @@ if ( ! function_exists( 'easy_wp_pagenavigation_set_posts_per_page' ) )
 
 		$taxonomies = get_taxonomies( $args );
 
-		if ( ! empty ( $taxonomies ) )
-		{
-			foreach ( $taxonomies as $key => $val )
-			{
-				if ( isset( $options[$key] ) && ! empty( $options[$key] ) && is_numeric( $options[$key] ) )
-				{
-					if ( $key == 'category' )
-					{
+		if ( ! empty ( $taxonomies ) ) {
+			foreach ( $taxonomies as $key => $val ) {
+				if ( isset( $options[$key] ) && ! empty( $options[$key] ) && is_numeric( $options[$key] ) ) {
+					if ( $key == 'category' ) {
 						if ( is_category() && $query->is_main_query() )
 							$query->set( 'posts_per_page', $options[$key] );
 					}
-					elseif ( $key == 'post_tag' )
-					{
+					elseif ( $key == 'post_tag' ) {
 						if ( is_tag() && $query->is_main_query() )
 							$query->set( 'posts_per_page', $options[$key] );
 					}
-					else
-					{
+					else {
 						if ( is_tax( $key ) && $query->is_main_query() )
 							$query->set( 'posts_per_page', $options[$key] );
 					}

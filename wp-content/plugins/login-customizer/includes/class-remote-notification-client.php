@@ -66,7 +66,7 @@ class TAV_Remote_Notification_Client {
 	 *
 	 * The distant WordPress notification server is
 	 * queried using the WordPress HTTP API.
-	 * 
+	 *
 	 * @since 0.1.0
 	 */
 	public function request_server() {
@@ -130,7 +130,7 @@ class TAV_Remote_Notification_Client {
 
 					set_transient( "rn_last_notification_$uniqid", $content, $this->cache*60*60*5 );
 
-				}			
+				}
 
 			}
 
@@ -194,7 +194,7 @@ class TAV_Remote_Notification_Client {
 	 * the notice can be displayed on the current page.
 	 * If all the checks are passed, the notice
 	 * is added to the page.
-	 * 
+	 *
 	 * @since 0.1.0
 	 */
 	public function show_notice() {
@@ -235,7 +235,7 @@ class TAV_Remote_Notification_Client {
 
 		/**
 		 * Prepare the dismiss URL
-		 * 
+		 *
 		 * @var (string) URL
 		 * @todo get a more accurate URL of the current page
 		 */
@@ -340,23 +340,23 @@ class TAV_Remote_Notification_Client {
 		?>
 
 		<script type="text/javascript">
-		jQuery(document).ready(function($) {
+			jQuery(document).ready(function($) {
 
-			var prout = 'prout';
+				var prout = 'prout';
 
-			$('#rn-dismiss').on('click', function(event) {
-				event.preventDefault();
-				$.ajax({
-					type: "GET",
-					url: <?php echo $url; ?>,
-					data: prout
+				$('#rn-dismiss').on('click', function(event) {
+					event.preventDefault();
+					$.ajax({
+						type: "GET",
+						url: <?php echo $url; ?>,
+						data: prout
+					});
+					console.log('clicked');
 				});
-				console.log('clicked');
+
+				return false;
+
 			});
-
-			return false;
-
-		});
 		</script>
 
 		<?php

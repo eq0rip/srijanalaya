@@ -15,7 +15,7 @@
 			<div class="general-options">
 				<div class="kang-settings-field">
 					<div class="kang-settings-label">
-						<label><?php _e( 'Custom Text For First Page', EWPN ); ?></label>
+						<label><?php _e( 'Custom Text For First Page:', EWPN ); ?></label>
 					</div>
 					<div class="kang-settings-input">
 						<input type="text" class="regular-text" name="<?php echo EWPN_ST; ?>[first_text]" value="<?php echo esc_attr( $options['first_text'] ); ?>" />
@@ -23,7 +23,7 @@
 				</div>
 				<div class="kang-settings-field">
 					<div class="kang-settings-label">
-						<label><?php _e( 'Custom Text For Last Page', EWPN ); ?></label>
+						<label><?php _e( 'Custom Text For Last Page:', EWPN ); ?></label>
 					</div>
 					<div class="kang-settings-input">
 						<input type="text" class="regular-text" name="<?php echo EWPN_ST; ?>[last_text]" value="<?php echo esc_attr( $options['last_text'] ); ?>" />
@@ -31,7 +31,7 @@
 				</div>
 				<div class="kang-settings-field">
 					<div class="kang-settings-label">
-						<label><?php _e( 'Custom Text For Previous Page', EWPN ); ?></label>
+						<label><?php _e( 'Custom Text For Previous Page:', EWPN ); ?></label>
 					</div>
 					<div class="kang-settings-input">
 						<input type="text" class="regular-text" name="<?php echo EWPN_ST; ?>[prev_text]" value="<?php echo esc_attr( $options['prev_text'] ); ?>" />
@@ -39,15 +39,37 @@
 				</div>
 				<div class="kang-settings-field">
 					<div class="kang-settings-label">
-						<label><?php _e( 'Custom Text For Next Page', EWPN ); ?></label>
+						<label><?php _e( 'Custom Text For Next Page:', EWPN ); ?></label>
 					</div>
 					<div class="kang-settings-input">
 						<input type="text" class="regular-text" name="<?php echo EWPN_ST; ?>[next_text]" value="<?php echo esc_attr( $options['next_text'] ); ?>" />
 					</div>
 				</div>
+				<?php
+				/**
+				 * Set default style for easy wp page navigation option
+				 *
+				 * @author KanG
+				 * @since  1.1
+				 */
+				$ewpn_style = isset( $options['style'] ) ? $options['style'] : 'default';
+				?>
 				<div class="kang-settings-field">
 					<div class="kang-settings-label">
-						<label><?php _e( 'Align Page Navigation', EWPN ); ?></label>
+						<label><?php _e( 'Choose Style:', EWPN ); ?></label>
+					</div>
+					<div class="kang-settings-input">
+						<select name="<?php echo EWPN_ST; ?>[style]">
+							<option value="default" <?php selected( $ewpn_style, 'default' ); ?>><?php _e( 'Default', EWPN ); ?></option>
+							<option value="circle" <?php selected( $ewpn_style, 'circle' ); ?>><?php _e( 'Circle', EWPN ); ?></option>
+							<option value="square" <?php selected( $ewpn_style, 'square' ); ?>><?php _e( 'Square', EWPN ); ?></option>
+							<option value="diamond-square" <?php selected( $ewpn_style, 'diamond-square' ); ?>><?php _e( 'Diamond Square', EWPN ); ?></option>
+						</select>
+					</div>
+				</div>
+				<div class="kang-settings-field">
+					<div class="kang-settings-label">
+						<label><?php _e( 'Align Page Navigation:', EWPN ); ?></label>
 					</div>
 					<div class="kang-settings-input">
 						<select name="<?php echo EWPN_ST; ?>[align]">
@@ -65,10 +87,8 @@
 					<strong><?php _e( 'Note: All fields of this tab just apply value is number', EWPN ); ?></strong></p>
 				<br>
 				<?php $taxonomies = self::get_all_taxonomies();
-				if ( ! empty ( $taxonomies ) )
-				{
-					foreach ( $taxonomies as $name => $tax )
-					{
+				if ( ! empty ( $taxonomies ) ) {
+					foreach ( $taxonomies as $name => $tax ) {
 						$value = isset ( $options[$name] ) ? $options[$name] : '';
 						?>
 						<div class="kang-settings-field">

@@ -1,10 +1,10 @@
 === Easy WP Page Navigation ===
 Contributors: bboy8k
-Donate link: http://wordpress.org/
-Tags: easy wp page navigation, page navigation, page navigation in wordpress, taxonomies, admin, interface
+Donate link: http://themeforest.net/user/pencidesign/portfolio?rel=pencidesign
+Tags: easy wp page navigation, page navigation, page navigation in wordpress, taxonomies, admin, wp pagenavi, easy wp pagenavi, pagination wordpress, pagination wp, wp_pagenavi, easy add pagination, pagination plugin wordpress, wp-pagenavi plugin, page navigation wordpress, add pagination to wordpress, wordpress pagination, wordpress pagination plugin
 Requires at least: 3.0
-Tested up to: 4.2
-Stable tag: 1.0
+Tested up to: 4.4
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,13 +14,18 @@ Easy to add page navigation in your blog
 
 This plugin will create a new page navigation. Easy to use and custom it.
 With this plugin, you don't worry about paging in your blog.
+
+Multiple styles for navigation, you can see in [Screenshots](https://wordpress.org/plugins/easy-wp-page-navigation/screenshots/)
+
 To using it in your blog, see the [installation instructions](http://wordpress.org/plugins/easy-wp-page-navigation/installation/)
+
+Subscribe our newsletter [here](http://pencidesign.com/#footer-subscribe)
+
+You need a theme? see [our premium themes](http://themeforest.net/user/pencidesign/portfolio?ref=PenciDesign).
 
 = Support =
 
-Support is handled in the [WordPress forums](http://wordpress.org/support/plugin/easy-wp-page-navigation). Please note that support is limited.
-
-Please report any bugs, errors, warnings, code problems to support forum.
+Support is handled in the [WordPress forums](https://wordpress.org/support/plugin/easy-wp-page-navigation). Please note that support is limited and does not cover any custom implementation of the plugin.
 
 == Installation ==
 
@@ -51,8 +56,11 @@ You can do that like so:
 == Screenshots ==
 
 1. Default styling
-2. Gerenal options
-3. Fill posts per page number for your taxonomies
+2. Square styling
+3. Circle styling
+4. Diamond square styling
+5. Gerenal options
+6. Fill posts per page number for your taxonomies
 
 == Frequently Asked Questions ==
 
@@ -65,6 +73,22 @@ Also, you can override the CSS of Easy WP Page Navigation in other CSS file.
 Do it, you won't lose your changes when you update this plugin.
 
 == Changelog ==
+= 1.4 =
+* Improvement: Data validate & change colors actions 
+
+= 1.3 =
+* Improvement: Allow HTML to custom text for First Page, Last Page, Prev Page, Next Page
+
+= 1.2 =
+* Fixed: Some bug in front-end
+* Add: Easy to support by one click on plugins page
+
+= 1.1.1 =
+* Fixed: Easy WP Page Navigation on mobile
+
+= 1.1 =
+* Tweak: Some CSS page numbers
+* New: Add multiple styles for plugin
 
 = 1.0 =
 * Just release 1.0

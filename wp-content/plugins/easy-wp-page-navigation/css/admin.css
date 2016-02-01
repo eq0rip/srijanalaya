@@ -14,19 +14,15 @@
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 }
-
 .kang-tabs-content {
 	margin: 20px 0 0;
 }
-
 .kang-tabs-content > div {
 	display: none;
 }
-
 .kang-tabs-content > div:first-child {
 	display: block;
 }
-
 /*------- Settings field ---------*/
 .kang-settings-field {
 	display: inline-block;
@@ -34,12 +30,10 @@
 	vertical-align: top;
 	margin-bottom: 30px;
 }
-
 .kang-settings-label,
 .kang-settings-input {
 	display: inline-block;
 }
-
 .kang-settings-label label {
 	display: inline-block;
 	font-size: 14px;

@@ -539,13 +539,46 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		
 		$wck_fep_new_post = array(
 			'ID' => $post_ID,
-			'post_title' => $values['post-title'],
 			'post_content' => $values['post-content'],
 			'post_excerpt' => $values['post-excerpt'],
 			'post_type' => $this->args['post_type']
 		);
-		
-		/* post status */
+
+
+        if( !empty($values['post-title'] ) )
+            $wck_fep_new_post['post_title'] = wp_strip_all_tags($values['post-title']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' )
+                $wck_fep_new_post['post_title'] = get_the_title( $post_ID );
+            else
+                $wck_fep_new_post['post_title'] = '';
+        }
+
+        if( !empty($values['post-content'] ) )
+            $wck_fep_new_post['post_content'] = wp_strip_all_tags($values['post-content']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' ) {
+                $post_obj = get_post( $post_ID );
+                $wck_fep_new_post['post_content'] = $post_obj->post_content;
+            }
+            else
+                $wck_fep_new_post['post_content'] = '';
+        }
+
+        if( !empty($values['post-excerpt'] ) )
+            $wck_fep_new_post['post_excerpt'] = wp_strip_all_tags($values['post-excerpt']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' ) {
+                $post_obj = get_post( $post_ID );
+                $wck_fep_new_post['post_excerpt'] = $post_obj->post_excerpt;
+            }
+            else
+                $wck_fep_new_post['post_excerpt'] = '';
+        }
+
+
+
+        /* post status */
 		if( $this->args['admin_approval'] == 'yes' )
 			$wck_fep_new_post['post_status'] = 'draft';	
 		else 
