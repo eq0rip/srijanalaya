@@ -31,6 +31,7 @@ include('inc/custom-functions.php');
 include('inc/mobile-functions.php');
 include('inc/admin-modifier.php');
 include('inc/ajax-add-to-cart.php');
+include('inc/wp_remove_yoast_nag.php');
 function nirmal_setup() {
 	/*
 	 * Make theme available for translation.
@@ -611,3 +612,7 @@ return $matches[1];
 
 }
 
+function lower_wpseo_priority( $html ) {
+    return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'lower_wpseo_priority' );
