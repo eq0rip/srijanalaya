@@ -17,7 +17,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
-<meta name="google-site-verification" content="Uy1VoDLivLpWzQD17cPPQ43Z-y_SE_qUtwGh892aqp0" />
+  <meta name="google-site-verification" content="Uy1VoDLivLpWzQD17cPPQ43Z-y_SE_qUtwGh892aqp0" />
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
   <?php wp_head();?>
 </head>
