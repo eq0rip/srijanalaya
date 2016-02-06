@@ -50,7 +50,7 @@ get_header('all');
 							}
 							?>
 							<div class="col-lg-4 col-md-6 image_wrapper <?php echo $animation;?>" >
-								<a href="<?php echo wp_get_attachment_url($imgId);?>"  title="<?php echo $albm['description'];?>" class="swipebox"><img src="<?php echo wp_get_attachment_image($imgId, 'medium');?>" width="380" height="225" alt=""/></a>
+								<a href="<?php echo wp_get_attachment_url($imgId);?>"  title="<?php echo $albm['description'];?>" class="swipebox"><img src="<?php echo wp_get_attachment_image($imgId, array(380,225), false, false);?>" width="380" height="225" alt=""/></a>
 								<h2><?php echo $albm['title'];?></h2>
 							</div>
 							<?php 
