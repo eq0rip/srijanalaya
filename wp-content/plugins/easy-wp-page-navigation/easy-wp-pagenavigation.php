@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Easy WP Page Navigation
-Plugin URI: http://bigdigital.vn/
+Plugin URI: http://pencidesign.com/
 Description: Easy add paging navigation to your theme
-Version: 1.0
-Author: KanG
-Author URI: http://bigdigital.vn/
+Version: 1.4
+Author: PenciDesign
+Author URI: http://pencidesign.com/
 License: GPLv2 or later
 Text Domain: easy-wp-page-navigation
 
-Copyright @2015  KanG  (email: phamanhtuan1208@gmail.com)
+Copyright @2015  PenciDesign  (email: pencidesign@gmail.com)
 */
 
 // Exit if accessed directly
@@ -31,12 +31,11 @@ define( 'EWPN_ST', 'easy_wp_page_navigation' );
  */
 if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 
-	class Easy_WP_Page_Navigation
-	{
+	class Easy_WP_Page_Navigation {
 		/**
 		 * Global plugin version
 		 */
-		static $version = '1.0';
+		static $version = '1.1';
 
 		/**
 		 * Easy_WP_Page_Navigation Constructor.
@@ -45,8 +44,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return Easy_WP_Page_Navigation
 		 * @since  1.0
 		 */
-		public function __construct()
-		{
+		public function __construct() {
 			// Include handling files
 			include_once( 'inc/functions.php' );
 
@@ -80,13 +78,13 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function active_plugin()
-		{
+		public function active_plugin() {
 			$defaults = array(
 				'first_text' => __( '&laquo; First', EWPN ),
 				'last_text'  => __( 'Last &raquo;', EWPN ),
 				'prev_text'  => __( '&laquo;', EWPN ),
 				'next_text'  => __( '&raquo;', EWPN ),
+				'style'      => 'default',
 				'align'      => 'left',
 			);
 			add_option( EWPN_ST, $defaults );
@@ -99,8 +97,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function load_text_domain()
-		{
+		public function load_text_domain() {
 			load_plugin_textdomain( EWPN, false, EASY_WP_PAGE_DIR . '/languages/' );
 		}
 
@@ -111,8 +108,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function front_style()
-		{
+		public function front_style() {
 			wp_enqueue_style( 'easy-wp-page-nav', EASY_WP_PAGE_URL . '/css/easy-wp-pagenavigation.css', false, self::$version );
 		}
 
@@ -123,8 +119,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function admin_options()
-		{
+		public function admin_options() {
 			register_setting( EWPN_ST, EWPN_ST, array( $this, 'validate_options' ) );
 		}
 
@@ -132,12 +127,13 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * Sanitize and validate options
 		 *
 		 * @access public
+		 *
 		 * @param  array $input
+		 *
 		 * @return array
 		 * @since  1.0
 		 */
-		public function validate_options( $input )
-		{
+		public function validate_options( $input ) {
 
 			$options  = array();
 			$defaults = array(
@@ -145,11 +141,11 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 				'last_text'  => __( 'Last &raquo;', EWPN ),
 				'prev_text'  => __( '&laquo;', EWPN ),
 				'next_text'  => __( '&raquo;', EWPN ),
+				'style'      => 'default',
 				'align'      => 'left',
 			);
 
-			foreach ( $defaults as $name => $val )
-			{
+			foreach ( $defaults as $name => $val ) {
 				$options[$name] = isset( $input[$name] ) ? $input[$name] : $val;
 			}
 
@@ -162,8 +158,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 			$taxonomies = get_taxonomies( $args );
 
 			if ( ! empty( $taxonomies ) )
-				foreach ( $taxonomies as $tax )
-				{
+				foreach ( $taxonomies as $tax ) {
 					$options[$tax] = $input[$tax];
 				}
 
@@ -177,9 +172,11 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function add_options_page()
-		{
-			add_options_page( __( 'Easy WP Page Navigation Options', EWPN ), __( 'Easy WP Page Nav', EWPN ), 'manage_options', 'easy-wp-pagenavigation', array( $this, 'plugin_form' ) );
+		public function add_options_page() {
+			add_options_page( __( 'Easy WP Page Navigation Options', EWPN ), __( 'Easy WP Page Nav', EWPN ), 'manage_options', 'easy-wp-pagenavigation', array(
+				$this,
+				'plugin_form'
+			) );
 		}
 
 		/**
@@ -189,8 +186,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function plugin_form()
-		{
+		public function plugin_form() {
 			include( 'inc/plugin-form.php' );
 		}
 
@@ -201,34 +197,36 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return void
 		 * @since  1.0
 		 */
-		public function admin_enqueue()
-		{
+		public function admin_enqueue() {
 			wp_enqueue_style( 'easy-wp-page-nav-admin', EASY_WP_PAGE_URL . '/css/admin.css', false, self::$version );
 			wp_enqueue_script( 'easy-wp-page-nav', EASY_WP_PAGE_URL . '/js/admin.js', array( 'jquery' ), self::$version, true );
 		}
 
 		/**
-		 * Display a Settings url on the main plugins page
+		 * Applied to the list of links to display on the plugins page
 		 *
 		 * @access public
 		 *
-		 * @param  array  $links
-		 * @param  string $file
-		 *
+		 * @param  array $actions
+		 * @param  string $plugin_file
 		 * @return array
-		 * @since  1.0
+		 * @since  1.2
 		 */
-		public function add_settings_links( $links, $file )
-		{
+		public function add_settings_links( $actions, $plugin_file ) {
 
-			if ( $file == plugin_basename( __FILE__ ) )
-			{
-				$plugin_link = '<a href="' . admin_url( 'options-general.php?page=easy-wp-pagenavigation' ) . '">' . __( 'Settings', EWPN ) . '</a>';
-				// make the 'Settings' link appear first
-				array_unshift( $links, $plugin_link );
+			if ( ! isset( $plugin ) )
+				$plugin = plugin_basename( __FILE__ );
+			if ( $plugin == $plugin_file ) {
+
+				$settings     = array( 'settings' => '<a href="' . admin_url( 'options-general.php?page=easy-wp-pagenavigation' ) . '">' . __( 'Settings', EWPN ) . '</a>' );
+				$more_link    = array( 'more' => '<a href="http://themeforest.net/user/pencidesign/portfolio" target="_blank">' . __( 'Need A Theme', EWPN ) . '</a>' );
+
+				$actions = array_merge( $settings, $actions );
+				$actions = array_merge( $more_link, $actions );
+
 			}
 
-			return $links;
+			return $actions;
 		}
 
 		/**
@@ -238,8 +236,7 @@ if ( ! class_exists( 'Easy_WP_Page_Navigation' ) ) :
 		 * @return array
 		 * @since  1.0
 		 */
-		public static function get_all_taxonomies()
-		{
+		public static function get_all_taxonomies() {
 			$args = array(
 				'public'  => true,
 				'show_ui' => true,

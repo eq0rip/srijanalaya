@@ -6,7 +6,7 @@ Tags: custom fields, custom field, wordpress custom fields, advanced custom fiel
 
 Requires at least: 3.1
 Tested up to: 4.4.1
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 
 A must have tool for creating custom fields, custom post types and taxonomies, fast and without any programming knowledge.
 
@@ -141,6 +141,9 @@ Creating a taxonomy generally automatically creates a special query variable usi
 10. Taxonomy listing
 
 == Changelog ==
+= 1.1.9 =
+* Fixed typo from 'Chose' to 'Choose'
+
 = 1.1.8 =
 * We now allow  Custom Post Types and Custom Taxonomies to be available via REST API by adding 'show_in_rest' attribute
 
