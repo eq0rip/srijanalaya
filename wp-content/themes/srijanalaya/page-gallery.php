@@ -29,74 +29,35 @@ get_header('all');
 		<div class="grid-gallery-overview" id="ngg-gallery-316-1" data-featherlight-gallery data-featherlight-filter="a">
 			<div class="ng-wrap hidden">
 				<?php
-				while ( have_posts() ) : the_post();
-				echo '<h2>' . get_the_title() . '</h2>';
-				echo '<p>' . the_content() . '</p>';
-				endwhile;
+				// while ( have_posts() ) : the_post();
+				// echo '<h2>' . get_the_title() . '</h2>';
+				// echo '<p>' . the_content() . '</p>';
+				// endwhile;
 				?>
 			</div>
 			<?php 
 
-			if(isset($_GET['gallery_id'])) {
-				$gid = $_GET['gallery_id'];
-				$args=array('posts_per_page' => -1, 'post_type'=>'sri-gallery',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'gallery_categories',
-							'field'    => 'slug',
-							'terms'    => $gid							)
-						)
-					);
-				wp_reset_query(); 
-				$postslist = new WP_Query($args);
-				$i=0;
-				while( $postslist->have_posts() ) : $postslist->the_post();
-				$i++;
-				$album = get_post_meta(get_the_ID(),'Image-meta',true);
-				//$imgsrc_thumbnail=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'thumbnail');
-				//$imgsrc_large=wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()),'large');
-				?>
-				<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
-					<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
-						<ul class="photostack<?php echo $i;?>">
-							<?php
-							foreach($album as $albm){
-								$imgId = $albm['image']; ?>
-								<img src="<?php echo wp_get_attachment_url($imgId);?>" width="380" height="225" alt="img01"/>
-								<?php 
-							}?>
-						</ul>
-						<h2>
-							<?php echo get_the_title();?>
-						</h2>
+			
+			
+			wp_reset_query();
+			$args = array('posts_per_page'=>20,'post_type'=>'sri-gallery');
+			$postslist = new WP_Query($args);
+			while( $postslist->have_posts() ) : $postslist->the_post();
+			$album = get_post_meta(get_the_ID(),'Image-meta',true);
+			?>
+			<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
+				<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
 
-					</div>
-				</div> 
-				<?php
-				endwhile;
-			}
-			else {
-				wp_reset_query();
-				$args = array('posts_per_page'=>20,'post_type'=>'sri-gallery','order'=>'rand');
-				$postslist = new WP_Query($args);
-				$i = 0;
-				while( $postslist->have_posts() ) : $postslist->the_post();
-				$i++;
-				$album = get_post_meta(get_the_ID(),'Image-meta',true);
-				?>
-				<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
-					<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
-						
-						<img alt="" src="<?php echo wp_get_attachment_url($album[0]['image']);?>" width="380" height="225">
+					<img alt="" src="<?php echo wp_get_attachment_url($album[0]['image']);?>" width="380" height="225">
 
-						<h2>
-							<?php echo get_the_title();?>
-						</h2>
-					</div>
-				</div> 
-				<?php
-				endwhile;
-			}
+					<h2>
+						<?php echo get_the_title();?>
+					</h2>
+				</div>
+			</div> 
+			<?php
+			endwhile;
+			
 
 			?>
 

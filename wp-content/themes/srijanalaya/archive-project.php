@@ -246,7 +246,9 @@
 						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
 						</div>
 					</a>
-					<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top"></div>
+					<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top">
+	<input type="hidden" class="p_id" value="<?php echo get_the_ID();?>" />
+					</div>
 
 					<div class="content">
 						<h2 class=""><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
@@ -463,6 +465,7 @@
 
 jQuery(document).ready(function() {
 	jQuery('.alert-icon').click(function(){
+		jQuery('#p_id').val(jQuery(this).children('.p_id').val());
 		jQuery('.transbg_popup').fadeIn(200,function(){
 			jQuery('.popup').css({'display':'flex'}).fadeIn(200);				
 		});

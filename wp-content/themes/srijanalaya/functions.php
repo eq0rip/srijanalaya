@@ -147,6 +147,8 @@ function add_subscriber($email,$project_id){
 	$table='project_subscriber';
 	$data=array('email'=>$email,'project_id'=>$project_id);
 	$wpdb->insert( $table, $data);
+	$participants = 1+get_post_meta($project_id,'wpcf-participants',true);
+	update_post_meta($project_id,'wpcf-participants',$participants);
 	return 'Thanks for Subscribing';
 }
 
