@@ -48,7 +48,7 @@ get_header('all');
 			<div id="grid-gallery-image-0" class="grid-gallery-thumbnail-box col-md-6 col-lg-4 ">
 				<div class="sri-album" data-albumId="<?php echo get_the_ID();?>">
 
-					<img alt="" src="<?php echo wp_get_attachment_image($album[0]['image'], array(380,225), false, false );?>" width="380" height="225">
+					<img alt="" src="<?php echo wp_get_attachment_image_src($album[0]['image'], array(380,225), false );?>" width="380" height="225">
 
 					<h2>
 						<?php echo get_the_title();?>
