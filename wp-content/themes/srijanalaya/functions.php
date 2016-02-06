@@ -630,3 +630,4 @@ echo "<script>
   ga('send', 'pageview');
 
 </script>";
+}
