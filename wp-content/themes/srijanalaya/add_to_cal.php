@@ -1,4 +1,3 @@
-
 <?php
 require('../../../wp-blog-header.php');
 class ICS {
@@ -25,5 +24,5 @@ $title = $_GET['title'];
 $description = $_GET['description'];
 $venue = $_GET['venue'];
 $event = new ICS($start,$end,$title,$description,$venue);
-$event->show();?>
+$event->show();
 ?>
