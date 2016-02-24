@@ -489,3 +489,23 @@ get_header();?>
 			</script>
 
 <!-- $P$BjLqxfJvxy8iab.EiNwI2k1QrG2CzL0 -->
+<?php if((( is_home() || is_front_page()) )) { //not working on desktop ?>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
+
+<script>
+	jQuery('#fullpage').fullpage({
+            scrollBar:true,
+            fitToSection:false,
+            onLeave:function(index,nextIndex,direction){
+                //   console.log(index);
+                //   if(index==1 || (index == 2 && direction == 'up')) {
+                //       jQuery('.drop').hide();
+                //       console.log(direction);
+                // }
+                // else {
+                //       jQuery('.drop').show();
+                // }
+          }
+    });
+</script>
+<?php } ?>

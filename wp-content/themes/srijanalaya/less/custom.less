@@ -1987,6 +1987,9 @@ form .btn {
         background-color: #f6f6f6;
         float: left;
         margin: 0 10px 10px 0;
+        @media (max-width:600px) {
+            width: 46% !important;
+        }
         a {
             color: #a2a1a1;
             font-weight: bold;
@@ -2406,7 +2409,7 @@ form .btn {
 }
 .mobile-nav {
     display: none;
-    @media(max-width: 769px) {
+    @media(max-width: 1025px) {
         display: block;
     }
 }
@@ -2466,7 +2469,7 @@ form .btn {
 }
 ///mobile overwrite
 
-@media(max-width:992px){
+@media(max-width:1025px){
     .mobile-top-0 {
         top:0 !important;
     }
@@ -2908,7 +2911,7 @@ form .btn {
 }
 
 }
-@media screen and (orientation:landscape) and (max-width:769px) {
+@media screen and (orientation:landscape) and (max-width:1025px) {
     //news page 
     .content-grid {
         text-align: center;
@@ -3119,6 +3122,9 @@ p.fix-h {
 }
 .side-column {
     margin-left: 50px;
+    @media (max-width:600px) {
+        margin: 0 auto !important; 
+    }
     a {
         color: #807f7f;
     }
@@ -3394,13 +3400,13 @@ p {
 
 // NEW RESPOONSIVE NAV
 .nav-icons {
-    top: 45px;
+    top: 0;
     .nav-links {
         background-color: rgba(47, 47, 47, 0.8);
         width: 145px;
         right: -40px !important;
         top: 0 !important;
-        padding: 0 10px;
+        padding: 10px 10px 0;
         transform: translateX(150px);
         transition: all 0.2s ease-in;
         
@@ -3504,5 +3510,10 @@ p {
         margin: 0 !important;
         position: absolute;
         bottom: 0px;
+    }
+}
+.leaflet-control-zoom {
+    a {
+        text-indent: -50px;
     }
 }

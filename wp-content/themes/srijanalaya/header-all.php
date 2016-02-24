@@ -33,7 +33,7 @@
     <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
   </div>
 
-  <nav class="navbar yamm hidden-xs"><!--navbar-->
+  <nav class="navbar yamm hidden-md"><!--navbar-->
     <div class="navbar-inner">
       <div class="cointainer">
 

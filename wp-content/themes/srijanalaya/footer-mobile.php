@@ -19,7 +19,7 @@
 
 
 <script src="<?php echo get_template_directory_uri();?>/js/jquery-ui.min.js"></script>
-<?php //if((( is_home() || is_front_page()) )) { //not working on desktop ?>
+<?php if((( is_home() || is_front_page()) )) { //not working on desktop ?>
  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.js"></script>
  <script>
 	jQuery('#fullpage').fullpage({
@@ -35,7 +35,7 @@
       }
     });
 </script>
-<?php //} ?>
+<?php } ?>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.Photostack.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/wow.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.swipebox.js"></script>
