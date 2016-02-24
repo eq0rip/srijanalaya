@@ -142,9 +142,8 @@ if(( !is_mobile() )) {
 
 
 	</div>
-
-	
 </div>
+
 <div class="section" id="section-3">
 	<div class="single_slider owl-carousel" id="slider-5">
 		<?php
@@ -300,7 +299,7 @@ if(( !is_mobile() )) {
 			<div class="cover-wrap">
 
 				<h1><?php echo $title[0];?> <span class="key"><?php echo $title[1];?></span> <?php echo $title[2];?></h1>
-				<button type="button" class="btn btn-default btn-lg vid-btn"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
+				<button type="button" class="btn btn-default btn-lg btn-shop"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
 
 			</div>
 		</div>

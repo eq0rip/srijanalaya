@@ -22,16 +22,19 @@
   <nav class="nav-icons mobile-nav">
 
 
-    <ul class="nav-links" style="display:none;">
+    <ul class="nav-links">
      <?php foreach($menu_icons as $key=>$values){
       $pagelocation=$key;
       $icons=explode('##',$values);
       $default_icon=$icons[0];
       $hover_icons=$icons[1];
-
       if($key=='home'){
 
         $pagelocation='';
+      }
+      if($key=='artist'){
+
+        $pagelocation='srijanalaya-artist';
       }
       ?>
       <li class="<?php echo $key.'-menu-icon';?> subs">
@@ -59,18 +62,25 @@
       </li>
     </ul>
 
-    <ul>
+    <ul class="nav-btn">
       <li class="plus"><a href="#!"><span>
-        <i class="fa fa-bars"></i>
+        <span class="bb-f"></span>
+        <span class="bb"></span>
+        <span class="bb-l"></span>
       </span></a></li>
     </ul>
   </nav>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <script>
-    jQuery('.nav-icons').click(function (){
-      jQuery('.nav-links').toggle();
-    });
+    var fullHeight = $( window ).height();
+    (function(){
+      $('.nav-links').height(fullHeight);
+      $('.nav-btn').on('click', function() {
+        $('.nav-links').toggleClass('show-it');
+        $('.nav-btn').toggleClass('show-it');
+      });
 
-
+    })();
   </script>
   <?php 
 // }

@@ -19,7 +19,6 @@ wp_reset_query();
 		<div class="col-md-12 col-lg-3 header-text">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
-			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Page</a>
 		</div>
 	</div>
 <?php endif;endwhile;?>
@@ -99,7 +98,7 @@ wp_reset_query();
 			endwhile;
 			?>
 		</div>
-		<div class="col-sm-2 hidden-md hidden-sm hidden-xs">
+		<div class="col-sm-3 hidden-md hidden-sm hidden-xs side-column">
 			<h2>Resources</h2>
 			<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
 			<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
@@ -128,15 +127,15 @@ endwhile;?>
 	<div class="col-sm-10 col-sm-offset-1"><div id="map" ></div></div>
 </div>
 <?php 
-include('newsletter.php'); 
-if(is_mobile()) {
-	include('quotewrap.php');
-	get_footer('mobile');
-}
-else {
-	get_footer('all');
-	get_footer();
-}
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
 ?>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script type="text/javascript">

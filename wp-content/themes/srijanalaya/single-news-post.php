@@ -32,11 +32,11 @@ wp_reset_query();
 			</ul></div>
 		</div>
 		<div class="page-content project-inner-page-content">
-			<div class="col-sm-7 col-sm-offset-1">
+			<div class="col-sm-7 col-sm-offset-1 paragraph">
 				<h2><?php echo get_the_title();?></h2>
 				<?php echo '<p class="text-content">' . nl2br(get_the_content()) . '</p>'; ?>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 side-column">
 				<div class="col-sm-10 sidebar no-padding">
 					<div class="side-wrap">
 						<h2>Recommended News</h2>

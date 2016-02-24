@@ -4,7 +4,7 @@
  <div class="popup" style="display:none">
 
  	<div class="content">
- 		<div class="close-info" onclick="close_msg();">X</div>
+ 		<div class="close-info" onclick="close_msg();"><i class="fa fa-close"></i></div>
  		<div class="content">
  			<form action="" method="POST">
  				<input id="p_id" type="hidden" name="post_id" value="<?php echo get_the_ID();?>" />
@@ -235,33 +235,37 @@
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
 				<div class="  mobile-no-margin cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
-					<a href="<?php echo get_the_permalink();?>">
-						<?php
-						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
-						if($imgsrc[0] == null || $imgsrc[0] == '')
-							$image = '';
-						else
-							$image = $imgsrc[0];
-						?>
-						<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
+				
+					<div class="wow animated slideInUp">
+						<a href="<?php echo get_the_permalink();?>">
+							<?php
+							$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+							if($imgsrc[0] == null || $imgsrc[0] == '')
+								$image = '';
+							else
+								$image = $imgsrc[0];
+							?>
+							<div class="project-wrapper <?php echo $class;?>" <?php echo "style = 'background-image: url(" .  $image . ");'";?>>
+								<span class="img-overlay"></span>
+							</div>
+						</a>
+						<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top">
+							<input type="hidden" class="p_id" value="<?php echo get_the_ID();?>" />
 						</div>
-					</a>
-					<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top">
-	<input type="hidden" class="p_id" value="<?php echo get_the_ID();?>" />
-					</div>
 
-					<div class="content">
-						<h2 class=""><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
-						<p class="mobile-para-padding">
-							<?php echo $location['address']; ?>
-						</p>
-						<p class="mobile-para-padding"><?php 
-							echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
-							<p><?php echo types_render_field('facilitators');?></p>
-							<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
-							<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
+						<div class="content">
+							<h2 class=""><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
+							<p class="mobile-para-padding">
+								<?php echo $location['address']; ?>
+							</p>
+							<p class="mobile-para-padding"><?php 
+								echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
+								<p><?php echo types_render_field('facilitators');?></p>
+								<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+								<a href="<?php echo the_permalink();?>" class="cd-read-more visihide">Read More</a>
 						</div>
-					</div> <!-- cd-timeline-content -->
+					</div>
+				</div> <!-- cd-timeline-content -->
 
 				</div> <!-- cd-timeline-block -->
 				<?php $j++; endwhile; ?>

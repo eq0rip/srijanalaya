@@ -26,8 +26,9 @@ wp_reset_query();
 		<div class="page-content project-inner-page-content">
 			<div class="col-sm-7 col-sm-offset-1">
 				<?php echo '<p class="text-content">' . $content . '</p>'; ?>
+				<!-- missing code -->
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-3 side-column">
 				<div class="col-sm-10 sidebar no-padding">
 					<div class="side-wrap">
 						<h2><?php echo ucwords($sri_locale['resources'][$lang]);?></h2>

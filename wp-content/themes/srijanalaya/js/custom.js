@@ -206,7 +206,6 @@ $owl1
   margin: 0,
   autoplay:true,
   autoplayTimeout:3000,
-  autoplayTimeout:3500,
   animateIn: 'fadeIn',
   loop:true
 })
@@ -244,12 +243,12 @@ $owl2
 });
 
 //nav icons
-$('.nav-icons').hover(function() {
-  $('.nav-links').stop(true,true).slideDown(500);
-}, function() {
-  $('.nav-links').stop(true,true).slideUp(500);
-}
-);
+// $('.nav-icons').hover(function() {
+//   $('.nav-links').stop(true,true).slideDown(500);
+// }, function() {
+//   $('.nav-links').stop(true,true).slideUp(500);
+// }
+// );
 
 var hoverTimer = 0;
 var obj;
@@ -320,19 +319,19 @@ $('.marquee-right').click(function() {
     });
   }
 });
-var prev_ids = '';
-$('a[href*=#]').on('click', function(event){
-  event.preventDefault();
-  var ids = $(this).attr('href');
-  if(prev_ids != ids) {
-    prev_ids = ids;
-    $('.subhead').fadeOut(100);
-    ids = ids.substring(1);
-    $('#span' + ids).fadeIn(1000);
-  }
-});
-
-
+(function(){
+  var prev_ids = '';
+  $('a[href*=#]').on('click', function(event){
+    event.preventDefault();
+    var ids = $(this).attr('href');
+    if(prev_ids != ids) {
+      prev_ids = ids;
+      $('.subhead').fadeOut(100);
+      ids = ids.substring(1);
+      $('#span' + ids).fadeIn(1000);
+    }
+  });
+})();
 })(jQuery);
 function change_language(x,y) {
   var link=y+'?lang='+x;
@@ -551,5 +550,3 @@ if(jQuery('#custom_filters select').first().val()=='By Type')
 
 window.location.href='http://localhost/srijanalaya/project'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
-
-

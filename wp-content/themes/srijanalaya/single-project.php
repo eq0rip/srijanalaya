@@ -61,9 +61,22 @@ wp_reset_query();
 					echo '<h2>' . get_the_title() . '</h2>';
 					?>
 					<div class="info-wrap">
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt=""><?php echo ucwords($sri_locale['date'][$lang]);?>: <span class="col2"><?php $project_date=parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));echo $project_date;?></span></p>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt=""><?php echo ucwords($sri_locale['time'][$lang]);?>: <span class="col2"><?php $project_time=date('h:i A',types_render_field('project-date', array('raw' => 'true')));echo $project_time;?></span></p>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/loc.png" class="outimg" alt=""><?php echo ucwords($sri_locale['location'][$lang]);?>: 
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/cal.png" class="outimg" alt="">
+						<span class="bold">
+							<?php echo ucwords($sri_locale['date'][$lang]);?>:
+						</span>
+
+						 <span class="col2"><?php $project_date=parseDate(date('Y-F-d',types_render_field('project-date', array('raw' => 'true')))) . ' ' . date('F Y',types_render_field('project-date', array('raw' => 'true')));echo $project_date;?></span></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/time.png" class="outimg" alt="">
+						<span class="bold">
+							<?php echo ucwords($sri_locale['time'][$lang]);?>:
+						</span>
+						 <span class="col2"><?php $project_time=date('h:i A',types_render_field('project-date', array('raw' => 'true')));echo $project_time;?></span></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/loc.png" class="outimg" alt="">
+						<span class="bold">
+							<?php echo ucwords($sri_locale['location'][$lang]);?>:
+						</span>
+
 							<span class="col2" id="locAdd"><?php 
 								$connected = new WP_Query( array(
 									'connected_type' => 'maps_to_project',
@@ -80,10 +93,19 @@ wp_reset_query();
 								wp_reset_query();?>
 							</span>
 						</p>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/age.png" class="outimg" alt=""><?php echo ucwords($sri_locale['age group'][$lang]);?>: <span class="col2"><?php echo types_render_field('age-group');?></span></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/age.png" class="outimg" alt="">
+						<span class="bold">
+							<?php echo ucwords($sri_locale['age group'][$lang]);?>:
+						</span>
+						 <span class="col2"><?php echo types_render_field('age-group');?></span></p>
 						<?php
 						if(strtolower(types_render_field('project-type')) == 'public') {?>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo ucwords($sri_locale['participants'][$lang]);?>: <span class="col2"><?php echo types_render_field('participants');?></span></p>
+						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/user.png" class="outimg" alt="">
+						<span class="bold">
+							<?php echo ucwords($sri_locale['participants'][$lang]);?>:
+						</span>
+
+						<span class="col2"><?php echo types_render_field('participants');?></span></p>
 						<?php
 					}
 					echo '</div>'; 
@@ -91,11 +113,11 @@ wp_reset_query();
 					endwhile;
 					?>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-3 side-column">
 					<div class="col-sm-10 sidebar no-padding">
 						<div class="side-wrap no-padding">
 							<h2><?php echo ucwords($sri_locale['get updates'][$lang]);?></h2>
-							<p><a id="add_to_cal_submit" href="javascript:void(0)">Add to Calendar Sync with iCal, <br/>outlook, google calendar</a></p>
+							<p><a id="add_to_cal_submit" href="javascript:void(0)">Add to Calendar Sync with iCal, outlook, google calendar</a></p>
 							<p class="subscribe-inner"><a href="#!">Alert for any updates</a></p>
 							<form class="hidden" action="" method="GET">
 								<input id="start_date" type="text" name="start" value="<?php echo $project_date.' '.$project_time;?>"/>

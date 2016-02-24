@@ -56,5 +56,12 @@
             jQuery('.drop').hide();
       }
 });
+      
+(function(){
+  wow = new WOW({
+    mobile: false
+  });
+  wow.init(); 
+})();
 </script>
 </html>

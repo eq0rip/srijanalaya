@@ -17,7 +17,7 @@ wp_reset_query();
 						'name'             => 'product-id',
 						'orderby'          => 'name',
 						'hierarchical'     => true,
-						'show_option_none' => 'Type',
+						'show_option_none' => 'Collections',
 						);
 					$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'product_cat', 'new' );
 					$select=wp_dropdown_categories( $dropdown_args );
@@ -59,14 +59,14 @@ wp_reset_query();
 						while ( $loop->have_posts() ) : $loop->the_post();
 						$product = new WC_Product( get_the_ID() );
 						$class = ($i == 1) ? "col-md-8" : "col-md-4";
-						echo '<div class="product-item ' . $class . ' no-padding">';
+						echo '<div class="product-item ' . $class . '">';
 						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
 						if($imgsrc[0] == null || $imgsrc[0] == '')
 							$image = '';
 						else
 							$image = $imgsrc[0];
 						if($i == 1){
-							echo '<div class="col-sm-12 no-padding product-img" style="background:url(' . $image . ')">';
+							echo '<div class="col-sm-12 product-img" style="background:url(' . $image . ')">';
 							$i++;
 						}
 						elseif($i == 2){
@@ -74,7 +74,7 @@ wp_reset_query();
 						}
 						echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 						echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
-						echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span>";
+						echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span></br>";
 						echo "<span class='price'>" . $product->get_price_html() . "</span>";
 						if ( $product->is_in_stock() ) : ?>
 
@@ -152,7 +152,7 @@ wp_reset_query();
 							<?php
 							echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 							echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";
-							echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span>";
+							echo "<span class='description hidden-xs'>" . get_the_excerpt() . "</span></br>";
 							echo "<span class='price'>" . $product->get_price_html() . "</span>";
 							if ( $product->is_in_stock() ) : ?>
 

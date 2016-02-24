@@ -19,7 +19,7 @@ wp_reset_query();
 						'name'             => 'product-id',
 						'orderby'          => 'name',
 						'hierarchical'     => true,
-						'show_option_none' => 'Type',
+						'show_option_none' => 'Collection',
 						);
 					$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'product_cat', 'new' );
 					$select=wp_dropdown_categories( $dropdown_args );

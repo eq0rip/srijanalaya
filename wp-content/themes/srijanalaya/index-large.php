@@ -107,11 +107,14 @@ get_header();?>
 				endwhile;
 				
 				?>
-				<h1>Upcoming <span class="key">Project</span></h1>
-				<h2> <?php echo get_the_title($nextEvent);?></h2>
-				<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
-				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
-				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo get_post_meta($nextEvent,'wpcf-participants',true);?> participants </p>
+				<div>
+					
+					<h1>Upcoming <span class="key">Project</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p class="fix-h"><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
+					<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
+					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo get_post_meta($nextEvent,'wpcf-participants',true);?> participants </p>
+				</div>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
@@ -321,56 +324,63 @@ get_header();?>
 		$image = '';
 	else
 		$image = $imgsrc[0];
-	?>	
-	<div class="col-xs-6 section-container bottom-container">
-		<div class="section-inner">
-			<div class="cover-wrap">
+	?>
+	<div class="row">	
+		<div class="col-xs-6 section-container bottom-container">
+			<div class="section-inner">
+				<div class="cover-wrap">
 
-				<h1><?php echo $title[0];?><br/><span class="key"><?php echo $title[1];?></span><br/><?php echo $title[2];?></h1>
-				<p><?php echo get_the_content();?></p>
-				<button type="button" class="btn btn-default btn-lg vid-btn"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
-				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
-				</span>
+					<h1><?php echo $title[0];?><span class="key"><?php echo $title[1];?></span><br/><?php echo $title[2];?></h1>
+					<p><?php echo get_the_content();?></p>
+					<div class="row">
+						<button type="button" class="btn btn-default btn-lg btn-shop"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
+					</div>
+					<?php include('social-expand.php');?>
+					<span class="post-navigate">
+						<button class="btn btn-default btn-lg semicircle"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
+					</span>
+				</div>
 			</div>
+		</div>
+		<div class="col-xs-6 section-container bottom-container2">
+
+			<?php 
+			if(stristr($urlvid, 'youtube.com') === FALSE) {
+				?>
+				<iframe id="player" src="https://player.vimeo.com/video/<?php  echo parse_vimeo($urlvid);?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				<?php } else {?>
+				<div id="playeryt"></div>
+				<script>
+					var tag = document.createElement('script');
+					var videourl="<?php echo parse_youtube($urlvid);?>";
+					tag.src = "https://www.youtube.com/iframe_api";
+					var firstScriptTag = document.getElementsByTagName('script')[0];
+					firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+					var playeryt;
+					function onYouTubeIframeAPIReady() {
+						playeryt = new YT.Player('playeryt', {
+							height: '100%',
+							width: '100%',
+							videoId: videourl,
+						});
+					}
+
+				</script>
+
+				<?php  } if($image != '') { ?>
+				<div class="video-wrap">
+					<img src="<?php echo $image; ?>">
+					<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
+				</div>
+				<?php } ?>
 		</div>
 	</div>
-	<div class="col-xs-6 section-container bottom-container2">
-
-		<?php 
-		if(stristr($urlvid, 'youtube.com') === FALSE) {
-			?>
-			<iframe id="player" src="https://player.vimeo.com/video/<?php  echo parse_vimeo($urlvid);?>?api=1&player_id=player" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-			<?php } else {?>
-			<div id="playeryt"></div>
-			<script>
-				var tag = document.createElement('script');
-				var videourl="<?php echo parse_youtube($urlvid);?>";
-				tag.src = "https://www.youtube.com/iframe_api";
-				var firstScriptTag = document.getElementsByTagName('script')[0];
-				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-				var playeryt;
-				function onYouTubeIframeAPIReady() {
-					playeryt = new YT.Player('playeryt', {
-						height: '100%',
-						width: '100%',
-						videoId: videourl,
-					});
-				}
-
-			</script>
-
-			<?php  } if($image != '') { ?>
-			<div class="video-wrap">
-				<img src="<?php echo $image; ?>">
-				<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
-			</div>
-			<?php } ?>
-		</div>
 		<?php
 		endwhile;
 		?>
-		<div class="col-xs-12 halfheight footer">
+		<div class="col-xs-12 footer">
+		<div class="footer-home">
+			
 			<div class="quote-wrap">
 				<?php
 				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
@@ -407,7 +417,7 @@ get_header();?>
 								$postslist=new WP_Query($args);
 								while($postslist->have_posts() ) :$postslist->the_post();
 								?>
-								<li><a href="<?php echo get_the_permalink();?>"><?php echo get_the_title();?></a></li>
+								<li><a class="ellipsis" href="<?php echo get_the_permalink();?>"><?php echo get_the_title();?></a></li>
 								<?php 
 								endwhile;
 								?>
@@ -415,14 +425,25 @@ get_header();?>
 							</ul>
 						</div>
 						<div class="col-xs-12 col-sm-3 footer-elements social-block">
-							<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
+							<div class="row no-padding">
+								
+							
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><img src="<?php echo get_template_directory_uri();?>/images/fb-w.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><img src="<?php echo get_template_directory_uri();?>/images/tw.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><img src="<?php echo get_template_directory_uri();?>/images/gp.png" alt=""></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><img src="<?php echo get_template_directory_uri();?>/images/pin.png" alt=""></a></li></h4>
+							</div>
 							<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
-							<p><?php echo ucwords($sri_locale['donate'][$lang]);?></p>
+							<p><?php echo ucwords($sri_locale['Donate'][$lang]);?></p>
 						</div>
 					</div>
 				</div>
-				<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+				<div class="copyrite" style="margin: 0 20px;">
+					<p class='pull-left'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+					<p class="pull-right">
+						Site by | Saedi Works.
+					</p>					
+				</div>
 			</div>
+		</div>
+
 		</div> <!--full page end-->
 		<?php include('newsletter.php');?>
 
@@ -467,3 +488,4 @@ get_header();?>
 
 			</script>
 
+<!-- $P$BjLqxfJvxy8iab.EiNwI2k1QrG2CzL0 -->

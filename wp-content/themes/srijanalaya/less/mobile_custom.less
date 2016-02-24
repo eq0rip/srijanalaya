@@ -266,7 +266,7 @@ display: inline-block !important;
 
     .owl-dots {
         position: absolute;
-        top:275px;
+        top:375px;
         z-index: 4;
         margin-left:8%;
         //display: flex;
@@ -276,7 +276,7 @@ display: inline-block !important;
         .owl-dot {
             width:10px;
             height:10px;
-            background-color: @gray;
+            background-color: #fff;
             float:left;
             margin:0px 4px;
             border-radius: 8px;
@@ -383,11 +383,11 @@ h2 {
     }
     .btn {
         background: transparent;
-        color:#b5afb5;
+        color:#fff;
         border-radius:24px;
         width: auto;
         padding: 5px 10px;
-        font-size: 1.1em;
+        font-size: 1em;
         font-family:'helvetica';
         margin-top:4%;
         font-weight:normal;
@@ -402,10 +402,10 @@ h2 {
             width:40%;
             h1 {
                 color: #FFF;
-                margin-bottom: 10px;
-                font-size: 2em;
+                margin-bottom: 50px;
                 .key {
-                    color:#e9214b;
+                    font-size: 2em !important;
+                    color:#e91f4a;
                 }
             } 
 
@@ -486,13 +486,15 @@ h2 {
         padding: 0px !important;
         h1 {
             background:  #2b2a2a !important;
-            padding:10% 10% !important;
+            padding: 15px 0 !important;
             font-size: 1.5em !important;
             color:  #f3f3f2 !important;
             margin-top: 5%;
+            text-align: center;
+            font-size: 1.3em !important;
         }
     }
-    ul {
+    ul  {
         background-color:#454446;
         margin:0px;
         font-size: 1em;
@@ -563,7 +565,7 @@ h2 {
 
         height:20%;
         p {
-         font-size: 1.5em;
+         font-size: 1.3em;
          font-weight: bold;
          color:  #f3f3f2 !important;
          background-color: #4c4b4c;
@@ -671,7 +673,6 @@ h2 {
 
     .nav-links {
         position: absolute;
-        bottom: 44px;
         right: -10px !important;
         margin-right: 0px;
     }
@@ -823,3 +824,69 @@ h2 {
 
 
 
+.nav-icons {
+    top: 45px;
+    .nav-links {
+        background-color: rgba(47, 47, 47, 0.8);
+        width: 145px;
+        right: -40px !important;
+        top: 0 !important;
+        padding: 0 10px;
+        transform: translateX(150px);
+        transition: all 0.2s ease-in;
+        
+        .subs {
+            border-bottom: 1px solid #5a5a5a;
+
+            a {
+                background-color: transparent;
+                padding: 5px 0 !important;
+                width: 100% !important;
+
+                span {
+                    width: 100% !important;
+                    text-transform: capitalize;
+                    letter-spacing: 1px !important;
+                }
+            }
+        }
+    }
+    .nav-links.show-it {
+        transform: translateX(0px);
+        transition: all 0.3s ease-in;
+    }
+    .nav-btn {
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+
+        .bb, .bb-f, .bb-l {
+            border-bottom: 2px solid #fff;
+            width: 20px;
+            margin-top: 4px;
+            margin-left: 10px;
+            transition: all 0.1s ease-in;
+        }
+        .plus > a > span {
+            margin-top: 14px;
+        }
+    }
+    .nav-btn.show-it {
+        .bb {
+            display: none;
+            visibility: hidden;
+        }
+        .bb-f {
+            transform: rotate(45deg);
+            margin-top: 19px;
+            transition: transform 0.2s ease-in;
+
+        }
+        .bb-l {
+            transform: rotate(-45deg);
+            margin-top: -2px;
+            transition: transform 0.2s ease-in;
+
+        }
+    }
+}

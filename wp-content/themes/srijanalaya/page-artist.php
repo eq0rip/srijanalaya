@@ -61,16 +61,18 @@ get_header('all'); ?>
 			$image = $imgsrc[0];
 		?>
 		<div class="col-sm-4 content">
-			<img src="<?php echo $image;?>" />
+			<div class="img-wrapper">
+				<img src="<?php echo $image;?>" />
+			</div>
 			<h4><?php echo get_the_title().'<span class="sub-title">'.types_render_field("artist-type").'</span>'; ?></h4>
 			<p><?php echo types_render_field('short-description'); ?></p>
 			<span class="social-buttons">
-			<span class="font-11">Visit Artist</span>
+			<span class="font-11">Follow Artist</span>
 				<ul class="share-buttons">
-					<li><a href="" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fsrijanalaya.saediworks.com&text=Srijanalaya:%20http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="https://plus.google.com/share?url=http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li>
-					<li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsrijanalaya.saediworks.com&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li>
+					<li><a href="" target="_blank" title="Share on Facebook"><img src="<?php echo get_template_directory_uri();?>/images/fb-g.png" alt=""></a></li>
+					<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fsrijanalaya.saediworks.com&text=Srijanalaya:%20http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Tweet"><img src="<?php echo get_template_directory_uri();?>/images/tw-g.png" alt=""></a></li>
+					<li><a href="https://plus.google.com/share?url=http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Share on Google+"><img src="<?php echo get_template_directory_uri();?>/images/gp-g.png" alt=""></a></li>
+					<li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsrijanalaya.saediworks.com&description=" target="_blank" title="Pin it"><img src="<?php echo get_template_directory_uri();?>/images/pin-g.png" alt=""></a></li>
 				</ul>
 			</span>
 			<br/>

@@ -73,10 +73,12 @@ get_header('all'); ?>
 			$image = $imgsrc[0];
 		?>
 		<div class="col-sm-4 content">
-			<img src="<?php echo $image;?>" />
+			<div class="img-wrapper">
+				<img src="<?php echo $image;?>" />
+			</div>
 			<h4><?php the_title(); ?></h4>
 			<p><?php echo types_render_field('short-description'); ?></p>
-			<a href="<?php echo get_the_permalink();?>">Read More</a>
+			<a href="<?php echo get_the_permalink();?>" class="news-btn">Read More</a>
 		</div>
 		<?php
 		endwhile;
