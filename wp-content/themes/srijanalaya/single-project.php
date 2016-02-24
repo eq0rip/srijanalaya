@@ -208,9 +208,16 @@ endwhile;
 endif;
 wp_reset_query();
 ?>
-<?php
-get_footer();
-get_footer('all');
+<?php 
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
 ?>
 
 <script type="text/javascript">

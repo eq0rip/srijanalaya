@@ -187,8 +187,15 @@ wp_reset_query();
 </div>
 </div>
 <?php 
-get_footer('all');
-get_footer(); 
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
 ?>
 <script type="text/javascript">
 	var productDd = document.getElementById("product-id");

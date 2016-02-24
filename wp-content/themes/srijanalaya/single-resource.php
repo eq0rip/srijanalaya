@@ -44,7 +44,14 @@ wp_reset_query();
 		</div>
 	</div>
 </div>
-<?php
-get_footer();
-get_footer('all');
+<?php 
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
 ?>	
