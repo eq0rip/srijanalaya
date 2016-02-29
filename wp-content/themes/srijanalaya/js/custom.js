@@ -106,8 +106,8 @@
         setTimeout(
           function() {
            $('.navbar').removeClass('nav-bar-fixed');
-           $('.drop').css({'top':'0'});
-           $('.drop').show();
+           $('.drop').css({'top':'0'}).delay(3000);
+           $('.drop').show().delay(3000);
          },
          5000);
       });
@@ -116,7 +116,7 @@
     
     $(window).scroll(function() {
      $('.navbar').removeClass('nav-bar-fixed');
-     $('.drop').css({'top':'0'});
+     $('.drop').css({'top':'0'}).delay(3000);
    });
     // $('.social-expand-buttons').hover(function() {
     //   $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
@@ -283,6 +283,14 @@ $("#right-col-first").hover(
  });
 
 });
+(function(){
+  $('#clickMe').on('click', function() {
+    $(this).css({
+      backgroundColor: '#C10A31',
+      transition: 'all 0.3s ease-in'
+    });
+  });
+})();
 
 //Homepage hover 3rd section
 $('.even, .odd').hover(function() {
@@ -332,6 +340,7 @@ $('.marquee-right').click(function() {
     }
   });
 })();
+
 })(jQuery);
 function change_language(x,y) {
   var link=y+'?lang='+x;
@@ -550,3 +559,10 @@ if(jQuery('#custom_filters select').first().val()=='By Type')
 
 window.location.href='http://localhost/srijanalaya/project'+'?category='+category+'&location='+location+'&from='+from+'&to='+to;
 }
+(function(){
+  $('.transbg_popup').on('click', function() {
+    $('.modal-container', '.transbg_popup').css({
+      display: 'none'
+    });
+  });
+})();

@@ -5,7 +5,7 @@ get_header('all');
 wp_reset_query();
 ?>
 <div class="page-wrapper wrapper">
-	<div class="row">
+	<div class="row lessmargin">
 		<div class="bar hidden-sm hidden-xs">
 			<div id="custom_filters" class="mid-nav">
 				<form class="" action="<?php bloginfo('url'); ?>/" method="get">
@@ -148,7 +148,8 @@ wp_reset_query();
 					$class = ($i == 5) ? "col-md-8" : "col-md-4";
 					?>
 					<div class="<?php echo $class;?> img-cov">
-						<div class="col-sm-12 inner-wrapper" style="background:url(<?php echo $image;?>)">
+						<div class="col-sm-12 inner-wrapper">
+							<div class="product-img" style="background:url(<?php echo $image;?>)"></div>
 							<?php
 							echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 							echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";

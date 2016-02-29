@@ -1,4 +1,4 @@
-<div class="newsletter-popup">
+<div class="newsletter-popup" onclick="close_msg();">
     
         <!--START Scripts : this is the script part you can add to the header of your theme-->
         <script type="text/javascript" src="http://localhost/srijanalaya/wp-includes/js/jquery/jquery.js?ver=2.6.19"></script>
@@ -14,10 +14,16 @@
         <!--END Scripts-->
 
     <div class="modal-container">
-        <div class="close-newsletter"> <i class="fa fa-close"></i> </div>
+        <div class="row">
+            <div class="close-newsletter"> <i class="fa fa-close"></i> </div>
+            <h1>Signup For News Letter</h1>
+
+        </div>
         <div class="widget_wysija_cont html_wysija">
             <div id="msg-form-wysija-html56507e429e40d-1" class="wysija-msg ajax"></div>
             <form id="form-wysija-html56507e429e40d-1" method="post" action="#wysija" class="widget_wysija html_wysija">
+            <div class="form-footer">
+                
                 <p class="wysija-paragraph">
                     <span class="wysija-required">
 
@@ -31,6 +37,7 @@
 
                 </p>
                 <input class="wysija-submit wysija-submit-field button" type="submit" value="Subscribe" />
+            </div>
 
                 <input type="hidden" name="form_id" value="1" />
                 <input type="hidden" name="action" value="save" />

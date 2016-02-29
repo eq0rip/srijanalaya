@@ -23,12 +23,12 @@ get_header('all'); ?>
 	<div class="mid-nav">
 		<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 		<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-		<div class="title col-xs-1">All News</div>
+		<div class="title col-xs-1">All Artist</div>
 		<div class="mid-nav-inner">
 			<ul>
-				<li class="subpageMenu first <?php if(!isset($_GET['news_type']) ||  $_GET['news_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/artist">Latest</a></li>
-				<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['artist_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/srijanalaya-artist?artist_type=recommended">Recommended</a></li>
-				<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['artist_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/srijanalaya-artist?artist_type=popular">Most Popular</a></li>
+				<li class="subpageMenu first <?php if(!isset($_GET['artist_type']) ||  $_GET['artist_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/artist">Type 1</a></li>
+				<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['artist_type'])) == 'recommended') { echo 'active';}?>" ><a href="<?php echo site_url();?>/srijanalaya-artist?artist_type=recommended">Type 2</a></li>
+				<li style="margin-left: -6px;" class="subpageMenu <?php if( trim(strtolower($_GET['artist_type'])) == 'popular') { echo 'active';}?>" ><a href="<?php echo site_url();?>/srijanalaya-artist?artist_type=popular">Type 3</a></li>
 			</ul>
 		</div>
 	</div>
@@ -66,15 +66,6 @@ get_header('all'); ?>
 			</div>
 			<h4><?php echo get_the_title().'<span class="sub-title">'.types_render_field("artist-type").'</span>'; ?></h4>
 			<p><?php echo types_render_field('short-description'); ?></p>
-			<span class="social-buttons">
-			<span class="font-11">Follow Artist</span>
-				<ul class="share-buttons">
-					<li><a href="" target="_blank" title="Share on Facebook"><img src="<?php echo get_template_directory_uri();?>/images/fb-g.png" alt=""></a></li>
-					<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fsrijanalaya.saediworks.com&text=Srijanalaya:%20http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Tweet"><img src="<?php echo get_template_directory_uri();?>/images/tw-g.png" alt=""></a></li>
-					<li><a href="https://plus.google.com/share?url=http%3A%2F%2Fsrijanalaya.saediworks.com" target="_blank" title="Share on Google+"><img src="<?php echo get_template_directory_uri();?>/images/gp-g.png" alt=""></a></li>
-					<li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsrijanalaya.saediworks.com&description=" target="_blank" title="Pin it"><img src="<?php echo get_template_directory_uri();?>/images/pin-g.png" alt=""></a></li>
-				</ul>
-			</span>
 			<br/>
 			<a class="mt10" href="<?php echo get_the_permalink();?>">Read More</a>
 		</div>

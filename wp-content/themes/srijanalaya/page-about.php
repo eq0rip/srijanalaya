@@ -99,10 +99,14 @@ wp_reset_query();
 			?>
 		</div>
 		<div class="col-sm-3 hidden-md hidden-sm hidden-xs side-column">
-			<h2>Resources</h2>
-			<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
-			<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
-			<?php include('social.php');?>
+			<div class="side-wrap">
+				<h2>Resources</h2>
+				<p><a href="<?php echo site_url().'/gallery';?>">View Gallery</a></p>
+				<p><a href="<?php echo site_url().'/videos';?>">View Videos</a></p>
+			</div>
+			<div class="side-wrap last">
+				<?php include('social.php');?>
+			</div>
 		</div>
 	</div>
 </div>

@@ -22,9 +22,9 @@ get_header();?>
 <div class="wrapper section fullheight" id="section1">
 	<div class="col-sm-6 slider-caption" id="left-col-first" >
 		<div class="progressbar hidden-md">
-			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar1"></div></div>
-			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar2"></div></div>
-			<div class="col-xs-4 fullheight nomargin nopadding" ><div id="bar3"></div></div>	
+			<div class="col-xs-4 bar fullheight nomargin nopadding" ><div id="bar1"></div></div>
+			<div class="col-xs-4 bar fullheight nomargin nopadding" ><div id="bar2"></div></div>
+			<div class="col-xs-4 bar fullheight nomargin nopadding" ><div id="bar3"></div></div>	
 		</div>
 
 		<?php
@@ -107,14 +107,14 @@ get_header();?>
 				endwhile;
 				
 				?>
-				<div>
+				<div class="height_bound">
 					
 					<h1>Upcoming <span class="key">Project</span></h1>
 					<h2> <?php echo get_the_title($nextEvent);?></h2>
-					<p class="fix-h"><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
-					<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
-					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo get_post_meta($nextEvent,'wpcf-participants',true);?> participants </p>
+					<p><?php echo get_post_meta( $nextEvent,'wpcf-summary' , true );?></p>
 				</div>
+				<a  class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
+				<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo get_post_meta($nextEvent,'wpcf-participants',true);?> participants </p>
 
 				<span class="post-navigate">
 					<button class="btn btn-default btn-lg semicircle" onclick="goTo('news');"><?php echo ucwords($sri_locale['news'][$lang]);?></button>
@@ -142,9 +142,11 @@ get_header();?>
 				
 				endwhile;
 				?>
-				<h1>Upcoming <span class="key">Resource</span></h1>
-				<h2> <?php echo get_the_title($nextEvent);?></h2>
-				<p><?php echo get_post_meta( $nextEvent,'wpcf-short-description' , true );?></p>
+				<div class="height_bound">
+					<h1>Upcoming <span class="key">Resource</span></h1>
+					<h2> <?php echo get_the_title($nextEvent);?></h2>
+					<p><?php echo get_post_meta( $nextEvent,'wpcf-short-description' , true );?></p>					
+				</div>
 				<a class="btn btn-default btn-lg" href="<?php echo get_the_permalink($nextEvent);?>"><?php echo ucwords($sri_locale['view resource'][$lang]);?></a>
 
 				<span class="post-navigate">
@@ -274,7 +276,7 @@ get_header();?>
 				<a  href="<?php echo get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view product'][$lang]);?></a><br/><br/>
 				<?php include('social-expand.php');?>
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['shop'][$lang]);?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['shop'][$lang]);?>Shop</button>
 				</span>
 			</div>
 		</div>
@@ -304,7 +306,7 @@ get_header();?>
 				<a  href="<?php echo get_the_permalink($nextEvent);?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view artworks'][$lang]);?></a><br/><br/>
 				<?php include('social-expand.php');?>
 				<span class="post-navigate">
-					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['art'][$lang]);?></button>
+					<button class="btn btn-default btn-lg semicircle" onclick="goTo('shop');"><?php echo ucwords($sri_locale['art'][$lang]);?>Art</button>
 				</span>
 			</div>
 		</div>
@@ -332,7 +334,7 @@ get_header();?>
 
 					<h1><?php echo $title[0];?><span class="key"><?php echo $title[1];?></span><br/><?php echo $title[2];?></h1>
 					<p><?php echo get_the_content();?></p>
-					<div class="row">
+					<div class="row nomargin">
 						<button type="button" class="btn btn-default btn-lg btn-shop"><?php echo ucwords($sri_locale['shop to support'][$lang]);?></button>
 					</div>
 					<?php include('social-expand.php');?>
@@ -438,7 +440,7 @@ get_header();?>
 				<div class="copyrite" style="margin: 0 20px;">
 					<p class='pull-left'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
 					<p class="pull-right">
-						Site by | Saedi Works.
+						Site by Saedi Works.
 					</p>					
 				</div>
 			</div>

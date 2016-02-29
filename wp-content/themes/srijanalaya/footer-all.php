@@ -48,11 +48,11 @@
 							</ul>
 						</div>
 						<div class="col-xs-12 col-sm-3 footer-elements social-block">
-						<div class="row no-padding">
+							<div class="row no-padding">
+								
 							
-						
-							<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><i class="fa fa-pinterest"></i></a></li></h4>
-						</div>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><img src="<?php echo get_template_directory_uri();?>/images/fb-w.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><img src="<?php echo get_template_directory_uri();?>/images/tw.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><img src="<?php echo get_template_directory_uri();?>/images/gp.png" alt=""></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><img src="<?php echo get_template_directory_uri();?>/images/pin.png" alt=""></a></li></h4>
+							</div>
 							<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
 							<p><?php echo ucwords($sri_locale['Donate'][$lang]);?></p>
 						</div>
@@ -61,7 +61,7 @@
 				<div class="copyrite">
 					<p class='pull-left'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
 					<p class="pull-right">
-						Site by | Saedi Works.
+						Site by Saedi Works.
 					</p>					
 				</div>
 			</div>

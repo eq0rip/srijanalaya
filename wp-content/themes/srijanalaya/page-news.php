@@ -23,7 +23,7 @@ get_header('all'); ?>
 	<div class="mid-nav hidden-sm hidden-md hidden-xs">
 		<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 		<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-		<div class="title col-xs-1">All News</div>
+		<div class="title col-xs-1"><a href="<?php echo get_template_directory_uri();?>/news">All News</a></div>
 		<div class="mid-nav-inner">
 			<ul>
 				<li class="subpageMenu first <?php if(!isset($_GET['news_type']) ||  $_GET['news_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/news">Latest</a></li>
