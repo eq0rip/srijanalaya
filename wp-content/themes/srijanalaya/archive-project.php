@@ -1,7 +1,7 @@
 <?php
 /**
  */?>
- <div class="popup" style="display:none" onclick="close_msg();">
+<div class="popup" style="display:none" onclick="close_msg();">
 
  	<div class="content">
  			<div class="close-info" onclick="close_msg();"><i class="fa fa-close"></i></div>
@@ -13,15 +13,15 @@
 		</form>
  	</div>
  	
- </div>
- <div class="transbg_popup"></div>
+</div>
+<div class="transbg_popup"></div>
 
  <?php
  get_header('all'); 
 
  wp_reset_query();?>
 
- <div class="row">
+<div class="row">
  	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
  	$postslist=new WP_Query($args);
  	while($postslist->have_posts() ) : $postslist->the_post();
@@ -32,9 +32,9 @@
  			<h2><?php echo types_render_field('banner-title')?></h2>
  			<p><?php  echo get_the_content();?></p>
  			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Project</a>
- 		<?php endif;endwhile;?>
+ 			<?php endif;endwhile;?>
+ 		</div>
  	</div>
- </div>
 </div>
 <div class="row hidden-sm hidden-xs hidden-md" >
 
@@ -62,10 +62,10 @@
 				while($postslist->have_posts()):$postslist->the_post();
 				?>
 				<option value="<?php the_title();?>"><?php the_title();?></option>
-			<?php endwhile; ?>
-		</select>
+				<?php endwhile; ?>
+			</select>
 
-		<ul class="transformSelect trans-element transformSelect3">
+			<ul class="transformSelect trans-element transformSelect3">
 			<li class="">
 				<span id='date_value_main'>
 					<?php if(isset($_GET['from'])){
@@ -86,8 +86,8 @@
 					<li data-settings="" class="open"><span><span>From:</span><input type="text" id="fromDate" value="" class="datepicker11"><br/>
 						<span>To:</span><input type="text" id="toDate" value="" class="datepicker12"><br/>
 						<button onclick="apply_date_filter('custom')" class="btn">Apply</button></span></li>
-					</ul>
-				</li>
+				</ul>
+			</li>
 			</ul>
 			<input id="clickMe" type="button" class="btn" onclick="filter_projects();" value="Filter" />	
 
@@ -103,12 +103,12 @@
 					<li class="remove-tag inactive"><?php echo $tag->slug; ?></li>
 
 					<?php } ?>
-				</ul>
-			</div>
-			<br/>
-
+			</ul>
 		</div>
+		<br/>
+
 	</div>
+</div>
 	<div class="row hidden-lg" >
 		<div id="mobile_custom_filters">
 			<span class="filter_by">Filter By</span>
@@ -127,7 +127,7 @@
 			?>
 		</div>
 	</div>
-	<div class="col-sm-9 timeline-wrapper mobile-no-padding mobile-no-margin">
+	<div class="col-lg-9 col-md-12 timeline-wrapper mobile-no-padding mobile-no-margin">
 		<div class="current-date hidden-sm hidden-md hidden-xs">2015<br/><span class='cur-month'>Oct</span></div>
 		<section id="cd-timeline" class="cd-container mobile-no-padding mobile-no-margin mobile-fullwidth">
 			<div class="circle hidden-sm hidden-md hidden-xs"></div>
@@ -230,7 +230,8 @@
 			}
 			?>
 			<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?> <?php echo $class . '-side';?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
-				<a href="<?php echo get_the_permalink();?>"><div class="hidden-sm hidden-xs hidden-md cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
+				<a href="<?php echo get_the_permalink();?>">
+				<div class="hidden-sm hidden-xs hidden-md cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
 				</div></a> <!-- cd-timeline-img -->
 				<div class="mobile-no-margin cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
@@ -270,48 +271,48 @@
 					</div>
 				</div> <!-- cd-timeline-content -->
 
-				</div> <!-- cd-timeline-block -->
+			</div> <!-- cd-timeline-block -->
 				<?php $j++; endwhile; ?>
 				<div class="circle bottom"></div>
-			</section> <!-- cd-timeline -->
-			<div class="timeline-clear"></div>
-		</div>
-		<div class="col-sm-3 fixed hidden-xs hidden-sm hidden-md sidediv">
-			<h2>Calender</h2>
-			<div class="clndr-wrap side-wrap">
-				<script type="text/template" id="clndr">
-					<div class="clndr-transparent-block">
-						<div class="close-clndr-info" onclick="close_msg();">X</div>
-						<div class="content">
-							<h2 id="event-title">Event Title</h2>
-							<p id="event-date">2015-10-16</p>
-							<p id="event-link"><a href="gotto">View Project</a></p>
-						</div>
-					</div>
-					<div class="clndr-controls">
-						<div class="header-day"><%= month %><%= year %></div>
-						<div class="clndr-previous-button">&lsaquo;</div>
-						<div class="clndr-next-button">&rsaquo;</div>
-					</div>
-					<div class="clndr-grid">
-						<div class="days-of-the-week">
-							<% _.each(daysOfTheWeek, function(day) { %>
-								<div class="header-day"><%= day %></div>
-								<% }); %>
-							<div class="days">
-								<% _.each(days, function(day) { %>
-									<div class="<%= day.classes %>"><%= day.day %></div>
-									<% }); %>
-							</div>
-						</div>
-					</div>
-				</script>
-			</div>
-			<div class="side-wrap last">
-				<?php include('social.php');?>
-			</div>
-		</div>
+		</section> <!-- cd-timeline -->
+		<div class="timeline-clear"></div>
 	</div>
+	<div class="col-lg-3 fixed hidden-xs hidden-sm hidden-md sidediv">
+		<h2>Calender</h2>
+		<div class="clndr-wrap side-wrap">
+			<script type="text/template" id="clndr">
+				<div class="clndr-transparent-block">
+					<div class="close-clndr-info" onclick="close_msg();">X</div>
+					<div class="content">
+						<h2 id="event-title">Event Title</h2>
+						<p id="event-date">2015-10-16</p>
+						<p id="event-link"><a href="gotto">View Project</a></p>
+					</div>
+				</div>
+				<div class="clndr-controls">
+					<div class="header-day"><%= month %><%= year %></div>
+					<div class="clndr-previous-button">&lsaquo;</div>
+					<div class="clndr-next-button">&rsaquo;</div>
+				</div>
+				<div class="clndr-grid">
+					<div class="days-of-the-week">
+						<% _.each(daysOfTheWeek, function(day) { %>
+							<div class="header-day"><%= day %></div>
+							<% }); %>
+						<div class="days">
+							<% _.each(days, function(day) { %>
+								<div class="<%= day.classes %>"><%= day.day %></div>
+								<% }); %>
+						</div>
+					</div>
+				</div>
+			</script></div>
+				
+			</div>
+
+			<div class="side-wrap last">
+				<?php include('social.php');?></div>
+		</div>
 	<?php 
 
 	$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];

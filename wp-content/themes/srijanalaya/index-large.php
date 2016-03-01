@@ -13,6 +13,10 @@
  */
 
 get_header();?>
+<div class="drop hidden-xs hidden-sm"><img src="<?php echo get_template_directory_uri();?>/images/dropdown_arrow.png"></div>
+ <div class="container-fluid head_section hidden-lg hidden-md fl"><!--top buttons-->
+    <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
+  </div>
 <script>
 	var site_url='<?php echo site_url();?>'
 	

@@ -44,7 +44,6 @@
 		$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'videos_categories', 'new' );
 		$select=wp_dropdown_categories( $dropdown_args );
 		?>
-		<a href="<?php echo site_url();?>/srijanalaya-artist" class="artist-filter">Artist</a>
 	</div>
 	<?php if(get_the_slug() == 'resources') { ?>
 	<div class="col-sm-8" id="tag_filter_div">

@@ -353,6 +353,7 @@ li {
         font-family: 'allerregular';
         font-size: 13px;
         letter-spacing: 0;
+        transition: all 0.2s ease-in;
         @media(max-width:1200px) {
          font-size: 10px;
      }
@@ -389,6 +390,7 @@ li {
     .topMenu {
         background-color: #E9204A !important;
         color:#fff !important;
+        transition: all 0.2s ease-in;
     }
 }
 &:last-child {
@@ -1059,7 +1061,7 @@ li {
     background-size: 0.5em,0.5em;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARklEQVQYV4XQ2wkAIAwDQB1D91/NOkakguKjbfJ9JJAMAImkd0mZQUWl1BgupINu44lc+CITWuiDHrpghDZkaEKRBv2JZQDpyUKXo4UsOAAAAABJRU5ErkJggg==) repeat;
     .inner-wrap {
-        height: 50%;
+        height: 45%;
         width: 100%;
         display: flex;
         align-items: center;
@@ -1079,11 +1081,12 @@ li {
     .quote-wrap { top:50%;}
 
     .section-container {
-        height: 320px !important;
+        height: 50% !important;
     }
 }
 .quote-wrap .footer-bar {
     top:50%;
+    height: 55%;
     display: block;
     color: #FFF;
     align-items: left;
@@ -1091,8 +1094,10 @@ li {
     background-color: rgba(0, 0, 0, 0.75);
     a {
         color: #FFF;
+        transition: all 0.2s ease-in;
         &:hover {
             color: #8cc344;
+            transition: all 0.2s ease-in;
         }
     }
     h4 {
@@ -1340,13 +1345,14 @@ li {
 }
 
 .footer {
-    height: 365px !important;
+    height: 50% !important;
+    max-height: 335px !important;
     bottom: 0;
     margin-top: 150px;
     @media (max-width: 769px) {
         text-align: center;
     }
-    .footer-body {height: 365px; overflow: hidden;}
+    .footer-body {height: 335px; overflow: hidden;}
     .copyrite {
         width: 100%;
         background-color: #303030;
@@ -1400,10 +1406,15 @@ li {
             box-sizing: border;
             border-bottom: 1px solid #575656; 
             cursor: pointer;
+            transition: all 0.2s ease-in;
             @media (max-width: 769px) {
-             box-sizing: border;
-             border-bottom: 1px solid #575656; 
-         }
+                box-sizing: border;
+                border-bottom: 1px solid #575656; 
+            }
+            &:hover {
+                color: #8cc344;
+                transition: all 0.2s ease-in;
+            }
      }
  }
 }
@@ -1436,7 +1447,6 @@ li {
 
 .page-content {
     padding-top: 80px;
-    margin-bottom: 100px;
     h2 {
         font-size: 20px;
         font-weight: bold;
@@ -1507,7 +1517,7 @@ li {
             height: 100%;
             li {
                 padding-top: 10px;
-                width: 185px;
+                min-width: 185px;
                 text-align: center;
                 
             }
@@ -1515,15 +1525,23 @@ li {
     }
     .title {
         position: relative;
-        left: 115px;
-        margin-right: 50px;
-        padding: 11px 0;
+        left: 50px;
+        width: 175px;
+        margin-left: 50px;
+        text-align: center;
         height: 100%;
         min-width: 140px;
         font-size: 14px;
         font-weight: bold;
         padding-right: 20px;
         border-right: 1px solid #e2e2e2;
+        padding: 11px 0;
+
+        a {
+            color: #807f7f;
+            font-weight: bold;
+            
+        }
     }
     .subpageMenu {
         height: 35px;
@@ -1531,6 +1549,7 @@ li {
         vertical-align:top;
         display: inline-block;
         padding: 0 30px;
+        transition: all 0.2s ease-in;
         a {
             font-size: 14px;
             color: #807f7f;
@@ -1539,6 +1558,7 @@ li {
         }
         &:hover {
             background-color: #e91f4a;
+            transition: all 0.2s ease-in;
             a {
                 color: #FFF;
             }
@@ -1601,7 +1621,7 @@ li {
     a {
         color: #807f7f;
         font-size: 13px;
-        font-weight: 500;
+        font-weight: 600;
         
         &:hover {
             color: #e91f4a;
@@ -1627,9 +1647,11 @@ li {
     }
     a {
         color: #8cc344;
+        transition: all 0.2s ease-in;
 
         &:hover {
             color: #5a5a5a;
+            transition: all 0.2s ease-in;
         }
     }
 }
@@ -1929,7 +1951,7 @@ height: 75px;
 .social-buttons {
     color: #8cc344;
     font-family: 'allerregular';
-    font-size: 16px;
+    font-size: 14px;
 
     span {
         margin-right: 15px; 
@@ -2040,10 +2062,10 @@ form .btn {
             display: block;
             font-size: 12px;
             text-align: center;
-            
+            transition: all 0.2s ease-in;            
             &:hover {
                color: #e91f4a;
-           }
+               transition: all 0.2s ease-in;           }
        }
    }
 }
@@ -2397,6 +2419,7 @@ form .btn {
     cursor: pointer;
     align-items: center;
     margin-right: 40px;
+    transition: all 0.2s ease-in;
     
     i {
         color: #e91f4a;
@@ -2406,6 +2429,7 @@ form .btn {
     }
     &:hover {
         background-color: #e91f4a;
+        transition: all 0.2s ease-in;
         i {
             color: #fff;
         }
@@ -2430,8 +2454,9 @@ form .btn {
         font-size: 32px;
     }
     &:hover {
-     background-color: #E9204A;
- }
+        background-color: #E9204A;    
+        border: 2px solid #E9204A;
+    }
 }
 .drop {
     height: 5px;
@@ -2539,6 +2564,10 @@ form .btn {
         background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARklEQVQYV4XQ2wkAIAwDQB1D91/NOkakguKjbfJ9JJAMAImkd0mZQUWl1BgupINu44lc+CITWuiDHrpghDZkaEKRBv2JZQDpyUKXo4UsOAAAAABJRU5ErkJggg==) repeat;
         background-size:20px 20px;
         position: relative;
+
+        @media (max-width:1024px) {
+            height: auto !important;
+        }
     }
     .quote_wrapper {
         height:15%;
@@ -2995,7 +3024,6 @@ form .btn {
         .foot_wrapper {
             width: 47.5% !important;
             float: left;
-            height:100vh !important;
 
           //  margin-top:1% !important;
             //margin-left: 2% !important;
@@ -3019,7 +3047,7 @@ form .btn {
             }
             .newsletter {
                 float: left;
-                width: 99%;
+                width: 100%;
                 height:97px !important;
               //  margin-left: 0.5%;
               p {
@@ -3034,7 +3062,7 @@ form .btn {
         }
         .donate {
             float: left;
-            width: 99%;
+            width: 100%;
             height: 97px !important;
             margin-top:2px;
                 //margin-left:0.5%;
@@ -3051,6 +3079,7 @@ form .btn {
         .copyrite {
             position: absolute;
             bottom: 0;
+            margin-bottom: 0 !important;
         }
 
     }
@@ -3188,9 +3217,11 @@ p.fix-h {
     }
     a {
         color: #807f7f;
+        transition: all 0.2s ease-in;
     }
     a:hover {
         color: #e91f4a;
+        transition: all 0.2s ease-in;
     }
 }
 .days-of-the-week {
@@ -3204,6 +3235,12 @@ p.fix-h {
 }
 a.news-btn {
     font-size: 13px;
+    margin-top: 15px !important;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        transition: all 0.2s ease-in;
+    }
 }
 .content {
     h4, h2 {
@@ -3251,6 +3288,13 @@ img.outimg {
     }
     button.button.single_add_to_cart_button {
         height: 32px !important;
+        transition: all 0.2s ease-in;
+
+        &:hover {
+            background-color: #C1052D;
+            transition: all 0.2s ease-in;
+
+        }
     }
 }
 .quantity {
@@ -3632,7 +3676,9 @@ p {
 }
 .footer-home .quote-wrap{
     position: absolute;
-    top: 160px !important;
+    top: 50% !important;
+    height: 102% !important;
+    overflow: hidden !important;
 
     .copyrite {
         margin: 0 !important;
@@ -3690,6 +3736,12 @@ button.button.alt.single_add_to_cart_button:hover {
             height: inherit;
             width: 372px;
             transition: all 0.1s ease-in;
+
+            @media (max-width: 1025px) {
+                display: none;
+                visibility: hidden;
+                
+            }
         }
     }
 }
@@ -3700,7 +3752,8 @@ button.button.alt.single_add_to_cart_button:hover {
 
         .overlay {
             background-color: transparent;
-            transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in;           
+            
         }
     }
 }
@@ -3738,4 +3791,26 @@ button.button.alt.single_add_to_cart_button:hover {
 
 p.category {
     text-transform: uppercase;
+}
+.page-wrapper {
+    .banner-content {
+        margin-top: 0px !important;
+    }
+}
+.news-btn {
+
+}
+#cd-timeline::before {
+    @media (max-width: 1024px) {
+        visibility: hidden;
+        display: none;
+        
+    }
+}
+.archive {
+    #section-5 {
+        @media (max-width:1024px) {
+            height: 37% !important;
+        }
+    }
 }
