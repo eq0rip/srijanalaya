@@ -2898,8 +2898,11 @@ form .btn {
     margin:1% !important;
 
     .content {
-        height: 165px !important;
+        height: 260px !important;
         overflow: hidden !important;
+        @media (max-width: 600px) {
+            height: auto;
+        }
     } 
 }
 #mobile_custom_filters {
@@ -3779,9 +3782,6 @@ button.button.alt.single_add_to_cart_button:hover {
         }
     }
 }
-// .cd-timeline-block:nth-child(odd){
-//     display: inline-block;
-// }
 .cd-timeline-block {
     margin: 95px 0 !important;
 }
@@ -3797,9 +3797,6 @@ p.category {
         margin-top: 0px !important;
     }
 }
-.news-btn {
-
-}
 #cd-timeline::before {
     @media (max-width: 1024px) {
         visibility: hidden;
@@ -3811,6 +3808,9 @@ p.category {
     #section-5 {
         @media (max-width:1024px) {
             height: 37% !important;
+        }
+        @media (max-width: 600px) {
+            height: 480px !important;
         }
     }
 }
