@@ -5,7 +5,7 @@ Template Name: News
 
 get_header('all'); ?>
 
-<div class="page-wrapper wrapper mobile-no-padding"> 
+<div class="page-wrapper news wrapper mobile-no-padding"> 
 	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
@@ -23,7 +23,7 @@ get_header('all'); ?>
 	<div class="mid-nav hidden-sm hidden-md hidden-xs">
 		<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 		<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
-		<div class="title col-xs-1"><a href="<?php echo get_template_directory_uri();?>/news">All News</a></div>
+		<div class="title col-xs-1"><a href="<?php echo site_url();?>/news">All News</a></div>
 		<div class="mid-nav-inner">
 			<ul>
 				<li class="subpageMenu first <?php if(!isset($_GET['news_type']) ||  $_GET['news_type'] == 'latest') {echo 'active';}?>" ><a href="<?php echo site_url();?>/news">Latest</a></li>
@@ -46,7 +46,7 @@ get_header('all'); ?>
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-12 col-lg-10 col-lg-offset-1 content-grid page-content mobile-no-margin">
+	<div class="col-sm-12 col-lg-10 col-lg-offset-1 content-grid page-content">
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if(isset($_GET['news_type']) && $_GET['news_type'] != 'latest') {
@@ -89,13 +89,13 @@ get_header('all'); ?>
 </div>
 
 <?php 
-include('newsletter.php'); 
-if(is_mobile()) {
-	include('quotewrap.php');
-	get_footer('mobile');
-}
-else {
-	get_footer('all');
-	get_footer();
-}
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
 ?>

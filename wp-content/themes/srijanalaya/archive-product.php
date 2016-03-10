@@ -65,12 +65,16 @@ wp_reset_query();
 							$image = '';
 						else
 							$image = $imgsrc[0];
-						if($i == 1){
-							echo '<div class="col-sm-12 product-img" style="background:url(' . $image . ')">';
+						if($i == 1){ ?>
+							<div class="col-sm-12 product-img">
+								<div class="product-img-inside" style="background:url(<?php echo $image;?>)"></div>
+							<?php
 							$i++;
 						}
-						elseif($i == 2){
-							echo '<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:28px;background:url(' . $image . ')">';
+						elseif($i == 2){ ?>
+							<div class="col-sm-11 no-padding product-img" style="float:right;margin-right:28px;">
+							<div class="product-img-inside" style="background:url(<?php echo $image;?>"></div>
+						<?php
 						}
 						echo "<div class='content col-xs-12 mobile-top-auto mobile-height-auto mobile-bottom-0'>";
 						echo "<a href='" . get_the_permalink() . "'><h2>" . get_the_title() . "</h2></a>";

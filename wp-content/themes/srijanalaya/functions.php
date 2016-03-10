@@ -18,6 +18,18 @@ function add_slug_body_class( $classes ) {
 }
 add_filter( 'body_class', 'add_slug_body_class' );
 
+if(! function_exists('current_url')){
+	function current_url(){
+		//Protocal
+		$url = ( 'on' == $_SERVER['HTTPS'])? 'https://':'http://';
+		$url .= $_SERVER['SERVER_NAME'];
+		//Port
+		$url .= ('80' == $_SERVER['SERVER_PORT'])? '':':'.$_SERVER['SERVER_PORT'];
+		$url .= $_SERVER['REQUEST_URI'];
+		return untrailingslashit( $url );
+	}
+}
+
 if ( ! function_exists( 'nirmal_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

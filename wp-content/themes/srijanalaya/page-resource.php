@@ -24,7 +24,7 @@ wp_reset_query();
 <div class="row" >
 	<?php include('gallery-filters.php');?>
 </div>
-<div class="row no-padding">
+<div class="row no-padding resources">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">
 		<?php
 		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

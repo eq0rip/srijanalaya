@@ -4,6 +4,8 @@ get_header('mapbox');
 wp_reset_query();
 ?>
 
+
+
 <div class="page-wrapper">
 	<div class="row">
 		<?php 
@@ -118,7 +120,7 @@ wp_reset_query();
 						<div class="side-wrap no-padding">
 							<h2><?php echo ucwords($sri_locale['get updates'][$lang]);?></h2>
 							<p><a id="add_to_cal_submit" href="javascript:void(0)">Add to Calendar Sync with iCal, outlook, google calendar</a></p>
-							<p class="subscribe-inner"><a href="#!">Alert for any updates</a></p>
+							<p class="newsletter subscribe-inner"><a href="#!">Alert for any updates</a></p>
 							<form class="hidden" action="" method="GET">
 								<input id="start_date" type="text" name="start" value="<?php echo $project_date.' '.$project_time;?>"/>
 								<input id="end_date" type="text" name="end" value="<?php echo $project_date.' '.'6:00 PM';?>" />
@@ -127,16 +129,6 @@ wp_reset_query();
 								<input id="project_location" type="text" name="venue" value="<?php echo $location_addresss; ?>" />
 
 							</form>
-						</div>
-						<div class="side-transparent-block">
-							<div class="close-info" onclick="close_msg();">X</div>
-							<div class="content">
-								<form action="" method="POST">
-									<input id="p_id" type="hidden" name="post_id" value="<?php echo $ids;?>" />
-									<input id="email" type="email" name="subscriber_email" placeholder="Enter your Email" />
-									<input type="button" id="submit" class="btn" name="subscribe" value="Subscribe" />
-								</form>
-							</div>
 						</div>
 					</div>
 					<div class="side-wrap">

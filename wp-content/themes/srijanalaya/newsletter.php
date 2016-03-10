@@ -18,8 +18,8 @@
             <div class="close-newsletter"> <i class="fa fa-close"></i> </div>
             <h1>Signup For News Letter</h1>
 
-        </div>
-        <div class="widget_wysija_cont html_wysija">
+        
+            <div class="widget_wysija_cont html_wysija">
             <div id="msg-form-wysija-html56507e429e40d-1" class="wysija-msg ajax"></div>
             <form id="form-wysija-html56507e429e40d-1" method="post" action="#wysija" class="widget_wysija html_wysija">
             <div class="form-footer">
@@ -49,6 +49,7 @@
 
             </form>
         </div>
+    </div>
     </div>
     <div class="transbg_popup" style="display: block;"></div>
 </div>

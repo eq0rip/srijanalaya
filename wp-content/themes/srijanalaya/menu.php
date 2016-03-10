@@ -41,9 +41,12 @@
  $j = 0;
 
 
+
+
  ?>
 
- <li class="dropdown active yamm-fw first"><a class="dropdown-toggle active topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
+
+ <li class="dropdown yamm-fw first " ><a  class="dropdown-toggle <?php echo (current_url() == $ownUrl)? 'active':null ?> topMenu" href="<?php echo $ownUrl;?>"><?php echo $menu_head; ?>
   <?php if(count($contents) > 1) {?><span class="caret" ></span><?php } ?></a>
   <?php if(count($contents) > 1) { ?>
   <ul class="dropdown-menu">

@@ -16,27 +16,22 @@
 			<div class="social">
 				<h4>
 					<li>
-						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i>
-						</a>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook" class="icons fb"></a>
 					</li>
 				</h4>
 				<h4>
 					<li>
-						<a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><i class="fa fa-twitter"></i>
-						</a>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet" class="icons tw"></a>
 					</li>
 				</h4>
 				<h4>
 					<li>
-						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><i class="fa fa-google-plus"></i>
-						</a>
+						<a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+" class="icons gp"></a>
 					</li>
 				</h4>
 				<h4 class='last'>
 					<li>
-						<a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it">
-							<i class="fa fa-pinterest"></i>
-						</a>
+						<a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it" class="icons pi"></a>
 					</li>
 				</h4>
 			</div>
@@ -49,6 +44,7 @@
 		</div>
 
 			<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+			<p class='copyrite'>Site by Saedi Works.</p>
 	</div>
 	
 </div>

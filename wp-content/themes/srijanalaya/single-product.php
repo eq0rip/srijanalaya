@@ -52,9 +52,13 @@ wp_reset_query();
 						<div class="col-sm-4 product-des">
 							<div class="col-sm-11">
 								<div class="description-wrap">
-									<h2><?php echo get_the_title();?></h2>
-									<p>Code: <?php echo $product->get_sku();?></p>
-									<h4><?php echo $product->get_price_html();?></h4>
+									<div class="row no-padding">
+										<div class="mobile-left">
+											<h2><?php echo get_the_title();?></h2>
+											<p>Code: <?php echo $product->get_sku();?></p>											
+										</div>
+										<h4 class="mobile-right"><?php echo $product->get_price_html();?></h4>
+									</div>
 									<h4>Product Story</h4>
 									<p><?php echo get_the_content();?></p>
 								</div>

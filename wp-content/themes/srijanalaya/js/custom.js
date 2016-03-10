@@ -4,7 +4,6 @@
 
   });
   $(document).ready(function($){
-  
 
     $('.mobile-filter-active').click(function(){
       $('.mobile-filter-dropdown').slideToggle();
@@ -23,6 +22,7 @@
         $(this).val($(this).text());
       }
     });
+  
     $('#mobile_custom_filters select').change(function(){
       window.location.href='http://localhost/srijanalaya/project/?category='+$(this).val();
     });
@@ -98,26 +98,45 @@
     }
 
     $('.drop').click(function() {
+      $('.drop').hide();
       $('.navbar').addClass('nav-bar-fixed');
       $('.navbar').css({'z-index':'11'});
-      $(this).css({'top':'35px'});
-      $(this).hide();
-      $('.navbar').mouseleave(function(){
-        setTimeout(
-          function() {
-           $('.navbar').removeClass('nav-bar-fixed');
-           $('.drop').css({'top':'0'}).delay(3000);
-           $('.drop').show().delay(3000);
-         },
-         5000);
-      });
-    }
-    );
-    
+      $('.drop').css({'top':'35px'});
+    });
+    $('.navbar').mouseleave(function(){
+      setTimeout(
+        function() {
+         $('.navbar').removeClass('nav-bar-fixed');
+         $('.drop').css({'top':'0'});
+         $('.drop').show();
+       },
+       5000);
+    });    
     $(window).scroll(function() {
      $('.navbar').removeClass('nav-bar-fixed');
-     $('.drop').css({'top':'0'}).delay(3000);
+     $('.drop').css({'top':'0'});
    });
+
+   //  $('.drop').click(function() {
+   //    $('.drop').hide();
+   //    $('.navbar').addClass('nav-bar-fixed');
+   //    $('.navbar').css({'z-index':'11'});
+   //    $('.drop').css({'z-index':'10'});
+   //    $('.navbar').mouseleave(function(){
+   //      setTimeout(
+   //        function() {
+   //         $('.navbar').removeClass('nav-bar-fixed');
+   //         $('.drop').show();
+   //       },
+   //       5000);
+   //    });
+   //  }
+   //  );
+    
+   //  $(window).scroll(function() {
+   //   $('.navbar').removeClass('nav-bar-fixed');
+   //   $('.drop').css({'top':'0'});
+   // });
     // $('.social-expand-buttons').hover(function() {
     //   $('.social-expand-buttons .share-buttons').animate(1000).css('display','inline');
     // },
@@ -299,6 +318,18 @@ $('.even, .odd').hover(function() {
 function() {
   $(this).children('.img-wrap').fadeOut(1);
 });
+(function(){
+  $('.img-cover').css('overflow', 'hidden');
+  $('.cd-picture').on('mouseenter', function() {
+    var parentsss=$(this).parents('.cd-timeline-block'); 
+    parentsss.find('.cd-timeline-content').addClass('hover')    
+  });
+  $('.cd-picture').on('mouseleave', function() {
+   var parentsss=$(this).parents('.cd-timeline-block');
+   parentsss.find('.cd-timeline-content').removeClass('hover')
+  });
+  $('#cd-timeline').css('display', 'block');
+})();
 
 var current = 'item0';
 var firstID = $('.mid-nav-inner ul').children("li").first().attr('id');
@@ -561,8 +592,6 @@ window.location.href='http://localhost/srijanalaya/project'+'?category='+categor
 }
 (function(){
   $('.transbg_popup').on('click', function() {
-    $('.modal-container', '.transbg_popup').css({
-      display: 'none'
-    });
+    $('.newsletter-popup').fadeOut();
   });
 })();

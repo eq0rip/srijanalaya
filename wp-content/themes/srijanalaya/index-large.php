@@ -53,7 +53,7 @@ get_header();?>
 					<h1><?php echo $titles[0];?></h1>
 					<h2><?php echo $titles[1];?></h2>
 					<p><?php echo $shortdesc[$i]; ?></p>
-					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-default btn-lg"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
+					<a href="<?php echo site_url() . $link[$i];?>" class="btn btn-dark btn-lg"><?php echo ucwords($sri_locale['view project'][$lang]);?></a>
 				</div>
 				<?php } ?>
 
@@ -375,7 +375,7 @@ get_header();?>
 
 				<?php  } if($image != '') { ?>
 				<div class="video-wrap">
-					<img src="<?php echo $image; ?>">
+					<img class="video-img"src="<?php echo $image; ?>">
 					<img class='video-icon' src="<?php echo get_template_directory_uri();?>/images/video-icon.png">
 				</div>
 				<?php } ?>
@@ -384,7 +384,7 @@ get_header();?>
 		<?php
 		endwhile;
 		?>
-		<div class="col-xs-12 footer">
+		<div class="col-xs-12 footer-h footer">
 		<div class="footer-home">
 			
 			<div class="quote-wrap">
@@ -431,10 +431,12 @@ get_header();?>
 							</ul>
 						</div>
 						<div class="col-xs-12 col-sm-3 footer-elements social-block">
-							<div class="row no-padding">
-								
+							<div class="row no-padding">							
 							
-								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook"><img src="<?php echo get_template_directory_uri();?>/images/fb-w.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet"><img src="<?php echo get_template_directory_uri();?>/images/tw.png" alt=""></a></li></h4><h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+"><img src="<?php echo get_template_directory_uri();?>/images/gp.png" alt=""></a></li></h4><h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it"><img src="<?php echo get_template_directory_uri();?>/images/pin.png" alt=""></a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook" class="icons fb"></a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet" class="icons tw"></a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+" class="icons gp"></a></li></h4>
+								<h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it" class="icons pi"></a></li></h4>
 							</div>
 							<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
 							<p><?php echo ucwords($sri_locale['Donate'][$lang]);?></p>

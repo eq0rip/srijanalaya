@@ -25,7 +25,7 @@
 		.owlCarousel({
 			items: 1,
 			margin: 0,
-			//autoplay:true,
+			autoplay:true,
 			autoplayTimeout:2000,
 			animateIn:'fadeIn',
   //animateIn: 'fadeIn',
@@ -63,25 +63,25 @@
 			}
 		});
 //====owl sync end
-$('#slider-3').owlCarousel({
-	margin:0,
-	items:1,
-	dots:true,
-	nav:false,
-	loop:true
-});//slider3 end
+// $('#slider-3').owlCarousel({
+// 	margin:0,
+// 	items:1,
+// 	dots:true,
+// 	nav:false,
+// 	loop:true
+// });//slider3 end
 $('#slider-4').owlCarousel({
 	margin:0,
 	items:1,
 	dots:true,
 	loop:true
 });// slider4 end
-$('#slider-5').owlCarousel({
-	margin:0,
-	items:1,
-	dots:true,
-	loop:true
-});// slider5 end
+// $('#slider-5').owlCarousel({
+// 	margin:0,
+// 	items:1,
+// 	dots:true,
+// 	loop:true
+// });// slider5 end
 // $('.video-icon').click(function (){
 // 	$(this).fadeOut(function(){
 // 		$('#featured_video_wrapper iframe').show();

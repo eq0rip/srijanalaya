@@ -31,7 +31,10 @@
 <script type="text/javascript">
       jQuery(window).scroll(function() { 
            if(jQuery(window).scrollTop() > 570) {
-            jQuery('.drop').show();
+           //  $('.drop').delay(2000).queue(function () {
+           //    $('.drop').show();
+           // });
+            $('.drop').show();
       }
       else {
             jQuery('.drop').hide();

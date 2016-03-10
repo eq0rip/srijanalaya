@@ -61,7 +61,7 @@ if(( !is_mobile() )) {
 
 </div><!--section1 end -->
 <div class="section" id="section-2">
-	<div class="single_slider owl-carousel" id="slider-3">
+	<div class="single_slider" id="slider-3">
 		<?php
 		$args=array('posts_per_page' => 1, 'post_type'=>'project', 'orderby' => 'date', 'order' => 'DESC');
 		$postslist=new WP_Query($args);
@@ -145,7 +145,7 @@ if(( !is_mobile() )) {
 </div>
 
 <div class="section" id="section-3">
-	<div class="single_slider owl-carousel" id="slider-5">
+	<div class="single_slider" id="slider-5">
 		<?php
 		wp_reset_query();
 		$args=array('posts_per_page' => 1, 'post_type'=>'project','orderby' => 'date', 'order' => 'DESC');

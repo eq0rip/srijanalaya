@@ -20,6 +20,7 @@
  get_header('all'); 
 
  wp_reset_query();?>
+<div class="row">
 
 <div class="row">
  	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
@@ -37,7 +38,6 @@
  	</div>
 </div>
 <div class="row hidden-sm hidden-xs hidden-md" >
-
 	<div style="width:100%:" id="filter_div">
 		<div id="custom_filters">
 			<span class="filter_by">Filter By:</span>
@@ -109,210 +109,221 @@
 
 	</div>
 </div>
-	<div class="row hidden-lg" >
-		<div id="mobile_custom_filters">
-			<span class="filter_by">Filter By</span>
-			<?php
-			$dropdown_args = array(
-				'hide_empty'       => 0,
-				'hide_if_empty'    => false,
-				'taxonomy'         => 'project_categories',
-				'name'             => 'parent',
-				'orderby'          => 'name',
-				'hierarchical'     => true,
-				'show_option_none' => 'Type',
-				);
-			$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
-			$tags=wp_dropdown_categories( $dropdown_args );
-			?>
-		</div>
+<div class="row hidden-lg" >
+	<div id="mobile_custom_filters">
+		<span class="filter_by">Filter By</span>
+		<?php
+		$dropdown_args = array(
+			'hide_empty'       => 0,
+			'hide_if_empty'    => false,
+			'taxonomy'         => 'project_categories',
+			'name'             => 'parent',
+			'orderby'          => 'name',
+			'hierarchical'     => true,
+			'show_option_none' => 'Type',
+			);
+		$dropdown_args = apply_filters( 'taxonomy_parent_dropdown_args', $dropdown_args, 'project_categories', 'new' );
+		$tags=wp_dropdown_categories( $dropdown_args );
+		?>
 	</div>
-	<div class="col-lg-9 col-md-12 timeline-wrapper mobile-no-padding mobile-no-margin">
-		<div class="current-date hidden-sm hidden-md hidden-xs">2015<br/><span class='cur-month'>Oct</span></div>
-		<section id="cd-timeline" class="cd-container mobile-no-padding mobile-no-margin mobile-fullwidth">
-			<div class="circle hidden-sm hidden-md hidden-xs"></div>
-			<?php
-			$nextEvent = '';
-			$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
-				'meta_query' => array(
-					array(
-						'key' => 'wpcf-project-date'
-						),
-					array(
-						'key' => 'wpcf-project-date',
-						'value' => strtotime('today'),
-						'compare' => '>='
-						)
+</div>
+<div class="col-lg-9 col-md-12 timeline-wrapper">
+	<div class="current-date hidden-sm hidden-md hidden-xs">2015<br/><span class='cur-month'>Oct</span></div>
+	<section id="cd-timeline" class="cd-container mobile-no-padding mobile-no-margin mobile-fullwidth">
+		<div class="circle hidden-sm hidden-md hidden-xs"></div>
+		<?php
+		$nextEvent = '';
+		$args=array('posts_pr_page'=>1, 'post_type'=>'project','meta_key' => 'wpcf-project-date',
+			'meta_query' => array(
+				array(
+					'key' => 'wpcf-project-date'
 					),
-				'orderby' => 'meta_value',
-				'order' => 'ASC'
-				); 
-			$postslist=new WP_Query($args);
-			while($postslist->have_posts()) : $postslist->the_post();
-			$nextEvent = $post->ID;
-			endwhile;
-			if(!isset($_GET['category']) ){
+				array(
+					'key' => 'wpcf-project-date',
+					'value' => strtotime('today'),
+					'compare' => '>='
+					)
+				),
+			'orderby' => 'meta_value',
+			'order' => 'ASC'
+			); 
+		$postslist=new WP_Query($args);
+		while($postslist->have_posts()) : $postslist->the_post();
+		$nextEvent = $post->ID;
+		endwhile;
+		if(!isset($_GET['category']) ){
 
-				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
-			}
-			else {
+			$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date','orderby' => 'meta_value', 'order' => 'DESC'); 
+		}
+		else {
 
-				$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'project_categories',
-							'field'    => 'slug',
-							'terms'    => $_GET['category'],
-							),
+			$args=array('posts_per_page' => -1, 'post_type'=>'project', 'meta_key' => 'wpcf-project-date',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'project_categories',
+						'field'    => 'slug',
+						'terms'    => $_GET['category'],
 						),
-					'orderby' => 'meta_value', 'order' => 'DESC'); 
-			}
-			$postslist=new WP_Query($args);              
-			$curDate = date('now');
-			$i = 1;$j=0;
-			$events = "";
-			while($postslist->have_posts()) : $postslist->the_post();
-			$tags=get_the_terms( $post->id, 'project_tags');//tag array
+					),
+				'orderby' => 'meta_value', 'order' => 'DESC'); 
+		}
+		$postslist=new WP_Query($args);              
+		$curDate = date('now');
+		$i = 1;$j=0;
+		$events = "";
+		while($postslist->have_posts()) : $postslist->the_post();
+		$tags=get_the_terms( $post->id, 'project_tags');//tag array
 
-			$tag='';//tag string
-			if(!empty($tags)) {
-				foreach ($tags as $key=>$values){
-					$tag.=' '.$values->slug;
-				}
+		$tag='';//tag string
+		if(!empty($tags)) {
+			foreach ($tags as $key=>$values){
+				$tag.=' '.$values->slug;
 			}
-			$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
-			$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
-			$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
-			if($imgsrc[0] == null || $imgsrc[0] == '')
-				$image = '';
-			else
-				$image = $imgsrc[0];
-			if($i == 0) {
-				$class = 'project-wrapper-left';
-				$i++;
+		}
+		$date = date('m-y-d',types_render_field('project-date', array('raw' => 'true')));
+		$events = $events . "{ date: '" . date('Y-m-d',types_render_field('project-date', array('raw' => 'true'))) ."', title: '" . get_the_title() . "', url: '" . get_the_permalink() . "' },";
+		$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+		if($imgsrc[0] == null || $imgsrc[0] == '')
+			$image = '';
+		else
+			$image = $imgsrc[0];
+		if($i == 0) {
+			$class = 'project-wrapper-left';
+			$i++;
+		}
+		else {
+			$class = 'project-wrapper-right';
+			$i = 0;
+		}
+		$datepp=types_render_field('project-date');
+		if(isset($_GET['from']) && isset($_GET['to'])){
+			if(strtotime($datepp)>=strtotime($_GET['from']) && strtotime($datepp)<=strtotime($_GET['to']) ){
+
 			}
 			else {
-				$class = 'project-wrapper-right';
-				$i = 0;
+				continue;
 			}
-			$datepp=types_render_field('project-date');
-			if(isset($_GET['from']) && isset($_GET['to'])){
-				if(strtotime($datepp)>=strtotime($_GET['from']) && strtotime($datepp)<=strtotime($_GET['to']) ){
+		}
+		?>
+		<?php 
+		global $wpdb;
+		$con_id = 0;
+		$query = "SELECT p2p_from FROM wp_p2p where p2p_to = $post->ID and p2p_type = 'maps_to_project'";
+		$results = $wpdb->get_results($query);
+		foreach ($results as $result) {
+			$con_id = $result->p2p_from;
+		}
+		if($con_id != 0) {
+			$con_array = wp_get_single_post($con_id);
+			$location =  get_field(  'maplatlng', $con_id );
 
-				}
-				else {
-					continue;
-				}
-			}
-			?>
-			<?php 
-			global $wpdb;
-			$con_id = 0;
-			$query = "SELECT p2p_from FROM wp_p2p where p2p_to = $post->ID and p2p_type = 'maps_to_project'";
-			$results = $wpdb->get_results($query);
-			foreach ($results as $result) {
-				$con_id = $result->p2p_from;
-			}
-			if($con_id != 0) {
-				$con_array = wp_get_single_post($con_id);
-				$location =  get_field(  'maplatlng', $con_id );
+		}
 
+		if(isset($_GET['location'])){
+			if($_GET['location']=='null'){
+				$_GET['location']='nepal';
 			}
-
-			if(isset($_GET['location'])){
-				if($_GET['location']=='null'){
-					$_GET['location']='nepal';
-				}
-				if (stripos($location['address'],$_GET['location']) !== false) {
-					
-				}
-				else {continue;}
+			if (stripos($location['address'],$_GET['location']) !== false) {
+				
 			}
-			?>
-			<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?> <?php echo $class . '-side';?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
-				<a href="<?php echo get_the_permalink();?>">
+			else {continue;}
+		}
+		?>
+		<div class="cd-timeline-block <?php if($j == 0) echo 'first'; ?><?php echo $tag;?> <?php echo $class . '-side';?>" <?php if($post->ID == $nextEvent) echo 'id="next"';?>>
+			<a href="<?php echo get_the_permalink();?>">
 				<div class="hidden-sm hidden-xs hidden-md cd-timeline-img cd-picture <?php if($post->ID == $nextEvent) echo 'next-project';?>">
 					<span><?php echo parseDate($date);?></span>
-				</div></a> <!-- cd-timeline-img -->
-				<div class="mobile-no-margin cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
-				
-					<div class="wow animated slideInUp">
-						<a href="<?php echo get_the_permalink();?>">
-							<?php
-							$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
-							if($imgsrc[0] == null || $imgsrc[0] == '')
-								$image = '';
-							else
-								$image = $imgsrc[0];
-							?>
-							<div class="project-wrapper <?php echo $class;?>">
-								<div class="img-cover">
-									<div class="project-img" <?php echo "style = 'background-image: url(" .  $image . ");'";?> >
-										<div class="overlay"></div>
-									</div>
-									
+				</div>
+			</a> <!-- cd-timeline-img -->
+			<div class="mobile-no-margin cd-timeline-content <?php echo $class . '-wrap';?> <?php if($j == 0) echo 'first';?>">
+			
+				<div class="wow animated slideInUp">
+					<a href="<?php echo get_the_permalink();?>">
+						<?php
+						$imgsrc = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_id()), 'large');
+						if($imgsrc[0] == null || $imgsrc[0] == '')
+							$image = '';
+						else
+							$image = $imgsrc[0];
+						?>
+						<div class="project-wrapper <?php echo $class;?>">
+							<div class="img-cover">
+								<div class="project-img" <?php echo "style = 'background-image: url(" .  $image . ");'";?> >
 								</div>
+								
 							</div>
-						</a>
-						<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top">
-							<input type="hidden" class="p_id" value="<?php echo get_the_ID();?>" />
 						</div>
+					</a>
+					<div class="alert-icon hidden-sm hidden-md hidden-xs" style="background-image: url(<?php echo get_template_directory_uri();?>/images/alert.png" data-toggle="tooltip" title="Alert for Updates" data-placement="top">
+						<input type="hidden" class="p_id" value="<?php echo get_the_ID();?>" />
+					</div>
 
-						<div class="content" style="height: 160px; overflow:hidden;">
-							<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
-							<p class="mobile-para-padding">
-								<?php echo $location['address']; ?>
-							</p>
-							<p class="mobile-para-padding"><?php 
-								echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
-							<p class="facilitators"><?php echo types_render_field('facilitators');?></p>
-						</div>
-						<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+					<div class="content ellipsis">
+						<h2><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h2>
+						<p class="mobile-para-padding">
+							<?php echo $location['address']; ?>
+						</p>
+						<p class="mobile-para-padding"><?php 
+							echo types_render_field('project-date').'<br/>'; echo types_render_field('summary');?></p>
+						<p class="facilitators"><?php echo types_render_field('facilitators');?></p>
 					</div>
-				</div> <!-- cd-timeline-content -->
+					<p class="small-text"><img align="middle" src="<?php echo get_template_directory_uri();?>/images/participant-icon.png" class="outimg" alt=""><?php echo types_render_field('participants');?> participants | <span class='time-to-event'><?php echo date('F Y',types_render_field('project-date', array('raw' => 'true')));?></span></p>
+				</div>
+			</div> <!-- cd-timeline-content -->
 
-			</div> <!-- cd-timeline-block -->
-				<?php $j++; endwhile; ?>
-				<div class="circle bottom"></div>
-		</section> <!-- cd-timeline -->
-		<div class="timeline-clear"></div>
-	</div>
-	<div class="col-lg-3 fixed hidden-xs hidden-sm hidden-md sidediv">
-		<h2>Calender</h2>
-		<div class="clndr-wrap side-wrap">
-			<script type="text/template" id="clndr">
-				<div class="clndr-transparent-block">
-					<div class="close-clndr-info" onclick="close_msg();">X</div>
-					<div class="content">
-						<h2 id="event-title">Event Title</h2>
-						<p id="event-date">2015-10-16</p>
-						<p id="event-link"><a href="gotto">View Project</a></p>
-					</div>
+		</div> <!-- cd-timeline-block -->
+			<?php $j++; endwhile; ?>
+			<div class="circle bottom"></div>
+	</section> <!-- cd-timeline -->
+	<div class="timeline-clear"></div>
+</div>
+<div class="col-lg-3 fixed hidden-xs hidden-sm hidden-md sidediv">
+	<h2>Calender</h2>
+	<div class="clndr-wrap side-wrap">
+		<script type="text/template" id="clndr">
+			<div class="clndr-transparent-block">
+				<div class="close-clndr-info" onclick="close_msg();">X</div>
+				<div class="content">
+					<h2 id="event-title">Event Title</h2>
+					<p id="event-date">2015-10-16</p>
+					<p id="event-link"><a href="gotto">View Project</a></p>
 				</div>
-				<div class="clndr-controls">
-					<div class="header-day"><%= month %><%= year %></div>
-					<div class="clndr-previous-button">&lsaquo;</div>
-					<div class="clndr-next-button">&rsaquo;</div>
-				</div>
-				<div class="clndr-grid">
-					<div class="days-of-the-week">
-						<% _.each(daysOfTheWeek, function(day) { %>
-							<div class="header-day"><%= day %></div>
-							<% }); %>
-						<div class="days">
-							<% _.each(days, function(day) { %>
-								<div class="<%= day.classes %>"><%= day.day %></div>
-								<% }); %>
-						</div>
-					</div>
-				</div>
-			</script></div>
-				
 			</div>
+			<div class="clndr-controls">
+				<div class="header-day"><%= month %> <%= year %></div>
+				<div class="clndr-previous-button">&lsaquo;</div>
+				<div class="clndr-next-button">&rsaquo;</div>
+			</div>
+			<div class="clndr-grid">
+				<div class="days-of-the-week">
+					<% _.each(daysOfTheWeek, function(day) { %>
+						<div class="header-day"><%= day %></div>
+						<% }); %>
+					<div class="days">
+						<% _.each(days, function(day) { %>
+							<div class="<%= day.classes %>"><%= day.day %></div>
+							<% }); %>
+					</div>
+				</div>
+			</div>
+		</script>				
+	</div>
+</div>
+	
+<?php 
+	include('newsletter.php'); 
+	if(is_mobile()) {
+		include('quotewrap.php');
+		get_footer('mobile');
+	}
+	else {
+		get_footer('all');
+		get_footer();
+	}
+?>
+</div>
 
-			<div class="side-wrap last">
-				<?php include('social.php');?></div>
-		</div>
+
 	<?php 
 
 	$current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
@@ -320,17 +331,6 @@
 	if(strstr($current_page,'ne'))
 		$lang = 'ne';
 	?>
-	<?php
-	include('newsletter.php'); 
-	if(is_mobile()) {
-		include('quotewrap.php');
-		get_footer('mobile');
-		get_footer();
-	}
-	else {
-		get_footer('all');
-		get_footer();
-	}?>
 	<script>var eventdata = <?php echo '[' . $events . ']'; ?>;
 		var lang = '<?php echo $lang; ?>';
 		var location123="<?php echo $_GET['location'];?>";
