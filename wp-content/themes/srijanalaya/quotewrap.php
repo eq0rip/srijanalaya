@@ -43,7 +43,7 @@
 			</div>
 		</div>
 
-			<p class='copyrite'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
+			<p class='copyrite office'> <?php echo ucwords($sri_locale['footer text'][$lang]);?></p>
 			<p class='copyrite'>Site by Saedi Works.</p>
 	</div>
 	
