@@ -96,25 +96,46 @@
       }
 
     }
+    mainNav =$('#site-navigation').html();
+    $('#fixed-nav').html(mainNav).hide();
 
-    $('.drop').click(function() {
-      $('.drop').hide();
-      $('.navbar').addClass('nav-bar-fixed');
-      $('.navbar').css({'z-index':'11'});
-      $('.drop').css({'top':'35px'});
+     jQuery(window).scroll(function() { 
+           if(jQuery(window).scrollTop() > 570) {
+            var drop = $('.drop');
+            drop.show();
+            drop.click(function() {
+              drop.hide();
+              $('#fixed-nav').show();
+             // $('nav.navbar').animate({'z-index':'11'},300).addClass('nav-bar-fixed');
+             
+            });
+          }
+          else {
+                jQuery('.drop').hide();
+          }
+});
+    var scrollPosition;
+    $(window).bind('scroll',  function(event) {
+      scrollPosition = $(window).scrollTop();
     });
-    $('.navbar').mouseleave(function(){
-      setTimeout(
-        function() {
-         $('.navbar').removeClass('nav-bar-fixed');
-         $('.drop').css({'top':'0'});
-         $('.drop').show();
+
+   
+    $('#fixed-nav').on('mouseleave', function(event) {
+      event.preventDefault();
+      setTimeout(function() {
+
+
+        
+         $('#fixed-nav').hide();
+         //$('nav.navbar').animate({'z-index':'1'},300).removeClass('nav-bar-fixed');
+         $('.drop').animate({'top':'0','display':'block'});
+         
        },
        5000);
-    });    
+    });
     $(window).scroll(function() {
-     $('.navbar').removeClass('nav-bar-fixed');
-     $('.drop').css({'top':'0'});
+         $('#fixed-nav').hide();
+     $('.drop').animate({'top': '0'},5000);
    });
 
    //  $('.drop').click(function() {
@@ -360,7 +381,7 @@ $('.marquee-right').click(function() {
 });
 (function(){
   var prev_ids = '';
-  $('a[href*=#]').on('click', function(event){
+  $("a[href*='#']").on('click', function(event){
     event.preventDefault();
     var ids = $(this).attr('href');
     if(prev_ids != ids) {
@@ -594,4 +615,18 @@ window.location.href='http://localhost/srijanalaya/project'+'?category='+categor
   $('.transbg_popup').on('click', function() {
     $('.newsletter-popup').fadeOut();
   });
+})();
+
+
+
+/*
+From footer.php
+*/
+  
+      
+(function(){
+  wow = new WOW({
+    mobile: false
+  });
+  wow.init(); 
 })();

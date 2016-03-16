@@ -28,24 +28,7 @@
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancyform.min.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.infinitescroll.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/custom.js"></script>
-<script type="text/javascript">
-      jQuery(window).scroll(function() { 
-           if(jQuery(window).scrollTop() > 570) {
-           //  $('.drop').delay(2000).queue(function () {
-           //    $('.drop').show();
-           // });
-            $('.drop').show();
-      }
-      else {
-            jQuery('.drop').hide();
-      }
-});
-      
-(function(){
-  wow = new WOW({
-    mobile: false
-  });
-  wow.init(); 
-})();
-</script>
+
+   
+
 </html>

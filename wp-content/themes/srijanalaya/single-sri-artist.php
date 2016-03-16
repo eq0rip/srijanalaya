@@ -16,8 +16,9 @@ get_header('all');
 			<div class="col-sm-3 side-column">
 				<div class="col-sm-10 sidebar">
 					<div class="side-wrap no-padding">
-						<h2>Connect With Artist</h2>
-						<p>email <a href="mailto:example@example.com"> example@example.com</a></p>
+						<!-- -Cap. Buggy- -->
+						<h2>Connect</h2>
+						<p><a href="mailto:example@example.com">example@example.com</a></p>
 					</div>
 					
 					<div class="side-wrap last">

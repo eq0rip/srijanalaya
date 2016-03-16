@@ -1,5 +1,6 @@
 <?php
 /**
+ * 
  */?>
 <div class="popup" style="display:none" onclick="close_msg();">
 
@@ -38,7 +39,7 @@
  	</div>
 </div>
 <div class="row hidden-sm hidden-xs hidden-md" >
-	<div style="width:100%:" id="filter_div">
+	<div style="width:100%" id="filter_div">
 		<div id="custom_filters">
 			<span class="filter_by">Filter By:</span>
 			<?php
@@ -525,4 +526,11 @@ function close_msg() {
 
 
 }
+
+$('.close-clndr-info').on('click',function(e){
+	$('.clndr-transparent-block').fadeOut(200);
+})
 </script>
+
+<!-- //calender close button fix-->
+

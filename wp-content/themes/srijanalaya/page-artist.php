@@ -48,12 +48,14 @@ get_header('all'); ?>
 		?>
 		<div class="col-sm-4 content">
 			<div class="img-wrapper">
-				<img src="<?php echo $image;?>" />
+				<a href="<?php echo get_the_permalink();?>">
+					<img src="<?php echo $image;?>" />
+				</a>
 			</div>
 			<h4><?php echo get_the_title().'<span class="sub-title">'.types_render_field("artist-type").'</span>'; ?></h4>
 			<p><?php echo types_render_field('short-description'); ?></p>
 			<br/>
-			<a class="mt10 news-btn" href="<?php echo get_the_permalink();?>">Read More</a>
+			<a class="mt10 news-btn" href="">Read More</a>
 		</div>
 		<?php
 		endwhile;

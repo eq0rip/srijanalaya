@@ -3,7 +3,7 @@
 
 //font
 @font-face {
-  font-family: 'bree serif';
+  font-family: 'Bree Serif';
   src: url('../fonts/breeserif-regular-webfont.eot'); /* IE9 Compat Modes */
   src: url('../fonts/breeserif-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/breeserif-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
@@ -186,29 +186,29 @@ a:hover {
    // background: red;
    float: left;
    overflow: hidden;
-   img {
-    width:auto;
-    height: 100%;
-    display:inline-block;
-}
-@media screen and (orientation:landscape) {
- height: 100%;
- width: 50%;
- .owl-stage-outer , .owl-stage, .owl-item, .item {
-    height: 100% !important;
-    overflow: hidden;
-}
-.item {
-    height: 75vh !important;
-}
-img {
-    //position: absolute;
-    min-width: 100% !important;
-//    width:auto;
-height:100% !important;
-display: inline-block !important;
+       img {
+        width:auto;
+        height: 100%;
+        display:inline-block;
+    }
+    @media screen and (orientation:landscape) {
+     height: 100%;
+     width: 50%;
+     .owl-stage-outer , .owl-stage, .owl-item, .item {
+        height: 100% !important;
+        overflow: hidden;
+    }
+    .item {
+        height: 75vh !important;
+    }
+    img {
+        //position: absolute;
+        min-width: 100% !important;
+    //    width:auto;
+    height:100% !important;
+    display: inline-block !important;
 
-}
+    }
 }
 
 
@@ -284,6 +284,15 @@ display: inline-block !important;
     .owl-stage-outer , .owl-stage, .owl-item, .item {
         height: 100%;
         width: 100%;
+        h1{font-size: 1.8em!important; line-height: 2.5em;}
+        h2{font-size: 1.24em!important;}
+    }
+    .owl-item{
+        position: relative;
+        .item{
+            position: absolute;
+            top: 25%;
+        }
     }
     .item {
         height: 50vh!important;
@@ -301,8 +310,8 @@ display: inline-block !important;
                                     
         }
         .item-wrapper {
-            h1{font-size: 2em!important; line-height: 2.5em;}
-            h2{font-size: 1.5em!important;}
+            h1{font-size: 1.8em!important; line-height: 2.5em;}
+            h2{font-size: 1.24em!important;}
             a.btn{margin-top: 30% !important;}
         }
     }
@@ -326,7 +335,7 @@ h2 {
 }
 .item-wrapper {
     width:75%;
-    top:10%;
+    top:25%;
     left:7%;
     position: absolute;
     z-index: 3;
@@ -412,7 +421,7 @@ h2 {
         padding-top: 40px;
         .cover-wrap {
             position:absolute;
-            top:10%;
+            top:25%;
             left:7%;
             width:40%;
             h1 {
@@ -848,7 +857,7 @@ h2 {
         background-color: rgba(47, 47, 47, 0.8);
         width: 145px;
         right: -40px !important;
-        padding-top: 96px !important;
+        padding-top: 70px !important;
         top: 0 !important;
         overflow: scroll;
         padding: 10px 10px 0;
@@ -877,12 +886,12 @@ h2 {
     }
     .nav-btn {
         position: absolute;
-        top: 15px !important;
+        top: 1px !important;
         right: 0;
 
         .bb, .bb-f, .bb-l {
             border-bottom: 2px solid #e91f4a;
-            width: 40px;
+            width: 30px;
             margin-top: 6px;
             margin-left: 12px;
             transition: all 0.1s ease-in;
@@ -1024,3 +1033,11 @@ h2 {
     }
 }
 .newsletter-popup .close-newsletter{color: #5a5a5a;}
+.fixed-header-nav{
+    position: fixed;
+    z-index: 99;
+    top: -11px;
+    left:-12px;
+    width: 110%;
+    background: #fff;
+}

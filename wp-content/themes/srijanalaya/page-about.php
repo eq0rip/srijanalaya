@@ -13,20 +13,24 @@ wp_reset_query();
 	<?php $args=array('posts_per_page'=>-1,'post_type'=>'banner');
 	$postslist=new WP_Query($args);
 	while($postslist->have_posts() ) : $postslist->the_post();
-	if(strtolower(trim(get_the_title()))=='about') :
-		?>
-	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
-		<div class="col-md-12 col-lg-3 header-text">
-			<h2><?php echo types_render_field('banner-title')?></h2>
-			<p><?php  echo get_the_content();?></p>
+		if(strtolower(trim(get_the_title()))=='about') :
+			?>
+		<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+			<div class="col-md-12 col-lg-3 header-text">
+				<h2><?php echo types_render_field('banner-title')?></h2>
+				<p><?php  echo get_the_content();?></p>
+			</div>
 		</div>
-	</div>
-<?php endif;endwhile;?>
+	<?php 
+		endif;
+	endwhile;
+	?>
 <div class="row">
 	<div class="mid-nav hidden-sm hidden-md hidden-xs">
 		<span class="marquee-left"><img src="<?php echo get_template_directory_uri();?>/images/arrow-left.png" /></span>
 		<span class="marquee-right"><img src="<?php echo get_template_directory_uri();?>/images/arrow-right.png" /></span>
 		<?php
+		
 		wp_reset_query();
 		$pageTitle = get_the_title();
 		if ($post->post_parent != 0){
@@ -40,8 +44,9 @@ wp_reset_query();
 		while ( $postslist->have_posts() ) : $postslist->the_post();
 		if(strtolower(get_the_title()) == strtolower('about')) {
 			echo '<div class="title col-xs-1">' . get_the_title() . '</div>';
-			$content=get_the_content();
-			$contents=explode("\n",$content);
+			$content= get_the_content();
+			$contents= explode("\n",$content);
+			
 			echo '<div class="mid-nav-inner"><ul>';
 			$j = 0;
 			for ($i = 0; $i < count($contents); $i++) { 
@@ -73,9 +78,11 @@ wp_reset_query();
 
 			$content=get_the_content();
 			$contents=explode("\n",$content);
+		
 			echo '<div class="mobile-mid-nav-inner mobile-text-center"><ul>';
 			$j = 0;
-			echo "<li class='mobile-filter-active'><span class='caret'></span>" . $pageTitle . "</li><ul class='mobile-filter-dropdown'>";
+			echo "<li class='mobile-filter-active'><span class='caret'></span>" . $pageTitle . "</li>
+			<ul class='mobile-filter-dropdown'>";
 			for ($i = 0; $i < count($contents); $i++) { 
 				if(strlen($contents[$i]) > 1) {
 

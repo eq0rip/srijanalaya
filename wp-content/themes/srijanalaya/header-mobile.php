@@ -32,7 +32,7 @@
 <div id="fullpage" style="">
   <div class="section" id="section1">  
     <div class="section-wrapper fullheight"> 
-      <div class="container-fluid head_section"><!--top buttons-->
+      <div class="container-fluid head_section <?php echo ( is_home() ) ? 'fixed-header-nav' : null ?> "><!--top buttons-->
         <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
       </div>
 
