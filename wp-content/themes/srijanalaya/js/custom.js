@@ -102,7 +102,7 @@
      jQuery(window).scroll(function() { 
            if(jQuery(window).scrollTop() > 570) {
             var drop = $('.drop');
-            drop.show();
+            drop.delay(5000).show();
             drop.click(function() {
               drop.hide();
               $('#fixed-nav').show();
@@ -128,14 +128,14 @@
         
          $('#fixed-nav').hide();
          //$('nav.navbar').animate({'z-index':'1'},300).removeClass('nav-bar-fixed');
-         $('.drop').animate({'top':'0','display':'block'});
+         $('.drop').delay(5000).animate({'top':'0','display':'block'});
          
        },
        5000);
     });
     $(window).scroll(function() {
          $('#fixed-nav').hide();
-     $('.drop').animate({'top': '0'},5000);
+     $('.drop').delay(5000).animate({'top': '0'},5000);
    });
 
    //  $('.drop').click(function() {

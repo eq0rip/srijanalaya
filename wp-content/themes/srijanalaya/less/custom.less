@@ -479,8 +479,9 @@ li {
 .smenu {
     position: absolute;
     top: 0;
-    right: 105px;
-    padding-left: 20px;
+    right: 108px;
+    width: 110px;
+    padding-left: 27px;
     &:hover {
        background-color: #E9204A !important;
        a {
@@ -493,7 +494,7 @@ li {
     top: 0;
     right: 200px; 
     width: auto !important;
-    padding-left: 64px;
+    padding-left: 56px;
     padding-right:24px;
     position: relative;
     
@@ -807,7 +808,6 @@ li {
         transition:all 0.2s ease-in;
     }
     &:hover{
-        color: #353535;
         .semicircle {
             background-color: #e91f4a;
             border-color: #e91f4a !important;
@@ -1190,7 +1190,7 @@ li {
        width: 98%;
        background-color: #4c4b4c;
        margin: 0;
-       padding: 13px 17px;
+       padding: 15px 17px;
        margin-bottom: 2px;
    }
    .last {
@@ -1201,7 +1201,7 @@ li {
 
 .nav-icons {
     list-style-type:none;
-    position: fixed;
+    position: absolute;
     right: 40px;
     bottom: 0px;
     z-index: 100;
@@ -1446,6 +1446,9 @@ li {
         }
         p {
             margin-bottom: 0 !important;
+        }
+        .btn{
+            border-color:white;
         }
     }
 }
@@ -3973,6 +3976,8 @@ p.category {
 .page-wrapper {
     .banner-content {
         margin-top: 0px !important;
+        position: absolute;
+        top: 25%;
         @media (max-width: 640px) {
             margin-left: 0 !important;
             margin-top: 110px!important;
@@ -4395,4 +4400,9 @@ p.category {
     .cd-timeline-content .content{
         height: auto !important;
     }
+}
+
+//Calender padding fix
+#event-title{
+    padding: 10px !important;
 }

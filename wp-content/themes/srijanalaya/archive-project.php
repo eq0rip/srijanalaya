@@ -283,7 +283,7 @@
 	<div class="clndr-wrap side-wrap">
 		<script type="text/template" id="clndr">
 			<div class="clndr-transparent-block">
-				<div class="close-clndr-info" onclick="close_msg();">X</div>
+				<div class="close-clndr-info">X</div>
 				<div class="content">
 					<h2 id="event-title">Event Title</h2>
 					<p id="event-date">2015-10-16</p>
@@ -379,6 +379,9 @@
 						jQuery('#event-title').html(target.events[0].title);
 						jQuery('#event-link').html("<a href='" + target.events[0].url + "' >View Project</a>");
 						jQuery('.clndr-transparent-block').css("display", "flex").hide().fadeIn(300);
+						jQuery('.close-clndr-info').on('click',function(){
+							jQuery('.clndr-transparent-block').css("display", "flex").fadeOut(300);
+						});
 					}
 				},
 			},
@@ -527,10 +530,11 @@ function close_msg() {
 
 }
 
-$('.close-clndr-info').on('click',function(e){
-	$('.clndr-transparent-block').fadeOut(200);
+$('.sidediv .clndr-wrap .clndr .clndr-transparent-block .close-clndr-info').on('click',function(e){
+	console.log('clicked'+e);
+	$('.sidediv .clndr-wrap .clndr .clndr-transparent-block').fadeOut(200);
 })
-</script>
+	</script>
 
 <!-- //calender close button fix-->
 
