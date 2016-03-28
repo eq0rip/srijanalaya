@@ -1,4 +1,18 @@
 
+ <?php 
+  $current_page="http://" . $_SERVER['HTTP_HOST']  . $_SERVER['REQUEST_URI'];
+  $lang = 'en';
+  $change_to='ne';
+  $language='English';
+  $change_language='Nepali';
+  if(strstr($current_page,'ne')){
+    $lang = 'ne';
+
+    $language='Nepali';
+    $change_language='English';
+    $change_to='en';
+  }
+  ?>
 <ul class="nav navbar-nav">
 
   <?php

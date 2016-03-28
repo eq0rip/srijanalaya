@@ -1,3 +1,5 @@
+
+
 (function($) {
   $(window).load(function(){
     $('.loader').fadeOut(500);
@@ -67,13 +69,32 @@
      }, 1500);
     }
     );
+    
+//--------------------------------------------------------------------------
+//                        Down button going down
+//--------------------------------------------------------------------------
+     $('.go-down').click(function() {
+       var target;
+        $("[data-navigation^=move]").each(function(i, element) {
+        console.log('navigated maybe');
+         target = jQuery(element).offset().top;
+         if (target - 10 > $(document).scrollTop()) {
+           return false; // break
+         }
+       });
+       $("html, body").animate({
+         scrollTop: target
+    }, 700);
+    });
 
-    $('.go-down').click(function() {
-      $('html,body').animate({
-       scrollTop: $('#section2').offset().top
-     }, 1000);
-    }
-    );
+
+//--------------------------------------------------------------------------
+//--------------------------------------------------------------------------
+
+
+
+//--------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 
     if(!$('#shopwrap')) {
       var last = jQuery('.easy-wp-page-nav li').last().find('a').attr('href');
@@ -98,22 +119,35 @@
     }
     mainNav =$('#site-navigation').html();
     $('#fixed-nav').html(mainNav).hide();
+    var $window = jQuery(window);
+     $window.scroll(function() { 
+              var drop = $('.drop'),
+              goDown = $('.go-down');
 
-     jQuery(window).scroll(function() { 
-           if(jQuery(window).scrollTop() > 570) {
-            var drop = $('.drop');
-            drop.delay(5000).show();
-            drop.click(function() {
               drop.hide();
-              $('#fixed-nav').show();
-             // $('nav.navbar').animate({'z-index':'11'},300).addClass('nav-bar-fixed');
-             
-            });
+            //drop-header 
+           if($window.scrollTop() >= 570) {
+              drop.hide();
+              drop.stop().slideDown(300);
+              //On click
+              drop.click(function() {
+               drop.hide();
+                $('#fixed-nav').show();
+              });
+          } else {
+            drop.clearQueue();
+            drop.hide();
           }
-          else {
-                jQuery('.drop').hide();
-          }
+          //end drop-header
+          console.log($window.scrollTop());
+        if (  $window.scrollTop() >= 1416) {
+          goDown.hide();
+        } else {
+          goDown.show();
+        }
 });
+
+
     var scrollPosition;
     $(window).bind('scroll',  function(event) {
       scrollPosition = $(window).scrollTop();

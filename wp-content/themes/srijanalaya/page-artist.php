@@ -11,13 +11,20 @@ get_header('all'); ?>
 	while($postslist->have_posts() ) : $postslist->the_post();
 	if(strtolower(trim(get_the_title()))=='artist') :
 		?>
-	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
-		<div class="col-xs-6 col-md-3 banner-content">
+	<div class="col-lg-12 wrapper banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+		<div class="banner-content mobile-no-margin">
 			<h2><?php echo types_render_field('banner-title')?></h2>
 			<p><?php  echo get_the_content();?></p>
-			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>
-		</div>
+			<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View Resource</a>
+		<?php endif;endwhile;?>
 	</div>
+<!-- 	<div class="topbanner banner" style="background:url(<?php echo types_render_field('banner-image',array('raw'=>'true'));?>">
+	<div class="col-xs-6 col-md-3 banner-content">
+		<h2><?php echo types_render_field('banner-title')?></h2>
+		<p><?php  echo get_the_content();?></p>
+		<a class="btn btn-default btn-lg vid-btn" href="<?php echo types_render_field('redirect-link');?>">View News</a>
+	</div>
+</div> -->
 <?php endif;endwhile;?>
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1 content-grid page-content">

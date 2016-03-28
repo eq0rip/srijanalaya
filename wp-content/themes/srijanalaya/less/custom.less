@@ -54,7 +54,7 @@ body {
     font-family: 'Helvetica';
     -webkit-font-smoothing: antialiased;
     line-height: 22px;//18
-    letter-spacing: 1.5px;
+    letter-spacing: .8px;
     padding: 0 !important;
     overflow: hidden !important;
     @media (max-width: 991px) {
@@ -333,8 +333,8 @@ a:hover {
             }
         }
         li a:hover {
-
-            color:#E9204A !important;
+            //Menu hover color
+            color:darken(#E9204A,5%) !important;
             background-color: transparent !important;
             
         }
@@ -425,7 +425,7 @@ li {
         height: 35px;
         display: inline-flex;
         text-transform: uppercase;
-        width: 100px;
+        width: 120px;
         border-right: 1px Solid #484848;
         transition: all 0.1s linear;
         @media(max-width:1200px) {
@@ -492,7 +492,7 @@ li {
 .fmenu {
     position: absolute;
     top: 0;
-    right: 200px; 
+    right: 212px; 
     width: auto !important;
     padding-left: 56px;
     padding-right:24px;
@@ -706,7 +706,12 @@ li {
 }
 .post-navigate {
  width:100%;
+
  left: 0;
+ right: 0;
+ margin-left: auto;
+ margin-right: auto;
+z-index: -1;
  text-align:center;
  display:block;
  position:absolute;
@@ -1986,9 +1991,9 @@ height: 75px;
       padding-left: 10px;
       li {
         display: inline-block;
-        margin-right: 10px;
         a{
             color: #b4b4b5;
+            margin-right: 10px;
             &:hover {
                 color: #7bd93f;
             }
@@ -2479,7 +2484,7 @@ form .btn {
     cursor: pointer;
     align-items: center;
     margin-right: 20px;
-    position: absolute;
+    position: fixed;
     z-index: 99;
     bottom: 10px;
     right: 0;
@@ -3065,7 +3070,7 @@ form .btn {
 }
 
 }
-@media screen and (orientation:landscape) and (max-width:1025px) {
+/* @media screen and (orientation:landscape) and (max-width:1025px) {
     //news page 
     .content-grid {
         text-align: center;
@@ -3152,7 +3157,7 @@ form .btn {
             bottom: 21px;
         }
     }
-}
+} */
 .newsletter {
     cursor: pointer;
 }
@@ -3474,6 +3479,7 @@ img.outimg {
     padding: 8px 40px !important;
 }
 .contd-products {
+        margin-top:25px !important;
     .inner-wrapper {
         margin-bottom: 30px !important;
         .content{height: 137px !important;}
@@ -4207,7 +4213,7 @@ p.category {
         }
     }
 }
-@media screen and (orientation:landscape) {
+/* @media screen and (orientation:landscape) {
     .who_we {
         .foot_wrapper {
             width: 47.5% !important;
@@ -4263,7 +4269,7 @@ p.category {
             }
         }
     }
-}
+} */
 .featured {
     @media (max-width: 1024px) {
         .content {
@@ -4335,7 +4341,7 @@ p.category {
     @media screen and (orientation: landscape){
         .content-grid { margin-left: 3%;}
         .banner-content {
-            margin-left: 0px !important;
+            //margin-left: 0px !important;
         }
 
     }
@@ -4345,38 +4351,36 @@ p.category {
     @media (max-width: 640px) {
         .banner-content {margin-left: 20px !important;}
     }
-    @media screen and (orientation: landscape){
-        .banner-content {
-            margin-left: 35px !important;
-            padding-left: 0 !important;
-        }
-        #section-5 {
-            height: 63% !important;
+/*     @media screen and (orientation: landscape){
+    .banner-content {
+        //margin-left: 35px !important;
+        padding-left: 0 !important;
+    }
+    #section-5 {
+        height: 63% !important;
 
-            .copyrite.office {
-                bottom: 18px;
-            }
+        .copyrite.office {
+            bottom: 18px;
         }
     }
+} */
 }
 .page-resources {
-    @media screen and (orientation: landscape){
+    /* @media screen and (orientation: landscape){
         .banner-content {
             padding-top: 30px !important;
             h2 {
                 padding-top: 40px !important;
             }
         }
-        .content-grid {
-            margin-left: 2% !important;
-        }
-    }
+        
+    } */
 }
-@media screen and (orientation: landscape){
+/* @media screen and (orientation: landscape){
     .product-img {
         margin-bottom: 4px;
-    }
-}
+    } */
+//}
 .post-type-archive-product {
     .head_section {margin: 0 !important;}
 

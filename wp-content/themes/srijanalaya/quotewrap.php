@@ -1,12 +1,28 @@
+
 <div class="section" id="section-5">
 	<div class="who_we clearfix">
 		<div class="col-xs-10 col-md-5 col-xs-offset-1 check_us" style="">
-						<h1><?php echo ucwords($sri_locale['check us out '][$lang]);?></h1>
+			<h1><?php echo ucwords($sri_locale['check us out '][$lang]);?></h1>
+		
 			<ul class="list-unstyled">
-				<li><a href="<?php echo site_url().'/about'?>"><?php echo ucwords($sri_locale['who we are'][$lang]);?>who we are</a></li>
-				<li><a href="<?php echo site_url().'/srijanalaya-artist/'?>"><?php echo ucwords($sri_locale['artworks'][$lang]);?>artworks</a></li>
-				<li><a href="<?php echo site_url().'/project/'?>"><?php echo ucwords($sri_locale['our projects'][$lang]);?>projects</a></li>
-				<li><a href="#!"><?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?>legal disclaimer</a></li>
+				<li>
+					<a href="<?php echo site_url().'/about'?>">
+						<?php echo ucwords($sri_locale['who we are'][$lang]);?>who we are
+					</a>
+					</li>
+				<li>
+					<a href="<?php echo site_url().'/srijanalaya-artist/'?>">
+						<?php echo ucwords($sri_locale['artworks'][$lang]);?>artworks
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo site_url().'/project/'?>">
+						<?php echo ucwords($sri_locale['our projects'][$lang]);?>projects</a>
+					</li>
+				<li>
+					<a href="#!">
+					<?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?>legal disclaimer</a>
+					</li>
 
 
 			</ul>

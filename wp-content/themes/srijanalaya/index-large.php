@@ -75,7 +75,7 @@ get_header();?>
 	</div>
 </div>
 
-<div class="section fullheight" id="section2">
+<div data-navigation="move1" class="section fullheight" id="section2">
 	<div class="col-sm-6 quarter">
 		<div class="col-xs-6 fullheight section-container">
 			<div class="section-inner">
@@ -165,7 +165,7 @@ get_header();?>
 	</div>
 </div>
 
-<div class="section fullheight" id="section3">
+<div data-navigation="move2" class="section fullheight" id="section3">
 	<div class="transparent"></div>
 	<div class="col-sm-6 quarter3">
 		<?php
@@ -316,7 +316,7 @@ get_header();?>
 		</div>
 	</div>
 </div>
-<div class="section" id="section4">
+<div data-navigation="move3" class="section" id="section4">
 	<?php
 	$args=array('posts_per_page' => 1,'post_type' => 'video','meta_query' => array(array('key' => 'wpcf-featured-video', 'value' => '1', 'compare' => '=')), 'orderby' => 'date', 'order' => 'DESC');
 	$postslist = new WP_Query($args);
@@ -389,6 +389,8 @@ get_header();?>
 			
 			<div class="quote-wrap">
 				<?php
+				
+				
 				$args = array( 'posts_per_page' => 1, 'post_type' => 'quote' );
 				$postslist = new WP_Query( $args );
 				while ( $postslist->have_posts() ) : $postslist->the_post();
@@ -406,13 +408,33 @@ get_header();?>
 				<div class="inner-wrap footer-bar">	
 					<div class="col-md-8 col-md-offset-3 covers">
 						<div class="col-xs-6 col-sm-3 footer-elements" id="fsection1">
+						<?php wp_reset_query();
+				global $sri_locale;
+				global $lang; ?>
 							<h4><?php echo ucwords($sri_locale['check us out '][$lang]);?></h4>
-							<ul class="list-unstyled">
-								<li><a href="<?php echo site_url().'/about'?>"><?php echo ucwords($sri_locale['who we are'][$lang]);?></a></li>
-								<li><a href="<?php echo site_url().'/srijanalaya-artist/'?>"><?php echo ucwords($sri_locale['artworks'][$lang]);?></a></li>
-								<li><a href="<?php echo site_url().'/project/'?>"><?php echo ucwords($sri_locale['our projects'][$lang]);?></a></li>
-								<li><a href="#!"><?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?></a></li>
-							</ul>
+		
+								<ul class="list-unstyled">
+									<li>
+										<a href="<?php echo site_url().'/about'?>">
+											<?php echo ucwords($sri_locale['who we are'][$lang]);?>who we are
+										</a>
+										</li>
+									<li>
+										<a href="<?php echo site_url().'/srijanalaya-artist/'?>">
+											<?php echo ucwords($sri_locale['artworks'][$lang]);?>artworks
+										</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url().'/project/'?>">
+											<?php echo ucwords($sri_locale['our projects'][$lang]);?>projects</a>
+										</li>
+									<li>
+										<a href="#!">
+										<?php echo ucwords($sri_locale['legal disclaimer'][$lang]);?>legal disclaimer</a>
+										</li>
+
+
+								</ul>
 						</div>
 						<div class="col-xs-6 col-sm-3 footer-elements" id="fsection2">
 							<h4>Project</h4>
@@ -433,10 +455,10 @@ get_header();?>
 						<div class="col-xs-12 col-sm-3 footer-elements social-block">
 							<div class="row no-padding">							
 							
-								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook" class="icons fb"></a></li></h4>
-								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet" class="icons tw"></a></li></h4>
-								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+" class="icons gp"></a></li></h4>
-								<h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it" class="icons pi"></a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Facebook" class="icons fb">&nbsp;</a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Tweet" class="icons tw">&nbsp;</a></li></h4>
+								<h4 class='col-xs-3'><li><a href="http://facebook.com/srijanalaya" target="_blank" title="Share on Google+" class="icons gp">&nbsp;</a></li></h4>
+								<h4 class='col-xs-3 last'><li><a href="http://facebook.com/srijanalaya&description=" target="_blank" title="Pin it" class="icons pi">&nbsp;</a></li></h4>
 							</div>
 							<p class='newsletter'><?php echo ucwords($sri_locale['sign up for newsletter'][$lang]);?></p>
 							<p><?php echo ucwords($sri_locale['Donate'][$lang]);?></p>
