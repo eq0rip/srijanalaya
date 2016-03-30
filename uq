@@ -1,0 +1,30 @@
+[1mdiff --git a/wp-content/themes/srijanalaya/less/custom.less b/wp-content/themes/srijanalaya/less/custom.less[m
+[1mindex d05bafe..68ecc55 100755[m
+[1m--- a/wp-content/themes/srijanalaya/less/custom.less[m
+[1m+++ b/wp-content/themes/srijanalaya/less/custom.less[m
+[36m@@ -4399,4 +4399,4 @@[m [mp.category {[m
+ //Calender padding fix[m
+ #event-title{[m
+     padding: 10px !important;[m
+[31m-}[m
+\ No newline at end of file[m
+[32m+[m[32m}cd[m[41m [m
+\ No newline at end of file[m
+[1mdiff --git a/wp-content/uploads/sucuri/sucuri-auditqueue.php b/wp-content/uploads/sucuri/sucuri-auditqueue.php[m
+[1mindex b06f99a..31aecee 100755[m
+[1m--- a/wp-content/uploads/sucuri/sucuri-auditqueue.php[m
+[1m+++ b/wp-content/uploads/sucuri/sucuri-auditqueue.php[m
+[36m@@ -1,7 +1,7 @@[m
+ <?php[m
+ // datastore=auditqueue;[m
+ // created_on=1454342147;[m
+[31m-// updated_on=1459146409;[m
+[32m+[m[32m// updated_on=1459246384;[m
+ exit(0);[m
+ ?>[m
+ b7704459875045aded82fb7056631e4e:{"created_at":1458019241,"message":null}[m
+[36m@@ -20,3 +20,4 @@[m [mf1b2c9a4c528ae316090886c8d494f0c:{"created_at":1459106403,"message":null}[m
+ ee453725472f524d93b77b44dc84095b:{"created_at":1459106724,"message":"Error: 127.0.0.1; User authentication failed: username"}[m
+ fedcb106101781f643d352da3cd8ef92:{"created_at":1459106744,"message":"Notice: 127.0.0.1; User authentication succeeded: admin"}[m
+ 4b216f4cc58aca1f20189645624304be:{"created_at":1459146404,"message":null}[m
+[32m+[m[32me68a2bd209543785a04773c6f8a13d24:{"created_at":1459246379,"message":null}[m
