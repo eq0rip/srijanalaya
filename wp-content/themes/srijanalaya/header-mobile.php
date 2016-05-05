@@ -10,12 +10,8 @@
   <!--<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">-->
 
 
-
   <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
   
-
-
-
 
   <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/fullpage/jquery.fullPage.css" />
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/animate.css" >
@@ -25,9 +21,9 @@
   <link href="<?php echo get_template_directory_uri();?>/less/mobile_custom.less" rel="stylesheet/less">
     <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <script src="<?php echo get_template_directory_uri();?>/js/less-1.7.5.js"></script>
+  <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
-  <?php wp_head();?>
   <?php flush(); ?>
 <div id="fullpage" style="">
   <div class="section" id="section1">  
