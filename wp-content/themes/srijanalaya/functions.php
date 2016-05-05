@@ -645,3 +645,13 @@ echo "<script>
 
 </script>";
 }
+
+function srijanalya_enqueue_final_script(){
+	wp_register_style( 'finalStylesheet',  get_template_directory_uri() . '/css/finalStyleSheet.css' );
+	wp_enqueue_style('final');
+}
+
+if(wp_is_mobile()){
+	add_action('wp_enqueue_scripts', 'srijanalya_enqueue_final_script');
+
+}

@@ -23,7 +23,7 @@ if(( !is_mobile() )) {
 	$title[]=get_the_title();
 	endwhile;
 	?>
-	<div id="slider-1" class="owl-carousel">
+	<div id="slider-1" class="owl-carousel top-slider-mobile">
 		<?php 
 
 		for($i=0;$i<3;$i++) {
