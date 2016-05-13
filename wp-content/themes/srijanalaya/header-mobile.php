@@ -19,6 +19,7 @@
   <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/transform.css" >
   <link href="<?php echo get_template_directory_uri();?>/css/fontawesome.css"  rel="stylesheet">
   <link href="<?php echo get_template_directory_uri();?>/less/mobile_custom.less" rel="stylesheet/less">
+  <link href="<?php echo get_template_directory_uri();?>/css/finalStylesheet.css" rel="stylesheet/less">
     <link rel="stylesheet"  type="text/css" href="<?php echo get_template_directory_uri();?>/css/owl.carousel.css" >
   <script src="<?php echo get_template_directory_uri();?>/js/less-1.7.5.js"></script>
   <?php wp_head();?>
