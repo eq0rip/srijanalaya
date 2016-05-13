@@ -14,7 +14,7 @@
 	
 <?php get_template_part('navigation');?>
 <?php wp_footer(); ?>
-
+ 
 </body>
 
 

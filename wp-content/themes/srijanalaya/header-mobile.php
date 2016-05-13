@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-
-
-
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!--<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">-->
-
-
   <link href="<?php bloginfo('stylesheet_url');?>" rel="stylesheet">
   
 
@@ -32,8 +27,3 @@
       <div class="container-fluid head_section <?php echo ( is_home() ) ? 'fixed-header-nav' : null ?> "><!--top buttons-->
         <a href="<?php echo site_url();?>"><img src="<?php echo get_template_directory_uri();?>/images/logo_c.png"  class="img-responsive logo" alt="" /></a>
       </div>
-
-
-
-
-

@@ -3,7 +3,10 @@
 .single_slider .item .item-wrapper a.btn{
 	margin-top: 15px !important;
 }
-
+.nav-icons .nav-links .subs a span{
+	text-align: left;
+	text-indent: 25px;
+}
 #slider-1{
 	margin-top: 25% !important;
 }
@@ -11,6 +14,15 @@
 	right:-500px !important;
 }
 .nav-icons .nav-links.show-it{
-	right:-40px;
+	right:-40px !important;
 	width: 320px;
+}
+
+.nav-icons ul .subs a span{
+	font-size: 16px;
+}
+
+#donate_btn{
+	display: none;
+	visibility: none;
 }
