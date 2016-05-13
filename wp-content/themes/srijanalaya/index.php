@@ -1,10 +1,9 @@
 <?php
-if(( is_mobile() )) {
-//if($_GET['m']=='true'){
+if( is_mobile() ) {
+
 
   include('index-mobile.php');
 
-} 
-else {
+} else {
 	include('index-large.php');
 }

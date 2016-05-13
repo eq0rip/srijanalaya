@@ -4,7 +4,7 @@
 
 get_header('mobile');
 if(( !is_mobile() )) {
-  wp_redirect(home_url());
+ // wp_redirect(home_url());
 } 
 
 ?>
