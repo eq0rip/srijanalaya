@@ -26,3 +26,7 @@
 	display: none;
 	visibility: none;
 }
+/* Home Page Checkout Fix */
+#section-5{
+	padding-top: 10px;
+}
