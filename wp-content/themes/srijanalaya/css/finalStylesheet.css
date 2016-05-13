@@ -7,3 +7,10 @@
 #slider-1{
 	margin-top: 25% !important;
 }
+.nav-icons .nav-links{
+	right:-500px !important;
+}
+.nav-icons .nav-links.show-it{
+	right:-40px;
+	width: 320px;
+}
