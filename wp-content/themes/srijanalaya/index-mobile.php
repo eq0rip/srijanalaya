@@ -3,10 +3,10 @@
  */
 
 get_header('mobile');
-if(( !is_mobile() )) {
+/*if(( !is_mobile() )) {
  // wp_redirect(home_url());
 } 
-
+*/
 ?>
 
 <div class="slider1-wrapper">

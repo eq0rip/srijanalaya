@@ -1,5 +1,5 @@
 <?php
-if( is_mobile() ) {
+if( wp_is_mobile() ) {
 
 
   include('index-mobile.php');
